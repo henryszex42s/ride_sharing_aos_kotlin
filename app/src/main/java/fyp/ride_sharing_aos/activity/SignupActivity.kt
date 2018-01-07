@@ -55,6 +55,7 @@ class SignupActivity : AppCompatActivity() {
             else
             {
                 //Show Error
+
             }
         })
     }
@@ -63,6 +64,7 @@ class SignupActivity : AppCompatActivity() {
     //https://kotlinlang.org/docs/reference/functions.html
     fun inputValidation() : Boolean
     {
+
         return true
     }
 
