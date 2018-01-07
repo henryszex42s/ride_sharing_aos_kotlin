@@ -1,0 +1,11 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/action_home"
+        android:title="@string/menu_home"
+        android:icon="@drawable/menu_home" />
+    <item android:id="@+id/action_addroute"
+        android:title="@string/menu_addroute"
+        android:icon="@drawable/menu_addroute" />
+    <item android:id="@+id/action_transinfo"
+        android:title="@string/menu_trasinfo"
+        android:icon="@drawable/menu_transinfo" />
+</menu>

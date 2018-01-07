@@ -1,0 +1,65 @@
+{
+  "project_info": {
+    "project_number": "270708076177",
+    "firebase_url": "https://ridesharing-3229e.firebaseio.com",
+    "project_id": "ridesharing-3229e",
+    "storage_bucket": "ridesharing-3229e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:270708076177:android:3947a4fa9224779a",
+        "android_client_info": {
+          "package_name": "fyp.ride_sharing_aos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "270708076177-vtn0e6annjam94kt3r946e338bhm5cqr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "fyp.ride_sharing_aos",
+            "certificate_hash": "b441bd6b1b7563f43028055710bbbd5186c03bb2"
+          }
+        },
+        {
+          "client_id": "270708076177-r9kr599grk5ngu562ru0egna9148f1o0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCA8SC0UpRfRbyeIGAc4ZghDFQr7dP41R8"
+        },
+        {
+          "current_key": "AIzaSyAfnCTBWFC9il5WbXhdaZMgx87oUD-jI9o"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "270708076177-fgd5kc18umineciquirjun4vd1rrbbg3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.GTorres.ridesharing-ios"
+              }
+            },
+            {
+              "client_id": "270708076177-r9kr599grk5ngu562ru0egna9148f1o0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

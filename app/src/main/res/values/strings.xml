@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">Ride Sharing</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="action_login">Sign in</string>
+
+    <!-- Strings in Welcome Page -->
+    <string name="welcome">Welcome</string>
+    <string name="welcome_description">The Best Taxi Ride-Sharing Application For UST Community</string>
+    <string name="welcome_login">Login</string>
+    <string name="welcome_signup">Sign up</string>
+
+    <!--Strings related to Bottom IconMenu-->
+    <string name="menu_home">Home</string>
+    <string name="menu_addroute">Add Route</string>
+    <string name="menu_trasinfo">Transport Info</string>
+
+    <!-- Strings related to login -->
+    <string name="login_btu_sign_in">Sign In</string>
+    <string name="login_hint_username">Username</string>
+    <string name="login_hint_pas">Password</string>
+    <string name="login_forgot">Forget Password?</string>
+
+    <!--Strings related to signup-->
+    <string name="signup_username">Username:</string>
+    <string name="signup_itsc">ITSC :</string>
+    <string name="signup_password">Password</string>
+    <string name="signup_hint_username">At least 6 characters</string>
+    <string name="signup_hint_password">At least 6 numbers and letters</string>
+    <string name="signup_btu_signup">Sign Up</string>
+
+    <string name="signup_radio_student">Student</string>
+    <string name="signup_radio_stafft">Staff</string>
+
+    <string name="signup_gender">Gender</string>
+    <string name="signup_radio_male">Male</string>
+    <string name="signup_radio_female">Female</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="title_activity_welcome">WelcomeActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_signup">SignupActivity</string>
+    <string name="title_activity_get_start">GetStartActivity</string>
+</resources>
