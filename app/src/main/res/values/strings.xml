@@ -39,6 +39,12 @@
     <string name="signup_radio_male">Male</string>
     <string name="signup_radio_female">Female</string>
 
+    <!--Strings related to slideMenu by Him-->
+    <string name="setting">Setting</string>
+    <string name="help">Help</string>
+    <string name="about">About</string>
+    <string name="feedback">Feedback</string>
+    <string name="logout">Logout</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

@@ -64,6 +64,35 @@ class SignupActivity : AppCompatActivity() {
     //https://kotlinlang.org/docs/reference/functions.html
     fun inputValidation() : Boolean
     {
+        val uname  = signup_username.text.toString()
+        val password = signup_password.text.toString()
+
+
+        //username validation
+        if (uname.length < 6 && uname.isNullOrEmpty() ) {
+            //pop up msg
+            return false
+        }
+        if (uname.length > 8) {
+            //pop up msg
+            return false
+        }
+        //password validation
+        if (password.length < 6 && password.isNullOrEmpty())
+            //pop up msg
+            return false
+
+        if ( !password.matches("[0-9]+".toRegex()) && !password.matches("[a-z]+".toRegex()) && !password.matches("[A-Z]+".toRegex()))
+             //pop up msg
+            return false
+
+        //identity validation
+        if (!radio_usr_student.isChecked() && !radio_usr_staff.isChecked())
+            return false
+
+        //gender validation
+        if(!radio_sex_male.isChecked() && !radio_sex_female.isChecked())
+            return false
 
         return true
     }
