@@ -24,10 +24,10 @@
                 android:src="@drawable/app_icon" />
 
             <EditText
-                android:id="@+id/login_username"
+                android:id="@+id/login_email"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:hint="@string/login_hint_username"
+                android:hint="@string/login_hint_email"
                 android:layout_margin="15dp"
                 android:gravity="center"
                 android:background="@drawable/rounded_edittext" />
