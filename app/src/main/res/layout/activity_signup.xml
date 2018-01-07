@@ -67,7 +67,9 @@
                 android:background="@drawable/rounded_edittext"/>
 
 
-            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+            <RadioGroup
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/identity"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -75,13 +77,11 @@
                 <RadioButton android:id="@+id/radio_usr_student"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/signup_radio_student"
-                    android:onClick="onRadioButtonClicked"/>
+                    android:text="@string/signup_radio_student" />
                 <RadioButton android:id="@+id/radio_usr_staff"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/signup_radio_stafft"
-                    android:onClick="onRadioButtonClicked"/>
+                    android:text="@string/signup_radio_stafft" />
 
             </RadioGroup>
 
@@ -93,7 +93,9 @@
                 android:layout_margin="10dp"
                 android:text="@string/signup_gender"/>
 
-            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+            <RadioGroup
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/gender"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -101,14 +103,12 @@
                 <RadioButton android:id="@+id/radio_sex_male"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/signup_radio_male"
-                    android:onClick="onRadioButtonClicked"/>
+                    android:text="@string/signup_radio_male" />
 
                 <RadioButton android:id="@+id/radio_sex_female"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/signup_radio_female"
-                    android:onClick="onRadioButtonClicked"/>
+                    android:text="@string/signup_radio_female" />
 
             </RadioGroup>
 

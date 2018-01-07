@@ -20,7 +20,7 @@
 
     <!-- Strings related to login -->
     <string name="login_btu_sign_in">Sign In</string>
-    <string name="login_hint_username">Username</string>
+    <string name="login_hint_email">Email</string>
     <string name="login_hint_pas">Password</string>
     <string name="login_forgot">Forget Password?</string>
 
