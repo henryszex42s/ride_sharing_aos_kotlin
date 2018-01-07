@@ -89,7 +89,9 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
             }
             R.id.nav_logout -> {
+                    //msg ask log5 logout
 
+                    //logout
             }
         }
 

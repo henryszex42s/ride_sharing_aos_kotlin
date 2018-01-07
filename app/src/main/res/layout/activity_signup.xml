@@ -72,12 +72,14 @@
                 android:id="@+id/identity"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:checkedButton="@+id/radio_usr_student">
 
-                <RadioButton android:id="@+id/radio_usr_student"
+                <RadioButton android:id="@id/radio_usr_student"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/signup_radio_student" />
+
                 <RadioButton android:id="@+id/radio_usr_staff"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -98,9 +100,10 @@
                 android:id="@+id/gender"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:checkedButton="@+id/radio_sex_male">
 
-                <RadioButton android:id="@+id/radio_sex_male"
+                <RadioButton android:id="@id/radio_sex_male"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/signup_radio_male" />

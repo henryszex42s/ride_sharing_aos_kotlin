@@ -1,9 +1,12 @@
 package fyp.ride_sharing_aos.activity
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AlertDialog
 import android.view.View
+import android.widget.EditText
 import android.widget.Toast
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
@@ -15,6 +18,7 @@ import kotlinx.android.synthetic.main.activity_signup.*
 import android.widget.RadioButton
 import fyp.ride_sharing_aos.HomeActivity
 import fyp.ride_sharing_aos.User
+
 
 
 class SignupActivity : AppCompatActivity() {
@@ -91,35 +95,48 @@ class SignupActivity : AppCompatActivity() {
         val uname  = signup_username.text.toString()
         val password = signup_password.text.toString()
 
+        var error : Int = 0
+        var error_msg : String = ""
+
 
         //username validation
-        if (uname.length < 6 && uname.isNullOrEmpty() ) {
-            //pop up msg
-            return false
-        }
-        if (uname.length > 8) {
-            //pop up msg
-            return false
+        if (uname.length < 6 || uname.length > 8 || uname.isNullOrEmpty() ) {
+           error_msg +=  "\n - The length of username must be larger than 5 and smaller than 8 and must not empty"
+            error++
+
         }
         //password validation
-        if (password.length < 6 && password.isNullOrEmpty())
-            //pop up msg
-            return false
+        if (password.length < 6 || password.isNullOrEmpty()) {
+            error_msg += "\n - The length of password must be larger than 5 and must not empty"
+            error++
+        }
 
-        if ( !password.matches("[0-9]+".toRegex()) && !password.matches("[a-z]+".toRegex()) && !password.matches("[A-Z]+".toRegex()))
-             //pop up msg
-            return false
+        if ( !password.matches("[0-9]+".toRegex()) && (password.matches("[a-z]+".toRegex()) || password.matches("[A-Z]+".toRegex()))) {
+            error_msg += "\n - Password must contain letters and numbers "
+            error++
+        }
 
-        //identity validation
-        if (!radio_usr_student.isChecked() && !radio_usr_staff.isChecked())
-            return false
+        if(error > 0) {
+            val builder1 = AlertDialog.Builder(this@SignupActivity)
+            builder1.setMessage(error_msg)
+            builder1.setCancelable(true)
+            builder1.setTitle("Alert")
+            builder1.setPositiveButton(
+                    "OK"
+            ) { dialog, id -> dialog.cancel() }
 
-        //gender validation
-        if(!radio_sex_male.isChecked() && !radio_sex_female.isChecked())
-            return false
+            builder1.setNegativeButton(
+                    "No"
+            ) { dialog, id -> dialog.cancel() }
+            val alert11 = builder1.create()
+            alert11.show()
 
-        return true
+            return false
+        }
+        else
+            return true
     }
+
 
 
 }

@@ -3,13 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://E:\Users\shatk\Documents\ride_sharing_aos_kotlin\app\app.iml" filepath="E:\Users\shatk\Documents\ride_sharing_aos_kotlin\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/ride_sharing_aos_kotlin.iml" filepath="$PROJECT_DIR$/ride_sharing_aos_kotlin.iml" />
-<<<<<<< HEAD
-      <module fileurl="file://E:\Users\shatk\Documents\ride_sharing_aos_kotlin\ride_sharing_aos_kotlin.iml" filepath="E:\Users\shatk\Documents\ride_sharing_aos_kotlin\ride_sharing_aos_kotlin.iml" />
-=======
-      <module fileurl="file://C:\Users\lfreee\Documents\ride_sharing_aos_kotlin\ride_sharing_aos_kotlin.iml" filepath="C:\Users\lfreee\Documents\ride_sharing_aos_kotlin\ride_sharing_aos_kotlin.iml" />
->>>>>>> 33111f1e3b6a6340b87118a1f68cd07a0dc82b37
     </modules>
   </component>
 </project>
