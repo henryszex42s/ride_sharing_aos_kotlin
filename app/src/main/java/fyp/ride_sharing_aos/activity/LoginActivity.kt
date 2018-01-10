@@ -36,7 +36,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
 //          Code For Logout
-//        logout.setOnClickListener(){
+ //       logout.setOnClickListener(){
 //            mAuth.signOut()
 //            val intent = Intent(this@MainActivity, GetStartActivity::class.java)
 //            startActivity(intent)
