@@ -19,8 +19,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_centerInParent="true"
-            android:layout_margin="20dp"
+            android:layout_centerHorizontal="true"
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginRight="80dp"
             android:src="@drawable/app_icon" />
 
         <TextView
@@ -53,22 +57,31 @@
             android:orientation="vertical"
             android:padding="25dp">
 
-            <Button
+            <ImageButton
                 android:id="@+id/btn_login"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_margin="15dp"
+                android:src="@drawable/home_login"
+                android:scaleType="fitXY"
+                android:adjustViewBounds="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginTop="20dp"
                 android:layout_gravity="center_horizontal"
-                android:text="@string/welcome_login"
+
                 android:textAllCaps="false" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/btn_signup"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_margin="15dp"
+                android:src="@drawable/home_signup"
+                android:scaleType="fitXY"
+                android:adjustViewBounds="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginTop="20dp"
                 android:layout_gravity="center_horizontal"
-                android:text="@string/welcome_signup"
                 android:textAllCaps="false" />
         </LinearLayout>
     </RelativeLayout>
