@@ -8,13 +8,18 @@ import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentTransaction
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
+import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.appcompat.R.id.add
 import android.view.Menu
 import android.view.MenuItem
 import com.google.firebase.auth.FirebaseAuth
 import fyp.ride_sharing_aos.activity.GetStartActivity
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
+import android.content.DialogInterface
+
+
 
 class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -89,9 +94,27 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
             }
             R.id.nav_logout -> {
-                    //msg ask log5 logout
+                val builder_logout = AlertDialog.Builder(this@HomeActivity)
+                builder_logout.setMessage("Are You sure to logout?")
+                builder_logout.setCancelable(true)
+                builder_logout.setTitle("Logout")
 
-                    //logout
+                val logout = DialogInterface.OnClickListener { dialog, which ->
+                    fbAuth.signOut()
+                     val intent = Intent(this@HomeActivity, GetStartActivity::class.java)
+                     startActivity(intent)
+                        finish()
+                }
+                builder_logout.setPositiveButton(
+                        "Logout",logout
+                )
+                builder_logout.setNegativeButton(
+                        "Cancel"
+                ) { dialog, id -> dialog.cancel() }
+
+                val alert11 = builder_logout.create()
+                alert11.show()
+
             }
         }
 
