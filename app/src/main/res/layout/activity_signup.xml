@@ -12,118 +12,135 @@
         android:layout_height="match_parent">
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+
+            android:orientation="vertical">
+
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:layout_margin="10dp"
+                android:layout_marginBottom="-10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="15dp"
+                android:text="@string/signup_username"
                 android:textColor="@color/white"
-                android:text="@string/signup_username"/>
+                android:textSize="20sp" />
 
             <EditText
                 android:id="@+id/signup_username"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:hint="@string/signup_hint_username"
                 android:layout_margin="15dp"
+                android:background="@drawable/rounded_edittext"
                 android:gravity="center"
-                android:background="@drawable/rounded_edittext" />
+                android:hint="@string/signup_hint_username" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
+                android:layout_marginBottom="-10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="15dp"
+                android:text="@string/signup_password"
                 android:textColor="@color/white"
-                android:layout_margin="10dp"
-                android:text="@string/signup_password"/>
+                android:textSize="20sp" />
+
             <EditText
                 android:id="@+id/signup_password"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:hint="@string/signup_hint_password"
-                android:inputType="textPassword"
                 android:layout_margin="15dp"
+                android:background="@drawable/rounded_edittext"
                 android:gravity="center"
-                android:background="@drawable/rounded_edittext"/>
+                android:hint="@string/signup_hint_password"
+                android:inputType="textPassword" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
+                android:layout_marginBottom="-10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="15dp"
+                android:text="@string/signup_itsc"
                 android:textColor="@color/white"
-                android:layout_margin="10dp"
-                android:text="@string/signup_itsc"/>
+                android:textSize="20sp" />
 
             <EditText
                 android:id="@+id/signup_itsc"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_margin="15dp"
-                android:gravity="center"
-                android:background="@drawable/rounded_edittext"/>
+                android:background="@drawable/rounded_edittext"
+                android:gravity="center" />
 
 
-            <RadioGroup
-                xmlns:android="http://schemas.android.com/apk/res/android"
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/identity"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:checkedButton="@+id/radio_usr_student">
+                android:checkedButton="@+id/radio_usr_student"
+                android:orientation="horizontal">
 
-                <RadioButton android:id="@id/radio_usr_student"
+                <RadioButton
+                    android:id="@id/radio_usr_student"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/signup_radio_student" />
+                    android:text="@string/signup_radio_student"
+                    android:textColor="@color/white" />
 
-                <RadioButton android:id="@+id/radio_usr_staff"
+                <RadioButton
+                    android:id="@+id/radio_usr_staff"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/signup_radio_stafft" />
+                    android:text="@string/signup_radio_stafft"
+                    android:textColor="@color/white" />
 
             </RadioGroup>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:textColor="@color/white"
                 android:layout_margin="10dp"
-                android:text="@string/signup_gender"/>
+                android:text="@string/signup_gender"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
 
-            <RadioGroup
-                xmlns:android="http://schemas.android.com/apk/res/android"
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/gender"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:checkedButton="@+id/radio_sex_male">
+                android:checkedButton="@+id/radio_sex_male"
+                android:orientation="horizontal">
 
-                <RadioButton android:id="@id/radio_sex_male"
+                <RadioButton
+                    android:id="@id/radio_sex_male"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/signup_radio_male" />
+                    android:text="@string/signup_radio_male"
+                    android:textColor="@color/white" />
 
-                <RadioButton android:id="@+id/radio_sex_female"
+                <RadioButton
+                    android:id="@+id/radio_sex_female"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/signup_radio_female" />
+                    android:text="@string/signup_radio_female"
+                    android:textColor="@color/white" />
 
             </RadioGroup>
 
 
-            <Button
+            <ImageButton
                 android:id="@+id/signup_button"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="80dp"
+                android:layout_marginRight="80dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
-                android:text="@string/signup_btu_signup"
+                android:src="@drawable/signup"
+                android:scaleType="fitXY"
+                android:adjustViewBounds="true"
                 android:textAllCaps="false"/>
         </LinearLayout>
     </ScrollView>
