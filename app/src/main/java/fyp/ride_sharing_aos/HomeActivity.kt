@@ -18,7 +18,10 @@ import fyp.ride_sharing_aos.activity.GetStartActivity
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 import android.content.DialogInterface
-
+import android.support.design.widget.BottomNavigationView
+import fyp.ride_sharing_aos.fragement.AddRouteFragment
+import fyp.ride_sharing_aos.fragement.HomeFragment
+import fyp.ride_sharing_aos.fragement.TransinfoFragment
 
 
 class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -37,8 +40,12 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
 
-        nav_view.setNavigationItemSelectedListener(this)
 
+        val homeFragement = HomeFragment()
+        replaceFragment(homeFragement,R.id.fragment_content)
+
+        nav_view.setNavigationItemSelectedListener(this)
+        buttom_navigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
 //        Check Login State
 
         if(fbAuth.currentUser != null)
@@ -103,7 +110,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     fbAuth.signOut()
                      val intent = Intent(this@HomeActivity, GetStartActivity::class.java)
                      startActivity(intent)
-                        finish()
+                     finish()
                 }
                 builder_logout.setPositiveButton(
                         "Logout",logout
@@ -120,6 +127,35 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
+    }
+
+
+    private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
+
+        when (item.itemId) {
+            R.id.action_home -> {
+                title = "Home"
+                val homeFragment = HomeFragment()
+                replaceFragment(homeFragment,R.id.fragment_content)
+                return@OnNavigationItemSelectedListener true
+            }
+
+            R.id.action_addroute -> {
+                title = "AddRoute"
+                val addRouteFragment = AddRouteFragment()
+                replaceFragment(addRouteFragment,R.id.fragment_content)
+                return@OnNavigationItemSelectedListener true
+            }
+
+            R.id.action_transinfo -> {
+                title = "Transport Info"
+                val transFragment = TransinfoFragment()
+                replaceFragment(transFragment,R.id.fragment_content)
+                return@OnNavigationItemSelectedListener true
+            }
+        }
+
+        false
     }
 
     fun AppCompatActivity.addFragment(fragment: Fragment, frameId: Int){

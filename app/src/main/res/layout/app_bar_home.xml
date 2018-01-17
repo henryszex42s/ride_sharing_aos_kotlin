@@ -18,7 +18,8 @@
             app:popupTheme="@style/AppTheme.PopupOverlay" />
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_home" />
+
+    <include layout="@layout/content_home"/>
 
 
     <!--https://developer.android.com/reference/android/support/design/widget/BottomNavigationView.html-->
