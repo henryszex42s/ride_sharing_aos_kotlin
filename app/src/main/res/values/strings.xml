@@ -48,12 +48,20 @@
 
     <!--String related to addRoute page by Him-->
 
-    <string-array name="loc_spin_choices">
+    <string-array name="start_choices">
         <item>HKUST</item>
         <item>Choi Hung MTR station</item>
         <item>Hang Hau MTR station</item>
         <item>Tseung Kwan O MTR station</item>
     </string-array>
+
+    <string-array name="des_choices">
+        <item>HKUST</item>
+        <item>Choi Hung MTR station</item>
+        <item>Hang Hau MTR station</item>
+        <item>Tseung Kwan O MTR station</item>
+    </string-array>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

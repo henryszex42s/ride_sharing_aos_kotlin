@@ -22,9 +22,10 @@ import android.support.design.widget.BottomNavigationView
 import fyp.ride_sharing_aos.fragement.AddRouteFragment
 import fyp.ride_sharing_aos.fragement.HomeFragment
 import fyp.ride_sharing_aos.fragement.TransinfoFragment
+import kotlinx.android.synthetic.main.fragment_add_route.*
 
 
-class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener{
 
     var fbAuth = FirebaseAuth.getInstance()
     var currentFragment: Fragment? = null
@@ -34,7 +35,6 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         setSupportActionBar(toolbar)
-
         val toggle = ActionBarDrawerToggle(
                 this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer_layout.addDrawerListener(toggle)
