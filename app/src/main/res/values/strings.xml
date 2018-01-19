@@ -46,6 +46,15 @@
     <string name="feedback">Feedback</string>
     <string name="logout">Logout</string>
 
+    <!--String related to addRoute page by Him-->
+
+    <string-array name="loc_spin_choices">
+        <item>HKUST</item>
+        <item>Choi Hung MTR station</item>
+        <item>Hang Hau MTR station</item>
+        <item>Tseung Kwan O MTR station</item>
+    </string-array>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

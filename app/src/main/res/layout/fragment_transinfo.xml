@@ -5,9 +5,229 @@
     tools:context="fyp.ride_sharing_aos.fragement.TransinfoFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="TransInfo" />
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:orientation="vertical"
+            android:paddingBottom="100dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10px"
+                android:text="Bus:" />
+
+            <TableLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:stretchColumns="1">
+
+                <TableRow>
+
+                    <TextView
+                        android:background="@color/colorPrimary"
+                        android:padding="10dp"
+                        android:text="91" />
+
+                    <TextView
+                        android:padding="10dp"
+                        android:text="bb" />
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:background="@color/colorPrimary"
+                        android:padding="10dp"
+                        android:text="91M" />
+
+                    <TextView
+                        android:padding="10dp"
+                        android:text="bb" />
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:background="@color/colorPrimary"
+                        android:padding="10dp"
+                        android:text="91P" />
+
+                    <TextView
+                        android:padding="10dp"
+                        android:text="bb" />
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:background="@color/colorPrimary"
+                        android:padding="10dp"
+                        android:text="792M" />
+
+                    <TextView
+                        android:padding="10dp"
+                        android:text="bb" />
+                </TableRow>
+
+
+            </TableLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="2dp"
+                android:layout_margin="30dp"
+                android:background="#a5a5a5" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10px"
+                android:text="MiniBus:" />
+
+            <TableLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:stretchColumns="1">
+
+                <TableRow>
+
+                    <TextView
+                        android:background="@color/colorPrimary"
+                        android:padding="10dp"
+                        android:text="11" />
+
+                    <TextView
+                        android:padding="10dp"
+                        android:text="bb" />
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:background="@color/colorPrimary"
+                        android:padding="10dp"
+                        android:text="11M" />
+
+                    <TextView
+
+                        android:padding="10dp"
+                        android:text="bb" />
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:background="@color/colorPrimary"
+                        android:padding="10dp"
+                        android:text="11S" />
+
+                    <TextView
+                        android:padding="10dp"
+                        android:text="bb" />
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:background="@color/colorPrimary"
+                        android:padding="10dp"
+                        android:text="12" />
+
+                    <TextView
+                        android:padding="10dp"
+                        android:text="bb" />
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:background="@color/colorPrimary"
+                        android:padding="10dp"
+                        android:text="104" />
+
+                    <TextView
+                        android:padding="10dp"
+                        android:text="bb" />
+                </TableRow>
+
+            </TableLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="2dp"
+                android:layout_margin="30dp"
+                android:background="#a5a5a5" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10px"
+                android:text="Taxi:" />
+
+            <TableLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shrinkColumns="0">
+
+                <TableRow>
+
+                    <TextView
+                        android:background="@color/colorPrimary"
+                        android:padding="10dp"
+                        android:text="ABA Taxi Radio Call Services Centre" />
+
+                    <TextView
+                        android:padding="10dp"
+                        android:text="2729 6600" />
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:background="@color/colorPrimary"
+                        android:padding="10dp"
+                        android:text="Hong Kong and Kowloon Radio Car Owners Association" />
+
+                    <TextView
+                        android:padding="10dp"
+                        android:text="2760 0455" />
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:background="@color/colorPrimary"
+                        android:padding="10dp"
+                        android:text="Quadripartite Taxi Service Association" />
+
+                    <TextView
+                        android:padding="10dp"
+                        android:text="2332 2571" />
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:background="@color/colorPrimary"
+                        android:padding="10dp"
+                        android:text="Sai Kung Taxi Operators Association" />
+
+                    <TextView
+                        android:padding="10dp"
+                        android:text="2729 1199" />
+                </TableRow>
+            </TableLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
 
 </FrameLayout>
