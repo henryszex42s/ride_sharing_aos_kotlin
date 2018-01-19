@@ -15,10 +15,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:orientation="vertical">
-
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -96,29 +93,42 @@
                 android:background="@drawable/rounded_edittext"
                 android:gravity="center" />
 
-
-            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/radio_identity"
-                android:layout_width="fill_parent"
+            <co.ceryle.segmentedbutton.SegmentedButtonGroup
+                android:id="@+id/type_segmentedButtonGroup"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:checkedButton="@+id/radio_usr_student"
-                android:orientation="horizontal">
+                android:layout_margin="10dp"
+                app:sbg_animateSelector="bounce"
+                app:sbg_animateSelectorDuration="500"
+                app:sbg_backgroundColor="@color/white"
+                app:sbg_dividerColor="#e91e63"
+                app:sbg_dividerPadding="10dp"
+                app:sbg_dividerRadius="10dp"
+                app:sbg_dividerSize="1dp"
+                app:sbg_position="1"
+                app:sbg_radius="20dp"
+                app:sbg_ripple="true"
+                app:sbg_rippleColor="#e91e63"
+                app:sbg_selectorColor="#e91e63"
+                app:sbg_selectorTextColor="@color/white"
+                app:sbg_shadow="true"
+                app:sbg_shadowElevation="3dp"
+                app:sbg_shadowMargin="4dp">
 
-                <RadioButton
-                    android:id="@id/radio_usr_student"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <Button
                     android:text="@string/signup_radio_student"
-                    android:textColor="@color/white" />
-
-                <RadioButton
-                    android:id="@+id/radio_usr_staff"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/signup_radio_stafft"
-                    android:textColor="@color/white" />
+                    android:minHeight="10dp"
+                    android:textAllCaps="false" />
 
-            </RadioGroup>
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minHeight="10dp"
+                    android:text="@string/signup_radio_stafft"
+                    android:textAllCaps="false" />
+            </co.ceryle.segmentedbutton.SegmentedButtonGroup>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -128,28 +138,45 @@
                 android:textColor="@color/white"
                 android:textSize="20sp" />
 
-            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/radio_gender"
-                android:layout_width="fill_parent"
+
+
+            <co.ceryle.segmentedbutton.SegmentedButtonGroup
+                android:id="@+id/gender_segmentedButtonGroup"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:checkedButton="@+id/radio_sex_male"
-                android:orientation="horizontal">
+                android:layout_margin="10dp"
+                android:layout_marginTop="-10dp"
+                app:sbg_animateSelector="bounce"
+                app:sbg_animateSelectorDuration="500"
+                app:sbg_backgroundColor="@color/white"
+                app:sbg_dividerColor="#e91e63"
+                app:sbg_dividerPadding="10dp"
+                app:sbg_dividerRadius="10dp"
+                app:sbg_dividerSize="1dp"
+                app:sbg_position="1"
+                app:sbg_radius="20dp"
+                app:sbg_ripple="true"
+                app:sbg_rippleColor="#e91e63"
+                app:sbg_selectorColor="#e91e63"
+                app:sbg_selectorTextColor="@color/white"
+                app:sbg_shadow="true"
+                app:sbg_shadowElevation="3dp"
+                app:sbg_shadowMargin="4dp">
 
-                <RadioButton
-                    android:id="@id/radio_sex_male"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <Button
                     android:text="@string/signup_radio_male"
-                    android:textColor="@color/white" />
-
-                <RadioButton
-                    android:id="@+id/radio_sex_female"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/signup_radio_female"
-                    android:textColor="@color/white" />
+                    android:minHeight="10dp"
+                    android:textAllCaps="false" />
 
-            </RadioGroup>
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minHeight="10dp"
+                    android:text="@string/signup_radio_female"
+                    android:textAllCaps="false" />
+            </co.ceryle.segmentedbutton.SegmentedButtonGroup>
 
 
             <ImageButton
