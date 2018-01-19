@@ -18,13 +18,13 @@ class GetStartActivity : AppCompatActivity() {
         btn_login.setOnClickListener({
             val intent = Intent(this@GetStartActivity, LoginActivity::class.java)
             startActivity(intent)
-            overridePendingTransition(R.anim.slide_in_up, R.anim.slide_out_up)
+//            overridePendingTransition(R.anim.slide_in_up, R.anim.slide_out_up)
         })
 
         btn_signup.setOnClickListener({
             val intent = Intent(this@GetStartActivity, SignupActivity::class.java)
             startActivity(intent)
-            overridePendingTransition(R.anim.slide_in_up, R.anim.slide_out_up)
+//            overridePendingTransition(R.anim.slide_in_up, R.anim.slide_out_up)
         })
 
     }

@@ -1,12 +1,13 @@
 package fyp.ride_sharing_aos.activity
 
-import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.ColorSpace
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.support.v7.app.AlertDialog
 import android.view.View
-import android.widget.EditText
 import android.widget.Toast
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
@@ -17,8 +18,8 @@ import fyp.ride_sharing_aos.R
 import kotlinx.android.synthetic.main.activity_signup.*
 import android.widget.RadioButton
 import fyp.ride_sharing_aos.HomeActivity
-import fyp.ride_sharing_aos.User
-
+import fyp.ride_sharing_aos.model.User
+import fyp.ride_sharing_aos.tools.Tools
 
 
 class SignupActivity : AppCompatActivity() {
@@ -28,64 +29,95 @@ class SignupActivity : AppCompatActivity() {
     private lateinit var database: FirebaseDatabase
     private lateinit var dbRef: DatabaseReference
 
+    var email : String? = null
+    var password : String? = null
+    var gender_selectedId : String? = null
+    var gender : String? = null
+    var identity_selectedId : String? = null
+    var identity : String? = null
+    var username: String? = null
+
+    var gender_radioButton :RadioButton? = null
+    var identity_radioButton :RadioButton? = null
+
+
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_signup)
-        supportActionBar?.hide()
+
         mAuth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance()
         dbRef = database.reference
-        setUponClick()
+        InitView()
+
     }
 
     override fun onResume() {
         super.onResume()
-
     }
 
-    fun setUponClick()
+    fun InitView()
     {
+        setContentView(R.layout.activity_signup)
+        supportActionBar?.hide()
+        gender_radioButton = findViewById<View>(radio_gender.checkedRadioButtonId) as RadioButton
+        identity_radioButton = findViewById<View>(radio_identity.checkedRadioButtonId) as RadioButton
+
+
         signup_button.setOnClickListener({
-            val email = signup_itsc.text.toString() + "@connect.ust.hk"
-            val password = signup_password.text.toString()
+            getDataFromView()
 
-            val gender_selectedId = gender.getCheckedRadioButtonId()
-            val gender_radioButton = findViewById<View>(gender_selectedId) as RadioButton
-
-            val gender = gender_radioButton.text.toString()
-
-            val identity_selectedId = identity.getCheckedRadioButtonId()
-            val identity_radioButton = findViewById<View>(identity_selectedId) as RadioButton
-
-            val identity = identity_radioButton.text.toString()
-
-            val username = signup_username.text.toString()
-
-            if (inputValidation()) {
-                mAuth.createUserWithEmailAndPassword(email, password)
+            if (inputValidation())
+            {
+                mAuth.createUserWithEmailAndPassword(email.toString(), password.toString())
                         .addOnCompleteListener { task: Task<AuthResult> ->
-                            if (task.isSuccessful) {
+                            if (task.isSuccessful)
+                            {
                                 val userId = mAuth.currentUser?.uid
                                 val registerRef = dbRef.child("users").child(userId)
-                                Toast.makeText(this, "Authentication Success.", Toast.LENGTH_SHORT).show()
-                                val user = User(email, gender,identity,userId.toString(),username)
-                                registerRef.setValue(user).addOnSuccessListener(){
+                                val user = User(username, userId.toString(), email, identity,gender)
+
+                                registerRef.setValue(user).addOnSuccessListener()
+                                {
+                                    Toast.makeText(this, "Authentication Success.", Toast.LENGTH_SHORT).show()
                                     val intent = Intent(this@SignupActivity, HomeActivity::class.java)
                                     startActivity(intent)
                                     this.finish()
                                 }
-                            } else {
+                            }
+                            else {
                                 // If sign in fails, display a message to the user.
                                 Toast.makeText(this, "Authentication failed.", Toast.LENGTH_SHORT).show()
                             }
                         }
             }
-            else
-            {
-                //Show Error
-
-            }
         })
+
+    }
+
+
+
+
+
+    fun getDataFromView()
+    {
+        password = signup_password.text.toString()
+        gender = gender_radioButton?.text.toString()
+        identity = identity_radioButton?.text.toString()
+        username = signup_username.text.toString()
+        email = signup_itsc.text.toString()
+
+        if(identity.equals("Student"))
+        {
+            email = email+"@connect.ust.hk"
+        }
+        else if(identity.equals("Staff"))
+        {
+            email = email+"@connect.ust.hk"
+        }
+
     }
 
 
@@ -94,47 +126,39 @@ class SignupActivity : AppCompatActivity() {
     {
         val uname  = signup_username.text.toString()
         val password = signup_password.text.toString()
+        val error_msg: ArrayList<String> = ArrayList()
 
-        var error : Int = 0
-        var error_msg : String = ""
+        //Reset The ErrorView
+        password_require.setTextColor(Color.BLACK)
+        username_require.setTextColor(Color.BLACK)
 
 
-        //username validation
-        if (uname.length < 6 || uname.length > 8 || uname.isNullOrEmpty() ) {
-           error_msg +=  "\n - The length of username must be larger than 5 and smaller than 8 and must not empty"
-            error++
-
+        //Username Validation
+        if (  (uname.length < 6 || uname.length > 8) || uname.isEmpty() ) {
+            error_msg.add(getString(R.string.signup_username_error))
+            username_require.setTextColor(Color.RED)
         }
-        //password validation
-        if (password.length < 6 || password.isNullOrEmpty()) {
-            error_msg += "\n - The length of password must be larger than 5 and must not empty"
-            error++
+
+        //Password Validation
+        if (password.length < 6 || password.isEmpty()) {
+            error_msg.add(getString(R.string.signup_password_error))
+            password_require.setTextColor(Color.RED)
         }
 
         if ( !password.matches("[0-9]+".toRegex()) && (password.matches("[a-z]+".toRegex()) || password.matches("[A-Z]+".toRegex()))) {
-            error_msg += "\n - Password must contain letters and numbers "
-            error++
+            error_msg.add(getString(R.string.signup_password_error2))
+            password_require.setTextColor(Color.RED)
         }
 
-        if(error > 0) {
-            val builder1 = AlertDialog.Builder(this@SignupActivity)
-            builder1.setMessage(error_msg)
-            builder1.setCancelable(true)
-            builder1.setTitle("Alert")
-            builder1.setPositiveButton(
-                    "OK"
-            ) { dialog, id -> dialog.cancel() }
-
-            builder1.setNegativeButton(
-                    "No"
-            ) { dialog, id -> dialog.cancel() }
-            val alert11 = builder1.create()
-            alert11.show()
-
-            return false
+        if(error_msg == null)
+        {
+            return true
         }
         else
-            return true
+        {
+            Tools.showDialog(this@SignupActivity, "Alert", error_msg)
+            return false
+        }
     }
 
 

@@ -22,9 +22,10 @@
             android:layout_centerHorizontal="true"
             android:scaleType="fitXY"
             android:adjustViewBounds="true"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:layout_marginLeft="80dp"
             android:layout_marginRight="80dp"
+            android:layout_marginBottom="20dp"
             android:src="@drawable/app_icon" />
 
         <TextView
