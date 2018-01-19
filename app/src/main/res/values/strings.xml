@@ -61,7 +61,9 @@
         <item>Hang Hau MTR station</item>
         <item>Tseung Kwan O MTR station</item>
     </string-array>
-
+    <string name="create">Create</string>
+    <string name="filter">Filter</string>
+    <string name="reset">Reset</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

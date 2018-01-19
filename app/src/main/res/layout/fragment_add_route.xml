@@ -37,14 +37,27 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
+        <TableLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TableRow>
+                <Button
+                    android:id="@+id/filter"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/filter"
+                    />
+            </TableRow>
+
+        </TableLayout>
 
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/create"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="100dp"
-            android:text="Next" />
+            android:text="@string/create" />
 
 
     </LinearLayout>
