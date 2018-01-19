@@ -18,8 +18,6 @@ object Tools
 //    error_msg.add(String)
     fun showDialog(context: Context, title:String, error_msg:ArrayList<String>)
     {
-
-
         if(error_msg != null) {
             val builder = AlertDialog.Builder(context)
 
@@ -47,6 +45,18 @@ object Tools
             alert.show()
         }
     }
+
+    fun showProgressDialog(context: Context, title:String, msg:String)
+    {
+
+    }
+
+
+
+
+
+
+
 
 
 
