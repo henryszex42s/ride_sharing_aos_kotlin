@@ -10,6 +10,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import fyp.ride_sharing_aos.HomeActivity
 import fyp.ride_sharing_aos.R
+import fyp.ride_sharing_aos.tools.Tools
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
@@ -26,22 +27,48 @@ class LoginActivity : AppCompatActivity() {
         database = FirebaseDatabase.getInstance()
         dbRef = database.reference
 
+
         login_button.setOnClickListener{
-            mAuth = FirebaseAuth.getInstance()
-            mAuth.signInWithEmailAndPassword(login_email.text.toString(), login_password.text.toString()).
-                    addOnCompleteListener { task: Task<AuthResult> ->
-                        val intentToMain = Intent(this@LoginActivity, HomeActivity::class.java)
-                        startActivity(intentToMain)
-                    }
+            val email = login_email.text.toString()
+            val password = login_password.text.toString()
+
+            if(inputValidation(email,password)) {
+                mAuth.signInWithEmailAndPassword(login_email.text.toString(), login_password.text.toString()).
+                        addOnCompleteListener { task: Task<AuthResult> ->
+                            val intentToMain = Intent(this@LoginActivity, HomeActivity::class.java)
+                            startActivity(intentToMain)
+                        }
+            }
         }
 
-//          Code For Logout
- //       logout.setOnClickListener(){
-//            mAuth.signOut()
-//            val intent = Intent(this@MainActivity, GetStartActivity::class.java)
-//            startActivity(intent)
-//            finish()
-//        }
+    }
+
+    fun inputValidation(username : String, password : String) : Boolean
+    {
+        val error_msg: ArrayList<String> = ArrayList()
+
+        if(username.isNullOrEmpty())
+        {
+            error_msg.add(getString(R.string.login_user_error))
+        }
+        if(password.isNullOrEmpty())
+        {
+            error_msg.add(getString(R.string.login_password_error))
+        }
+
+        if(error_msg.isEmpty())
+        {
+            return true
+        }
+        else
+        {
+            Tools.showDialog(this@LoginActivity, "Alert", error_msg)
+            return false
+        }
 
     }
+
+
+
+
 }

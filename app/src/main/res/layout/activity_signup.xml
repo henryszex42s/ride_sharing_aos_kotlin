@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="fyp.ride_sharing_aos.activity.SignupActivity"
-    android:background="@drawable/hkust_bgimg">
+    android:background="@drawable/hkust_bgimg"
+    android:focusableInTouchMode="true">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -26,16 +27,25 @@
                 android:layout_marginTop="15dp"
                 android:text="@string/signup_username"
                 android:textColor="@color/white"
-                android:textSize="20sp" />
-
+                android:textSize="18sp" />
             <EditText
                 android:id="@+id/signup_username"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="35dp"
                 android:layout_margin="15dp"
                 android:background="@drawable/rounded_edittext"
                 android:gravity="center"
                 android:hint="@string/signup_hint_username" />
+            <TextView
+                android:id="@+id/username_require"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-10dp"
+                android:layout_marginLeft="10dp"
+                android:text="@string/signup_username_require"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -45,17 +55,27 @@
                 android:layout_marginTop="15dp"
                 android:text="@string/signup_password"
                 android:textColor="@color/white"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/signup_password"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="35dp"
                 android:layout_margin="15dp"
                 android:background="@drawable/rounded_edittext"
                 android:gravity="center"
                 android:hint="@string/signup_hint_password"
                 android:inputType="textPassword" />
+            <TextView
+                android:id="@+id/password_require"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-10dp"
+                android:layout_marginLeft="10dp"
+                android:text="@string/signup_password_require"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="12sp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -70,14 +90,15 @@
             <EditText
                 android:id="@+id/signup_itsc"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="35dp"
                 android:layout_margin="15dp"
+                android:hint="@string/signup_hint_itsc"
                 android:background="@drawable/rounded_edittext"
                 android:gravity="center" />
 
 
             <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/identity"
+                android:id="@+id/radio_identity"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:checkedButton="@+id/radio_usr_student"
@@ -108,7 +129,7 @@
                 android:textSize="20sp" />
 
             <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/gender"
+                android:id="@+id/radio_gender"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:checkedButton="@+id/radio_sex_male"
