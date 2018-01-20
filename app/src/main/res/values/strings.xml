@@ -79,6 +79,8 @@
     <string name="filter">Filter</string>
     <string name="reset">Reset</string>
 
+    <string name = "mapview">mapView</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_welcome">WelcomeActivity</string>
