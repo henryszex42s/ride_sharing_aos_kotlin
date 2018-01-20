@@ -37,7 +37,7 @@ dependencies {
 
     implementation 'com.google.android.gms:play-services-maps:11.8.0'
     implementation 'com.google.android.gms:play-services:11.8.0'
-    
+
     //Add Library
     compile 'com.github.ceryle:SegmentedButton:v1.2.2'
 

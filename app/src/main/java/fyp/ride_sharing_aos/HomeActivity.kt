@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 import android.content.DialogInterface
 import android.support.design.widget.BottomNavigationView
-import fyp.ride_sharing_aos.fragement.AddRouteFragment
+import fyp.ride_sharing_aos.activity.AddRouteActivity
 import fyp.ride_sharing_aos.fragement.HomeFragment
 import fyp.ride_sharing_aos.fragement.SettingFragment
 import fyp.ride_sharing_aos.fragement.TransinfoFragment
@@ -141,9 +141,9 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
 
             R.id.action_addroute -> {
-                title = "AddRoute"
-                val addRouteFragment = AddRouteFragment()
-                replaceFragment(addRouteFragment,R.id.fragment_content)
+                val intent = Intent(this@HomeActivity, AddRouteActivity::class.java)
+                startActivity(intent)
+                overridePendingTransition(R.anim.slide_in_up,R.anim.slide_out_up)
                 return@OnNavigationItemSelectedListener true
             }
 

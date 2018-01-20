@@ -16,6 +16,7 @@ object Tools
 
 //    val error_msg: ArrayList<String> = ArrayList()
 //    error_msg.add(String)
+
     fun showDialog(context: Context, title:String, error_msg:ArrayList<String>)
     {
         if(error_msg != null) {

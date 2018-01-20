@@ -3,7 +3,6 @@ package fyp.ride_sharing_aos.activity
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
 import fyp.ride_sharing_aos.R
 import kotlinx.android.synthetic.main.activity_get_start.*
 
@@ -12,7 +11,9 @@ class GetStartActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_get_start)
+        get_start_cl.setBackgroundResource(R.drawable.hkust_bgimg)
         supportActionBar?.hide()
+
 
 
         btn_login.setOnClickListener({
