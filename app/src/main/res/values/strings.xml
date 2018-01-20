@@ -17,6 +17,7 @@
     <string name="menu_home">Home</string>
     <string name="menu_addroute">Add Route</string>
     <string name="menu_trasinfo">Transport Info</string>
+    <string name="menu_settings">Settings</string>
 
     <!-- Strings related to Login -->
     <string name="login_btu_sign_in">Sign In</string>

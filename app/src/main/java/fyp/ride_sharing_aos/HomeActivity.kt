@@ -10,7 +10,6 @@ import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.appcompat.R.id.add
 import android.view.Menu
 import android.view.MenuItem
 import com.google.firebase.auth.FirebaseAuth
@@ -21,8 +20,8 @@ import android.content.DialogInterface
 import android.support.design.widget.BottomNavigationView
 import fyp.ride_sharing_aos.fragement.AddRouteFragment
 import fyp.ride_sharing_aos.fragement.HomeFragment
+import fyp.ride_sharing_aos.fragement.SettingFragment
 import fyp.ride_sharing_aos.fragement.TransinfoFragment
-import kotlinx.android.synthetic.main.fragment_add_route.*
 
 
 class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener{
@@ -35,6 +34,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         setSupportActionBar(toolbar)
+
         val toggle = ActionBarDrawerToggle(
                 this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer_layout.addDrawerListener(toggle)
@@ -46,8 +46,8 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         nav_view.setNavigationItemSelectedListener(this)
         buttom_navigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
-//        Check Login State
 
+//        Check Login State
         if(fbAuth.currentUser != null)
         {
             //User is logged in
@@ -153,6 +153,15 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 replaceFragment(transFragment,R.id.fragment_content)
                 return@OnNavigationItemSelectedListener true
             }
+
+            R.id.action_settings -> {
+                title = "Setting"
+                val settingsFragment = SettingFragment()
+                replaceFragment(settingsFragment,R.id.fragment_content)
+                return@OnNavigationItemSelectedListener true
+            }
+
+
         }
 
         false

@@ -2,12 +2,8 @@ package fyp.ride_sharing_aos.activity
 
 import android.content.Intent
 import android.graphics.Color
-import android.graphics.ColorSpace
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.MediaStore
-import android.support.v7.app.AlertDialog
-import android.view.View
 import android.widget.Toast
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
@@ -16,10 +12,10 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import fyp.ride_sharing_aos.R
 import kotlinx.android.synthetic.main.activity_signup.*
-import android.widget.RadioButton
 import fyp.ride_sharing_aos.HomeActivity
 import fyp.ride_sharing_aos.model.User
 import fyp.ride_sharing_aos.tools.Tools
+
 
 
 class SignupActivity : AppCompatActivity() {
@@ -36,9 +32,6 @@ class SignupActivity : AppCompatActivity() {
     var identity_selectedId : String? = null
     var identity : String? = null
     var username: String? = null
-
-    var gender_radioButton :RadioButton? = null
-    var identity_radioButton :RadioButton? = null
 
 
 
@@ -62,9 +55,6 @@ class SignupActivity : AppCompatActivity() {
     {
         setContentView(R.layout.activity_signup)
         supportActionBar?.hide()
-        gender_radioButton = findViewById<View>(radio_gender.checkedRadioButtonId) as RadioButton
-        identity_radioButton = findViewById<View>(radio_identity.checkedRadioButtonId) as RadioButton
-
 
         signup_button.setOnClickListener({
             getDataFromView()
@@ -95,7 +85,34 @@ class SignupActivity : AppCompatActivity() {
             }
         })
 
+
+        type_segmentedButtonGroup.setOnClickedButtonPosition()
+        { position ->
+            when(position)
+            {
+                0 -> identity = "Student"
+                1 -> identity = "Staff"
+            }
+        }
+        gender_segmentedButtonGroup.setOnClickedButtonPosition()
+        { position ->
+            when(position)
+            {
+                0 -> gender = "Male"
+                1 -> gender = "Female"
+            }
+        }
+
+
+        //Setup the Default Value
+        type_segmentedButtonGroup.setPosition(0, 0)
+        identity = "Student"
+
+        gender_segmentedButtonGroup.setPosition(0, 0)
+        gender = "Male"
+
     }
+
 
 
 
@@ -104,8 +121,6 @@ class SignupActivity : AppCompatActivity() {
     fun getDataFromView()
     {
         password = signup_password.text.toString()
-        gender = gender_radioButton?.text.toString()
-        identity = identity_radioButton?.text.toString()
         username = signup_username.text.toString()
         email = signup_itsc.text.toString()
 

@@ -16,8 +16,7 @@
             android:layout_height="wrap_content"
             android:text="From:"
             android:textColor="@color/white"
-            android:textSize="20sp"
-            />
+            android:textSize="20sp" />
 
         <Spinner
             android:id="@+id/start_spin"
