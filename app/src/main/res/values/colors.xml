@@ -7,4 +7,9 @@
     <color name="black">#000000</color>
     <color name="red">#FF0000</color>
     <color name="black_overlay">#66000000</color>
+
+    <!-- added by Him -->
+    <color name="colorHint">#546E7A</color>
+    <color name="buttoncolor">#00838F</color>
+    <color name="textColor">#ffffff</color>
 </resources>
