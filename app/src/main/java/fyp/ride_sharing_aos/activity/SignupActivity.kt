@@ -165,7 +165,7 @@ class SignupActivity : AppCompatActivity() {
             password_require.setTextColor(Color.RED)
         }
 
-        if(error_msg == null)
+        if(error_msg.isEmpty())
         {
             return true
         }
