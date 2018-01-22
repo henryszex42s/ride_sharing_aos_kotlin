@@ -5,13 +5,14 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Toast
+import android.widget.*
 import fyp.ride_sharing_aos.R
 import fyp.ride_sharing_aos.R.id.des_spin
 import fyp.ride_sharing_aos.R.id.start_spin
+import android.widget.SeekBar.OnSeekBarChangeListener
 import kotlinx.android.synthetic.main.activity_add_route.*
+import org.w3c.dom.Text
+
 
 class AddRouteActivity : AppCompatActivity() {
 
@@ -53,6 +54,38 @@ class AddRouteActivity : AppCompatActivity() {
         filter.setOnClickListener{
             val filter_alert = AlertDialog.Builder(this)
             filter_alert.setTitle("Filter (Optional)")
+
+
+
+            val seek = SeekBar(this)
+            seek.max = 5
+            seek.keyProgressIncrement = 1
+            filter_alert.setView(seek)
+
+            seek.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+                override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
+                   // .setText("Value of : " + progress)
+                }
+
+
+                override fun onStartTrackingTouch(arg0: SeekBar) {
+                    //do something
+
+                    // TODO Auto-generated method stub
+                }
+
+
+                override fun onStopTrackingTouch(seekBar: SeekBar) {
+                    //do something
+
+                }
+            })
+
+
+
+
+
+
             filter_alert.setMultiChoiceItems(options, isCheck, DialogInterface.OnMultiChoiceClickListener { dialog, which, isChecked ->
                 if (isChecked) {
                     yourChoices.add(which)

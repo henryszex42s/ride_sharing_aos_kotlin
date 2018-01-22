@@ -11,88 +11,95 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
         <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <android.support.design.widget.TextInputLayout
+            android:text="@string/signup_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="-10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="15dp"
-                android:text="@string/signup_username"
-                android:textColor="@color/white"
-                android:textSize="18sp" />
+            android:layout_marginTop="20dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            app:counterOverflowTextAppearance="@style/TextOverCount"
+            android:textColorHint="@color/colorHint"
+            >
+
             <EditText
                 android:id="@+id/signup_username"
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:layout_margin="15dp"
-                android:background="@drawable/rounded_edittext"
-                android:gravity="center"
-                android:hint="@string/signup_hint_username" />
+                android:layout_height="48dp"
+                android:hint="Username"
+                android:inputType="text"
+                android:textColor="@color/black" />
+
+        </android.support.design.widget.TextInputLayout>
             <TextView
                 android:id="@+id/username_require"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="-10dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="20dp"
                 android:text="@string/signup_username_require"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="-10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="15dp"
-                android:text="@string/signup_password"
-                android:textColor="@color/white"
-                android:textSize="18sp" />
+        <android.support.design.widget.TextInputLayout
+            android:text="@string/signup_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:textColorHint="@color/colorHint"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/colorHint"
 
-            <EditText
+            app:passwordToggleDrawable="@drawable/ic_eye_grey_30dp"
+            >
+
+            <android.support.design.widget.TextInputEditText
                 android:id="@+id/signup_password"
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:layout_margin="15dp"
-                android:background="@drawable/rounded_edittext"
-                android:gravity="center"
-                android:hint="@string/signup_hint_password"
-                android:inputType="textPassword" />
+                android:layout_height="48dp"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:singleLine="true"
+                android:textColor="@color/black" />
+        </android.support.design.widget.TextInputLayout>
             <TextView
                 android:id="@+id/password_require"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="-10dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="20dp"
                 android:text="@string/signup_password_require"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 android:textSize="12sp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="-10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="15dp"
+            <android.support.design.widget.TextInputLayout
                 android:text="@string/signup_itsc"
-                android:textColor="@color/white"
-                android:textSize="20sp" />
-
-            <EditText
-                android:id="@+id/signup_itsc"
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:layout_margin="15dp"
-                android:hint="@string/signup_hint_itsc"
-                android:background="@drawable/rounded_edittext"
-                android:gravity="center" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                app:counterOverflowTextAppearance="@style/TextOverCount"
+                android:textColorHint="@color/colorHint"
+                >
 
+                <EditText
+                    android:id="@+id/signup_itsc"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:hint="ITSC"
+                    android:inputType="text"
+                    android:textColor="@color/black" />
+
+            </android.support.design.widget.TextInputLayout>
             <co.ceryle.segmentedbutton.SegmentedButtonGroup
                 android:id="@+id/type_segmentedButtonGroup"
                 android:layout_width="match_parent"
@@ -178,7 +185,6 @@
                     android:textAllCaps="false" />
             </co.ceryle.segmentedbutton.SegmentedButtonGroup>
 
-
             <ImageButton
                 android:id="@+id/signup_button"
                 android:layout_width="wrap_content"
@@ -190,6 +196,7 @@
                 android:scaleType="fitXY"
                 android:adjustViewBounds="true"
                 android:textAllCaps="false"/>
+
         </LinearLayout>
     </ScrollView>
 </android.support.constraint.ConstraintLayout>
