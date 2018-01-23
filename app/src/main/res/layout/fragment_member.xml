@@ -15,8 +15,7 @@
     android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin">
+    android:paddingRight="@dimen/activity_horizontal_margin">
 
     <ImageView
         android:id="@+id/profile_photo"
@@ -40,25 +39,28 @@
         android:text="android.studio@android.com" />
 
     <Space
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
+    <Button style="@style/Widget.AppCompat.Button.Borderless"
+        android:id="@+id/btu_setting_logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:text="@string/Setting_logout"/>
+
+
+
     </LinearLayout>
-    <TextView>
 
 
-    </TextView>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         xmlns:android="http://schemas.android.com/apk/res/android">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/mal_recyclerview"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clipToPadding="false"
-            android:paddingBottom="@dimen/mal_baseline_half"/>
+
 
     </ScrollView>
 

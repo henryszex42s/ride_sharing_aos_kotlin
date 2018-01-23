@@ -19,7 +19,7 @@
     <string name="menu_trasinfo">Transport Info</string>
     <string name="menu_settings">Settings</string>
 
-    <!-- Strings related to Login -->
+    <!-- Strings related to SignIn -->
     <string name="login_btu_sign_in">Sign In</string>
     <string name="login_hint_email">Email</string>
     <string name="login_hint_pas">Password</string>
@@ -78,7 +78,7 @@
     </string-array>
     <string name="create">Create</string>
     <string name="filter">Filter</string>
-    <string name="mapview">mapView</string>
+
 
 
     <!-- filter dialog-->
@@ -87,7 +87,9 @@
     <string name="staff_only">Staff Only</string>
     <string name="stu_only">Student Only</string>
     <string name="reset">Reset</string>
-    <string name="ok">OK</string>
+
+    <string name="Setting_logout">Logout</string>
+
 
 
     <!-- TODO: Remove or change this placeholder text -->
