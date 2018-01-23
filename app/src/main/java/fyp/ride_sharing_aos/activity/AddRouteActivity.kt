@@ -1,5 +1,6 @@
 package fyp.ride_sharing_aos.activity
 
+import android.app.Dialog
 import android.content.DialogInterface
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -7,11 +8,16 @@ import android.support.v7.app.AlertDialog
 import android.view.View
 import android.widget.*
 import fyp.ride_sharing_aos.R
-import fyp.ride_sharing_aos.R.id.des_spin
-import fyp.ride_sharing_aos.R.id.start_spin
-import android.widget.SeekBar.OnSeekBarChangeListener
+import fyp.ride_sharing_aos.R.id.*
+import android.widget.SeekBar
+import fyp.ride_sharing_aos.MapsActivity
 import kotlinx.android.synthetic.main.activity_add_route.*
+import kotlinx.android.synthetic.main.filter_dialog.*
+
 import org.w3c.dom.Text
+import com.google.android.gms.maps.SupportMapFragment
+
+
 
 
 class AddRouteActivity : AppCompatActivity() {
@@ -20,6 +26,8 @@ class AddRouteActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_route)
         supportActionBar?.hide()
+
+
 
         val spinnerItems = resources.getStringArray(R.array.start_choices)
         start_spin.adapter = ArrayAdapter<String>(this,
@@ -51,20 +59,27 @@ class AddRouteActivity : AppCompatActivity() {
         val options = arrayOf("Male Only","Female Only", "Student Only", "Staff Only")
         var isCheck = booleanArrayOf(false,false,false,false)
         var yourChoices : MutableList<Int> = arrayListOf()
+
         filter.setOnClickListener{
+
             val filter_alert = AlertDialog.Builder(this)
+            filter_alert.setView(R.layout.filter_dialog)
+
             filter_alert.setTitle("Filter (Optional)")
+/*
+          val seek = SeekBar(this)
+          seek.max = 4
+          seek.keyProgressIncrement = 1
+          filter_alert.setView(seek)   */
 
 
-
-            val seek = SeekBar(this)
-            seek.max = 5
-            seek.keyProgressIncrement = 1
-            filter_alert.setView(seek)
+            val v = layoutInflater.inflate(R.layout.filter_dialog, null)
+            var seek = v.findViewById<SeekBar>(R.id.pplseek)
+            var temp2 = v.findViewById<TextView>(R.id.seektext)
 
             seek.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
                 override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
-                   // .setText("Value of : " + progress)
+                    temp2.text = "Number of passenger: $progress"
                 }
 
 
@@ -85,43 +100,46 @@ class AddRouteActivity : AppCompatActivity() {
 
 
 
+/*
+          filter_alert.setMultiChoiceItems(options, isCheck, DialogInterface.OnMultiChoiceClickListener { dialog, which, isChecked ->
+              if (isChecked) {
+                  yourChoices.add(which)
+              } else {
+                  yourChoices.remove(which)
+              }
 
-            filter_alert.setMultiChoiceItems(options, isCheck, DialogInterface.OnMultiChoiceClickListener { dialog, which, isChecked ->
-                if (isChecked) {
-                    yourChoices.add(which)
-                } else {
-                    yourChoices.remove(which)
-                }
+          })*/
 
-            })
+          filter_alert.setPositiveButton(
+                  "OK"
+          ) { dialog, id ->
 
-            filter_alert.setCancelable(true)
-            filter_alert.setPositiveButton(
-                    "OK"
-            ) { dialog, id ->
+              val size = yourChoices.size
+              var str = ""
+              if(size > 0) {
+                  for (i in 0 until size) {
+                      str += options[yourChoices[i]] + ", "
+                  }
+                  Toast.makeText(this,
+                          "You Chose " + str,
+                          Toast.LENGTH_SHORT).show();
+              }
 
-                val size = yourChoices.size
-                var str = ""
-                if(size > 0) {
-                    for (i in 0 until size) {
-                        str += options[yourChoices[i]] + ", "
-                    }
-                    Toast.makeText(this,
-                            "You Chose " + str,
-                            Toast.LENGTH_SHORT).show();
-                }
+          }
+          filter_alert.setNegativeButton(
+                  "Reset"
+          ) { dialog, id ->
+              isCheck = booleanArrayOf(false,false,false,false)
+              yourChoices.clear()
+          }
 
-            }
-            filter_alert.setNegativeButton(
-                    "Reset"
-            ) { dialog, id ->
-                isCheck = booleanArrayOf(false,false,false,false)
-                yourChoices.clear()
-            }
-            val alert = filter_alert.create()
-            alert.show()
-        }
+          filter_alert.setCancelable(true)
+          val alert = filter_alert.create()
+          alert.show()
+
+      }
 
 
-    }
+
+  }
 }
