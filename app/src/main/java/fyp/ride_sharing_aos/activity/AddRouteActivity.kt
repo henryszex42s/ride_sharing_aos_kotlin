@@ -10,23 +10,27 @@ import android.widget.*
 import fyp.ride_sharing_aos.R
 import fyp.ride_sharing_aos.R.id.*
 import android.widget.SeekBar
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
 import fyp.ride_sharing_aos.MapsActivity
 import kotlinx.android.synthetic.main.activity_add_route.*
 import kotlinx.android.synthetic.main.filter_dialog.*
 
 import org.w3c.dom.Text
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
+import fyp.ride_sharing_aos.fragement.MyMapFragment
 
 
+class AddRouteActivity : AppCompatActivity(), OnMapReadyCallback {
 
-
-class AddRouteActivity : AppCompatActivity() {
-
+    private lateinit var mMap: GoogleMap
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_route)
         supportActionBar?.hide()
-
 
 
         val spinnerItems = resources.getStringArray(R.array.start_choices)
@@ -56,6 +60,15 @@ class AddRouteActivity : AppCompatActivity() {
 
         }
 
+        /* map*/
+/*
+        val mapFragment =
+                supportFragmentManager.findFragmentById(R.id.map) as MyMapFragment
+        mapFragment.getMapAsync(mapFragment)
+*/
+
+
+        /*filter*/
         val options = arrayOf("Male Only","Female Only", "Student Only", "Staff Only")
         var isCheck = booleanArrayOf(false,false,false,false)
         var yourChoices : MutableList<Int> = arrayListOf()
@@ -142,4 +155,12 @@ class AddRouteActivity : AppCompatActivity() {
 
 
   }
+    override fun onMapReady(googleMap: GoogleMap) {
+        mMap = googleMap
+
+        // Add a marker in Sydney and move the camera
+        val sydney = LatLng(-34.0, 151.0)
+        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+    }
 }

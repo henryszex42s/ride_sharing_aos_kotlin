@@ -80,7 +80,6 @@
     <string name="filter">Filter</string>
 
 
-
     <!-- filter dialog-->
     <string name="m_only">Male Only</string>
     <string name="f_only">Female Only</string>
@@ -89,22 +88,12 @@
     <string name="reset">Reset</string>
 
 
-
-
-
-
     <!-- Setting Fragment-->
     <string name="setting_edit_profile">Edit Profile</string>
     <string name="setting_notification">Notification</string>
     <string name="setting_language">Language</string>
     <string name="setting_about_us">About Us</string>
     <string name="setting_logout">Logout</string>
-
-
-
-
-
-
 
 
     <!-- TODO: Remove or change this placeholder text -->
