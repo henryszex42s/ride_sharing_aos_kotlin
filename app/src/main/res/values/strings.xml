@@ -88,7 +88,22 @@
     <string name="stu_only">Student Only</string>
     <string name="reset">Reset</string>
 
-    <string name="Setting_logout">Logout</string>
+
+
+
+
+
+    <!-- Setting Fragment-->
+    <string name="setting_edit_profile">Edit Profile</string>
+    <string name="setting_notification">Notification</string>
+    <string name="setting_language">Language</string>
+    <string name="setting_about_us">About Us</string>
+    <string name="setting_logout">Logout</string>
+
+
+
+
+
 
 
 

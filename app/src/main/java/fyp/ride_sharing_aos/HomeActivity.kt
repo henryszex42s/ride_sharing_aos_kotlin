@@ -22,6 +22,8 @@ import fyp.ride_sharing_aos.activity.AddRouteActivity
 import fyp.ride_sharing_aos.fragement.HomeFragment
 import fyp.ride_sharing_aos.fragement.SettingFragment
 import fyp.ride_sharing_aos.fragement.TransinfoFragment
+import fyp.ride_sharing_aos.tools.FirebaseManager
+import fyp.ride_sharing_aos.tools.FirebaseManager.UpdateUser
 
 
 class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener{
@@ -51,6 +53,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         if(fbAuth.currentUser != null)
         {
             //User is logged in
+            FirebaseManager.UpdateUser()
         }
         else
         {
