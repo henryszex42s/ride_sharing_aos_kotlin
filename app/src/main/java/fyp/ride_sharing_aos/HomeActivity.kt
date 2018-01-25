@@ -54,6 +54,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         {
             //User is logged in
             FirebaseManager.UpdateUser()
+            FirebaseManager.setRoomListListener()
         }
         else
         {

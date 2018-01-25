@@ -1,27 +1,19 @@
 package fyp.ride_sharing_aos.activity
 
-import android.app.Dialog
-import android.content.DialogInterface
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.view.View
 import android.widget.*
 import fyp.ride_sharing_aos.R
-import fyp.ride_sharing_aos.R.id.*
 import android.widget.SeekBar
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
-import fyp.ride_sharing_aos.MapsActivity
 import kotlinx.android.synthetic.main.activity_add_route.*
-import kotlinx.android.synthetic.main.filter_dialog.*
-
-import org.w3c.dom.Text
-import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-import fyp.ride_sharing_aos.fragement.MyMapFragment
+
 
 
 class AddRouteActivity : AppCompatActivity(), OnMapReadyCallback {

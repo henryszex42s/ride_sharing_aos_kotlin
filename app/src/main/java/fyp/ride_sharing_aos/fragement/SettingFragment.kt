@@ -1,5 +1,6 @@
 package fyp.ride_sharing_aos.fragement
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -8,11 +9,11 @@ import android.view.ViewGroup
 
 import android.widget.Toast
 import fyp.ride_sharing_aos.R
+import fyp.ride_sharing_aos.activity.GetStartActivity
 
 import fyp.ride_sharing_aos.model.User
 import fyp.ride_sharing_aos.tools.FirebaseManager
 import kotlinx.android.synthetic.main.fragment_setting.*
-
 
 
 /**
@@ -23,15 +24,18 @@ class SettingFragment : Fragment(), View.OnClickListener{
 
 
     var User : User? = null
-
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
+        return inflater!!.inflate(R.layout.fragment_setting, container, false)
+    }
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
 
         FirebaseManager.UpdateUser()
         User = FirebaseManager.getUser()
-
-        return inflater!!.inflate(R.layout.fragment_setting, container, false)
+        super.onCreate(savedInstanceState)
     }
 
     override fun onStart() {
@@ -47,7 +51,7 @@ class SettingFragment : Fragment(), View.OnClickListener{
         btu_setting_about_us.setOnClickListener(this)
         btu_setting_logout.setOnClickListener(this)
 
-        if(User != null && FirebaseManager.isLogin())
+        if(User != null)
         {
             tv_email.text = User?.email
             tv_username.text = User?.username
@@ -59,12 +63,10 @@ class SettingFragment : Fragment(), View.OnClickListener{
         when (v?.id) {
             R.id.btu_setting_edit_profile -> {
                 Toast.makeText(context, "Setting Edit Profile", Toast.LENGTH_SHORT).show()
-
             }
 
             R.id.btu_setting_notification -> {
                 Toast.makeText(context, "Setting Notification", Toast.LENGTH_SHORT).show()
-
             }
 
             R.id.btu_setting_language -> {
@@ -77,9 +79,10 @@ class SettingFragment : Fragment(), View.OnClickListener{
             }
             R.id.btu_setting_logout -> {
                 Toast.makeText(context, "Setting Logout", Toast.LENGTH_SHORT).show()
-//            fbAuth.signOut()
-//            val intent = Intent(context, GetStartActivity::class.java)
-//            startActivity(intent)
+                FirebaseManager.signOut()
+
+           val intent = Intent(context, GetStartActivity::class.java)
+            startActivity(intent)
             }
         }
     }
