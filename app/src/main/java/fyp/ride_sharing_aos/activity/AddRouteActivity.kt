@@ -13,6 +13,8 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import kotlinx.android.synthetic.main.activity_add_route.*
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.MapFragment
+import android.R.attr.apiKey
 
 
 
@@ -24,7 +26,43 @@ class AddRouteActivity : AppCompatActivity(), OnMapReadyCallback {
         setContentView(R.layout.activity_add_route)
         supportActionBar?.hide()
 
+        spinner()
+        filter()
 
+        /* Declare map*/
+        val mapFragment = fragmentManager
+                .findFragmentById(R.id.map) as MapFragment
+        mapFragment.getMapAsync(this)
+
+
+  }
+    override fun onMapReady(googleMap: GoogleMap) {
+        mMap = googleMap
+
+        //add a marker in UST
+        val ust = LatLng(22.336397, 114.265506)
+        mMap.addMarker(MarkerOptions().position(ust).title("Marker in HKUST"))
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(ust))
+
+        //add a marker in CH MTR
+        val ch = LatLng(22.3349716,114.2085751)
+        mMap.addMarker(MarkerOptions().position(ch).title("Marker in Choi Hung MTR Station"))
+
+        //add a marker in HH MTR
+        val hh = LatLng(22.3156009,114.262199)
+        mMap.addMarker(MarkerOptions().position(hh).title("Marker in Hang Hau MTR Station"))
+
+
+/*
+        val context = GeoApiContext.Builder()
+                .apiKey("AIzaSyDUCJ7mosxKtkDesQQNqcmvnMn9e4cqDco")
+                .build()*/
+    }
+
+
+    fun spinner(){
+
+        /* spinner */
         val spinnerItems = resources.getStringArray(R.array.start_choices)
         start_spin.adapter = ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, spinnerItems)
@@ -51,14 +89,8 @@ class AddRouteActivity : AppCompatActivity(), OnMapReadyCallback {
             }
 
         }
-
-        /* map*/
-/*
-        val mapFragment =
-                supportFragmentManager.findFragmentById(R.id.map) as MyMapFragment
-        mapFragment.getMapAsync(mapFragment)
-*/
-
+    }
+    fun filter(){
 
         /*filter*/
         val options = arrayOf("Male Only","Female Only", "Student Only", "Staff Only")
@@ -115,44 +147,34 @@ class AddRouteActivity : AppCompatActivity(), OnMapReadyCallback {
 
           })*/
 
-          filter_alert.setPositiveButton(
-                  "OK"
-          ) { dialog, id ->
+            filter_alert.setPositiveButton(
+                    "OK"
+            ) { dialog, id ->
 
-              val size = yourChoices.size
-              var str = ""
-              if(size > 0) {
-                  for (i in 0 until size) {
-                      str += options[yourChoices[i]] + ", "
-                  }
-                  Toast.makeText(this,
-                          "You Chose " + str,
-                          Toast.LENGTH_SHORT).show();
-              }
+                val size = yourChoices.size
+                var str = ""
+                if(size > 0) {
+                    for (i in 0 until size) {
+                        str += options[yourChoices[i]] + ", "
+                    }
+                    Toast.makeText(this,
+                            "You Chose " + str,
+                            Toast.LENGTH_SHORT).show();
+                }
 
-          }
-          filter_alert.setNegativeButton(
-                  "Reset"
-          ) { dialog, id ->
-              isCheck = booleanArrayOf(false,false,false,false)
-              yourChoices.clear()
-          }
+            }
+            filter_alert.setNegativeButton(
+                    "Reset"
+            ) { dialog, id ->
+                isCheck = booleanArrayOf(false,false,false,false)
+                yourChoices.clear()
+            }
 
-          filter_alert.setCancelable(true)
-          val alert = filter_alert.create()
-          alert.show()
+            filter_alert.setCancelable(true)
+            val alert = filter_alert.create()
+            alert.show()
 
-      }
+        }
 
-
-
-  }
-    override fun onMapReady(googleMap: GoogleMap) {
-        mMap = googleMap
-
-        // Add a marker in Sydney and move the camera
-        val sydney = LatLng(-34.0, 151.0)
-        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
     }
 }

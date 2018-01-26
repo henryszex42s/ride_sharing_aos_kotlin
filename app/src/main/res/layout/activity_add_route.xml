@@ -49,6 +49,7 @@
     </TableRow>
     </TableLayout>
         <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:map="http://schemas.android.com/apk/res-auto"
             android:name="com.google.android.gms.maps.MapFragment"
             android:id="@+id/map"
             tools:context=".activity.AddRouteActivity"
@@ -57,7 +58,8 @@
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp" />
+            android:layout_marginTop="8dp"
+            map:cameraZoom="15"/>
 
 
     <Button
