@@ -64,6 +64,7 @@
     <!--String related to addRoute page by Him-->
 
     <string-array name="start_choices">
+        <item></item>
         <item>HKUST</item>
         <item>Choi Hung MTR station</item>
         <item>Hang Hau MTR station</item>
@@ -71,6 +72,7 @@
     </string-array>
 
     <string-array name="des_choices">
+        <item></item>
         <item>HKUST</item>
         <item>Choi Hung MTR station</item>
         <item>Hang Hau MTR station</item>

@@ -15,6 +15,11 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.maps.MapFragment
 import android.R.attr.apiKey
+import android.graphics.Color
+import android.location.Location
+import com.google.android.gms.maps.model.PolylineOptions
+import com.google.android.gms.maps.model.Polyline
+
 
 
 
@@ -26,24 +31,127 @@ class AddRouteActivity : AppCompatActivity(), OnMapReadyCallback {
         setContentView(R.layout.activity_add_route)
         supportActionBar?.hide()
 
-        spinner()
-        filter()
+        var start = LatLng(0.0,0.0)
+        var des = LatLng(0.0,0.0)
 
         /* Declare map*/
         val mapFragment = fragmentManager
                 .findFragmentById(R.id.map) as MapFragment
         mapFragment.getMapAsync(this)
 
+        /* spinner */
+        val spinnerItems = resources.getStringArray(R.array.start_choices)
+
+        /* coordinate of locations*/
+        val ust = LatLng(22.336397, 114.265506)
+        val ch = LatLng(22.3349716, 114.2085751)
+        val hh = LatLng(22.3156009, 114.262199)
+        val tko = LatLng(22.3074385, 114.258921)
+
+        // Start_spinner
+        start_spin.adapter = ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, spinnerItems)
+        start_spin.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+
+                // start: UST
+                if (parent.getSelectedItem().toString() == "HKUST") {
+                    start = ust
+                    mMap.addMarker(MarkerOptions().position(ust).title("Marker in HKU"))
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(ust))
+                }
+                // start: Choi Hung
+                if (parent.getSelectedItem().toString() == "Choi Hung MTR station") {
+                    start = ch
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(ch))
+                    mMap.addMarker(MarkerOptions().position(ch).title("Marker in Choi Hung MTR station"))
+                }
+                // start: Hang Hau
+                if (parent.getSelectedItem().toString() == "Hang Hau MTR station") {
+                    start = hh
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(hh))
+                    mMap.addMarker(MarkerOptions().position(hh).title("Marker in Hang Hau MTR Station"))
+                }
+                // start: TKO
+                if (parent.getSelectedItem().toString() == "Tseung Kwan O MTR station") {
+                    start = tko
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(tko))
+                    mMap.addMarker(MarkerOptions().position(tko).title("Marker in Tseung Kwan O MTR station"))
+                }
+
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                /*Do something if nothing selected*/
+            }
+        }
+
+        //des_spinner
+        val spinnerItems2 = resources.getStringArray(R.array.des_choices)
+
+        des_spin.adapter = ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, spinnerItems2)
+        des_spin.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+
+            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+                //Des: UST
+                if (parent.getSelectedItem().toString() == "HKUST") {
+                    des = ust
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(ust))
+                    mMap.addMarker(MarkerOptions().position(ust).title("Marker in HKUST"))
+                    val line = mMap.addPolyline(PolylineOptions()
+                            .add(start,des)
+                            .width(5f)
+                            .color(Color.RED))
+                }
+                //Des: Choi hung
+                if (parent.getSelectedItem().toString() == "Choi Hung MTR station") {
+                    des = ch
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(ch))
+                    mMap.addMarker(MarkerOptions().position(ch).title("Marker in Choi Hung MTR station"))
+                    val line = mMap.addPolyline(PolylineOptions()
+                            .add(start,des)
+                            .width(5f)
+                            .color(Color.RED))
+                }
+                //Des: Hang Hau
+                if (parent.getSelectedItem().toString() == "Hang Hau MTR station") {
+                    des = hh
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(hh))
+                    mMap.addMarker(MarkerOptions().position(hh).title("Marker in Hang Hau MTR station"))
+                    val line = mMap.addPolyline(PolylineOptions()
+                            .add(start,des)
+                            .width(5f)
+                            .color(Color.RED))
+                }
+                //Des: TKO
+                if (parent.getSelectedItem().toString() == "Tseung Kwan O MTR station") {
+                    des = tko
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(tko))
+                    mMap.addMarker(MarkerOptions().position(tko).title("Marker in Tseung Kwan O MTR station"))
+                    val line = mMap.addPolyline(PolylineOptions()
+                            .add(start,des)
+                            .width(5f)
+                            .color(Color.RED))
+                }
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                /*Do something if nothing selected*/
+            }
+        }
+
+        filter()
 
   }
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
-        //add a marker in UST
+        //add a marker in UST (Default map position is UST)
         val ust = LatLng(22.336397, 114.265506)
-        mMap.addMarker(MarkerOptions().position(ust).title("Marker in HKUST"))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(ust))
 
+        /*
         //add a marker in CH MTR
         val ch = LatLng(22.3349716,114.2085751)
         mMap.addMarker(MarkerOptions().position(ch).title("Marker in Choi Hung MTR Station"))
@@ -53,43 +161,11 @@ class AddRouteActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.addMarker(MarkerOptions().position(hh).title("Marker in Hang Hau MTR Station"))
 
 
-/*
         val context = GeoApiContext.Builder()
                 .apiKey("AIzaSyDUCJ7mosxKtkDesQQNqcmvnMn9e4cqDco")
                 .build()*/
     }
 
-
-    fun spinner(){
-
-        /* spinner */
-        val spinnerItems = resources.getStringArray(R.array.start_choices)
-        start_spin.adapter = ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, spinnerItems)
-        start_spin.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>) {
-                /*Do something if nothing selected*/
-            }
-        }
-
-
-        val spinnerItems2 = resources.getStringArray(R.array.des_choices)
-        des_spin.adapter = ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, spinnerItems2)
-        des_spin.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>) {
-                /*Do something if nothing selected*/
-            }
-
-        }
-    }
     fun filter(){
 
         /*filter*/
