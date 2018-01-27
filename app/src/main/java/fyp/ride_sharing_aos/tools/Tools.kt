@@ -46,5 +46,29 @@ object Tools
         val alert = builder.create()
         alert.show()
         }
+}
+
+    fun showDialog(context: Context, title:String, msg: String,positive: String, negative : String) : AlertDialog.Builder
+    {
+
+            val builder = AlertDialog.Builder(context)
+            builder.setIcon(R.drawable.app_icon)
+            builder.setMessage(msg)
+            builder.setCancelable(false)
+            builder.setTitle(title)
+
+            builder.setPositiveButton(positive
+            ){ dialog, id -> dialog.cancel() }
+
+            builder.setNegativeButton(negative
+            ) { dialog, id -> dialog.cancel() }
+
+            val alert = builder.create()
+            alert.show()
+
+        return builder
     }
+
+
+
 }

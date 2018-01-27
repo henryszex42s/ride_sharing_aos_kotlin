@@ -38,8 +38,8 @@ class RoomListAdapter(val c : Context,val roomlist: MutableList<Room>) : Recycle
 class ViewHolder(val c : Context, val view: View): RecyclerView.ViewHolder(view) {
 
     fun bindItems(room: Room) {
-        view.textViewUsername.text = room.start
-        view.textViewAddress.text = room.destination
+//        view.item_title.text = room.start
+//        view.item_detail.text = room.destination
 
         view.setOnClickListener {
             Toast.makeText(c, room.start+" To "+room.destination, Toast.LENGTH_SHORT).show()

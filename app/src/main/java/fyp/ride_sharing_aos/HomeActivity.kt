@@ -190,11 +190,6 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         alert.show()
     }
 
-
-
-
-
-
     fun AppCompatActivity.addFragment(fragment: Fragment, frameId: Int){
         supportFragmentManager.inTransaction { add(frameId, fragment) }
     }
