@@ -3,6 +3,7 @@ package fyp.ride_sharing_aos.fragement
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +15,8 @@ import fyp.ride_sharing_aos.activity.GetStartActivity
 import fyp.ride_sharing_aos.model.User
 import fyp.ride_sharing_aos.tools.FirebaseManager
 import kotlinx.android.synthetic.main.fragment_setting.*
+import android.support.v4.app.FragmentManager
+import android.support.v4.app.FragmentTransaction
 
 
 /**
