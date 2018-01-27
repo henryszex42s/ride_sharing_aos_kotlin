@@ -6,7 +6,7 @@ import android.os.Bundle
 import fyp.ride_sharing_aos.R
 import kotlinx.android.synthetic.main.activity_get_start.*
 
-class GetStartActivity : AppCompatActivity() {
+class GetStartActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

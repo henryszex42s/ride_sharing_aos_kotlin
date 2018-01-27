@@ -47,7 +47,18 @@ object FirebaseManager {
     }
 
 
-    fun UpdateUser()
+    fun getRoomList() : MutableList<Room>
+    {
+        return RoomList
+    }
+
+    fun roomListisEmpty() : Boolean
+    {
+        return RoomList.isEmpty()
+    }
+
+
+    fun updateUser()
     {
         fbUser = fbAuth.currentUser
         if(fbUser == null)
@@ -66,36 +77,31 @@ object FirebaseManager {
                         }
                             Log.e(TAG, "onDataChange: User data is not null!")
                     }
-
                     override fun onCancelled(error: DatabaseError) {
                         // Failed to read value
                         Log.e(TAG, "onCancelled: Failed to read user!")
                     }
                 }
-
         )
     }
 
 
 
-    fun setRoomListListener()
+    fun setRoomListListener(callback: (Any)->Unit)
     {
-        dbReference.child("room").addListenerForSingleValueEvent(
+        dbReference.child("room").addValueEventListener(
                 object : ValueEventListener {
                     override fun onDataChange(dataSnapshot: DataSnapshot) {
-
-//                        RoomListMap = dataSnapshot.value as Map<String, Room>
-
                         RoomList.clear()
                         dataSnapshot.children.mapNotNullTo(RoomList) { it.getValue<Room>(Room::class.java) }
-
                         if (RoomList.isEmpty()) {
-                            Log.e(TAG, "onDataChange: User data is null!")
+                            Log.e(TAG, "onDataChange: RoomList data is null!")
                             return
                         }
-                        Log.e(TAG, "onDataChange: User data is not null!")
-                    }
+                        callback(Unit)
+                        Log.e(TAG, "onDataChange: RoomList data is not null!")
 
+                    }
                     override fun onCancelled(error: DatabaseError) {
                         // Failed to read value
                         Log.e(TAG, "onCancelled: Failed to read user!")
@@ -103,15 +109,5 @@ object FirebaseManager {
                 }
 
         )
-
-
-
     }
-
-
-
-
-
-
-
 }

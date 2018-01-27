@@ -18,7 +18,7 @@ import fyp.ride_sharing_aos.tools.Tools
 
 
 
-class SignupActivity : AppCompatActivity() {
+class SignupActivity : BaseActivity() {
 
 
     private lateinit var mAuth : FirebaseAuth

@@ -19,57 +19,38 @@ import kotlinx.android.synthetic.main.app_bar_home.*
 import android.content.DialogInterface
 import android.support.design.widget.BottomNavigationView
 import fyp.ride_sharing_aos.activity.AddRouteActivity
+import fyp.ride_sharing_aos.activity.BaseActivity
 import fyp.ride_sharing_aos.fragement.HomeFragment
 import fyp.ride_sharing_aos.fragement.SettingFragment
 import fyp.ride_sharing_aos.fragement.TransinfoFragment
 import fyp.ride_sharing_aos.tools.FirebaseManager
-import fyp.ride_sharing_aos.tools.FirebaseManager.UpdateUser
+import fyp.ride_sharing_aos.tools.Tools
 
 
-class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener{
+class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener{
 
     var fbAuth = FirebaseAuth.getInstance()
-    var currentFragment: Fragment? = null
-    var ft: FragmentTransaction? = null
+    val homeFragment = HomeFragment()
+    val transFragment = TransinfoFragment()
+    val settingsFragment = SettingFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         setSupportActionBar(toolbar)
-
-        val toggle = ActionBarDrawerToggle(
-                this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+        val toggle = ActionBarDrawerToggle(this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
-
-
-        val homeFragement = HomeFragment()
-        replaceFragment(homeFragement,R.id.fragment_content)
-
-        nav_view.setNavigationItemSelectedListener(this)
-        buttom_navigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
-
-//        Check Login State
-        if(fbAuth.currentUser != null)
-        {
-            //User is logged in
-            FirebaseManager.UpdateUser()
-            FirebaseManager.setRoomListListener()
-        }
-        else
-        {
-            //User is not logged in
-            val intent = Intent(this@HomeActivity, GetStartActivity::class.java)
-            startActivity(intent)
-            overridePendingTransition(R.anim.slide_in_up,R.anim.slide_out_up)
-        }
+        showProgressDialog("Loading......")
+        loadData()
+        initView()
     }
 
     override fun onBackPressed() {
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
             drawer_layout.closeDrawer(GravityCompat.START)
         } else {
-            super.onBackPressed()
+            closeApplication()
         }
     }
 
@@ -128,18 +109,44 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
             }
         }
-
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
     }
 
 
-    private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
+    private fun loadData()
+    {
+        FirebaseManager.setRoomListListener({dismissProgressDialog()})
 
+        if(fbAuth.currentUser != null)
+        {
+            //User is logged in
+            FirebaseManager.updateUser()
+        }
+        else
+        {
+            //User is not logged in
+            val intent = Intent(this@HomeActivity, GetStartActivity::class.java)
+            startActivity(intent)
+            overridePendingTransition(R.anim.slide_in_up,R.anim.slide_out_up)
+        }
+    }
+
+
+
+    private fun initView()
+    {
+        nav_view.setNavigationItemSelectedListener(this)
+        buttom_navigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
+        title = "Home"
+        replaceFragment(homeFragment,R.id.fragment_content)
+    }
+
+
+    private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.action_home -> {
                 title = "Home"
-                val homeFragment = HomeFragment()
                 replaceFragment(homeFragment,R.id.fragment_content)
                 return@OnNavigationItemSelectedListener true
             }
@@ -153,23 +160,40 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
             R.id.action_transinfo -> {
                 title = "Transport Info"
-                val transFragment = TransinfoFragment()
                 replaceFragment(transFragment,R.id.fragment_content)
                 return@OnNavigationItemSelectedListener true
             }
 
             R.id.action_settings -> {
                 title = "Setting"
-                val settingsFragment = SettingFragment()
                 replaceFragment(settingsFragment,R.id.fragment_content)
                 return@OnNavigationItemSelectedListener true
             }
-
-
         }
-
         false
     }
+
+    fun closeApplication()
+    {
+        val builder = AlertDialog.Builder(this)
+        builder.setIcon(R.drawable.app_icon)
+        builder.setMessage(R.string.closeApp)
+        builder.setCancelable(false)
+        builder.setTitle("")
+
+        builder.setPositiveButton("OK")
+        {
+            dialog, id -> dialog.cancel()
+            finish()
+        }
+        val alert = builder.create()
+        alert.show()
+    }
+
+
+
+
+
 
     fun AppCompatActivity.addFragment(fragment: Fragment, frameId: Int){
         supportFragmentManager.inTransaction { add(frameId, fragment) }
@@ -184,6 +208,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     inline fun FragmentManager.inTransaction(func: FragmentTransaction.() -> Unit) {
         val fragmentTransaction = beginTransaction()
         fragmentTransaction.func()
+        fragmentTransaction.addToBackStack(null)
         fragmentTransaction.commit()
     }
 }

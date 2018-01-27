@@ -13,7 +13,7 @@ import fyp.ride_sharing_aos.R
 import fyp.ride_sharing_aos.tools.Tools
 import kotlinx.android.synthetic.main.activity_login.*
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : BaseActivity() {
     private lateinit var mAuth : FirebaseAuth
     private lateinit var database: FirebaseDatabase
     private lateinit var dbRef: DatabaseReference

@@ -33,7 +33,8 @@ class SettingFragment : Fragment(), View.OnClickListener{
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
-        FirebaseManager.UpdateUser()
+        FirebaseManager.updateUser()
+
         User = FirebaseManager.getUser()
         super.onCreate(savedInstanceState)
     }

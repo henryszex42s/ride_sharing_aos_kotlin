@@ -23,7 +23,7 @@ import com.google.android.gms.maps.model.Polyline
 
 
 
-class AddRouteActivity : AppCompatActivity(), OnMapReadyCallback {
+class AddRouteActivity : BaseActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
     override fun onCreate(savedInstanceState: Bundle?) {
