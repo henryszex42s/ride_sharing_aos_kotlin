@@ -1,5 +1,6 @@
 package fyp.ride_sharing_aos
 
+import android.app.Notification
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.NavigationView
@@ -20,9 +21,7 @@ import android.content.DialogInterface
 import android.support.design.widget.BottomNavigationView
 import fyp.ride_sharing_aos.activity.AddRouteActivity
 import fyp.ride_sharing_aos.activity.BaseActivity
-import fyp.ride_sharing_aos.fragement.HomeFragment
-import fyp.ride_sharing_aos.fragement.SettingFragment
-import fyp.ride_sharing_aos.fragement.TransinfoFragment
+import fyp.ride_sharing_aos.fragement.*
 import fyp.ride_sharing_aos.tools.FirebaseManager
 import fyp.ride_sharing_aos.tools.Tools
 
@@ -161,6 +160,7 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             R.id.action_transinfo -> {
                 title = "Transport Info"
                 replaceFragment(transFragment,R.id.fragment_content)
+               // replaceFragment(NotificationFragment(),R.id.fragment_content)
                 return@OnNavigationItemSelectedListener true
             }
 

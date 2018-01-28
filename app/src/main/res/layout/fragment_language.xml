@@ -6,4 +6,33 @@
 
     <!-- TODO: Update blank fragment layout -->
 
+    <RadioGroup
+        android:id="@+id/language"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_gravity="right"
+        android:inputType="text"
+        android:orientation="vertical" >
+
+        <RadioButton
+            android:id="@+id/chinese"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:layoutDirection="rtl"
+            android:text="中文"
+            android:textSize="20sp"
+            />
+
+        <RadioButton
+            android:id="@+id/english"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:layoutDirection="rtl"
+            android:text="English"
+            android:textSize="20sp"  />
+    </RadioGroup>
+
 </FrameLayout>
