@@ -9,6 +9,8 @@ import android.widget.Toast
 import fyp.ride_sharing_aos.R
 import fyp.ride_sharing_aos.model.Room
 import kotlinx.android.synthetic.main.roomlist_layout.view.*
+import java.text.DateFormat
+import java.text.SimpleDateFormat
 
 /**
  * Created by lfreee on 25/1/2018.
@@ -38,8 +40,19 @@ class RoomListAdapter(val c : Context,val roomlist: MutableList<Room>) : Recycle
 class ViewHolder(val c : Context, val view: View): RecyclerView.ViewHolder(view) {
 
     fun bindItems(room: Room) {
-//        view.item_title.text = room.start
-//        view.item_detail.text = room.destination
+
+        //ch id, link up one by one
+        view.item_roomname.text = room.roomname
+        view.item_prefer_time.text = room.prefertime.toString()
+
+        view.item_from.text = room.start
+        view.item_to.text = room.destination
+
+
+        //view.item_filter.text
+        //view.item_min
+        view.item_numpeople.text = room.numOfPeople.toString()
+
 
         view.setOnClickListener {
             Toast.makeText(c, room.start+" To "+room.destination, Toast.LENGTH_SHORT).show()

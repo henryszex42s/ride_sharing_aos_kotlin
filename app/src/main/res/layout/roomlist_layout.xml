@@ -16,7 +16,7 @@
         <android.support.v7.widget.GridLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@android:color/white"
+            android:background="@android:color/black"
             android:layout_gravity="center"
             card_view:orientation="horizontal"
             card_view:rowCount="3"
@@ -26,6 +26,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/item_roomname"
+            android:background="@android:color/white"
+            android:layout_margin="1dp"
             android:textSize="20sp"
             android:text="Room Name"
             card_view:layout_columnSpan="2"
@@ -36,6 +38,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/item_prefer_time"
+            android:background="@android:color/white"
+            android:layout_margin="1dp"
+            card_view:layout_gravity="fill_horizontal"
             android:textSize="20sp"
             android:text="Prefer Time"
             card_view:layout_rowSpan="1"
@@ -45,18 +50,65 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/item_from"
+                android:background="@android:color/white"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="1dp"
+                android:layout_marginLeft="1dp"
+                card_view:layout_gravity="fill_horizontal"
                 android:textSize="20sp"
                 android:text="From"
-                card_view:layout_rowSpan="2"
+                card_view:layout_columnSpan="2"
+
                 android:padding="10sp" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/item_to"
+                android:background="@android:color/white"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="1dp"
+                android:layout_marginRight="1dp"
+                card_view:layout_gravity="fill_horizontal"
                 android:textSize="20sp"
                 android:text="To"
-                card_view:layout_rowSpan="2"
                 android:padding="10sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/item_filter"
+                android:background="@android:color/white"
+                android:layout_margin="1dp"
+                card_view:layout_gravity="fill_horizontal"
+                android:textSize="20sp"
+                android:text="filter"
+                android:padding="10sp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/item_min"
+                android:background="@android:color/white"
+                android:layout_margin="1dp"
+                card_view:layout_gravity="fill_horizontal"
+                android:textSize="20sp"
+                android:text="Min."
+                android:padding="10sp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/item_numpeople"
+                android:background="@android:color/white"
+                android:layout_margin="1dp"
+                card_view:layout_gravity="fill_horizontal"
+                android:textSize="20sp"
+                android:text="#people"
+                android:padding="10sp"
+
+
+                />
 
 
     </android.support.v7.widget.GridLayout>
