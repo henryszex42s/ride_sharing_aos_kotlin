@@ -19,6 +19,12 @@ import android.graphics.Color
 import android.location.Location
 import com.google.android.gms.maps.model.PolylineOptions
 import com.google.android.gms.maps.model.Polyline
+import fyp.ride_sharing_aos.model.Room
+import java.sql.Timestamp
+import android.widget.SeekBar.OnSeekBarChangeListener
+import android.view.LayoutInflater
+
+
 
 
 
@@ -33,6 +39,15 @@ class AddRouteActivity : BaseActivity(), OnMapReadyCallback {
 
         var start = LatLng(0.0,0.0)
         var des = LatLng(0.0,0.0)
+
+        //get info
+        var startName = ""
+        var desName =""
+        var numOfPeople = 0
+        var createtime = 0
+        var prefertime = 0
+        var roomname = "haha"
+
 
         /* Declare map*/
         val mapFragment = fragmentManager
@@ -57,24 +72,28 @@ class AddRouteActivity : BaseActivity(), OnMapReadyCallback {
                 // start: UST
                 if (parent.getSelectedItem().toString() == "HKUST") {
                     start = ust
+                    startName = parent.getSelectedItem().toString()
                     mMap.addMarker(MarkerOptions().position(ust).title("Marker in HKU"))
                     mMap.moveCamera(CameraUpdateFactory.newLatLng(ust))
                 }
                 // start: Choi Hung
                 if (parent.getSelectedItem().toString() == "Choi Hung MTR station") {
                     start = ch
+                    startName = parent.getSelectedItem().toString()
                     mMap.moveCamera(CameraUpdateFactory.newLatLng(ch))
                     mMap.addMarker(MarkerOptions().position(ch).title("Marker in Choi Hung MTR station"))
                 }
                 // start: Hang Hau
                 if (parent.getSelectedItem().toString() == "Hang Hau MTR station") {
                     start = hh
+                    startName = parent.getSelectedItem().toString()
                     mMap.moveCamera(CameraUpdateFactory.newLatLng(hh))
                     mMap.addMarker(MarkerOptions().position(hh).title("Marker in Hang Hau MTR Station"))
                 }
                 // start: TKO
                 if (parent.getSelectedItem().toString() == "Tseung Kwan O MTR station") {
                     start = tko
+                    startName = parent.getSelectedItem().toString()
                     mMap.moveCamera(CameraUpdateFactory.newLatLng(tko))
                     mMap.addMarker(MarkerOptions().position(tko).title("Marker in Tseung Kwan O MTR station"))
                 }
@@ -97,6 +116,7 @@ class AddRouteActivity : BaseActivity(), OnMapReadyCallback {
                 //Des: UST
                 if (parent.getSelectedItem().toString() == "HKUST") {
                     des = ust
+                    desName = parent.getSelectedItem().toString()
                     mMap.moveCamera(CameraUpdateFactory.newLatLng(ust))
                     mMap.addMarker(MarkerOptions().position(ust).title("Marker in HKUST"))
                     val line = mMap.addPolyline(PolylineOptions()
@@ -107,6 +127,7 @@ class AddRouteActivity : BaseActivity(), OnMapReadyCallback {
                 //Des: Choi hung
                 if (parent.getSelectedItem().toString() == "Choi Hung MTR station") {
                     des = ch
+                    desName = parent.getSelectedItem().toString()
                     mMap.moveCamera(CameraUpdateFactory.newLatLng(ch))
                     mMap.addMarker(MarkerOptions().position(ch).title("Marker in Choi Hung MTR station"))
                     val line = mMap.addPolyline(PolylineOptions()
@@ -117,6 +138,7 @@ class AddRouteActivity : BaseActivity(), OnMapReadyCallback {
                 //Des: Hang Hau
                 if (parent.getSelectedItem().toString() == "Hang Hau MTR station") {
                     des = hh
+                    desName = parent.getSelectedItem().toString()
                     mMap.moveCamera(CameraUpdateFactory.newLatLng(hh))
                     mMap.addMarker(MarkerOptions().position(hh).title("Marker in Hang Hau MTR station"))
                     val line = mMap.addPolyline(PolylineOptions()
@@ -127,6 +149,7 @@ class AddRouteActivity : BaseActivity(), OnMapReadyCallback {
                 //Des: TKO
                 if (parent.getSelectedItem().toString() == "Tseung Kwan O MTR station") {
                     des = tko
+                    desName = parent.getSelectedItem().toString()
                     mMap.moveCamera(CameraUpdateFactory.newLatLng(tko))
                     mMap.addMarker(MarkerOptions().position(tko).title("Marker in Tseung Kwan O MTR station"))
                     val line = mMap.addPolyline(PolylineOptions()
@@ -142,6 +165,14 @@ class AddRouteActivity : BaseActivity(), OnMapReadyCallback {
         }
 
         filter()
+        create.setOnClickListener{
+            var room = Room(startName, desName, numOfPeople, false, false, createtime, prefertime,roomname, "","","","")
+            Toast.makeText(this,
+                    "Create Test" ,
+                    Toast.LENGTH_SHORT).show();
+
+
+        }
 
   }
     override fun onMapReady(googleMap: GoogleMap) {
@@ -185,13 +216,15 @@ class AddRouteActivity : BaseActivity(), OnMapReadyCallback {
           seek.keyProgressIncrement = 1
           filter_alert.setView(seek)   */
 
-
             val v = layoutInflater.inflate(R.layout.filter_dialog, null)
             var seek = v.findViewById<SeekBar>(R.id.pplseek)
             var temp2 = v.findViewById<TextView>(R.id.seektext)
 
             seek.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
                 override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
+                    Toast.makeText(this@AddRouteActivity,
+                            "diu " ,
+                            Toast.LENGTH_SHORT).show();
                     temp2.text = "Number of passenger: $progress"
                 }
 
@@ -205,7 +238,6 @@ class AddRouteActivity : BaseActivity(), OnMapReadyCallback {
 
                 override fun onStopTrackingTouch(seekBar: SeekBar) {
                     //do something
-
                 }
             })
 

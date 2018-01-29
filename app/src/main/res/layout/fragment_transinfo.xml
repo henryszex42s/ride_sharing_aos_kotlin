@@ -31,7 +31,7 @@
                 <TableRow>
 
                     <TextView
-                        android:background="@color/colorPrimary"
+                        android:background="#c1c1c1"
                         android:padding="10dp"
                         android:text="91" />
 
@@ -43,7 +43,7 @@
                 <TableRow>
 
                     <TextView
-                        android:background="@color/colorPrimary"
+                        android:background="#c1c1c1"
                         android:padding="10dp"
                         android:text="91M" />
 
@@ -55,7 +55,7 @@
                 <TableRow>
 
                     <TextView
-                        android:background="@color/colorPrimary"
+                        android:background="#c1c1c1"
                         android:padding="10dp"
                         android:text="91P" />
 
@@ -67,7 +67,7 @@
                 <TableRow>
 
                     <TextView
-                        android:background="@color/colorPrimary"
+                        android:background="#c1c1c1"
                         android:padding="10dp"
                         android:text="792M" />
 
@@ -99,7 +99,7 @@
                 <TableRow>
 
                     <TextView
-                        android:background="@color/colorPrimary"
+                        android:background="#c1c1c1"
                         android:padding="10dp"
                         android:text="11" />
 
@@ -111,7 +111,7 @@
                 <TableRow>
 
                     <TextView
-                        android:background="@color/colorPrimary"
+                        android:background="#c1c1c1"
                         android:padding="10dp"
                         android:text="11M" />
 
@@ -124,7 +124,7 @@
                 <TableRow>
 
                     <TextView
-                        android:background="@color/colorPrimary"
+                        android:background="#c1c1c1"
                         android:padding="10dp"
                         android:text="11S" />
 
@@ -136,7 +136,7 @@
                 <TableRow>
 
                     <TextView
-                        android:background="@color/colorPrimary"
+                        android:background="#c1c1c1"
                         android:padding="10dp"
                         android:text="12" />
 
@@ -148,7 +148,7 @@
                 <TableRow>
 
                     <TextView
-                        android:background="@color/colorPrimary"
+                        android:background="#c1c1c1"
                         android:padding="10dp"
                         android:text="104" />
 
@@ -179,7 +179,7 @@
                 <TableRow>
 
                     <TextView
-                        android:background="@color/colorPrimary"
+                        android:background="#c1c1c1"
                         android:padding="10dp"
                         android:text="ABA Taxi Radio Call Services Centre" />
 
@@ -191,7 +191,7 @@
                 <TableRow>
 
                     <TextView
-                        android:background="@color/colorPrimary"
+                        android:background="#c1c1c1"
                         android:padding="10dp"
                         android:text="Hong Kong and Kowloon Radio Car Owners Association" />
 
@@ -203,7 +203,7 @@
                 <TableRow>
 
                     <TextView
-                        android:background="@color/colorPrimary"
+                        android:background="#c1c1c1"
                         android:padding="10dp"
                         android:text="Quadripartite Taxi Service Association" />
 
@@ -215,7 +215,7 @@
                 <TableRow>
 
                     <TextView
-                        android:background="@color/colorPrimary"
+                        android:background="#c1c1c1"
                         android:padding="10dp"
                         android:text="Sai Kung Taxi Operators Association" />
 

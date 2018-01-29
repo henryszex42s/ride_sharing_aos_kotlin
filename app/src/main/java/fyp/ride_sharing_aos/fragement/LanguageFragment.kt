@@ -37,19 +37,18 @@ class LanguageFragment : Fragment(){
 
 
         // same as filter, doesnt work
-        /*
+
         val v = layoutInflater.inflate(R.layout.fragment_language, null)
         var seek = v.findViewById<RadioGroup>(R.id.language)
         seek.setOnCheckedChangeListener(object : RadioGroup.OnCheckedChangeListener {
            override fun onCheckedChanged(group: RadioGroup, checkedId: Int) {
                 // checkedId is the RadioButton selected
 
-
                  Toast.makeText(context, "chinese", Toast.LENGTH_SHORT).show()
 
             }
         })
-        */
+
 
     }
 
