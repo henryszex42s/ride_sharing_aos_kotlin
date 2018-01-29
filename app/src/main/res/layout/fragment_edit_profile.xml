@@ -72,9 +72,17 @@
                                 android:layout_margin="10dp"
                                 android:text="Profile Picture"
                                 />
+
+
                         </TableRow>
                     </TableLayout>
-
+                    <Button
+                        android:id="@+id/update1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:text="Update"
+                    />
                 </LinearLayout>
 
 
@@ -133,6 +141,12 @@
                         />
                 </TableRow>
                 </TableLayout>
+                    <Button
+                        android:id="@+id/update2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:text="Update"/>
                 </LinearLayout>
             </FrameLayout>
     </LinearLayout>
