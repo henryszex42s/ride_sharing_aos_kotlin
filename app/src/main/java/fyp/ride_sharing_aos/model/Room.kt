@@ -13,8 +13,8 @@ class Room {
     var numOfPeople  : Int? = null
     var maleFil  : Boolean? = null
     var femaleFil   : Boolean? = null
-    var createtime  : Timestamp? = null
-    var prefertime : Timestamp? = null
+    var createtime  : Int? = null
+    var prefertime : Int? = null
     var roomname : String? = null
     var uid1 : String? = null
     var uid2 : String? = null
@@ -26,7 +26,7 @@ class Room {
         // Default constructor required for calls to DataSnapshot.getValue(User.class)
     }
 
-    constructor(start: String?, destination: String?, numOfPeople: Int?, maleFil: Boolean?, femaleFil: Boolean?, createtime: Timestamp?, prefertime: Timestamp?,roomname : String? , uid1: String?, uid2: String?, uid3:String, uid4: String) {
+    constructor(start: String?, destination: String?, numOfPeople: Int?, maleFil: Boolean?, femaleFil: Boolean?, createtime: Int, prefertime: Int,roomname : String? , uid1: String, uid2: String, uid3:String, uid4: String) {
         this.start = start
         this.destination = destination
         this.numOfPeople = numOfPeople
