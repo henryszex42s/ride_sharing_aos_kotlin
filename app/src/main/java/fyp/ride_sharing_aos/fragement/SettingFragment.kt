@@ -2,6 +2,7 @@ package fyp.ride_sharing_aos.fragement
 
 import android.content.Intent
 import android.os.Bundle
+import android.support.design.R.id.add
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.view.LayoutInflater
@@ -17,6 +18,8 @@ import fyp.ride_sharing_aos.tools.FirebaseManager
 import kotlinx.android.synthetic.main.fragment_setting.*
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentTransaction
+import android.text.TextUtils.replace
+import fyp.ride_sharing_aos.HomeActivity
 
 
 /**
@@ -24,7 +27,6 @@ import android.support.v4.app.FragmentTransaction
  */
 
 class SettingFragment : Fragment(), View.OnClickListener{
-
 
     var User : User? = null
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
@@ -67,14 +69,17 @@ class SettingFragment : Fragment(), View.OnClickListener{
         when (v?.id) {
             R.id.btu_setting_edit_profile -> {
                 Toast.makeText(context, "Setting Edit Profile", Toast.LENGTH_SHORT).show()
+                (activity as HomeActivity).callFragment(1)
             }
 
             R.id.btu_setting_notification -> {
                 Toast.makeText(context, "Setting Notification", Toast.LENGTH_SHORT).show()
+                (activity as HomeActivity).callFragment(2)
             }
 
             R.id.btu_setting_language -> {
                 Toast.makeText(context, "Setting Language", Toast.LENGTH_SHORT).show()
+                (activity as HomeActivity).callFragment(3)
             }
 
             R.id.btu_setting_about_us -> {
@@ -90,6 +95,8 @@ class SettingFragment : Fragment(), View.OnClickListener{
             }
         }
     }
+
+
 
 
     }

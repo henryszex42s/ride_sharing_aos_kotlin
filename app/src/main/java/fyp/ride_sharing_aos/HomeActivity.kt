@@ -29,17 +29,21 @@ import fyp.ride_sharing_aos.tools.Tools
 class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener{
 
     var fbAuth = FirebaseAuth.getInstance()
+
     val homeFragment = HomeFragment()
     val transFragment = TransinfoFragment()
     val settingsFragment = SettingFragment()
+
+    val langFragment = LanguageFragment()
+    val notificationFragment = NotificationFragment()
+    val edit_profileFragment = EditProfileFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         setSupportActionBar(toolbar)
-        val toggle = ActionBarDrawerToggle(this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
-        drawer_layout.addDrawerListener(toggle)
-        toggle.syncState()
+
+
         showProgressDialog("Loading......")
         loadData()
         initView()
@@ -49,7 +53,8 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
             drawer_layout.closeDrawer(GravityCompat.START)
         } else {
-            closeApplication()
+            super.onBackPressed()
+
         }
     }
 
@@ -135,10 +140,13 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
     private fun initView()
     {
+        val toggle = ActionBarDrawerToggle(this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+        drawer_layout.addDrawerListener(toggle)
+        toggle.syncState()
         nav_view.setNavigationItemSelectedListener(this)
         buttom_navigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
         title = "Home"
-        replaceFragment(homeFragment,R.id.fragment_content)
+        supportFragmentManager.beginTransaction().replace(R.id.fragment_content, homeFragment).commit()
     }
 
 
@@ -160,7 +168,6 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             R.id.action_transinfo -> {
                 title = "Transport Info"
                 replaceFragment(transFragment,R.id.fragment_content)
-               // replaceFragment(NotificationFragment(),R.id.fragment_content)
                 return@OnNavigationItemSelectedListener true
             }
 
@@ -189,6 +196,30 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         val alert = builder.create()
         alert.show()
     }
+
+    fun callFragment(fragment: Int)
+    {
+        when (fragment) {
+            1 ->
+            {
+                replaceFragment(edit_profileFragment,R.id.fragment_content)
+
+            }
+
+            2 ->
+            {
+                replaceFragment(notificationFragment,R.id.fragment_content)
+            }
+
+            3 ->
+            {
+                replaceFragment(langFragment,R.id.fragment_content)
+            }
+
+
+        }
+    }
+
 
     fun AppCompatActivity.addFragment(fragment: Fragment, frameId: Int){
         supportFragmentManager.inTransaction { add(frameId, fragment) }
