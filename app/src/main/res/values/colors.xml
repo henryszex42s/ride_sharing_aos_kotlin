@@ -12,4 +12,5 @@
     <color name="colorHint">#546E7A</color>
     <color name="buttoncolor">#00838F</color>
     <color name="textColor">#ffffff</color>
+    <color name="primary_material_light_1">#f5f5f5</color>
 </resources>

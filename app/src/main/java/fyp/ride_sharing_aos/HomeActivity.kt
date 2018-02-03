@@ -11,7 +11,6 @@ import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
-import android.view.Menu
 import android.view.MenuItem
 import com.google.firebase.auth.FirebaseAuth
 import fyp.ride_sharing_aos.activity.GetStartActivity
@@ -23,7 +22,6 @@ import fyp.ride_sharing_aos.activity.AddRouteActivity
 import fyp.ride_sharing_aos.activity.BaseActivity
 import fyp.ride_sharing_aos.fragement.*
 import fyp.ride_sharing_aos.tools.FirebaseManager
-import fyp.ride_sharing_aos.tools.Tools
 
 
 class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener{
@@ -41,7 +39,6 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-        setSupportActionBar(toolbar)
 
 
         showProgressDialog("Loading......")
@@ -58,21 +55,21 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.home, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        when (item.itemId) {
-            R.id.action_settings -> return true
-            else -> return super.onOptionsItemSelected(item)
-        }
-    }
+//    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        menuInflater.inflate(R.menu.home, menu)
+//        return true
+//    }
+//
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        // Handle action bar item clicks here. The action bar will
+//        // automatically handle clicks on the Home/Up button, so long
+//        // as you specify a parent activity in AndroidManifest.xml.
+//        when (item.itemId) {
+//            R.id.action_settings -> return true
+//            else -> return super.onOptionsItemSelected(item)
+//        }
+//    }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
@@ -140,12 +137,19 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
     private fun initView()
     {
+        //Toolbar
+        setSupportActionBar(toolbar)
+
+
+
         val toggle = ActionBarDrawerToggle(this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
-        nav_view.setNavigationItemSelectedListener(this)
+
+
+
+//        nav_view.setNavigationItemSelectedListener(this)
         buttom_navigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
-        title = "Home"
         supportFragmentManager.beginTransaction().replace(R.id.fragment_content, homeFragment).commit()
     }
 
@@ -153,7 +157,6 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.action_home -> {
-                title = "Home"
                 replaceFragment(homeFragment,R.id.fragment_content)
                 return@OnNavigationItemSelectedListener true
             }
@@ -166,13 +169,11 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             }
 
             R.id.action_transinfo -> {
-                title = "Transport Info"
                 replaceFragment(transFragment,R.id.fragment_content)
                 return@OnNavigationItemSelectedListener true
             }
 
             R.id.action_settings -> {
-                title = "Setting"
                 replaceFragment(settingsFragment,R.id.fragment_content)
                 return@OnNavigationItemSelectedListener true
             }
@@ -200,10 +201,10 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     fun callFragment(fragment: Int)
     {
         when (fragment) {
+
             1 ->
             {
                 replaceFragment(edit_profileFragment,R.id.fragment_content)
-
             }
 
             2 ->
@@ -215,8 +216,6 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             {
                 replaceFragment(langFragment,R.id.fragment_content)
             }
-
-
         }
     }
 
@@ -238,3 +237,5 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         fragmentTransaction.commit()
     }
 }
+
+
