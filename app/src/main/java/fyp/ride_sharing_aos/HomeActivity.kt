@@ -17,11 +17,23 @@ import fyp.ride_sharing_aos.activity.GetStartActivity
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 import android.content.DialogInterface
+import android.graphics.Color
 import android.support.design.widget.BottomNavigationView
 import fyp.ride_sharing_aos.activity.AddRouteActivity
 import fyp.ride_sharing_aos.activity.BaseActivity
 import fyp.ride_sharing_aos.fragement.*
 import fyp.ride_sharing_aos.tools.FirebaseManager
+import android.support.v7.widget.CardView
+import android.widget.Button
+import android.graphics.Color.parseColor
+import android.view.View
+import android.widget.Toast
+import fyp.ride_sharing_aos.R.id.card_view
+import android.view.LayoutInflater
+
+
+
+
 
 
 class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener{
@@ -36,6 +48,8 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     val notificationFragment = NotificationFragment()
     val edit_profileFragment = EditProfileFragment()
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
@@ -44,6 +58,7 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         showProgressDialog("Loading......")
         loadData()
         initView()
+        slideFilter()
     }
 
     override fun onBackPressed() {
@@ -235,6 +250,42 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         fragmentTransaction.func()
         fragmentTransaction.addToBackStack(null)
         fragmentTransaction.commit()
+    }
+
+    fun slideFilter()
+    {
+        // workable
+        /*
+                val view = inflater!!.inflate(R.layout.fragment_edit_profile, null)
+        val update1 = view.findViewById<Button>(R.id.update1)
+        val update2 = view.findViewById<Button>(R.id.update2)
+        update1.setOnClickListener(View.OnClickListener {
+            Toast.makeText(activity,
+                    "Update1 Test" ,
+                    Toast.LENGTH_SHORT).show();
+        })
+        update2.setOnClickListener(View.OnClickListener {
+            Toast.makeText(activity,
+                    "Update2 Test" ,
+                    Toast.LENGTH_SHORT).show();
+        })
+         */
+        //doesnt work again
+        var cardview: CardView? = null
+        var button: Button? = null
+        val inflater = LayoutInflater.from(this)
+        val view = inflater.inflate(R.layout.nav_filter, null)
+        cardview = view.findViewById<CardView>(R.id.card_s_ustng)
+        button = view.findViewById<Button>(R.id.test)
+        button.setOnClickListener(View.OnClickListener {
+
+            Toast.makeText(this,
+                    "Test" ,
+                    Toast.LENGTH_SHORT).show();
+            cardview.setCardBackgroundColor(Color.parseColor("#b70505"))
+        })
+
+
     }
 }
 
