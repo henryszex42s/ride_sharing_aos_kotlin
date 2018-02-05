@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.progress_dialog.view.*
 abstract class BaseActivity : AppCompatActivity() {
 
     private var progressDialog : AlertDialog ?=null
-    val permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.)
+  //  val permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
