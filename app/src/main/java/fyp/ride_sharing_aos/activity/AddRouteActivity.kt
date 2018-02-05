@@ -204,30 +204,27 @@ class AddRouteActivity : BaseActivity(), OnMapReadyCallback {
         var isCheck = booleanArrayOf(false,false,false,false)
         var yourChoices : MutableList<Int> = arrayListOf()
 
+
         filter.setOnClickListener{
 
             val filter_alert = AlertDialog.Builder(this)
-            filter_alert.setView(R.layout.filter_dialog)
+
+            val inflater = this.layoutInflater
+            val dialogView = inflater.inflate(R.layout.filter_dialog, null)
+            filter_alert.setView(dialogView)
 
             filter_alert.setTitle("Filter (Optional)")
-/*
-          val seek = SeekBar(this)
-          seek.max = 4
-          seek.keyProgressIncrement = 1
-          filter_alert.setView(seek)   */
 
-            val v = layoutInflater.inflate(R.layout.filter_dialog, null)
-            var seek = v.findViewById<SeekBar>(R.id.pplseek)
-            var temp2 = v.findViewById<TextView>(R.id.seektext)
+            var seek = dialogView.findViewById<SeekBar>(R.id.pplseek)
+            var seektext = dialogView.findViewById<TextView>(R.id.seektext)
 
             seek.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
                 override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
                     Toast.makeText(this@AddRouteActivity,
                             "diu " ,
                             Toast.LENGTH_SHORT).show();
-                    temp2.text = "Number of passenger: $progress"
+                    seektext.text = "Number of passenger: $progress"
                 }
-
 
                 override fun onStartTrackingTouch(arg0: SeekBar) {
                     //do something
@@ -235,13 +232,10 @@ class AddRouteActivity : BaseActivity(), OnMapReadyCallback {
                     // TODO Auto-generated method stub
                 }
 
-
                 override fun onStopTrackingTouch(seekBar: SeekBar) {
                     //do something
                 }
             })
-
-
 
 
 
@@ -266,7 +260,7 @@ class AddRouteActivity : BaseActivity(), OnMapReadyCallback {
                         str += options[yourChoices[i]] + ", "
                     }
                     Toast.makeText(this,
-                            "You Chose " + str,
+                            "You Chose ",
                             Toast.LENGTH_SHORT).show();
                 }
 

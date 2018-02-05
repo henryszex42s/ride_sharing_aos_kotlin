@@ -30,10 +30,7 @@ import android.view.View
 import android.widget.Toast
 import fyp.ride_sharing_aos.R.id.card_view
 import android.view.LayoutInflater
-
-
-
-
+import kotlinx.android.synthetic.main.nav_filter.*
 
 
 class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener{
@@ -48,7 +45,9 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     val notificationFragment = NotificationFragment()
     val edit_profileFragment = EditProfileFragment()
 
-
+    // slide menu array
+    val s_clicked_array: BooleanArray = booleanArrayOf(false,false,false,false,false,false)
+    val d_clicked_array: BooleanArray = booleanArrayOf(false,false,false,false,false,false)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -254,39 +253,174 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
     fun slideFilter()
     {
-        // workable
-        /*
-                val view = inflater!!.inflate(R.layout.fragment_edit_profile, null)
-        val update1 = view.findViewById<Button>(R.id.update1)
-        val update2 = view.findViewById<Button>(R.id.update2)
-        update1.setOnClickListener(View.OnClickListener {
-            Toast.makeText(activity,
-                    "Update1 Test" ,
-                    Toast.LENGTH_SHORT).show();
-        })
-        update2.setOnClickListener(View.OnClickListener {
-            Toast.makeText(activity,
-                    "Update2 Test" ,
-                    Toast.LENGTH_SHORT).show();
-        })
-         */
-        //doesnt work again
-        var cardview: CardView? = null
-        var button: Button? = null
-        val inflater = LayoutInflater.from(this)
-        val view = inflater.inflate(R.layout.nav_filter, null)
-        cardview = view.findViewById<CardView>(R.id.card_s_ustng)
-        button = view.findViewById<Button>(R.id.test)
-        button.setOnClickListener(View.OnClickListener {
 
+
+        var s_cardview = findViewById<CardView>(R.id.card_s_ustng)
+        var s_cardview2 = findViewById<CardView>(R.id.card_s_ustsg)
+        var s_cardview3 = findViewById<CardView>(R.id.card_s_dh)
+        var s_cardview4 = findViewById<CardView>(R.id.card_s_ch)
+        var s_cardview5 = findViewById<CardView>(R.id.card_s_ntk)
+        var s_cardview6 = findViewById<CardView>(R.id.card_s_hh)
+
+        var d_cardview = findViewById<CardView>(R.id.card_d_ustng)
+        var d_cardview2 = findViewById<CardView>(R.id.card_d_ustsg)
+        var d_cardview3 = findViewById<CardView>(R.id.card_d_dh)
+        var d_cardview4 = findViewById<CardView>(R.id.card_d_ch)
+        var d_cardview5 = findViewById<CardView>(R.id.card_d_ntk)
+        var d_cardview6 = findViewById<CardView>(R.id.card_d_hh)
+
+
+
+
+
+        s_cardview.setOnClickListener(View.OnClickListener {
+            if(s_clicked_array[0] == false) {
+                s_cardview.setCardBackgroundColor(Color.parseColor("#e91e63"))
+                s_clicked_array[0] = true
+            }
+            else {
+                s_cardview.setCardBackgroundColor(Color.parseColor("#FF424242"))
+                s_clicked_array[0] = false
+            }
+        })
+        s_cardview2.setOnClickListener(View.OnClickListener {
+
+            if(s_clicked_array[1] == false) {
+                s_cardview2.setCardBackgroundColor(Color.parseColor("#e91e63"))
+                s_clicked_array[1] = true
+            }
+            else {
+                s_cardview2.setCardBackgroundColor(Color.parseColor("#FF424242"))
+                s_clicked_array[1] = false
+            }
+        })
+        s_cardview3.setOnClickListener(View.OnClickListener {
+
+            if(s_clicked_array[2] == false) {
+                s_cardview3.setCardBackgroundColor(Color.parseColor("#e91e63"))
+                s_clicked_array[2] = true
+            }
+            else {
+                s_cardview3.setCardBackgroundColor(Color.parseColor("#FF424242"))
+                s_clicked_array[2] = false
+            }
+        })
+        s_cardview4.setOnClickListener(View.OnClickListener {
+
+            if(s_clicked_array[3] == false) {
+                s_cardview4.setCardBackgroundColor(Color.parseColor("#e91e63"))
+                s_clicked_array[3] = true
+            }
+            else {
+                s_cardview4.setCardBackgroundColor(Color.parseColor("#FF424242"))
+                s_clicked_array[3] = false
+            }
+        })
+        s_cardview5.setOnClickListener(View.OnClickListener {
+
+            if(s_clicked_array[4] == false) {
+                s_cardview5.setCardBackgroundColor(Color.parseColor("#e91e63"))
+                s_clicked_array[4] = true
+            }
+            else {
+                s_cardview5.setCardBackgroundColor(Color.parseColor("#FF424242"))
+                s_clicked_array[4] = false
+            }
+        })
+        s_cardview6.setOnClickListener(View.OnClickListener {
+
+            if(s_clicked_array[5] == false) {
+                s_cardview6.setCardBackgroundColor(Color.parseColor("#e91e63"))
+                s_clicked_array[5] = true
+            }
+            else {
+                s_cardview6.setCardBackgroundColor(Color.parseColor("#FF424242"))
+                s_clicked_array[5] = false
+            }
+        })
+
+
+        d_cardview.setOnClickListener(View.OnClickListener {
+            if(d_clicked_array[0] == false) {
+                d_cardview.setCardBackgroundColor(Color.parseColor("#e91e63"))
+                d_clicked_array[0] = true
+            }
+            else {
+                d_cardview.setCardBackgroundColor(Color.parseColor("#FF424242"))
+                d_clicked_array[0] = false
+            }
+        })
+        d_cardview2.setOnClickListener(View.OnClickListener {
+
+            if(d_clicked_array[1] == false) {
+                d_cardview2.setCardBackgroundColor(Color.parseColor("#e91e63"))
+                d_clicked_array[1] = true
+            }
+            else {
+                d_cardview2.setCardBackgroundColor(Color.parseColor("#FF424242"))
+                d_clicked_array[1] = false
+            }
+        })
+        d_cardview3.setOnClickListener(View.OnClickListener {
+
+            if(d_clicked_array[2] == false) {
+                d_cardview3.setCardBackgroundColor(Color.parseColor("#e91e63"))
+                d_clicked_array[2] = true
+            }
+            else {
+                d_cardview3.setCardBackgroundColor(Color.parseColor("#FF424242"))
+                d_clicked_array[2] = false
+            }
+        })
+        d_cardview4.setOnClickListener(View.OnClickListener {
+
+            if(d_clicked_array[3] == false) {
+                d_cardview4.setCardBackgroundColor(Color.parseColor("#e91e63"))
+                d_clicked_array[3] = true
+            }
+            else {
+                d_cardview4.setCardBackgroundColor(Color.parseColor("#FF424242"))
+                d_clicked_array[3] = false
+            }
+        })
+        d_cardview5.setOnClickListener(View.OnClickListener {
+
+            if(d_clicked_array[4] == false) {
+                d_cardview5.setCardBackgroundColor(Color.parseColor("#e91e63"))
+                d_clicked_array[4] = true
+            }
+            else {
+                d_cardview5.setCardBackgroundColor(Color.parseColor("#FF424242"))
+                d_clicked_array[4] = false
+            }
+        })
+        d_cardview6.setOnClickListener(View.OnClickListener {
+
+            if(d_clicked_array[5] == false) {
+                d_cardview6.setCardBackgroundColor(Color.parseColor("#e91e63"))
+                d_clicked_array[5] = true
+            }
+            else {
+                d_cardview6.setCardBackgroundColor(Color.parseColor("#FF424242"))
+                d_clicked_array[5] = false
+            }
+        })
+
+
+        filter_reset.setOnClickListener(View.OnClickListener {
             Toast.makeText(this,
-                    "Test" ,
+                    "reset Test" ,
                     Toast.LENGTH_SHORT).show();
-            cardview.setCardBackgroundColor(Color.parseColor("#b70505"))
-        })
 
+        })
+        filter_submit.setOnClickListener(View.OnClickListener {
+            Toast.makeText(this,
+                    "submit Test" ,
+                    Toast.LENGTH_SHORT).show();
+        })
 
     }
+
 }
 
 

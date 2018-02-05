@@ -45,12 +45,7 @@
             android:clickable="true"
             android:foreground="?android:attr/selectableItemBackground">
 
-            <Button
-                android:layout_width="match_parent"
-                 android:layout_height="match_parent"
-                android:id="@+id/test"
-                android:visibility="invisible"
-            />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -472,5 +467,29 @@
             android:minHeight="10dp"
             android:textAllCaps="false" />
     </co.ceryle.segmentedbutton.SegmentedButtonGroup>
+ <RelativeLayout
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:orientation="horizontal">
+
+    <Button
+        android:text="Reset"
+        android:id="@+id/filter_reset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:minHeight="10dp"
+        android:textAllCaps="false" />
+    <Button
+        android:text="Submit"
+        android:id="@+id/filter_submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:minHeight="10dp"
+        android:textAllCaps="false" />
+ </RelativeLayout>
+
 </LinearLayout>
+
 </ScrollView>
