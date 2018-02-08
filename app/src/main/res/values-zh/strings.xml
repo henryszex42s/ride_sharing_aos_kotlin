@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">OUST</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">設定</string>
+    <string name="action_login">登入</string>
+
+    <!-- Strings in Welcome Page -->
+    <string name="welcome">歡迎</string>
+    <string name="welcome_description">科技大學最好的的士共乘應用程式</string>
+    <string name="welcome_login">登入</string>
+    <string name="welcome_signup">註冊</string>
+
+    <!--Strings related to Bottom IconMenu-->
+    <string name="menu_home">主頁</string>
+    <string name="menu_addroute">建立路線</string>
+    <string name="menu_trasinfo">交通資訊</string>
+    <string name="menu_settings">設定</string>
+
+    <!-- Strings related to SignIn -->
+    <string name="login_btu_sign_in">登入</string>
+    <string name="login_hint_email">電郵</string>
+    <string name="login_hint_pas">密碼</string>
+    <string name="login_forgot">忘記密碼?</string>
+
+    <string name="login_user_error">請輸入帳戶名稱 </string>
+    <string name="login_password_error">請輸入密碼</string>
+
+    <!--Strings related to SignUp-->
+    <string name="signup_username">帳戶 :</string>
+    <string name="signup_itsc">ITSC :</string>
+    <string name="signup_password">密碼 :</string>
+
+    <string name="signup_username_require">5 - 8個字元</string>
+    <string name="signup_password_require">至少六個字元及包含數字和字母</string>
+
+    <string name="signup_hint_username">請輸入帳戶名稱</string>
+    <string name="signup_hint_password">請輸入密碼</string>
+    <string name="signup_hint_itsc">請輸入ITSC</string>
+
+    <string name="signup_btu_signup">註冊</string>
+
+    <string name="signup_radio_student">學生</string>
+    <string name="signup_radio_stafft">職員</string>
+
+    <string name="signup_gender">性別</string>
+    <string name="signup_radio_male">男性</string>
+    <string name="signup_radio_female">女性</string>
+
+    <string name="signup_username_error">- 帳戶名稱長度需大於5及少於8及不能漏空</string>
+    <string name="signup_password_error">- 密碼長度需大於5及不能漏空</string>
+    <string name="signup_password_error2">- 密碼需包含字母及數字</string>
+
+
+    <!--String related to addRoute page by Him-->
+
+    <string name="rm_name">房間名稱(選填)</string>
+    <string name="pt">你想的時間(HH:MM)</string>
+    <string name="from">從:</string>
+    <string name="to">到:</string>
+
+    <string-array name="start_choices">
+        <item></item>
+        <item>HKUST</item>
+        <item>Choi Hung MTR station</item>
+        <item>Hang Hau MTR station</item>
+        <item>Tseung Kwan O MTR station</item>
+    </string-array>
+
+    <string-array name="des_choices">
+        <item></item>
+        <item>HKUST</item>
+        <item>Choi Hung MTR station</item>
+        <item>Hang Hau MTR station</item>
+        <item>Tseung Kwan O MTR station</item>
+    </string-array>
+    <string name="create">建立</string>
+    <string name="filter">篩選</string>
+
+
+    <!-- filter dialog-->
+    <string name="m_only">只有男性</string>
+    <string name="f_only">只有女性</string>
+    <string name="staff_only">只有職員</string>
+    <string name="stu_only">只有學生</string>
+    <string name="reset">重置</string>
+
+    <string name="nop">乘客人數: 0</string>
+
+
+    <!-- Setting Fragment-->
+    <string name="setting_edit_profile">修改帳戶資料</string>
+    <string name="setting_notification">通知</string>
+    <string name="setting_language">語言</string>
+    <string name="setting_about_us">關於我們</string>
+    <string name="setting_logout">登出</string>
+
+    <!--Edit profile Fragment-->
+    <string name="pro_p">個人頭像</string>
+    <string name="update">更新</string>
+    <string name="ch_password">更改密碼:</string>
+    <string name="new_password">新的密碼</string>
+    <string name="repeat_password">重覆密碼</string>
+
+    <!-- Notification - Setting Fragment-->
+    <string name="notification">通知</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_welcome">WelcomeActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_signup">SignupActivity</string>
+    <string name="title_activity_get_start">GetStartActivity</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="closeApp">Are you want to close this application?</string>
+
+
+
+</resources>

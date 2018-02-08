@@ -29,7 +29,7 @@
                 android:id="@+id/roomname"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:hint="Room Name(Optional)"
+                android:hint="@string/rm_name"
                 android:inputType="text"
                 android:textColor="@color/black" />
 
@@ -48,7 +48,7 @@
                 android:id="@+id/prefer_time"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:hint="Prefer Time (HH:MM)"
+                android:hint="@string/pt"
                 android:inputType="time"
                 android:textColor="@color/black" />
 
@@ -58,7 +58,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="From:"
+            android:text="@string/from"
             android:textColor="@color/black"
             android:textSize="20sp" />
 
@@ -70,7 +70,7 @@
                 <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="To:"
+                android:text="@string/to"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 />

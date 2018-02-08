@@ -89,7 +89,7 @@ abstract class BaseActivity : AppCompatActivity() {
 
                     } else {
                         Log.w(TAG, "getLastLocation:exception", task.exception)
-                        showSnackbar(R.string.no_location_detected)
+                       // showSnackbar(R.string.no_location_detected)
                     }
                 }
     }

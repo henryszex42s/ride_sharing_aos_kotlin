@@ -63,6 +63,11 @@
 
     <!--String related to addRoute page by Him-->
 
+    <string name="rm_name">Room Name(Optional)</string>
+    <string name="pt">Prefer Time (HH:MM)</string>
+    <string name="from">From:</string>
+    <string name="to">To:</string>
+
     <string-array name="start_choices">
         <item></item>
         <item>HKUST</item>
@@ -89,6 +94,8 @@
     <string name="stu_only">Student Only</string>
     <string name="reset">Reset</string>
 
+    <string name="nop">Number of passenger: 0</string>
+
 
     <!-- Setting Fragment-->
     <string name="setting_edit_profile">Edit Profile</string>
@@ -96,6 +103,13 @@
     <string name="setting_language">Language</string>
     <string name="setting_about_us">About Us</string>
     <string name="setting_logout">Logout</string>
+
+    <!--Edit profile Fragment-->
+    <string name="pro_p">Profile Picture</string>
+    <string name="update">Update</string>
+    <string name="ch_password">Change Password:</string>
+    <string name="new_password">New Password</string>
+    <string name="repeat_password">Repeat Password</string>
 
     <!-- Notification - Setting Fragment-->
     <string name="notification">Notification</string>

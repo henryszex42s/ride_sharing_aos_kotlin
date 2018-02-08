@@ -9,12 +9,16 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
+import java.util.Locale
+import android.content.res.Configuration;
 import fyp.ride_sharing_aos.R
 import android.widget.RadioGroup
 import android.widget.SeekBar
 import android.widget.Toast
 import kotlinx.android.synthetic.main.fragment_language.*
+import android.util.DisplayMetrics
+
+
 
 
 /**
@@ -29,33 +33,47 @@ class LanguageFragment : Fragment(){
 
     //PreferenceFragment
     // TODO: Rename and change types of parameters
-    private var mParam1: String? = null
-    private var mParam2: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
-        // same as filter, doesnt work
-
-        val v = layoutInflater.inflate(R.layout.fragment_language, null)
-        var seek = v.findViewById<RadioGroup>(R.id.language)
-        seek.setOnCheckedChangeListener(object : RadioGroup.OnCheckedChangeListener {
-           override fun onCheckedChanged(group: RadioGroup, checkedId: Int) {
-                // checkedId is the RadioButton selected
-
-                 Toast.makeText(context, "chinese", Toast.LENGTH_SHORT).show()
-
-            }
-        })
 
 
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-        return inflater!!.inflate(R.layout.fragment_language, container, false)
+        // Inflate the layout for this fragment   // Inflate the layout for this fragment
+        val view = inflater!!.inflate(R.layout.fragment_language, null)
+        val radio = view.findViewById<RadioGroup>(R.id.language)
+        radio.setOnCheckedChangeListener(object : RadioGroup.OnCheckedChangeListener {
+            override fun onCheckedChanged(group: RadioGroup, checkedId: Int) {
+                // checkedId is the RadioButton selected
+
+                if(checkedId == R.id.chinese) {
+
+                    val resources = activity.getResources()
+                    val config = resources.getConfiguration()
+                    val dm = resources.getDisplayMetrics()
+                    config.locale = Locale.TRADITIONAL_CHINESE
+                    resources.updateConfiguration(config, dm)
+
+                    Toast.makeText(context, "You chose Chinese", Toast.LENGTH_SHORT).show()
+                }
+                if(checkedId == R.id.english) {
+                    val resources = activity.getResources()
+                    val config = resources.getConfiguration()
+                    val dm = resources.getDisplayMetrics()
+                    config.locale = Locale.ENGLISH
+                    resources.updateConfiguration(config, dm)
+
+                    Toast.makeText(context, "You chose English", Toast.LENGTH_SHORT).show()
+                }
+
+            }
+        })
+
+
+        return view
     }
 
 

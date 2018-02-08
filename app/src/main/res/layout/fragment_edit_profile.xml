@@ -26,7 +26,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="10px"
-                        android:text="Edit Profile:" />
+                        android:text="@string/setting_edit_profile" />
 
                     <TableLayout
                         android:layout_width="wrap_content"
@@ -38,7 +38,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="10dp"
-                                android:text="Username"
+                                android:text="@string/signup_username"
                                 />
 
                             <EditText
@@ -54,7 +54,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="10dp"
-                                android:text="Email"
+                                android:text="@string/login_hint_email"
                                 />
 
                             <EditText
@@ -70,7 +70,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="10dp"
-                                android:text="Profile Picture"
+                                android:text="@string/pro_p"
                                 />
 
 
@@ -81,7 +81,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
-                        android:text="Update"
+                        android:text="@string/update"
                     />
                 </LinearLayout>
 
@@ -102,7 +102,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Change Password:" />
+                    android:text="@string/ch_password" />
                 <TableLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -113,7 +113,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
-                        android:text="New Password"
+                        android:text="@string/new_password"
                         />
 
                     <EditText
@@ -129,7 +129,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
-                        android:text="Repeat Password"
+                        android:text="@string/repeat_password"
                         />
 
                     <EditText
@@ -146,7 +146,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
-                        android:text="Update"/>
+                        android:text="@string/update"/>
                 </LinearLayout>
             </FrameLayout>
     </LinearLayout>

@@ -6,10 +6,6 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
         <Switch
             android:id="@+id/noti_switch"
             android:layout_width="match_parent"
@@ -19,6 +15,6 @@
             android:textSize="20sp"
             />
 
-    </LinearLayout>
+
 
 </FrameLayout>

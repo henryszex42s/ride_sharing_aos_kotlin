@@ -8,11 +8,9 @@
 
     <RadioGroup
         android:id="@+id/language"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_gravity="right"
-        android:inputType="text"
         android:orientation="vertical" >
 
         <RadioButton
