@@ -220,9 +220,6 @@ class AddRouteActivity : BaseActivity(), OnMapReadyCallback {
 
             seek.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
                 override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
-                    Toast.makeText(this@AddRouteActivity,
-                            "diu " ,
-                            Toast.LENGTH_SHORT).show();
                     seektext.text = "Number of passenger: $progress"
                 }
 
