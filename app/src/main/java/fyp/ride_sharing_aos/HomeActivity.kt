@@ -69,6 +69,15 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         }
     }
 
+    override fun onStart() {
+        super.onStart()
+        if (!checkPermissions()) {
+            requestPermissions()
+        } else {
+            getLastLocation()
+        }
+    }
+
 //    override fun onCreateOptionsMenu(menu: Menu): Boolean {
 //        // Inflate the menu; this adds items to the action bar if it is present.
 //        menuInflater.inflate(R.menu.home, menu)

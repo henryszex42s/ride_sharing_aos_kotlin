@@ -4,6 +4,7 @@ import android.app.Activity
 import android.app.Dialog
 import android.app.ProgressDialog
 import android.content.Context
+import android.location.Location
 import android.support.v7.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.View
@@ -18,6 +19,7 @@ import kotlinx.android.synthetic.main.progress_dialog.view.*
 
 object Tools
 {
+    var currentLocation = Location("")
 
 //    val error_msg: ArrayList<String> = ArrayList()
 //    error_msg.add(String)
@@ -68,7 +70,4 @@ object Tools
 
         return builder
     }
-
-
-
 }

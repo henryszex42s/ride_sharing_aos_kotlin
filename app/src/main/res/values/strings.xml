@@ -112,5 +112,19 @@
     <string name="closeApp">Are you want to close this application?</string>
 
 
+    <string name="latitude_label">Latitude: %f</string>
+    <string name="longitude_label">Longitude: %f</string>
+    <string name="no_location_detected">No location detected. Make sure location is enabled on the device.</string>
+
+    <string name="permission_denied_explanation">Permission was denied, but is needed for core functionality.</string>
+
+    <string name="permission_rationale">Location permission is needed for core functionality</string>
+
+    <string name="settings">Settings</string>
+
+
+
+
+
 
 </resources>
