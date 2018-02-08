@@ -57,6 +57,12 @@ object FirebaseManager {
         return RoomList.isEmpty()
     }
 
+    fun createRoom(newRoom : Room)
+    {
+        val roomList = database.reference.child("room").push()
+        roomList.setValue(newRoom)
+    }
+
 
     fun updateUser()
     {

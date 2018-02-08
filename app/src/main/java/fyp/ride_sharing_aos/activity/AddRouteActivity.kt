@@ -23,10 +23,7 @@ import fyp.ride_sharing_aos.model.Room
 import java.sql.Timestamp
 import android.widget.SeekBar.OnSeekBarChangeListener
 import android.view.LayoutInflater
-
-
-
-
+import fyp.ride_sharing_aos.tools.FirebaseManager
 
 
 class AddRouteActivity : BaseActivity(), OnMapReadyCallback {
@@ -167,6 +164,8 @@ class AddRouteActivity : BaseActivity(), OnMapReadyCallback {
         filter()
         create.setOnClickListener{
             var room = Room(startName, desName, numOfPeople, false, false, createtime, prefertime,roomname, "","","","")
+            FirebaseManager.createRoom(room)
+
             Toast.makeText(this,
                     "Create Test" ,
                     Toast.LENGTH_SHORT).show();
