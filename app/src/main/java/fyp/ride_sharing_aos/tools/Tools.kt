@@ -9,6 +9,7 @@ import android.support.v7.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
+import com.google.android.gms.maps.model.LatLng
 import com.google.firebase.auth.FirebaseAuth
 import fyp.ride_sharing_aos.R
 import kotlinx.android.synthetic.main.progress_dialog.view.*
@@ -20,6 +21,16 @@ import kotlinx.android.synthetic.main.progress_dialog.view.*
 object Tools
 {
     var currentLocation = Location("")
+
+    enum class Location_Name {
+        HKUST, Choi_Hung_MTR_Station, Hang_Hau_MTR_Station, Tseung_Kwan_O_MTR_Station
+    }
+    /* Coordinate of Locations*/
+    val coordinate_ust = LatLng(22.336397, 114.265506)
+    val coordinate_ch = LatLng(22.3349716, 114.2085751)
+    val coordinate_hh = LatLng(22.3156009, 114.262199)
+    val coordinate_tko = LatLng(22.3074385, 114.258921)
+
 
 //    val error_msg: ArrayList<String> = ArrayList()
 //    error_msg.add(String)
