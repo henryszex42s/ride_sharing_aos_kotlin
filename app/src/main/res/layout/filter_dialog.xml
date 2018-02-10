@@ -13,30 +13,31 @@
         android:layout_weight="0"
         android:layout_margin="20dp"
   >
-
-        <CheckBox
-            android:id="@+id/m_only"
-            android:layout_width="wrap_content"
+        <RadioGroup
+            android:id="@+id/gender_only"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/m_only"/>
 
-        <CheckBox
-            android:id="@+id/f_only"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/f_only" />
+            android:orientation="vertical" >
 
-        <CheckBox
-            android:id="@+id/staff_only"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/staff_only" />
+            <RadioButton
+                android:id="@+id/m_only"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="@string/m_only"
+                />
 
-        <CheckBox
-            android:id="@+id/stu_only"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/stu_only" />
+            <RadioButton
+                android:id="@+id/f_only"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="@string/f_only"
+                />
+        </RadioGroup>
+
+
     </LinearLayout>
 
 
