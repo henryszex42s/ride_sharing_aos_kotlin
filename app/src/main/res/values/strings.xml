@@ -69,15 +69,13 @@
     <string name="to">To:</string>
 
     <string-array name="start_choices">
-        <item></item>
         <item>HKUST</item>
-        <item>Choi Hung MTR station</item>
-        <item>Hang Hau MTR station</item>
+        <item>Choi Hung MTR Station</item>
+        <item>Hang Hau MTR Station</item>
         <item>Tseung Kwan O MTR station</item>
     </string-array>
 
     <string-array name="des_choices">
-        <item></item>
         <item>HKUST</item>
         <item>Choi Hung MTR station</item>
         <item>Hang Hau MTR station</item>
@@ -135,6 +133,11 @@
     <string name="permission_rationale">Location permission is needed for core functionality</string>
 
     <string name="settings">Settings</string>
+
+    <string name="location_HKUST">HKUST</string>
+    <string name="location_Choi_Hung">Choi Hung MTR Station</string>
+    <string name="location_Hang_Hau">Hang Hau MTR Station</string>
+    <string name="location_Tseung_Kwan_O">Tseung Kwan O MTR station</string>
 
 
 

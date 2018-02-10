@@ -1,6 +1,5 @@
 package fyp.ride_sharing_aos.activity
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.view.View
@@ -14,200 +13,70 @@ import kotlinx.android.synthetic.main.activity_add_route.*
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.maps.MapFragment
-import android.R.attr.apiKey
 import android.graphics.Color
-import android.location.Location
 import com.google.android.gms.maps.model.PolylineOptions
-import com.google.android.gms.maps.model.Polyline
 import fyp.ride_sharing_aos.model.Room
-import java.sql.Timestamp
-import android.widget.SeekBar.OnSeekBarChangeListener
-import android.view.LayoutInflater
 import fyp.ride_sharing_aos.tools.FirebaseManager
+import fyp.ride_sharing_aos.tools.Tools
 
 
 class AddRouteActivity : BaseActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
+
+    var start_Location = LatLng(0.0,0.0)
+    var des_Location = LatLng(0.0,0.0)
+
+    //Info for room object
+    var starting_Place =""
+    var des_Place =""
+    var numOfPeople = 0
+    var createtime = 0
+    var prefertime = 0
+
+    //Filter Value
+    val options = arrayOf("Male Only","Female Only", "Student Only", "Staff Only")
+    var isCheck = booleanArrayOf(false,false,false,false)
+    var yourChoices : MutableList<Int> = arrayListOf()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_route)
         supportActionBar?.hide()
-
-        var start = LatLng(0.0,0.0)
-        var des = LatLng(0.0,0.0)
-
-        //get info
-        var startName = ""
-        var desName =""
-        var numOfPeople = 0
-        var createtime = 0
-        var prefertime = 0
-        var roomname = "haha"
-
 
         /* Declare map*/
         val mapFragment = fragmentManager
                 .findFragmentById(R.id.map) as MapFragment
         mapFragment.getMapAsync(this)
 
-        /* spinner */
-        val spinnerItems = resources.getStringArray(R.array.start_choices)
+        setUpFilter()
+        setUpSpinner()
 
-        /* coordinate of locations*/
-        val ust = LatLng(22.336397, 114.265506)
-        val ch = LatLng(22.3349716, 114.2085751)
-        val hh = LatLng(22.3156009, 114.262199)
-        val tko = LatLng(22.3074385, 114.258921)
 
-        // Start_spinner
-        start_spin.adapter = ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, spinnerItems)
-        start_spin.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-
-                // start: UST
-                if (parent.getSelectedItem().toString() == "HKUST") {
-                    start = ust
-                    startName = parent.getSelectedItem().toString()
-                    mMap.addMarker(MarkerOptions().position(ust).title("Marker in HKU"))
-                    mMap.moveCamera(CameraUpdateFactory.newLatLng(ust))
-                }
-                // start: Choi Hung
-                if (parent.getSelectedItem().toString() == "Choi Hung MTR station") {
-                    start = ch
-                    startName = parent.getSelectedItem().toString()
-                    mMap.moveCamera(CameraUpdateFactory.newLatLng(ch))
-                    mMap.addMarker(MarkerOptions().position(ch).title("Marker in Choi Hung MTR station"))
-                }
-                // start: Hang Hau
-                if (parent.getSelectedItem().toString() == "Hang Hau MTR station") {
-                    start = hh
-                    startName = parent.getSelectedItem().toString()
-                    mMap.moveCamera(CameraUpdateFactory.newLatLng(hh))
-                    mMap.addMarker(MarkerOptions().position(hh).title("Marker in Hang Hau MTR Station"))
-                }
-                // start: TKO
-                if (parent.getSelectedItem().toString() == "Tseung Kwan O MTR station") {
-                    start = tko
-                    startName = parent.getSelectedItem().toString()
-                    mMap.moveCamera(CameraUpdateFactory.newLatLng(tko))
-                    mMap.addMarker(MarkerOptions().position(tko).title("Marker in Tseung Kwan O MTR station"))
-                }
-
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>) {
-                /*Do something if nothing selected*/
-            }
-        }
-
-        //des_spinner
-        val spinnerItems2 = resources.getStringArray(R.array.des_choices)
-
-        des_spin.adapter = ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, spinnerItems2)
-        des_spin.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-
-            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-                //Des: UST
-                if (parent.getSelectedItem().toString() == "HKUST") {
-                    des = ust
-                    desName = parent.getSelectedItem().toString()
-                    mMap.moveCamera(CameraUpdateFactory.newLatLng(ust))
-                    mMap.addMarker(MarkerOptions().position(ust).title("Marker in HKUST"))
-                    val line = mMap.addPolyline(PolylineOptions()
-                            .add(start,des)
-                            .width(5f)
-                            .color(Color.RED))
-                }
-                //Des: Choi hung
-                if (parent.getSelectedItem().toString() == "Choi Hung MTR station") {
-                    des = ch
-                    desName = parent.getSelectedItem().toString()
-                    mMap.moveCamera(CameraUpdateFactory.newLatLng(ch))
-                    mMap.addMarker(MarkerOptions().position(ch).title("Marker in Choi Hung MTR station"))
-                    val line = mMap.addPolyline(PolylineOptions()
-                            .add(start,des)
-                            .width(5f)
-                            .color(Color.RED))
-                }
-                //Des: Hang Hau
-                if (parent.getSelectedItem().toString() == "Hang Hau MTR station") {
-                    des = hh
-                    desName = parent.getSelectedItem().toString()
-                    mMap.moveCamera(CameraUpdateFactory.newLatLng(hh))
-                    mMap.addMarker(MarkerOptions().position(hh).title("Marker in Hang Hau MTR station"))
-                    val line = mMap.addPolyline(PolylineOptions()
-                            .add(start,des)
-                            .width(5f)
-                            .color(Color.RED))
-                }
-                //Des: TKO
-                if (parent.getSelectedItem().toString() == "Tseung Kwan O MTR station") {
-                    des = tko
-                    desName = parent.getSelectedItem().toString()
-                    mMap.moveCamera(CameraUpdateFactory.newLatLng(tko))
-                    mMap.addMarker(MarkerOptions().position(tko).title("Marker in Tseung Kwan O MTR station"))
-                    val line = mMap.addPolyline(PolylineOptions()
-                            .add(start,des)
-                            .width(5f)
-                            .color(Color.RED))
-                }
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>) {
-                /*Do something if nothing selected*/
-            }
-        }
-
-        filter()
         create.setOnClickListener{
-            var room = Room(startName, desName, numOfPeople, false, false, createtime, prefertime,roomname, "","","","")
+            var room = Room(starting_Place, des_Place, numOfPeople, false, false, createtime, prefertime,roomname.text.toString(), "","","","")
             FirebaseManager.createRoom(room)
 
             Toast.makeText(this,
                     "Create Test" ,
                     Toast.LENGTH_SHORT).show();
-
-
         }
 
   }
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
-        //add a marker in UST (Default map position is UST)
+        //Add a marker in UST (Default map position is UST)
         val ust = LatLng(22.336397, 114.265506)
         mMap.moveCamera(CameraUpdateFactory.newLatLng(ust))
-
-        /*
-        //add a marker in CH MTR
-        val ch = LatLng(22.3349716,114.2085751)
-        mMap.addMarker(MarkerOptions().position(ch).title("Marker in Choi Hung MTR Station"))
-
-        //add a marker in HH MTR
-        val hh = LatLng(22.3156009,114.262199)
-        mMap.addMarker(MarkerOptions().position(hh).title("Marker in Hang Hau MTR Station"))
-
-
-        val context = GeoApiContext.Builder()
-                .apiKey("AIzaSyDUCJ7mosxKtkDesQQNqcmvnMn9e4cqDco")
-                .build()*/
     }
 
-    fun filter(){
-
-        /*filter*/
-        val options = arrayOf("Male Only","Female Only", "Student Only", "Staff Only")
-        var isCheck = booleanArrayOf(false,false,false,false)
-        var yourChoices : MutableList<Int> = arrayListOf()
-
+    fun setUpFilter()
+    {
 
         filter.setOnClickListener{
 
             val filter_alert = AlertDialog.Builder(this)
-
             val inflater = this.layoutInflater
             val dialogView = inflater.inflate(R.layout.filter_dialog, null)
             filter_alert.setView(dialogView)
@@ -233,18 +102,6 @@ class AddRouteActivity : BaseActivity(), OnMapReadyCallback {
                 }
             })
 
-
-
-/*
-          filter_alert.setMultiChoiceItems(options, isCheck, DialogInterface.OnMultiChoiceClickListener { dialog, which, isChecked ->
-              if (isChecked) {
-                  yourChoices.add(which)
-              } else {
-                  yourChoices.remove(which)
-              }
-
-          })*/
-
             filter_alert.setPositiveButton(
                     "OK"
             ) { dialog, id ->
@@ -261,6 +118,7 @@ class AddRouteActivity : BaseActivity(), OnMapReadyCallback {
                 }
 
             }
+
             filter_alert.setNegativeButton(
                     "Reset"
             ) { dialog, id ->
@@ -275,4 +133,116 @@ class AddRouteActivity : BaseActivity(), OnMapReadyCallback {
         }
 
     }
+    fun setUpSpinner()
+    {
+        /* Spinner */
+        val spinnerItems = resources.getStringArray(R.array.start_choices)
+        // Start_spinner
+        start_spin.adapter = ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, spinnerItems)
+        start_spin.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+
+                // start: UST
+                when {
+                    parent.getSelectedItem().toString() == "HKUST" -> {
+                        start_Location = Tools.coordinate_ust
+                        starting_Place = resources.getString(R.string.location_HKUST)
+                        mMap.addMarker(MarkerOptions().position(Tools.coordinate_ust).title("Marker in HKU"))
+                        mMap.moveCamera(CameraUpdateFactory.newLatLng(Tools.coordinate_ust))
+                    }
+                // start: Choi Hung
+                    parent.getSelectedItem().toString() == "Choi Hung MTR station" -> {
+                        start_Location = Tools.coordinate_ch
+                        starting_Place = resources.getString(R.string.location_Choi_Hung)
+                        mMap.moveCamera(CameraUpdateFactory.newLatLng(Tools.coordinate_ch))
+                        mMap.addMarker(MarkerOptions().position(Tools.coordinate_ch).title("Marker in Choi Hung MTR station"))
+                    }
+                // start: Hang Hau
+                    parent.getSelectedItem().toString() == "Hang Hau MTR station" -> {
+                        start_Location = Tools.coordinate_hh
+                        starting_Place = resources.getString(R.string.location_Hang_Hau)
+                        mMap.moveCamera(CameraUpdateFactory.newLatLng(Tools.coordinate_hh))
+                        mMap.addMarker(MarkerOptions().position(Tools.coordinate_hh).title("Marker in Hang Hau MTR Station"))
+                    }
+                // start: TKO
+                    parent.getSelectedItem().toString() == "Tseung Kwan O MTR station" -> {
+                        start_Location = Tools.coordinate_tko
+                        starting_Place = resources.getString(R.string.location_Tseung_Kwan_O)
+                        mMap.moveCamera(CameraUpdateFactory.newLatLng(Tools.coordinate_tko))
+                        mMap.addMarker(MarkerOptions().position(Tools.coordinate_tko).title("Marker in Tseung Kwan O MTR station"))
+                    }
+                }
+
+                if(!des_Location.equals(start_Location))
+                {
+                    writeLineInMap(start_Location,des_Location)
+                }
+
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                /*Do something if nothing selected*/
+            }
+        }
+
+        //des_spinner
+        val spinnerItems2 = resources.getStringArray(R.array.des_choices)
+
+        des_spin.adapter = ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, spinnerItems2)
+        des_spin.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+
+            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+                //Des: UST
+                if (parent.getSelectedItem().toString() == "HKUST") {
+                    des_Location = Tools.coordinate_ust
+                    des_Place = resources.getString(R.string.location_HKUST)
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(Tools.coordinate_ust))
+                    mMap.addMarker(MarkerOptions().position(Tools.coordinate_ust).title("Marker in HKUST"))
+                }
+                //Des: Choi hung
+                if (parent.getSelectedItem().toString() == "Choi Hung MTR station") {
+                    des_Location = Tools.coordinate_ch
+                    des_Place = resources.getString(R.string.location_Choi_Hung)
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(Tools.coordinate_ch))
+                    mMap.addMarker(MarkerOptions().position(Tools.coordinate_ch).title("Marker in Choi Hung MTR station"))
+                }
+                //Des: Hang Hau
+                if (parent.getSelectedItem().toString() == "Hang Hau MTR station") {
+                    des_Location = Tools.coordinate_hh
+                    des_Place = resources.getString(R.string.location_Hang_Hau)
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(Tools.coordinate_hh))
+                    mMap.addMarker(MarkerOptions().position(Tools.coordinate_hh).title("Marker in Hang Hau MTR station"))
+                }
+                //Des: TKO
+                if (parent.getSelectedItem().toString() == "Tseung Kwan O MTR station") {
+                    des_Location = Tools.coordinate_tko
+                    des_Place = resources.getString(R.string.location_Tseung_Kwan_O)
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(Tools.coordinate_tko))
+                    mMap.addMarker(MarkerOptions().position(Tools.coordinate_tko).title("Marker in Tseung Kwan O MTR station"))
+                }
+
+                if(!des_Location.equals(start_Location))
+                {
+                    writeLineInMap(start_Location,des_Location)
+                }
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                /*Do something if nothing selected*/
+            }
+        }
+
+    }
+    fun writeLineInMap(start : LatLng, dest : LatLng)
+    {
+        mMap.addPolyline(PolylineOptions()
+                .add(start,dest)
+                .width(5f)
+                .color(Color.RED))
+
+    }
 }
+
+
