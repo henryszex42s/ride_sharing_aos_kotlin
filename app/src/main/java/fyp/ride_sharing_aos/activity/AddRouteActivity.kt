@@ -33,6 +33,8 @@ class AddRouteActivity : BaseActivity(), OnMapReadyCallback {
     var numOfPeople = 0
     var createtime = 0
     var prefertime = 0
+    var m_Only = false
+    var f_Only = false
 
     //Filter Value
     val options = arrayOf("Male Only","Female Only", "Student Only", "Staff Only")
@@ -54,7 +56,7 @@ class AddRouteActivity : BaseActivity(), OnMapReadyCallback {
 
 
         create.setOnClickListener{
-            var room = Room(starting_Place, des_Place, numOfPeople, false, false, createtime, prefertime,roomname.text.toString(), "","","","")
+            var room = Room(starting_Place, des_Place, numOfPeople, m_Only, f_Only, createtime, prefertime,roomname.text.toString(), "","","","")
             FirebaseManager.createRoom(room)
 
             Toast.makeText(this,
@@ -83,6 +85,29 @@ class AddRouteActivity : BaseActivity(), OnMapReadyCallback {
 
             filter_alert.setTitle("Filter (Optional)")
 
+            // radio button: male only, female only
+            val radio = dialogView.findViewById<RadioGroup>(R.id.gender_only)
+            radio.setOnCheckedChangeListener(object : RadioGroup.OnCheckedChangeListener {
+                override fun onCheckedChanged(group: RadioGroup, checkedId: Int) {
+                    // checkedId is the RadioButton selected
+
+                    if(checkedId == R.id.m_only) {
+                        m_Only = true
+                        f_Only = false
+
+                        Toast.makeText(this@AddRouteActivity, "Male Only: "+ m_Only + f_Only, Toast.LENGTH_SHORT).show()
+                    }
+                    if(checkedId == R.id.f_only) {
+                        m_Only = false
+                        f_Only = true
+
+                        Toast.makeText(this@AddRouteActivity, "female only: "+ m_Only + f_Only, Toast.LENGTH_SHORT).show()
+                    }
+
+                }
+            })
+
+            // seekbar: #passengers
             var seek = dialogView.findViewById<SeekBar>(R.id.pplseek)
             var seektext = dialogView.findViewById<TextView>(R.id.seektext)
 
