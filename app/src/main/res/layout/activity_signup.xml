@@ -25,6 +25,7 @@
             android:paddingRight="15dp"
             app:counterOverflowTextAppearance="@style/TextOverCount"
             android:textColorHint="@color/colorHint"
+            android:theme="@style/all_black"
             >
 
             <EditText
@@ -56,6 +57,7 @@
             android:textColorHint="@color/colorHint"
             app:passwordToggleEnabled="true"
             app:passwordToggleTint="@color/colorHint"
+            android:theme="@style/all_black"
 
             app:passwordToggleDrawable="@drawable/ic_eye_grey_30dp"
             >
@@ -89,6 +91,7 @@
                 android:paddingRight="15dp"
                 app:counterOverflowTextAppearance="@style/TextOverCount"
                 android:textColorHint="@color/colorHint"
+                android:theme="@style/all_black"
                 >
 
                 <EditText
@@ -142,7 +145,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:text="@string/signup_gender"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="20sp" />
 
 

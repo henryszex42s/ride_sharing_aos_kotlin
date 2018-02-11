@@ -26,6 +26,7 @@ class AddRouteActivity : BaseActivity(), OnMapReadyCallback {
 
     var start_Location = LatLng(0.0,0.0)
     var des_Location = LatLng(0.0,0.0)
+    var default_location = LatLng(0.0,0.0)
 
     //Info for room object
     var starting_Place =""
@@ -57,9 +58,13 @@ class AddRouteActivity : BaseActivity(), OnMapReadyCallback {
 
 
         create.setOnClickListener{
-            showProgressDialog(getString(R.string.progress_loading))
-            var room = Room(starting_Place, des_Place, numOfPeople, m_Only, f_Only, createtime, prefertime,roomname.text.toString(), "","","","")
-            FirebaseManager.createRoom(room, {afterCreateRoom()})
+            if(start_Location == des_Location)
+                Toast.makeText(this@AddRouteActivity, "Location must not be the same", Toast.LENGTH_SHORT).show()
+            else{
+                showProgressDialog(getString(R.string.progress_loading))
+                var room = Room(starting_Place, des_Place, numOfPeople, m_Only, f_Only, createtime, prefertime,roomname.text.toString(), "","","","")
+                FirebaseManager.createRoom(room, {afterCreateRoom()})
+            }
         }
   }
 
@@ -191,41 +196,55 @@ class AddRouteActivity : BaseActivity(), OnMapReadyCallback {
         start_spin.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
 
-                // start: UST
+
                 when {
-                    parent.getSelectedItem().toString() == "HKUST" -> {
-                        start_Location = Tools.coordinate_ust
+                // start: USTNG
+                    position == 1 -> {
+                        start_Location = Tools.coordinate_ustng
                         starting_Place = resources.getString(R.string.location_HKUST_North)
-                        mMap.addMarker(MarkerOptions().position(Tools.coordinate_ust).title("Marker in HKU"))
-                        mMap.moveCamera(CameraUpdateFactory.newLatLng(Tools.coordinate_ust))
+                        mMap.addMarker(MarkerOptions().position(Tools.coordinate_ustng).title("Marker in HKUST NG"))
+                        mMap.moveCamera(CameraUpdateFactory.newLatLng(Tools.coordinate_ustng))
+                    }
+                // start: USTSG
+                    position == 2 -> {
+                        start_Location = Tools.coordinate_ustsg
+                        starting_Place = resources.getString(R.string.location_HKUST_South)
+                        mMap.addMarker(MarkerOptions().position(Tools.coordinate_ustsg).title("Marker in HKUST SG"))
+                        mMap.moveCamera(CameraUpdateFactory.newLatLng(Tools.coordinate_ustsg))
+                    }
+                // start: dh
+                    position == 3 -> {
+                        start_Location = Tools.coordinate_dh
+                        starting_Place = resources.getString(R.string.location_Diamond_Hill)
+                        mMap.addMarker(MarkerOptions().position(Tools.coordinate_dh).title("Marker in dh"))
+                        mMap.moveCamera(CameraUpdateFactory.newLatLng(Tools.coordinate_dh))
                     }
                 // start: Choi Hung
-                    parent.getSelectedItem().toString() == "Choi Hung MTR station" -> {
+                    position == 4  -> {
                         start_Location = Tools.coordinate_ch
                         starting_Place = resources.getString(R.string.location_Choi_Hung)
                         mMap.moveCamera(CameraUpdateFactory.newLatLng(Tools.coordinate_ch))
                         mMap.addMarker(MarkerOptions().position(Tools.coordinate_ch).title("Marker in Choi Hung MTR station"))
                     }
                 // start: Hang Hau
-                    parent.getSelectedItem().toString() == "Hang Hau MTR station" -> {
+                    position == 5 -> {
                         start_Location = Tools.coordinate_hh
                         starting_Place = resources.getString(R.string.location_Hang_Hau)
                         mMap.moveCamera(CameraUpdateFactory.newLatLng(Tools.coordinate_hh))
                         mMap.addMarker(MarkerOptions().position(Tools.coordinate_hh).title("Marker in Hang Hau MTR Station"))
                     }
-                // start: TKO
-                    parent.getSelectedItem().toString() == "Tseung Kwan O MTR station" -> {
-                        start_Location = Tools.coordinate_tko
+                // start: NTK
+                    position == 6 -> {
+                        start_Location = Tools.coordinate_ntk
                         starting_Place = resources.getString(R.string.location_Ngau_Tau_Kok)
-                        mMap.moveCamera(CameraUpdateFactory.newLatLng(Tools.coordinate_tko))
-                        mMap.addMarker(MarkerOptions().position(Tools.coordinate_tko).title("Marker in Tseung Kwan O MTR station"))
+                        mMap.moveCamera(CameraUpdateFactory.newLatLng(Tools.coordinate_ntk))
+                        mMap.addMarker(MarkerOptions().position(Tools.coordinate_ntk).title("Marker in NTK MTR station"))
                     }
                 }
 
-                if(!des_Location.equals(start_Location))
-                {
-                    writeLineInMap(start_Location,des_Location)
-                }
+
+                if((start_Location != default_location) && des_Location != default_location)
+                        writeLineInMap(start_Location,des_Location)
 
             }
 
@@ -242,39 +261,52 @@ class AddRouteActivity : BaseActivity(), OnMapReadyCallback {
         des_spin.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
 
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-                //Des: UST
-                if (parent.getSelectedItem().toString() == "HKUST") {
-                    des_Location = Tools.coordinate_ust
-                    des_Place = resources.getString(R.string.location_HKUST_North)
-                    mMap.moveCamera(CameraUpdateFactory.newLatLng(Tools.coordinate_ust))
-                    mMap.addMarker(MarkerOptions().position(Tools.coordinate_ust).title("Marker in HKUST"))
+                when {
+                // start: USTNG
+                    position == 1 -> {
+                        des_Location = Tools.coordinate_ustng
+                        des_Place = resources.getString(R.string.location_HKUST_North)
+                        mMap.addMarker(MarkerOptions().position(Tools.coordinate_ustng).title("Marker in HKUST NG"))
+                        mMap.moveCamera(CameraUpdateFactory.newLatLng(Tools.coordinate_ustng))
+                    }
+                // start: USTSG
+                    position == 2 -> {
+                        des_Location = Tools.coordinate_ustsg
+                        des_Place = resources.getString(R.string.location_HKUST_South)
+                        mMap.addMarker(MarkerOptions().position(Tools.coordinate_ustsg).title("Marker in HKUST SG"))
+                        mMap.moveCamera(CameraUpdateFactory.newLatLng(Tools.coordinate_ustsg))
+                    }
+                // start: dh
+                    position == 3 -> {
+                        des_Location = Tools.coordinate_dh
+                        des_Place = resources.getString(R.string.location_Diamond_Hill)
+                        mMap.addMarker(MarkerOptions().position(Tools.coordinate_dh).title("Marker in dh"))
+                        mMap.moveCamera(CameraUpdateFactory.newLatLng(Tools.coordinate_dh))
+                    }
+                // start: Choi Hung
+                    position == 4 -> {
+                        des_Location = Tools.coordinate_ch
+                        des_Place = resources.getString(R.string.location_Choi_Hung)
+                        mMap.moveCamera(CameraUpdateFactory.newLatLng(Tools.coordinate_ch))
+                        mMap.addMarker(MarkerOptions().position(Tools.coordinate_ch).title("Marker in Choi Hung MTR station"))
+                    }
+                // start: Hang Hau
+                    position == 5 -> {
+                        des_Location = Tools.coordinate_hh
+                        des_Place = resources.getString(R.string.location_Hang_Hau)
+                        mMap.moveCamera(CameraUpdateFactory.newLatLng(Tools.coordinate_hh))
+                        mMap.addMarker(MarkerOptions().position(Tools.coordinate_hh).title("Marker in Hang Hau MTR Station"))
+                    }
+                // start: NTK
+                    position == 6 -> {
+                        des_Location = Tools.coordinate_ntk
+                        des_Place = resources.getString(R.string.location_Ngau_Tau_Kok)
+                        mMap.moveCamera(CameraUpdateFactory.newLatLng(Tools.coordinate_ntk))
+                        mMap.addMarker(MarkerOptions().position(Tools.coordinate_ntk).title("Marker in NTK MTR station"))
+                    }
                 }
-                //Des: Choi hung
-                if (parent.getSelectedItem().toString() == "Choi Hung MTR station") {
-                    des_Location = Tools.coordinate_ch
-                    des_Place = resources.getString(R.string.location_Choi_Hung)
-                    mMap.moveCamera(CameraUpdateFactory.newLatLng(Tools.coordinate_ch))
-                    mMap.addMarker(MarkerOptions().position(Tools.coordinate_ch).title("Marker in Choi Hung MTR station"))
-                }
-                //Des: Hang Hau
-                if (parent.getSelectedItem().toString() == "Hang Hau MTR station") {
-                    des_Location = Tools.coordinate_hh
-                    des_Place = resources.getString(R.string.location_Hang_Hau)
-                    mMap.moveCamera(CameraUpdateFactory.newLatLng(Tools.coordinate_hh))
-                    mMap.addMarker(MarkerOptions().position(Tools.coordinate_hh).title("Marker in Hang Hau MTR station"))
-                }
-                //Des: TKO
-                if (parent.getSelectedItem().toString() == "Tseung Kwan O MTR station") {
-                    des_Location = Tools.coordinate_tko
-                    des_Place = resources.getString(R.string.location_Ngau_Tau_Kok)
-                    mMap.moveCamera(CameraUpdateFactory.newLatLng(Tools.coordinate_tko))
-                    mMap.addMarker(MarkerOptions().position(Tools.coordinate_tko).title("Marker in Tseung Kwan O MTR station"))
-                }
-
-                if(!des_Location.equals(start_Location))
-                {
-                    writeLineInMap(start_Location,des_Location)
-                }
+                if((start_Location != default_location) && des_Location != default_location)
+                        writeLineInMap(start_Location,des_Location)
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {

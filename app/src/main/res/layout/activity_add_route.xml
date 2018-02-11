@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:theme="@style/ThemeOverlay.AppCompat.Dark"
+    android:background="@drawable/hkust_bgimg"
     tools:context="fyp.ride_sharing_aos.activity.AddRouteActivity">
 
     <!-- TODO: Update blank fragment layout -->
@@ -23,6 +24,7 @@
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
             app:counterOverflowTextAppearance="@style/TextOverCount"
+            android:theme="@style/all_black"
             >
 
             <EditText
@@ -42,6 +44,7 @@
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
             app:counterOverflowTextAppearance="@style/TextOverCount"
+            android:theme="@style/all_black"
             >
 
             <EditText

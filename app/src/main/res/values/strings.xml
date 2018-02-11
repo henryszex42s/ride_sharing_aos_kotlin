@@ -130,17 +130,23 @@
     <string name="progress_loading">Loading....</string>
 
     <string-array name="start_choices">
-        <item>HKUST</item>
+        <item></item>
+        <item>HKUST North Gate</item>
+        <item>HKUST South Gate</item>
+        <item>Diamond Hill MTR Station</item>
         <item>Choi Hung MTR Station</item>
         <item>Hang Hau MTR Station</item>
-        <item>Tseung Kwan O MTR station</item>
+        <item>Ngau Tau Kok MTR Station</item>
     </string-array>
 
     <string-array name="des_choices">
-        <item>HKUST</item>
-        <item>Choi Hung MTR station</item>
-        <item>Hang Hau MTR station</item>
-        <item>Tseung Kwan O MTR station</item>
+        <item></item>
+        <item>HKUST North Gate</item>
+        <item>HKUST South Gate</item>
+        <item>Diamond Hill MTR Station</item>
+        <item>Choi Hung MTR Station</item>
+        <item>Hang Hau MTR Station</item>
+        <item>Ngau Tau Kok MTR Station</item>
     </string-array>
 
 

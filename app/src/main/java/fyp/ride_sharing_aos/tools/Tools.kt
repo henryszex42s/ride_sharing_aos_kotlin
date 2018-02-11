@@ -15,13 +15,15 @@ object Tools
     var currentLocation = Location("")
 
     enum class Location_Name {
-        HKUST, Choi_Hung_MTR_Station, Hang_Hau_MTR_Station, Tseung_Kwan_O_MTR_Station
+        HKUST_North_Gate, HKUST_South_Gate,Diamond_Hill_MTR_Station,Choi_Hung_MTR_Station, Hang_Hau_MTR_Station, Ngau_Tau_Kok_MTR_Station
     }
     /* Coordinate of Locations*/
-    val coordinate_ust = LatLng(22.336397, 114.265506)
+    val coordinate_ustng = LatLng(22.3384087,114.262253)
+    val coordinate_ustsg = LatLng(22.3330995,114.2632765)
+    val coordinate_dh = LatLng(22.3401561,114.2018975)
     val coordinate_ch = LatLng(22.3349716, 114.2085751)
-    val coordinate_hh = LatLng(22.3156009, 114.262199)
-    val coordinate_tko = LatLng(22.3074385, 114.258921)
+    val coordinate_hh = LatLng(22.315596,114.264393)
+    val coordinate_ntk = LatLng(22.3154622,114.2191418)
 
 
 //    val error_msg: ArrayList<String> = ArrayList()
