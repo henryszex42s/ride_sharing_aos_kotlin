@@ -41,6 +41,7 @@ class AddRouteActivity : BaseActivity(), OnMapReadyCallback {
     var isCheck = booleanArrayOf(false,false,false,false)
     var yourChoices : MutableList<Int> = arrayListOf()
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_route)
@@ -194,7 +195,7 @@ class AddRouteActivity : BaseActivity(), OnMapReadyCallback {
                 when {
                     parent.getSelectedItem().toString() == "HKUST" -> {
                         start_Location = Tools.coordinate_ust
-                        starting_Place = resources.getString(R.string.location_HKUST)
+                        starting_Place = resources.getString(R.string.location_HKUST_North)
                         mMap.addMarker(MarkerOptions().position(Tools.coordinate_ust).title("Marker in HKU"))
                         mMap.moveCamera(CameraUpdateFactory.newLatLng(Tools.coordinate_ust))
                     }
@@ -215,7 +216,7 @@ class AddRouteActivity : BaseActivity(), OnMapReadyCallback {
                 // start: TKO
                     parent.getSelectedItem().toString() == "Tseung Kwan O MTR station" -> {
                         start_Location = Tools.coordinate_tko
-                        starting_Place = resources.getString(R.string.location_Tseung_Kwan_O)
+                        starting_Place = resources.getString(R.string.location_Ngau_Tau_Kok)
                         mMap.moveCamera(CameraUpdateFactory.newLatLng(Tools.coordinate_tko))
                         mMap.addMarker(MarkerOptions().position(Tools.coordinate_tko).title("Marker in Tseung Kwan O MTR station"))
                     }
@@ -244,7 +245,7 @@ class AddRouteActivity : BaseActivity(), OnMapReadyCallback {
                 //Des: UST
                 if (parent.getSelectedItem().toString() == "HKUST") {
                     des_Location = Tools.coordinate_ust
-                    des_Place = resources.getString(R.string.location_HKUST)
+                    des_Place = resources.getString(R.string.location_HKUST_North)
                     mMap.moveCamera(CameraUpdateFactory.newLatLng(Tools.coordinate_ust))
                     mMap.addMarker(MarkerOptions().position(Tools.coordinate_ust).title("Marker in HKUST"))
                 }
@@ -265,7 +266,7 @@ class AddRouteActivity : BaseActivity(), OnMapReadyCallback {
                 //Des: TKO
                 if (parent.getSelectedItem().toString() == "Tseung Kwan O MTR station") {
                     des_Location = Tools.coordinate_tko
-                    des_Place = resources.getString(R.string.location_Tseung_Kwan_O)
+                    des_Place = resources.getString(R.string.location_Ngau_Tau_Kok)
                     mMap.moveCamera(CameraUpdateFactory.newLatLng(Tools.coordinate_tko))
                     mMap.addMarker(MarkerOptions().position(Tools.coordinate_tko).title("Marker in Tseung Kwan O MTR station"))
                 }

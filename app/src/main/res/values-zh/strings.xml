@@ -62,21 +62,7 @@
     <string name="from">從:</string>
     <string name="to">到:</string>
 
-    <string-array name="start_choices">
-        <item></item>
-        <item>HKUST</item>
-        <item>Choi Hung MTR station</item>
-        <item>Hang Hau MTR station</item>
-        <item>Tseung Kwan O MTR station</item>
-    </string-array>
 
-    <string-array name="des_choices">
-        <item></item>
-        <item>HKUST</item>
-        <item>Choi Hung MTR station</item>
-        <item>Hang Hau MTR station</item>
-        <item>Tseung Kwan O MTR station</item>
-    </string-array>
     <string name="create">建立</string>
     <string name="filter">篩選</string>
 

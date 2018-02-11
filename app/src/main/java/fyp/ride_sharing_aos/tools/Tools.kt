@@ -1,18 +1,10 @@
 package fyp.ride_sharing_aos.tools
 
-import android.app.Activity
-import android.app.Dialog
-import android.app.ProgressDialog
 import android.content.Context
 import android.location.Location
 import android.support.v7.app.AlertDialog
-import android.view.LayoutInflater
-import android.view.View
-import android.widget.TextView
 import com.google.android.gms.maps.model.LatLng
-import com.google.firebase.auth.FirebaseAuth
 import fyp.ride_sharing_aos.R
-import kotlinx.android.synthetic.main.progress_dialog.view.*
 
 /**
  * Created by lfreee on 19/1/2018.

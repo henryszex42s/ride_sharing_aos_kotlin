@@ -68,19 +68,6 @@
     <string name="from">From:</string>
     <string name="to">To:</string>
 
-    <string-array name="start_choices">
-        <item>HKUST</item>
-        <item>Choi Hung MTR Station</item>
-        <item>Hang Hau MTR Station</item>
-        <item>Tseung Kwan O MTR station</item>
-    </string-array>
-
-    <string-array name="des_choices">
-        <item>HKUST</item>
-        <item>Choi Hung MTR station</item>
-        <item>Hang Hau MTR station</item>
-        <item>Tseung Kwan O MTR station</item>
-    </string-array>
     <string name="create">Create</string>
     <string name="filter">Filter</string>
 
@@ -133,13 +120,28 @@
 
     <string name="settings">Settings</string>
 
-    <string name="location_HKUST">HKUST</string>
-    <string name="location_Choi_Hung">Choi Hung MTR Station</string>
-    <string name="location_Hang_Hau">Hang Hau MTR Station</string>
-    <string name="location_Tseung_Kwan_O">Tseung Kwan O MTR station</string>
-
+    <string name="location_HKUST_North">HKUST North Gate</string>
+    <string name="location_HKUST_South">HKUST South Gate</string>
+    <string name="location_Diamond_Hill">Diamond Hill MTR</string>
+    <string name="location_Choi_Hung">Choi Hung MTR</string>
+    <string name="location_Hang_Hau">Hang Hau MTR</string>
+    <string name="location_Ngau_Tau_Kok">Ngau Tau Kok MTR</string>
 
     <string name="progress_loading">Loading....</string>
+
+    <string-array name="start_choices">
+        <item>HKUST</item>
+        <item>Choi Hung MTR Station</item>
+        <item>Hang Hau MTR Station</item>
+        <item>Tseung Kwan O MTR station</item>
+    </string-array>
+
+    <string-array name="des_choices">
+        <item>HKUST</item>
+        <item>Choi Hung MTR station</item>
+        <item>Hang Hau MTR station</item>
+        <item>Tseung Kwan O MTR station</item>
+    </string-array>
 
 
 

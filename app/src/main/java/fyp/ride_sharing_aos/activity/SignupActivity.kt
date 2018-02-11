@@ -91,7 +91,7 @@ class SignupActivity : BaseActivity() {
                                         })
 
                                         .addOnFailureListener({
-                                                    Toast.makeText(this, "Your account has not been created, please connect us for help.", Toast.LENGTH_SHORT).show()
+                                                    Toast.makeText(this, "Your account has not been created, please contact us for help.", Toast.LENGTH_SHORT).show()
                                         })
 
 //                                Realtime Database Code

@@ -2,19 +2,11 @@ package fyp.ride_sharing_aos.tools
 
 import android.content.ContentValues.TAG
 import android.util.Log
-import android.widget.Toast
-import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.QuerySnapshot
 import fyp.ride_sharing_aos.model.Room
 import fyp.ride_sharing_aos.model.User
-import java.util.stream.Collectors
 
 /**
  * Created by lfreee on 21/1/2018.
@@ -70,7 +62,10 @@ object FirebaseManager {
                 .add(newRoom)
                 .addOnSuccessListener({ documentReference ->
                     Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.id)
-                    UserObj!!.chatsession = documentReference.id
+                    if(UserObj != null)
+                    {
+                        UserObj!!.chatsession = documentReference.id
+                    }
                     callback(Unit)
                 })
                 .addOnFailureListener(
