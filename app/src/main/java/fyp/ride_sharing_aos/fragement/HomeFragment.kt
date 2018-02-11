@@ -36,7 +36,7 @@ class HomeFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         rv_roomlist.layoutManager = LinearLayoutManager(activity)
         rv_roomlist.adapter = RoomListAdapter(this.context,FirebaseManager.getRoomList())
-        FirebaseManager.setRoomListListener({DataChange()})
+        FirebaseManager.updateRoomListListener({DataChange()})
     }
 
     override fun onStart() {

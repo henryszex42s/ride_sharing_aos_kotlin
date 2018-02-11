@@ -33,7 +33,7 @@ import android.view.LayoutInflater
 import kotlinx.android.synthetic.main.nav_filter.*
 
 
-class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener{
+class HomeActivity : BaseActivity(){
 
     var fbAuth = FirebaseAuth.getInstance()
 
@@ -94,53 +94,53 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 //        }
 //    }
 
-    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        // Handle navigation view item clicks here.
-        when (item.itemId) {
-            R.id.nav_setting -> {
-
-            }
-            R.id.nav_help -> {
-
-            }
-            R.id.nav_about -> {
-
-            }
-            R.id.nav_feedback -> {
-
-            }
-            R.id.nav_logout -> {
-                val builder_logout = AlertDialog.Builder(this@HomeActivity)
-                builder_logout.setMessage("Are You sure to logout?")
-                builder_logout.setCancelable(true)
-                builder_logout.setTitle("Logout")
-
-                val logout = DialogInterface.OnClickListener { dialog, which ->
-                    fbAuth.signOut()
-                     val intent = Intent(this@HomeActivity, GetStartActivity::class.java)
-                     startActivity(intent)
-                     finish()
-                }
-                builder_logout.setPositiveButton(
-                        "Logout",logout
-                )
-                builder_logout.setNegativeButton(
-                        "Cancel"
-                ) { dialog, id -> dialog.cancel() }
-
-                val alert11 = builder_logout.create()
-                alert11.show()
-
-            }
-        }
-        drawer_layout.closeDrawer(GravityCompat.START)
-        return true
-    }
+//    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+//        // Handle navigation view item clicks here.
+//        when (item.itemId) {
+//            R.id.nav_setting -> {
+//
+//            }
+//            R.id.nav_help -> {
+//
+//            }
+//            R.id.nav_about -> {
+//
+//            }
+//            R.id.nav_feedback -> {
+//
+//            }
+//            R.id.nav_logout -> {
+//                val builder_logout = AlertDialog.Builder(this@HomeActivity)
+//                builder_logout.setMessage("Are You sure to logout?")
+//                builder_logout.setCancelable(true)
+//                builder_logout.setTitle("Logout")
+//
+//                val logout = DialogInterface.OnClickListener { dialog, which ->
+//                    fbAuth.signOut()
+//                     val intent = Intent(this@HomeActivity, GetStartActivity::class.java)
+//                     startActivity(intent)
+//                     finish()
+//                }
+//                builder_logout.setPositiveButton(
+//                        "Logout",logout
+//                )
+//                builder_logout.setNegativeButton(
+//                        "Cancel"
+//                ) { dialog, id -> dialog.cancel() }
+//
+//                val alert11 = builder_logout.create()
+//                alert11.show()
+//
+//            }
+//        }
+//        drawer_layout.closeDrawer(GravityCompat.START)
+//        return true
+//    }
 
 
     private fun loadData()
     {
-        FirebaseManager.setRoomListListener({dismissProgressDialog()})
+        FirebaseManager.updateRoomListListener({dismissProgressDialog()})
 
         if(fbAuth.currentUser != null)
         {

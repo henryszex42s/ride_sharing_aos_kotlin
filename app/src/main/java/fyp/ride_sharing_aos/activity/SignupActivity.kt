@@ -4,7 +4,10 @@ import android.content.Intent
 import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
+import com.google.android.gms.tasks.OnFailureListener
+import com.google.android.gms.tasks.OnSuccessListener
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
@@ -15,23 +18,28 @@ import kotlinx.android.synthetic.main.activity_signup.*
 import fyp.ride_sharing_aos.HomeActivity
 import fyp.ride_sharing_aos.model.User
 import fyp.ride_sharing_aos.tools.Tools
+import com.google.firebase.firestore.FirebaseFirestore
+
+
 
 
 
 class SignupActivity : BaseActivity() {
 
+    private val TAG = "SignupActivity"
 
     private lateinit var mAuth : FirebaseAuth
-    private lateinit var database: FirebaseDatabase
-    private lateinit var dbRef: DatabaseReference
+    private lateinit var db : FirebaseFirestore
 
-    var email : String? = null
-    var password : String? = null
-    var gender_selectedId : String? = null
-    var gender : String? = null
-    var identity_selectedId : String? = null
-    var identity : String? = null
-    var username: String? = null
+//    private lateinit var database: FirebaseDatabase
+//    private lateinit var dbRef: DatabaseReference
+
+
+    private var email : String? = null
+    private var password : String? = null
+    private var gender : String? = null
+    private var identity : String? = null
+    private var username: String? = null
 
 
 
@@ -40,9 +48,13 @@ class SignupActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
+//        database = FirebaseDatabase.getInstance()
+//        dbRef = database.reference
         mAuth = FirebaseAuth.getInstance()
-        database = FirebaseDatabase.getInstance()
-        dbRef = database.reference
+        db = FirebaseFirestore.getInstance()
+
+
         InitView()
 
     }
@@ -65,17 +77,31 @@ class SignupActivity : BaseActivity() {
                         .addOnCompleteListener { task: Task<AuthResult> ->
                             if (task.isSuccessful)
                             {
-                                val userId = mAuth.currentUser?.uid
-                                val registerRef = dbRef.child("users").child(userId)
-                                val user = User(username, userId.toString(), email, identity,gender)
+                                val userId = mAuth.currentUser!!.uid
+                                val user = User(username, userId, email, identity,gender)
 
-                                registerRef.setValue(user).addOnSuccessListener()
-                                {
-                                    Toast.makeText(this, "Authentication Success.", Toast.LENGTH_SHORT).show()
-                                    val intent = Intent(this@SignupActivity, HomeActivity::class.java)
-                                    startActivity(intent)
-                                    this.finish()
-                                }
+                                db.collection("user")
+                                        .document(userId)
+                                        .set(user)
+                                        .addOnSuccessListener({
+                                            Toast.makeText(this, "Your account has been created successfully.", Toast.LENGTH_SHORT).show()
+                                            val intent = Intent(this@SignupActivity, HomeActivity::class.java)
+                                            startActivity(intent)
+                                            this.finish()
+                                        })
+
+                                        .addOnFailureListener({
+                                                    Toast.makeText(this, "Your account has not been created, please connect us for help.", Toast.LENGTH_SHORT).show()
+                                        })
+
+//                                Realtime Database Code
+//                                registerRef.setValue(user).addOnSuccessListener()
+//                                {
+//                                    Toast.makeText(this, "Authentication Success.", Toast.LENGTH_SHORT).show()
+//                                    val intent = Intent(this@SignupActivity, HomeActivity::class.java)
+//                                    startActivity(intent)
+//                                    this.finish()
+//                                }
                             }
                             else {
                                 // If sign in fails, display a message to the user.

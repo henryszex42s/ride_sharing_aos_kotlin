@@ -15,8 +15,7 @@ import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : BaseActivity() {
     private lateinit var mAuth : FirebaseAuth
-    private lateinit var database: FirebaseDatabase
-    private lateinit var dbRef: DatabaseReference
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,9 +23,6 @@ class LoginActivity : BaseActivity() {
         supportActionBar?.hide()
 
         mAuth = FirebaseAuth.getInstance()
-        database = FirebaseDatabase.getInstance()
-        dbRef = database.reference
-
 
         login_button.setOnClickListener{
             val email = login_email.text.toString()
