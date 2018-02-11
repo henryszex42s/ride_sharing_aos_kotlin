@@ -29,7 +29,7 @@ object FirebaseManager {
 //    private var database = FirebaseDatabase.getInstance()
 //    private var dbReference = database.reference
 
-    private var UserObj : User ?= null
+    var UserObj : User ?= null
     private val RoomList: MutableList<Room> = mutableListOf()
 
 
@@ -61,21 +61,24 @@ object FirebaseManager {
         return RoomList.isEmpty()
     }
 
-    fun createRoom(newRoom : Room)
+    fun createRoom(newRoom : Room, callback: (Any)->Unit)
     {
 //        Realtime Database Code
 //        val roomList = database.reference.child("room").push()
 //        roomList.setValue(newRoom)
-
         db.collection("room")
                 .add(newRoom)
                 .addOnSuccessListener({ documentReference ->
                     Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.id)
+                    UserObj!!.chatsession = documentReference.id
+                    callback(Unit)
                 })
                 .addOnFailureListener(
-                        {
+                 {
                     e -> Log.w(TAG, "Error adding document", e)
+
                 })
+
     }
 
 

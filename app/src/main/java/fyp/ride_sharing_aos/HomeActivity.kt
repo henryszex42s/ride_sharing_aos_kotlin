@@ -54,7 +54,7 @@ class HomeActivity : BaseActivity(){
         setContentView(R.layout.activity_home)
 
 
-        showProgressDialog("Loading......")
+        showProgressDialog(getString(R.string.progress_loading))
         loadData()
         initView()
         slideFilter()

@@ -56,15 +56,32 @@ class AddRouteActivity : BaseActivity(), OnMapReadyCallback {
 
 
         create.setOnClickListener{
+            showProgressDialog(getString(R.string.progress_loading))
             var room = Room(starting_Place, des_Place, numOfPeople, m_Only, f_Only, createtime, prefertime,roomname.text.toString(), "","","","")
-            FirebaseManager.createRoom(room)
+            FirebaseManager.createRoom(room, {afterCreateRoom()})
+        }
+  }
 
+
+    fun afterCreateRoom()
+    {
+        dismissProgressDialog()
+        if(!FirebaseManager.UserObj!!.chatsession.equals(""))
+        {
             Toast.makeText(this,
-                    "Create Test" ,
+                    "Room is created" ,
                     Toast.LENGTH_SHORT).show();
         }
+        else
+        {
+            Toast.makeText(this,
+                    "Room is not created" ,
+                    Toast.LENGTH_SHORT).show();
+        }
+    }
 
-  }
+
+
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
