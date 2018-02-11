@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/get_start_cl"
@@ -8,6 +9,7 @@
     tools:context="fyp.ride_sharing_aos.activity.GetStartActivity">
 
     <RelativeLayout
+        android:background="#e0e0e0"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -35,7 +37,7 @@
             android:layout_below="@id/welcome_appicon"
             android:gravity="center_horizontal"
             android:text="@string/welcome"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="20sp" />
 
         <TextView
@@ -46,7 +48,7 @@
             android:layout_marginBottom="20dp"
             android:gravity="center_horizontal"
             android:padding="10dp"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:text="@string/welcome_description"
             android:textSize="20sp" />
 
