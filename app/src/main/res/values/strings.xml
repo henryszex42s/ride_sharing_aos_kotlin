@@ -129,6 +129,7 @@
 
     <string name="progress_loading">Loading....</string>
 
+    <!-- Useless here. Can remove if spinner work-->
     <string-array name="start_choices">
         <item></item>
         <item>HKUST North Gate</item>
