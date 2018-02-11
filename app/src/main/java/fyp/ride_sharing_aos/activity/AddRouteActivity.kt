@@ -90,7 +90,12 @@ class AddRouteActivity : BaseActivity(), OnMapReadyCallback {
             radio.setOnCheckedChangeListener(object : RadioGroup.OnCheckedChangeListener {
                 override fun onCheckedChanged(group: RadioGroup, checkedId: Int) {
                     // checkedId is the RadioButton selected
+                    if(checkedId == R.id.none) {
+                        m_Only = false
+                        f_Only = false
 
+                        Toast.makeText(this@AddRouteActivity, "None: "+ m_Only + f_Only, Toast.LENGTH_SHORT).show()
+                    }
                     if(checkedId == R.id.m_only) {
                         m_Only = true
                         f_Only = false

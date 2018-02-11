@@ -84,8 +84,8 @@
     <!-- filter dialog-->
     <string name="m_only">只有男性</string>
     <string name="f_only">只有女性</string>
-    <string name="staff_only">只有職員</string>
-    <string name="stu_only">只有學生</string>
+    <string name="none">無</string>
+
     <string name="reset">重置</string>
 
     <string name="nop">乘客人數: 0</string>

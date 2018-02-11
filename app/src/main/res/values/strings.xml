@@ -88,8 +88,7 @@
     <!-- filter dialog-->
     <string name="m_only">Male Only</string>
     <string name="f_only">Female Only</string>
-    <string name="staff_only">Staff Only</string>
-    <string name="stu_only">Student Only</string>
+    <string name="none">None</string>
     <string name="reset">Reset</string>
 
     <string name="nop">Number of passenger: 0</string>
