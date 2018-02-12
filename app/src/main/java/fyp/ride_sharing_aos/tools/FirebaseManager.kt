@@ -71,7 +71,7 @@ object FirebaseManager {
                 .addOnFailureListener(
                  {
                     e -> Log.w(TAG, "Error adding document", e)
-
+                     callback(Unit)
                 })
 
     }

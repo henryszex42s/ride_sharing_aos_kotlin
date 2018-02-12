@@ -207,7 +207,10 @@ class AddRouteActivity : BaseActivity(), OnMapReadyCallback {
 */
         // Start_spinner
         val start_spinner = findViewById<MaterialSpinner>(R.id.start_spin)
-        start_spinner.setItems("","HKUST North Gate", "HKUST South Gate","Diamond Hill MTR_Station","Choi Hung MTR Station","Hang Hau_MTR Station", "Ngau Tau Kok MTR Station")
+
+//        start_spinner.setItems("","HKUST North Gate", "HKUST South Gate","Diamond Hill MTR_Station","Choi Hung MTR Station","Hang Hau_MTR Station", "Ngau Tau Kok MTR Station")
+
+        start_spinner.setItems("",resources.getString(R.string.location_HKUST_North), resources.getString(R.string.location_HKUST_South),resources.getString(R.string.location_Diamond_Hill),resources.getString(R.string.location_Choi_Hung),resources.getString(R.string.location_Hang_Hau), resources.getString(R.string.location_Ngau_Tau_Kok))
         start_spinner.setOnItemSelectedListener { view, position, id, item ->
             when {
             // start: USTNG
@@ -263,7 +266,10 @@ class AddRouteActivity : BaseActivity(), OnMapReadyCallback {
 
         //des_spinner
         val des_spinner = findViewById<MaterialSpinner>(R.id.des_spin)
-        des_spinner.setItems("","HKUST North Gate", "HKUST South Gate","Diamond Hill MTR_Station","Choi Hung MTR Station","Hang Hau_MTR Station", "Ngau Tau Kok MTR Station")
+
+//      des_spinner.setItems("","HKUST North Gate", "HKUST South Gate","Diamond Hill MTR_Station","Choi Hung MTR Station","Hang Hau_MTR Station", "Ngau Tau Kok MTR Station")
+
+        des_spinner.setItems("",resources.getString(R.string.location_HKUST_North), resources.getString(R.string.location_HKUST_South),resources.getString(R.string.location_Diamond_Hill),resources.getString(R.string.location_Choi_Hung),resources.getString(R.string.location_Hang_Hau), resources.getString(R.string.location_Ngau_Tau_Kok))
         des_spinner.setOnItemSelectedListener { view, position, id, item ->
 
             when {

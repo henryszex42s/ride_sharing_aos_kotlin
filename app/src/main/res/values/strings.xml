@@ -98,6 +98,7 @@
     <!-- Notification - Setting Fragment-->
     <string name="notification">Notification</string>
 
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_welcome">WelcomeActivity</string>
@@ -110,16 +111,25 @@
     <string name="closeApp">Are you want to close this application?</string>
 
 
+
+
+
+    <!--Location Related-->
     <string name="latitude_label">Latitude: %f</string>
     <string name="longitude_label">Longitude: %f</string>
     <string name="no_location_detected">No location detected. Make sure location is enabled on the device.</string>
-
     <string name="permission_denied_explanation">Permission was denied, but is needed for core functionality.</string>
-
     <string name="permission_rationale">Location permission is needed for core functionality</string>
+
+
 
     <string name="settings">Settings</string>
 
+    <!--Progress Dialog-->
+    <string name="progress_loading">Loading....</string>
+
+
+    <!--For Display-->
     <string name="location_HKUST_North">HKUST North Gate</string>
     <string name="location_HKUST_South">HKUST South Gate</string>
     <string name="location_Diamond_Hill">Diamond Hill MTR</string>
@@ -127,7 +137,21 @@
     <string name="location_Hang_Hau">Hang Hau MTR</string>
     <string name="location_Ngau_Tau_Kok">Ngau Tau Kok MTR</string>
 
-    <string name="progress_loading">Loading....</string>
+
+    <!--Nav_Filter-->
+    <string name="nav_starting_point">Start Point</string>
+    <string name="nav_destination">Destination</string>
+
+    <string name="nav_gender_filter">Gender Filter</string>
+    <string name="nav_gender_none">None</string>
+    <string name="nav_gender_male">Male</string>
+    <string name="nav_gender_female">Female</string>
+
+    <string name="nav_min_passengers">Minimum Passengers</string>
+
+    <string name="nav_reset">Reset</string>
+    <string name="nav_submit">Submit</string>
+
 
     <!-- Useless here. Can remove if spinner work-->
     <string-array name="start_choices">

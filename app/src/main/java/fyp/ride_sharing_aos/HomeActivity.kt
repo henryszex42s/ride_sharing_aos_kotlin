@@ -1,9 +1,7 @@
 package fyp.ride_sharing_aos
 
-import android.app.Notification
 import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.NavigationView
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentTransaction
@@ -11,12 +9,10 @@ import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
-import android.view.MenuItem
 import com.google.firebase.auth.FirebaseAuth
 import fyp.ride_sharing_aos.activity.GetStartActivity
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
-import android.content.DialogInterface
 import android.graphics.Color
 import android.support.design.widget.BottomNavigationView
 import fyp.ride_sharing_aos.activity.AddRouteActivity
@@ -24,12 +20,9 @@ import fyp.ride_sharing_aos.activity.BaseActivity
 import fyp.ride_sharing_aos.fragement.*
 import fyp.ride_sharing_aos.tools.FirebaseManager
 import android.support.v7.widget.CardView
-import android.widget.Button
-import android.graphics.Color.parseColor
 import android.view.View
 import android.widget.Toast
-import fyp.ride_sharing_aos.R.id.card_view
-import android.view.LayoutInflater
+import com.google.firebase.firestore.Query
 import kotlinx.android.synthetic.main.nav_filter.*
 
 
@@ -45,9 +38,14 @@ class HomeActivity : BaseActivity(){
     val notificationFragment = NotificationFragment()
     val edit_profileFragment = EditProfileFragment()
 
-    // slide menu array
-    val s_clicked_array: BooleanArray = booleanArrayOf(false,false,false,false,false,false)
-    val d_clicked_array: BooleanArray = booleanArrayOf(false,false,false,false,false,false)
+    val startingLocationView = ArrayList<CardView>()
+    val destinationView = ArrayList<CardView>()
+
+    private lateinit var  startingFilterValue : String
+    private lateinit var  destinationFilterValue : String
+    private lateinit var genderFilterValue : String
+    private lateinit var minPassengersFilterValue : String
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -263,170 +261,206 @@ class HomeActivity : BaseActivity(){
     fun slideFilter()
     {
 
+        startingFilterValue = "None"
+        destinationFilterValue = "None"
+        genderFilterValue = "None"
+        minPassengersFilterValue = "1"
 
-        var s_cardview = findViewById<CardView>(R.id.card_s_ustng)
-        var s_cardview2 = findViewById<CardView>(R.id.card_s_ustsg)
-        var s_cardview3 = findViewById<CardView>(R.id.card_s_dh)
-        var s_cardview4 = findViewById<CardView>(R.id.card_s_ch)
-        var s_cardview5 = findViewById<CardView>(R.id.card_s_ntk)
-        var s_cardview6 = findViewById<CardView>(R.id.card_s_hh)
+        startingLocationView.add(card_s_ustng)
+        startingLocationView.add(card_s_ustsg)
+        startingLocationView.add(card_s_dh)
+        startingLocationView.add(card_s_ch)
+        startingLocationView.add(card_s_hh)
+        startingLocationView.add(card_s_ntk)
 
-        var d_cardview = findViewById<CardView>(R.id.card_d_ustng)
-        var d_cardview2 = findViewById<CardView>(R.id.card_d_ustsg)
-        var d_cardview3 = findViewById<CardView>(R.id.card_d_dh)
-        var d_cardview4 = findViewById<CardView>(R.id.card_d_ch)
-        var d_cardview5 = findViewById<CardView>(R.id.card_d_ntk)
-        var d_cardview6 = findViewById<CardView>(R.id.card_d_hh)
+        card_s_ustng.setOnClickListener { nav_starting_filterOnClickListener(card_s_ustng) }
+        card_s_ustsg.setOnClickListener { nav_starting_filterOnClickListener(card_s_ustsg) }
+        card_s_dh.setOnClickListener { nav_starting_filterOnClickListener(card_s_dh) }
+        card_s_ch.setOnClickListener { nav_starting_filterOnClickListener(card_s_ch) }
+        card_s_hh.setOnClickListener { nav_starting_filterOnClickListener(card_s_hh) }
+        card_s_ntk.setOnClickListener { nav_starting_filterOnClickListener(card_s_ntk) }
 
+        destinationView.add(card_d_ustng)
+        destinationView.add(card_d_ustsg)
+        destinationView.add(card_d_dh)
+        destinationView.add(card_d_ch)
+        destinationView.add(card_d_ntk)
+        destinationView.add(card_d_hh)
 
+        card_d_ustng.setOnClickListener{ nav_destination_filterOnClickListener(card_d_ustng) }
+        card_d_ustsg.setOnClickListener{ nav_destination_filterOnClickListener(card_d_ustsg) }
+        card_d_dh.setOnClickListener{ nav_destination_filterOnClickListener(card_d_dh) }
+        card_d_ch.setOnClickListener{ nav_destination_filterOnClickListener(card_d_ch) }
+        card_d_ntk.setOnClickListener{ nav_destination_filterOnClickListener(card_d_ntk) }
+        card_d_hh.setOnClickListener{ nav_destination_filterOnClickListener(card_d_hh) }
 
-
-
-        s_cardview.setOnClickListener(View.OnClickListener {
-            if(s_clicked_array[0] == false) {
-                s_cardview.setCardBackgroundColor(Color.parseColor("#e91e63"))
-                s_clicked_array[0] = true
-            }
-            else {
-                s_cardview.setCardBackgroundColor(Color.parseColor("#FF424242"))
-                s_clicked_array[0] = false
-            }
-        })
-        s_cardview2.setOnClickListener(View.OnClickListener {
-
-            if(s_clicked_array[1] == false) {
-                s_cardview2.setCardBackgroundColor(Color.parseColor("#e91e63"))
-                s_clicked_array[1] = true
-            }
-            else {
-                s_cardview2.setCardBackgroundColor(Color.parseColor("#FF424242"))
-                s_clicked_array[1] = false
-            }
-        })
-        s_cardview3.setOnClickListener(View.OnClickListener {
-
-            if(s_clicked_array[2] == false) {
-                s_cardview3.setCardBackgroundColor(Color.parseColor("#e91e63"))
-                s_clicked_array[2] = true
-            }
-            else {
-                s_cardview3.setCardBackgroundColor(Color.parseColor("#FF424242"))
-                s_clicked_array[2] = false
-            }
-        })
-        s_cardview4.setOnClickListener(View.OnClickListener {
-
-            if(s_clicked_array[3] == false) {
-                s_cardview4.setCardBackgroundColor(Color.parseColor("#e91e63"))
-                s_clicked_array[3] = true
-            }
-            else {
-                s_cardview4.setCardBackgroundColor(Color.parseColor("#FF424242"))
-                s_clicked_array[3] = false
-            }
-        })
-        s_cardview5.setOnClickListener(View.OnClickListener {
-
-            if(s_clicked_array[4] == false) {
-                s_cardview5.setCardBackgroundColor(Color.parseColor("#e91e63"))
-                s_clicked_array[4] = true
-            }
-            else {
-                s_cardview5.setCardBackgroundColor(Color.parseColor("#FF424242"))
-                s_clicked_array[4] = false
-            }
-        })
-        s_cardview6.setOnClickListener(View.OnClickListener {
-
-            if(s_clicked_array[5] == false) {
-                s_cardview6.setCardBackgroundColor(Color.parseColor("#e91e63"))
-                s_clicked_array[5] = true
-            }
-            else {
-                s_cardview6.setCardBackgroundColor(Color.parseColor("#FF424242"))
-                s_clicked_array[5] = false
-            }
-        })
-
-
-        d_cardview.setOnClickListener(View.OnClickListener {
-            if(d_clicked_array[0] == false) {
-                d_cardview.setCardBackgroundColor(Color.parseColor("#e91e63"))
-                d_clicked_array[0] = true
-            }
-            else {
-                d_cardview.setCardBackgroundColor(Color.parseColor("#FF424242"))
-                d_clicked_array[0] = false
-            }
-        })
-        d_cardview2.setOnClickListener(View.OnClickListener {
-
-            if(d_clicked_array[1] == false) {
-                d_cardview2.setCardBackgroundColor(Color.parseColor("#e91e63"))
-                d_clicked_array[1] = true
-            }
-            else {
-                d_cardview2.setCardBackgroundColor(Color.parseColor("#FF424242"))
-                d_clicked_array[1] = false
-            }
-        })
-        d_cardview3.setOnClickListener(View.OnClickListener {
-
-            if(d_clicked_array[2] == false) {
-                d_cardview3.setCardBackgroundColor(Color.parseColor("#e91e63"))
-                d_clicked_array[2] = true
-            }
-            else {
-                d_cardview3.setCardBackgroundColor(Color.parseColor("#FF424242"))
-                d_clicked_array[2] = false
-            }
-        })
-        d_cardview4.setOnClickListener(View.OnClickListener {
-
-            if(d_clicked_array[3] == false) {
-                d_cardview4.setCardBackgroundColor(Color.parseColor("#e91e63"))
-                d_clicked_array[3] = true
-            }
-            else {
-                d_cardview4.setCardBackgroundColor(Color.parseColor("#FF424242"))
-                d_clicked_array[3] = false
-            }
-        })
-        d_cardview5.setOnClickListener(View.OnClickListener {
-
-            if(d_clicked_array[4] == false) {
-                d_cardview5.setCardBackgroundColor(Color.parseColor("#e91e63"))
-                d_clicked_array[4] = true
-            }
-            else {
-                d_cardview5.setCardBackgroundColor(Color.parseColor("#FF424242"))
-                d_clicked_array[4] = false
-            }
-        })
-        d_cardview6.setOnClickListener(View.OnClickListener {
-
-            if(d_clicked_array[5] == false) {
-                d_cardview6.setCardBackgroundColor(Color.parseColor("#e91e63"))
-                d_clicked_array[5] = true
-            }
-            else {
-                d_cardview6.setCardBackgroundColor(Color.parseColor("#FF424242"))
-                d_clicked_array[5] = false
-            }
-        })
 
 
         filter_reset.setOnClickListener(View.OnClickListener {
             Toast.makeText(this,
                     "reset Test" ,
                     Toast.LENGTH_SHORT).show();
+            resetFilterValue()
 
         })
+
         filter_submit.setOnClickListener(View.OnClickListener {
             Toast.makeText(this,
                     "submit Test" ,
                     Toast.LENGTH_SHORT).show();
+            getFilterValue()
         })
+
+    }
+
+
+    fun nav_starting_filterOnClickListener(v: CardView)
+    {
+        for (a in startingLocationView)
+        {
+            a.setCardBackgroundColor(Color.parseColor("#FF424242"))
+        }
+        when (v.id) {
+            R.id.card_s_ustng -> {
+                startingFilterValue = locationClickBehavior(v,getString(R.string.location_HKUST_North),true)
+            }
+
+            R.id.card_s_ustsg -> {
+                startingFilterValue = locationClickBehavior(v,getString(R.string.location_HKUST_South),true)
+            }
+
+            R.id.card_s_dh -> {
+                startingFilterValue = locationClickBehavior(v,getString(R.string.location_Diamond_Hill),true)
+            }
+            R.id.card_s_ch -> {
+                startingFilterValue = locationClickBehavior(v,getString(R.string.location_Choi_Hung),true)
+            }
+            R.id.card_s_hh -> {
+                startingFilterValue = locationClickBehavior(v,getString(R.string.location_Hang_Hau),true)
+            }
+            R.id.card_s_ntk -> {
+                startingFilterValue = locationClickBehavior(v,getString(R.string.location_Ngau_Tau_Kok),true)
+            }
+        }
+    }
+
+    fun nav_destination_filterOnClickListener(v: CardView)
+    {
+
+        for (a in destinationView)
+        {
+            a.setCardBackgroundColor(Color.parseColor("#FF424242"))
+        }
+
+        when (v.id) {
+            R.id.card_d_ustng -> {
+                destinationFilterValue = locationClickBehavior(v,getString(R.string.location_HKUST_North),false)
+
+            }
+
+            R.id.card_d_ustsg -> {
+                destinationFilterValue = locationClickBehavior(v,getString(R.string.location_HKUST_South),false)
+
+            }
+
+            R.id.card_d_dh -> {
+                destinationFilterValue = locationClickBehavior(v,getString(R.string.location_Diamond_Hill),false)
+
+            }
+            R.id.card_d_ch -> {
+                destinationFilterValue = locationClickBehavior(v,getString(R.string.location_Choi_Hung),false)
+
+            }
+            R.id.card_d_hh -> {
+                destinationFilterValue = locationClickBehavior(v,getString(R.string.location_Hang_Hau),false)
+
+            }
+            R.id.card_d_ntk -> {
+                destinationFilterValue = locationClickBehavior(v,getString(R.string.location_Ngau_Tau_Kok),false)
+
+            }
+        }
+    }
+
+    fun locationClickBehavior(v: CardView, currentValue: String, direction: Boolean) : String
+    {
+        lateinit var result : String
+        if(direction)
+        {
+            result = startingFilterValue
+        }
+        else
+        {
+            result = destinationFilterValue
+        }
+
+        if(currentValue == result)
+        {
+            result = "None"
+        }
+        else
+        {
+            result = currentValue
+            v.setCardBackgroundColor(Color.parseColor("#e91e63"))
+        }
+        return result
+    }
+
+    fun getFilterValue()
+    {
+        genderfilter.setOnClickedButtonPosition()
+        {
+            position ->
+            when(position)
+            {
+                0 -> genderFilterValue = "None"
+                1 -> genderFilterValue = "Male"
+                2 -> genderFilterValue = "Female"
+            }
+        }
+
+
+        passengerfilter.setOnClickedButtonPosition()
+        {
+            position ->
+            when(position)
+            {
+                0 -> minPassengersFilterValue = "1"
+                1 -> minPassengersFilterValue = "2"
+                2 -> minPassengersFilterValue = "3"
+                3 -> minPassengersFilterValue = "4"
+            }
+        }
+
+    }
+
+
+    fun resetFilterValue()
+    {
+        for (a in startingLocationView)
+        {
+            a.setCardBackgroundColor(Color.parseColor("#FF424242"))
+        }
+        for (a in destinationView)
+        {
+            a.setCardBackgroundColor(Color.parseColor("#FF424242"))
+        }
+        genderfilter.setPosition(0,true)
+        passengerfilter.setPosition(0,true)
+
+        startingFilterValue = "None"
+        destinationFilterValue = "None"
+        genderFilterValue = "None"
+        minPassengersFilterValue = "1"
+    }
+
+
+
+
+    fun makeQueries()
+    {
+
+
 
     }
 

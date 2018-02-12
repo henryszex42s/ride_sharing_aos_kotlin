@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:padding="10px"
         android:layout_gravity="center"
-        android:text="Start Point" />
+        android:text="@string/nav_starting_point" />
 
     <TableLayout
         android:layout_width="wrap_content"
@@ -81,7 +81,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="10sp"
-                android:text="@string/location_HKUST_North"
+                android:text="@string/location_HKUST_South"
                  />
         </android.support.v7.widget.CardView>
     </TableRow>
@@ -129,33 +129,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="10sp"
-                    android:text="Choi Hung MTR"
+                    android:text="@string/location_Choi_Hung"
                     />
             </android.support.v7.widget.CardView>
         </TableRow>
         <TableRow>
-            <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:cardBackgroundColor="@color/cardview_dark_background"
-                android:id="@+id/card_s_ntk"
-                android:layout_margin="5dp"
-                card_view:cardCornerRadius="12dp"
-                card_view:cardElevation="3dp"
-                card_view:contentPadding="4dp"
-                android:focusable="true"
-                android:clickable="true"
-                android:foreground="?android:attr/selectableItemBackground">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="10sp"
-                    android:text="Ngau Tau Kok MTR"
-                    />
-            </android.support.v7.widget.CardView>
-
             <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:card_view="http://schemas.android.com/apk/res-auto"
                 android:layout_width="0dp"
@@ -174,7 +152,28 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="10sp"
-                    android:text="Hang Hau MTR"
+                    android:text="@string/location_Hang_Hau"
+                    />
+            </android.support.v7.widget.CardView>
+            <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/cardview_dark_background"
+                android:id="@+id/card_s_ntk"
+                android:layout_margin="5dp"
+                card_view:cardCornerRadius="12dp"
+                card_view:cardElevation="3dp"
+                card_view:contentPadding="4dp"
+                android:focusable="true"
+                android:clickable="true"
+                android:foreground="?android:attr/selectableItemBackground">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10sp"
+                    android:text="@string/location_Ngau_Tau_Kok"
                     />
             </android.support.v7.widget.CardView>
         </TableRow>
@@ -186,7 +185,7 @@
         android:layout_height="wrap_content"
         android:padding="10px"
         android:layout_gravity="center"
-        android:text="Destination" />
+        android:text="@string/nav_destination" />
 
     <TableLayout
         android:layout_width="wrap_content"
@@ -213,7 +212,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="10sp"
-                    android:text="HKUST North Gate"
+                    android:text="@string/location_HKUST_North"
                     />
             </android.support.v7.widget.CardView>
 
@@ -236,7 +235,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="10sp"
-                    android:text="HKUST South Gate"
+                    android:text="@string/location_HKUST_South"
                     />
             </android.support.v7.widget.CardView>
         </TableRow>
@@ -261,7 +260,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="10sp"
-                    android:text="Diamond Hill MTR"
+                    android:text="@string/location_Diamond_Hill"
                     />
             </android.support.v7.widget.CardView>
 
@@ -284,33 +283,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="10sp"
-                    android:text="Choi Hung MTR"
+                    android:text="@string/location_Choi_Hung"
                     />
             </android.support.v7.widget.CardView>
         </TableRow>
         <TableRow>
-            <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:cardBackgroundColor="@color/cardview_dark_background"
-                android:id="@+id/card_d_ntk"
-                android:layout_margin="5dp"
-                card_view:cardCornerRadius="12dp"
-                card_view:cardElevation="3dp"
-                card_view:contentPadding="4dp"
-                android:focusable="true"
-                android:clickable="true"
-                android:foreground="?android:attr/selectableItemBackground">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="10sp"
-                    android:text="Ngau Tau Kok MTR"
-                    />
-            </android.support.v7.widget.CardView>
-
             <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:card_view="http://schemas.android.com/apk/res-auto"
                 android:layout_width="0dp"
@@ -329,7 +306,29 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="10sp"
-                    android:text="Hang Hau MTR"
+                    android:text="@string/location_Hang_Hau"
+                    />
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/cardview_dark_background"
+                android:id="@+id/card_d_ntk"
+                android:layout_margin="5dp"
+                card_view:cardCornerRadius="12dp"
+                card_view:cardElevation="3dp"
+                card_view:contentPadding="4dp"
+                android:focusable="true"
+                android:clickable="true"
+                android:foreground="?android:attr/selectableItemBackground">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10sp"
+                    android:text="@string/location_Ngau_Tau_Kok"
                     />
             </android.support.v7.widget.CardView>
         </TableRow>
@@ -343,7 +342,7 @@
         android:layout_height="wrap_content"
         android:padding="10sp"
         android:layout_gravity="center"
-        android:text="Gender Filter"
+        android:text="@string/nav_gender_filter"
         />
     <co.ceryle.segmentedbutton.SegmentedButtonGroup
         android:id="@+id/genderfilter"
@@ -357,7 +356,7 @@
         app:sbg_dividerPadding="10dp"
         app:sbg_dividerRadius="10dp"
         app:sbg_dividerSize="1dp"
-        app:sbg_position="1"
+        app:sbg_position="0"
         app:sbg_radius="20dp"
         app:sbg_ripple="true"
         app:sbg_rippleColor="#e91e63"
@@ -367,13 +366,13 @@
         app:sbg_shadowElevation="3dp"
         app:sbg_shadowMargin="4dp">
         <Button
-            android:text="None"
+            android:text="@string/nav_gender_none"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:minHeight="10dp"
             android:textAllCaps="false" />
         <Button
-            android:text="@string/signup_radio_male"
+            android:text="@string/nav_gender_male"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:minHeight="10dp"
@@ -383,7 +382,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:minHeight="10dp"
-            android:text="@string/signup_radio_female"
+            android:text="@string/nav_gender_female"
             android:textAllCaps="false" />
     </co.ceryle.segmentedbutton.SegmentedButtonGroup>
 
@@ -393,8 +392,9 @@
         android:layout_height="wrap_content"
         android:padding="10sp"
         android:layout_gravity="center"
-        android:text="Minimum Passengers"
+        android:text="@string/nav_min_passengers"
         />
+
     <co.ceryle.segmentedbutton.SegmentedButtonGroup
         android:id="@+id/passengerfilter"
         android:layout_width="match_parent"
@@ -407,7 +407,7 @@
         app:sbg_dividerPadding="10dp"
         app:sbg_dividerRadius="10dp"
         app:sbg_dividerSize="1dp"
-        app:sbg_position="1"
+        app:sbg_position="0"
         app:sbg_radius="20dp"
         app:sbg_ripple="true"
         app:sbg_rippleColor="#e91e63"
@@ -457,7 +457,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:text="Reset"
+            android:text="@string/nav_reset"
             android:textAllCaps="false" />
 
         <Button
@@ -465,7 +465,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:text="Submit"
+            android:text="@string/nav_submit"
             android:textAllCaps="false" />
     </RelativeLayout>
 
