@@ -22,7 +22,6 @@ import fyp.ride_sharing_aos.tools.FirebaseManager
 import android.support.v7.widget.CardView
 import android.view.View
 import android.widget.Toast
-import com.google.firebase.firestore.Query
 import kotlinx.android.synthetic.main.nav_filter.*
 
 
@@ -138,7 +137,7 @@ class HomeActivity : BaseActivity(){
 
     private fun loadData()
     {
-        FirebaseManager.updateRoomListListener({dismissProgressDialog()})
+        FirebaseManager.updateRoomList({dismissProgressDialog()})
 
         if(fbAuth.currentUser != null)
         {

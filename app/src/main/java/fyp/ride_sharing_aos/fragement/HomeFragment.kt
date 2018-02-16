@@ -11,7 +11,6 @@ import android.view.ViewGroup
 import fyp.ride_sharing_aos.R
 import fyp.ride_sharing_aos.adapters.RoomListAdapter
 import fyp.ride_sharing_aos.tools.FirebaseManager
-import fyp.ride_sharing_aos.tools.Tools
 import kotlinx.android.synthetic.main.fragment_home.*
 
 
@@ -36,7 +35,7 @@ class HomeFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         rv_roomlist.layoutManager = LinearLayoutManager(activity)
         rv_roomlist.adapter = RoomListAdapter(this.context,FirebaseManager.getRoomList())
-        FirebaseManager.updateRoomListListener({DataChange()})
+        FirebaseManager.updateRoomList({DataChange()})
     }
 
     override fun onStart() {

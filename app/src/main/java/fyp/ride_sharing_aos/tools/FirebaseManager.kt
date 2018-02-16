@@ -5,6 +5,7 @@ import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import fyp.ride_sharing_aos.model.Room
 import fyp.ride_sharing_aos.model.User
 
@@ -113,13 +114,16 @@ object FirebaseManager {
 //                    }
 //                }
 //        )
+
     }
 
 
 
-    fun updateRoomListListener(callback: (Any)->Unit)
+    fun updateRoomList(callback: (Any)->Unit, searchQueries : Query)
     {
-
+//        searchQueries.get().then(function(querySnapshot) {
+//            // check and do something with the data here.
+//        });
         val docRef = db.collection("room")
 
         docRef.get().addOnCompleteListener({ task ->
@@ -164,6 +168,34 @@ object FirebaseManager {
 //                }
 //
 //        )
+    }
+
+    fun queriesUpdateRoomList(callback: (Any)->Unit)
+    {
+
+        val docRef = db.collection("room")
+
+        docRef.get().addOnCompleteListener({ task ->
+            if (task.isSuccessful)
+            {
+                RoomList.clear()
+                for (doc in task.result) {
+                    val note = doc.toObject<Room>(Room::class.java)
+                    RoomList.add(note)
+                }
+                if (RoomList.isEmpty()) {
+                    Log.e(TAG, "onDataChange: RoomList data is null!")
+                }
+                callback(Unit)
+                Log.e(TAG, "onDataChange: RoomList data is not null!")
+            }
+            else
+            {
+                Log.d(TAG, "onDataChange : Error getting documents: ", task.exception)
+            }
+        })
+
+
     }
 
 
