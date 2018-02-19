@@ -417,7 +417,12 @@
         app:sbg_shadowElevation="3dp"
         app:sbg_shadowMargin="4dp">
 
-
+        <Button
+            android:text="None"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="10dp"
+            android:textAllCaps="false" />
         <Button
             android:text="1"
             android:layout_width="wrap_content"

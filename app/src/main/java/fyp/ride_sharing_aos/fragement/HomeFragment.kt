@@ -17,6 +17,7 @@ import kotlinx.android.synthetic.main.fragment_home.*
 class HomeFragment : Fragment() {
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -35,7 +36,6 @@ class HomeFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         rv_roomlist.layoutManager = LinearLayoutManager(activity)
         rv_roomlist.adapter = RoomListAdapter(this.context,FirebaseManager.getRoomList())
-        FirebaseManager.updateRoomList({DataChange()})
     }
 
     override fun onStart() {

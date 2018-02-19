@@ -19,6 +19,12 @@ object FirebaseManager {
     private var db = FirebaseFirestore.getInstance()
 
 
+    //For Filter
+    var  startingFilterValue = "None"
+    var  destinationFilterValue = "None"
+    var genderFilterValue = "None"
+    var minPassengersFilterValue = "None"
+
 //    private var database = FirebaseDatabase.getInstance()
 //    private var dbReference = database.reference
 
@@ -119,35 +125,33 @@ object FirebaseManager {
 
 
 
-    fun updateRoomList(callback: (Any)->Unit, searchQueries : Query)
+    fun updateRoomList(callback: (Any)->Unit)
     {
-//        searchQueries.get().then(function(querySnapshot) {
-//            // check and do something with the data here.
-//        });
-        val docRef = db.collection("room")
 
-        docRef.get().addOnCompleteListener({ task ->
-                    if (task.isSuccessful)
-                    {
-                        RoomList.clear()
-                        for (doc in task.result) {
-                            val note = doc.toObject<Room>(Room::class.java)
-                            RoomList.add(note)
-                        }
-                         if (RoomList.isEmpty()) {
-                            Log.e(TAG, "onDataChange: RoomList data is null!")
-                        }
-                        callback(Unit)
-                        Log.e(TAG, "onDataChange: RoomList data is not null!")
-                    }
-                    else
-                    {
-                        Log.d(TAG, "onDataChange : Error getting documents: ", task.exception)
-                    }
+        val searchQueries = makeQueries()
+
+        searchQueries.get().addOnCompleteListener({ task ->
+            if (task.isSuccessful)
+            {
+                RoomList.clear()
+                for (doc in task.result) {
+                    val note = doc.toObject<Room>(Room::class.java)
+                    RoomList.add(note)
+                }
+                if (RoomList.isEmpty()) {
+                    Log.e(TAG, "onDataChange: RoomList data is null!")
+                }
+                Log.e(TAG, "onDataChange: RoomList data is not null!")
+                callback(Unit)
+            }
+            else
+            {
+                Log.d(TAG, "onDataChange : Error getting documents: ", task.exception)
+                callback(Unit)
+            }
         })
 
-
-//        Realtime Database Code
+        //        Realtime Database Code
 //        dbReference.child("room").addValueEventListener(
 //                object : ValueEventListener {
 //                    override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -168,34 +172,44 @@ object FirebaseManager {
 //                }
 //
 //        )
+
+
     }
 
-    fun queriesUpdateRoomList(callback: (Any)->Unit)
+    fun makeQueries() : Query
     {
+        var queries : Query
+        queries = db.collection("room")
 
-        val docRef = db.collection("room")
+        if(startingFilterValue != "None")
+        {
+            queries = queries.whereEqualTo("start",startingFilterValue)
+        }
+        if(destinationFilterValue != "None")
+        {
+            queries = queries.whereEqualTo("destination",destinationFilterValue)
 
-        docRef.get().addOnCompleteListener({ task ->
-            if (task.isSuccessful)
+        }
+        if(genderFilterValue != "None")
+        {
+            if(genderFilterValue == "Male")
             {
-                RoomList.clear()
-                for (doc in task.result) {
-                    val note = doc.toObject<Room>(Room::class.java)
-                    RoomList.add(note)
-                }
-                if (RoomList.isEmpty()) {
-                    Log.e(TAG, "onDataChange: RoomList data is null!")
-                }
-                callback(Unit)
-                Log.e(TAG, "onDataChange: RoomList data is not null!")
+                queries = queries.whereEqualTo("maleFil",true)
+                queries = queries.whereEqualTo("femaleFil",false)
             }
-            else
+            if(genderFilterValue == "Female")
             {
-                Log.d(TAG, "onDataChange : Error getting documents: ", task.exception)
+                queries = queries.whereEqualTo("maleFil",false)
+                queries = queries.whereEqualTo("femaleFil",true)
             }
-        })
+            queries = queries.whereEqualTo("destination",destinationFilterValue)
+        }
+        if(minPassengersFilterValue != "None")
+        {
+            queries = queries.whereEqualTo("numberOfPeople",minPassengersFilterValue)
+        }
 
-
+        return queries
     }
 
 

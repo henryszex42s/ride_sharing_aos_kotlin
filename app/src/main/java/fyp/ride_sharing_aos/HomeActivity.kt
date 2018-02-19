@@ -22,6 +22,11 @@ import fyp.ride_sharing_aos.tools.FirebaseManager
 import android.support.v7.widget.CardView
 import android.view.View
 import android.widget.Toast
+import com.google.firebase.firestore.FirebaseFirestore
+import fyp.ride_sharing_aos.tools.FirebaseManager.destinationFilterValue
+import fyp.ride_sharing_aos.tools.FirebaseManager.genderFilterValue
+import fyp.ride_sharing_aos.tools.FirebaseManager.minPassengersFilterValue
+import fyp.ride_sharing_aos.tools.FirebaseManager.startingFilterValue
 import kotlinx.android.synthetic.main.nav_filter.*
 
 
@@ -40,21 +45,15 @@ class HomeActivity : BaseActivity(){
     val startingLocationView = ArrayList<CardView>()
     val destinationView = ArrayList<CardView>()
 
-    private lateinit var  startingFilterValue : String
-    private lateinit var  destinationFilterValue : String
-    private lateinit var genderFilterValue : String
-    private lateinit var minPassengersFilterValue : String
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-
-        showProgressDialog(getString(R.string.progress_loading))
         loadData()
         initView()
         slideFilter()
+        showLoginPage()
     }
 
     override fun onBackPressed() {
@@ -135,10 +134,25 @@ class HomeActivity : BaseActivity(){
 //    }
 
 
+
+
     private fun loadData()
     {
-        FirebaseManager.updateRoomList({dismissProgressDialog()})
+        showProgressDialog(getString(R.string.progress_loading))
+        FirebaseManager.updateRoomList({roomListChange()})
 
+    }
+
+
+    private fun roomListChange()
+    {
+        dismissProgressDialog()
+        if(supportFragmentManager.findFragmentById(R.id.fragment_content) == homeFragment)
+            homeFragment.DataChange()
+    }
+
+    private fun showLoginPage()
+    {
         if(fbAuth.currentUser != null)
         {
             //User is logged in
@@ -152,6 +166,8 @@ class HomeActivity : BaseActivity(){
             overridePendingTransition(R.anim.slide_in_up,R.anim.slide_out_up)
         }
     }
+
+
 
 
 
@@ -259,12 +275,6 @@ class HomeActivity : BaseActivity(){
 
     fun slideFilter()
     {
-
-        startingFilterValue = "None"
-        destinationFilterValue = "None"
-        genderFilterValue = "None"
-        minPassengersFilterValue = "1"
-
         startingLocationView.add(card_s_ustng)
         startingLocationView.add(card_s_ustsg)
         startingLocationView.add(card_s_dh)
@@ -308,6 +318,7 @@ class HomeActivity : BaseActivity(){
                     "submit Test" ,
                     Toast.LENGTH_SHORT).show();
             getFilterValue()
+            loadData()
         })
 
     }
@@ -424,10 +435,11 @@ class HomeActivity : BaseActivity(){
             position ->
             when(position)
             {
-                0 -> minPassengersFilterValue = "1"
-                1 -> minPassengersFilterValue = "2"
-                2 -> minPassengersFilterValue = "3"
-                3 -> minPassengersFilterValue = "4"
+                0 -> minPassengersFilterValue = "None"
+                1 -> minPassengersFilterValue = "1"
+                2 -> minPassengersFilterValue = "2"
+                3 -> minPassengersFilterValue = "3"
+                4 -> minPassengersFilterValue = "4"
             }
         }
 
@@ -450,17 +462,7 @@ class HomeActivity : BaseActivity(){
         startingFilterValue = "None"
         destinationFilterValue = "None"
         genderFilterValue = "None"
-        minPassengersFilterValue = "1"
-    }
-
-
-
-
-    fun makeQueries()
-    {
-
-
-
+        minPassengersFilterValue = "None"
     }
 
 }
