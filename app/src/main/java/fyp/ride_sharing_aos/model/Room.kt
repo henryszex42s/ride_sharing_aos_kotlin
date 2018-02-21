@@ -1,6 +1,5 @@
 package fyp.ride_sharing_aos.model
 
-import java.sql.Timestamp
 
 /**
  * Created by lfreee on 21/1/2018.

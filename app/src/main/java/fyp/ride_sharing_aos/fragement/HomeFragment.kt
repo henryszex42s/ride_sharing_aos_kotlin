@@ -16,10 +16,8 @@ import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {
 
-
-
+    
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
     }
 
