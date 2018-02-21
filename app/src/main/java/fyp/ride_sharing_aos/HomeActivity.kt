@@ -16,13 +16,11 @@ import kotlinx.android.synthetic.main.app_bar_home.*
 import android.graphics.Color
 import android.support.design.widget.BottomNavigationView
 import fyp.ride_sharing_aos.activity.AddRouteActivity
-import fyp.ride_sharing_aos.activity.BaseActivity
 import fyp.ride_sharing_aos.fragement.*
 import fyp.ride_sharing_aos.tools.FirebaseManager
 import android.support.v7.widget.CardView
 import android.view.View
 import android.widget.Toast
-import com.google.firebase.firestore.FirebaseFirestore
 import fyp.ride_sharing_aos.tools.FirebaseManager.destinationFilterValue
 import fyp.ride_sharing_aos.tools.FirebaseManager.genderFilterValue
 import fyp.ride_sharing_aos.tools.FirebaseManager.minPassengersFilterValue
@@ -54,6 +52,9 @@ class HomeActivity : BaseActivity(){
         initView()
         slideFilter()
         showLoginPage()
+//        http://blog.csdn.net/mobilexu/article/details/41147417
+//        supportActionBar?.setDisplayShowTitleEnabled(false)
+//        supportActionBar?.setDisplayHomeAsUpEnabled(false)
     }
 
     override fun onBackPressed() {

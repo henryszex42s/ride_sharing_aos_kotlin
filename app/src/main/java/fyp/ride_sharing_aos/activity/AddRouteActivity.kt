@@ -2,7 +2,6 @@ package fyp.ride_sharing_aos.activity
 
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
-import android.view.View
 import android.widget.*
 import fyp.ride_sharing_aos.R
 import android.widget.SeekBar
@@ -15,16 +14,11 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.maps.MapFragment
 import android.graphics.Color
 import com.google.android.gms.maps.model.PolylineOptions
-import com.jaredrummler.materialspinner.MaterialSpinnerAdapter
 import fyp.ride_sharing_aos.model.Room
 import fyp.ride_sharing_aos.tools.FirebaseManager
 import fyp.ride_sharing_aos.tools.Tools
 import com.jaredrummler.materialspinner.MaterialSpinner
-import android.support.design.widget.Snackbar
-
-
-
-
+import fyp.ride_sharing_aos.BaseActivity
 
 
 class AddRouteActivity : BaseActivity(), OnMapReadyCallback {

@@ -1,4 +1,4 @@
-package fyp.ride_sharing_aos.activity
+package fyp.ride_sharing_aos
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -16,7 +16,6 @@ import android.view.View
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import fyp.ride_sharing_aos.BuildConfig.APPLICATION_ID
-import fyp.ride_sharing_aos.R
 import fyp.ride_sharing_aos.tools.Tools
 import kotlinx.android.synthetic.main.progress_dialog.view.*
 

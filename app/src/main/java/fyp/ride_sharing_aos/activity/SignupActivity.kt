@@ -2,26 +2,18 @@ package fyp.ride_sharing_aos.activity
 
 import android.content.Intent
 import android.graphics.Color
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
-import com.google.android.gms.tasks.OnFailureListener
-import com.google.android.gms.tasks.OnSuccessListener
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
 import fyp.ride_sharing_aos.R
 import kotlinx.android.synthetic.main.activity_signup.*
 import fyp.ride_sharing_aos.HomeActivity
 import fyp.ride_sharing_aos.model.User
 import fyp.ride_sharing_aos.tools.Tools
 import com.google.firebase.firestore.FirebaseFirestore
-
-
-
+import fyp.ride_sharing_aos.BaseActivity
 
 
 class SignupActivity : BaseActivity() {
