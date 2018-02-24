@@ -7,9 +7,9 @@ import android.support.v7.widget.LinearLayoutManager
 import fyp.ride_sharing_aos.adapters.MessageListAdapter
 import android.support.v7.widget.RecyclerView
 import android.view.View
-import fyp.ride_sharing_aos.R.id.reyclerview_message_list
 import fyp.ride_sharing_aos.model.Message
 import fyp.ride_sharing_aos.tools.FirebaseManager
+import kotlinx.android.synthetic.main.activity_chatroom.*
 
 
 /**
@@ -23,8 +23,8 @@ class ChatroomActivity: BaseActivity()  {
 
         var  mMessageList: List<Message> = arrayListOf()
 
-      //  reyclerview_message_list.layoutManager = LinearLayoutManager(this)
-      //  reyclerview_message_list.adapter = MessageListAdapter(this, mMessageList)
+        reyclerview_message_list.layoutManager = LinearLayoutManager(this)
+        reyclerview_message_list.adapter = MessageListAdapter(this, mMessageList)
 
 
     }
