@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import fyp.ride_sharing_aos.R
 import fyp.ride_sharing_aos.model.Room
+import fyp.ride_sharing_aos.tools.Tools
 import kotlinx.android.synthetic.main.roomlist_layout.view.*
 import java.text.DateFormat
 import java.text.SimpleDateFormat
@@ -43,7 +44,7 @@ class ViewHolder(val c : Context, val view: View): RecyclerView.ViewHolder(view)
 
         //ch id, link up one by one
         view.item_roomname.text = room.roomname
-        view.item_prefer_time.text = room.prefertime.toString()
+        view.item_prefer_time.text = Tools.convertTime(room.prefertime!!)
 
         view.item_from.text = room.start
         view.item_to.text = room.destination

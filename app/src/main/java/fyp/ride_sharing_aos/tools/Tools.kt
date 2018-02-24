@@ -5,6 +5,9 @@ import android.location.Location
 import android.support.v7.app.AlertDialog
 import com.google.android.gms.maps.model.LatLng
 import fyp.ride_sharing_aos.R
+import java.sql.Date
+import java.sql.Timestamp
+import java.text.SimpleDateFormat
 
 /**
  * Created by lfreee on 19/1/2018.
@@ -13,6 +16,7 @@ import fyp.ride_sharing_aos.R
 object Tools
 {
     var currentLocation = Location("")
+    val currentTime = Timestamp(System.currentTimeMillis())
 
     enum class Location_Name {
         HKUST_North_Gate, HKUST_South_Gate,Diamond_Hill_MTR_Station,Choi_Hung_MTR_Station, Hang_Hau_MTR_Station, Ngau_Tau_Kok_MTR_Station
@@ -55,24 +59,9 @@ object Tools
         }
 }
 
-    fun showDialog(context: Context, title:String, msg: String,positive: String, negative : String) : AlertDialog.Builder
-    {
-
-            val builder = AlertDialog.Builder(context)
-            builder.setIcon(R.drawable.app_icon)
-            builder.setMessage(msg)
-            builder.setCancelable(false)
-            builder.setTitle(title)
-
-            builder.setPositiveButton(positive
-            ){ dialog, id -> dialog.cancel() }
-
-            builder.setNegativeButton(negative
-            ) { dialog, id -> dialog.cancel() }
-
-            val alert = builder.create()
-            alert.show()
-
-        return builder
+    fun convertTime(time: Long): String {
+        val date = Date(time)
+        val format = SimpleDateFormat("yyyy MM dd HH:mm:ss")
+        return format.format(date)
     }
 }

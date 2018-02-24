@@ -50,7 +50,7 @@ class HomeActivity : BaseActivity(){
 
         loadData()
         initView()
-        slideFilter()
+        selectDrawerItem()
         showLoginPage()
 //        http://blog.csdn.net/mobilexu/article/details/41147417
 //        supportActionBar?.setDisplayShowTitleEnabled(false)
@@ -274,7 +274,7 @@ class HomeActivity : BaseActivity(){
         fragmentTransaction.commit()
     }
 
-    fun slideFilter()
+    fun selectDrawerItem()
     {
         startingLocationView.add(card_s_ustng)
         startingLocationView.add(card_s_ustsg)

@@ -33,8 +33,6 @@ class AddRouteActivity : BaseActivity(), OnMapReadyCallback {
     var starting_Place =""
     var des_Place =""
     var numOfPeople = 0
-    var createtime = 0
-    var prefertime = 0
     var m_Only = false
     var f_Only = false
 
@@ -63,7 +61,7 @@ class AddRouteActivity : BaseActivity(), OnMapReadyCallback {
                 Toast.makeText(this@AddRouteActivity, "Location must not be the same", Toast.LENGTH_SHORT).show()
             else{
                 showProgressDialog(getString(R.string.progress_loading))
-                var room = Room(starting_Place, des_Place, numOfPeople, m_Only, f_Only, createtime, prefertime,roomname.text.toString(), "","","","")
+                var room = Room(starting_Place, des_Place, numOfPeople, m_Only, f_Only, Tools.currentTime.time, Tools.currentTime.time,roomname.text.toString(), "","","","")
                 FirebaseManager.createRoom(room, {afterCreateRoom()})
             }
         }
@@ -201,8 +199,6 @@ class AddRouteActivity : BaseActivity(), OnMapReadyCallback {
 */
         // Start_spinner
         val start_spinner = findViewById<MaterialSpinner>(R.id.start_spin)
-
-//        start_spinner.setItems("","HKUST North Gate", "HKUST South Gate","Diamond Hill MTR_Station","Choi Hung MTR Station","Hang Hau_MTR Station", "Ngau Tau Kok MTR Station")
 
         start_spinner.setItems("",resources.getString(R.string.location_HKUST_North), resources.getString(R.string.location_HKUST_South),resources.getString(R.string.location_Diamond_Hill),resources.getString(R.string.location_Choi_Hung),resources.getString(R.string.location_Hang_Hau), resources.getString(R.string.location_Ngau_Tau_Kok))
         start_spinner.setOnItemSelectedListener { view, position, id, item ->
