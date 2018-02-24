@@ -1,10 +1,87 @@
 package fyp.ride_sharing_aos.adapters
 
+import android.content.Context
+import android.support.v7.widget.RecyclerView
+import android.text.format.DateUtils.formatDateTime
+import android.view.View
+import android.widget.ImageView
+import android.widget.TextView
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import fyp.ride_sharing_aos.R
+import fyp.ride_sharing_aos.model.Message
+import fyp.ride_sharing_aos.tools.Tools
+import kotlinx.android.synthetic.main.item_message_received.view.*
+import kotlinx.android.synthetic.main.item_message_sent.view.*
+
+
+
 /**
  * Created by lfreee on 21/2/2018.
  */
-class MessageListAdapter {
+class MessageListAdapter(private val mContext: Context, private var mMessageList: List<Message>) : RecyclerView.Adapter<RecyclerView.ViewHolder>()
+{
+
+    companion object {
+        const val RECEIVE = 0
+        const val SENT = 1
+    }
 
 
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 
+        val viewHolder: RecyclerView.ViewHolder = when (viewType) {
+            RECEIVE -> ReceiveViewHolder( LayoutInflater.from(mContext).inflate(R.layout.item_message_received, parent, false))
+        // other view holders...
+            else -> SentViewHolder(LayoutInflater.from(mContext).inflate(R.layout.item_message_sent, parent, false))
+        }
+        return viewHolder
+    }
+
+    //this method is binding the data on the list
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        (holder as UpdateViewHolder).bindViews(mMessageList[position])
+    }
+
+
+    override fun getItemCount(): Int {
+        return mMessageList.size
+    }
+
+    fun setUpdates(updates: List<Message>) {
+        mMessageList = updates
+        notifyDataSetChanged()
+    }
+
+
+    interface UpdateViewHolder {
+        fun bindViews(msg_info: Message)
+    }
+
+
+    class ReceiveViewHolder(val view: View)
+        : RecyclerView.ViewHolder(view), UpdateViewHolder {
+
+        // get the views reference from itemView...
+
+        override fun bindViews(msg_info: Message) {
+
+            view.received_text_message_body.text = msg_info.message
+            view.received_time.text = Tools.convertTime(msg_info.send_time!!)
+            view.sender.text = msg_info.sender
+
+        }
+    }
+
+    class SentViewHolder(val view: View)
+        : RecyclerView.ViewHolder(view), UpdateViewHolder {
+
+        override fun bindViews(msg_info: Message) {
+
+            view.sent_text_message_body.text = msg_info.message
+            view.sent_time.text = Tools.convertTime(msg_info.send_time!!)
+
+        }
+    }
 }
+

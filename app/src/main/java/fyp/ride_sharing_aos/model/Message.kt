@@ -9,7 +9,7 @@ import java.security.Timestamp
 class Message {
 
         var message : String? = null
-        var send_time : Timestamp? = null
+        var send_time : Long? = null
         var sender : String? = null
 
 
@@ -17,7 +17,7 @@ class Message {
             // Default constructor required for calls to DataSnapshot.getValue(User.class)
         }
 
-        constructor(message: String?, send_time: Timestamp?, sender: String?) {
+        constructor(message: String?, send_time: Long?, sender: String?) {
             this.message = message
             this.send_time = send_time
             this.sender = sender
