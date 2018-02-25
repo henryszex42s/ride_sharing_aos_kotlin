@@ -95,8 +95,28 @@ object FirebaseManager {
                     e -> Log.w(TAG, "Error adding document", e)
                      callback(Unit)
                 })
-
     }
+
+    fun updateRoom(roomid : String ,type : String)
+    {
+
+        val data = HashMap<String, Any>()
+        data.put("type", type)
+        data.put("value", UserObj!!.uid!!)
+
+        db.collection("room")
+                .document(roomid)
+                .update(data)
+                .addOnSuccessListener{
+                    Log.d(TAG, "addOnSuccessListener: ")
+                }
+                .addOnFailureListener{
+                    Log.d(TAG, "addOnFailureListener: ")
+
+                }
+    }
+
+
 
 
     fun updateUser()
@@ -187,8 +207,6 @@ object FirebaseManager {
 //                }
 //
 //        )
-
-
     }
 
     fun makeQueries() : Query
