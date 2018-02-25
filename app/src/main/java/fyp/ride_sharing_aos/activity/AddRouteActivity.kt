@@ -62,7 +62,7 @@ class AddRouteActivity : BaseActivity(), OnMapReadyCallback {
                 Toast.makeText(this@AddRouteActivity, "Location must not be the same", Toast.LENGTH_SHORT).show()
             else{
                 showProgressDialog(getString(R.string.progress_loading))
-                val room = Room(REQUEST_TYPE_CREATE_ROOM,FirebaseManager.getUserID(),starting_Place, des_Place, numOfPeople, m_Only, f_Only, Tools.currentTime.time, Tools.currentTime.time,roomname.text.toString(), "","","","")
+                val room = Room(REQUEST_TYPE_CREATE_ROOM,FirebaseManager.getUserID(),"",starting_Place, des_Place, numOfPeople, m_Only, f_Only, Tools.currentTime.time, Tools.currentTime.time,roomname.text.toString(), "","","","")
                 FirebaseManager.createRoom(room, {afterCreateRoom()})
             }
         }

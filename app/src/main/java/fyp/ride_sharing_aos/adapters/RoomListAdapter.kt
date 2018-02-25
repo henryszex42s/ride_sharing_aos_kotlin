@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import fyp.ride_sharing_aos.R
 import fyp.ride_sharing_aos.model.Room
+import fyp.ride_sharing_aos.tools.FirebaseManager
 import fyp.ride_sharing_aos.tools.Tools
 import kotlinx.android.synthetic.main.roomlist_layout.view.*
 import java.text.DateFormat
@@ -57,6 +58,7 @@ class ViewHolder(val c : Context, val view: View): RecyclerView.ViewHolder(view)
 
         view.setOnClickListener {
             Toast.makeText(c, room.start+" To "+room.destination, Toast.LENGTH_SHORT).show()
+            FirebaseManager.updateRoom(room.roomid!!,"1")
 
         }
     }

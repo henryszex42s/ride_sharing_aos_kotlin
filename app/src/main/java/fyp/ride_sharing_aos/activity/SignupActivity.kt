@@ -81,6 +81,7 @@ class SignupActivity : BaseActivity() {
                                             startActivity(intent)
                                             this.finish()
                                         })
+
                                         .addOnFailureListener({
                                                     Toast.makeText(this, "Your account has not been created, please contact us for help.", Toast.LENGTH_SHORT).show()
                                         })
@@ -96,7 +97,7 @@ class SignupActivity : BaseActivity() {
                             }
                             else {
                                 // If sign in fails, display a message to the user.
-                                Toast.makeText(this, "Your account has not been created, please contact us for help.", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(this, "Authentication failed.", Toast.LENGTH_SHORT).show()
                             }
                         }
             }
