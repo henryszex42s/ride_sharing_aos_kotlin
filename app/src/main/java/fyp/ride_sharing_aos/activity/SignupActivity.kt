@@ -166,7 +166,7 @@ class SignupActivity : BaseActivity() {
 
 
         //Username Validation
-        if (  (uname.length < 6 || uname.length > 8) || uname.isEmpty() ) {
+        if (  (uname.length < 5 || uname.length > 8) || uname.isEmpty() ) {
             error_msg.add(getString(R.string.signup_username_error))
             username_require.setTextColor(Color.RED)
         }
