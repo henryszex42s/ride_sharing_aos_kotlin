@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import fyp.ride_sharing_aos.HomeActivity
 
 import fyp.ride_sharing_aos.R
 import fyp.ride_sharing_aos.adapters.RoomListAdapter
@@ -28,6 +29,10 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+    }
+
+    override fun onResume() {
+        super.onResume()
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

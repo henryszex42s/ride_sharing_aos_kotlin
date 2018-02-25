@@ -19,6 +19,14 @@ object FirebaseManager {
     private var db = FirebaseFirestore.getInstance()
 
 
+    val REQUEST_TYPE_CREATE_ROOM = "0"
+    val REQUEST_TYPE_JOIN_ROOM = "1"
+    val REQUEST_TYPE_LEAVE_ROOM = "2"
+    val REQUEST_TYPE_DISMISS_ROOM = "3"
+
+
+
+
     //For Filter
     var  startingFilterValue = "None"
     var  destinationFilterValue = "None"
@@ -34,7 +42,9 @@ object FirebaseManager {
 
     fun isLogin() : Boolean
     {
-        return fbAuth.currentUser != null
+        fbUser = fbAuth.currentUser
+        return fbUser != null
+
     }
 
     fun signOut()
@@ -49,6 +59,10 @@ object FirebaseManager {
         return UserObj
     }
 
+    fun getUserID() : String?
+    {
+        return UserObj!!.uid
+    }
 
     fun getRoomList() : MutableList<Room>
     {
@@ -65,6 +79,7 @@ object FirebaseManager {
 //        Realtime Database Code
 //        val roomList = database.reference.child("room").push()
 //        roomList.setValue(newRoom)
+
         db.collection("room")
                 .add(newRoom)
                 .addOnSuccessListener({ documentReference ->
@@ -86,8 +101,8 @@ object FirebaseManager {
 
     fun updateUser()
     {
-        fbUser = fbAuth.currentUser
-        if(fbUser == null)
+
+        if(!isLogin())
         {
             return
         }

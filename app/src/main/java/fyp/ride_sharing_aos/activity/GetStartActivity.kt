@@ -27,6 +27,14 @@ class GetStartActivity : BaseActivity() {
             startActivity(intent)
 //            overridePendingTransition(R.anim.slide_in_up, R.anim.slide_out_up)
         })
+    }
+
+
+    override fun onBackPressed() {
+//       super.onBackPressed()
+        moveTaskToBack(true);
 
     }
+
+
     }

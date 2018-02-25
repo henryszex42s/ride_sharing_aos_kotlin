@@ -48,13 +48,17 @@ class HomeActivity : BaseActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        loadData()
         initView()
+        loadData()
         selectDrawerItem()
         showLoginPage()
 //        http://blog.csdn.net/mobilexu/article/details/41147417
 //        supportActionBar?.setDisplayShowTitleEnabled(false)
 //        supportActionBar?.setDisplayHomeAsUpEnabled(false)
+    }
+
+    override fun onResume() {
+        super.onResume()
     }
 
     override fun onBackPressed() {
@@ -137,15 +141,14 @@ class HomeActivity : BaseActivity(){
 
 
 
-    private fun loadData()
+     fun loadData()
     {
         showProgressDialog(getString(R.string.progress_loading))
         FirebaseManager.updateRoomList({roomListChange()})
-
     }
 
 
-    private fun roomListChange()
+     fun roomListChange()
     {
         dismissProgressDialog()
         if(supportFragmentManager.findFragmentById(R.id.fragment_content) == homeFragment)
@@ -176,15 +179,9 @@ class HomeActivity : BaseActivity(){
     {
         //Toolbar
         setSupportActionBar(toolbar)
-
-
-
         val toggle = ActionBarDrawerToggle(this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
-
-
-
 //        nav_view.setNavigationItemSelectedListener(this)
         buttom_navigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
         supportFragmentManager.beginTransaction().replace(R.id.fragment_content, homeFragment).commit()
@@ -195,6 +192,7 @@ class HomeActivity : BaseActivity(){
         when (item.itemId) {
             R.id.action_home -> {
                 replaceFragment(homeFragment,R.id.fragment_content)
+                loadData()
                 return@OnNavigationItemSelectedListener true
             }
 
@@ -202,7 +200,7 @@ class HomeActivity : BaseActivity(){
                 val intent = Intent(this@HomeActivity, AddRouteActivity::class.java)
                 startActivity(intent)
                 overridePendingTransition(R.anim.slide_in_up,R.anim.slide_out_up)
-                return@OnNavigationItemSelectedListener true
+//                return@OnNavigationItemSelectedListener true
             }
 
             R.id.action_transinfo -> {
