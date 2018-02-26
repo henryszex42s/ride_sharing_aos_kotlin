@@ -50,6 +50,7 @@ class ViewHolder(val c : Context, val view: View): RecyclerView.ViewHolder(view)
         view.item_from.text = room.start
         view.item_to.text = room.destination
 
+        
 
         //view.item_filter.text
         //view.item_min
