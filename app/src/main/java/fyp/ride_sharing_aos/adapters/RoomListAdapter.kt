@@ -1,6 +1,7 @@
 package fyp.ride_sharing_aos.adapters
 
 import android.content.Context
+import android.graphics.Color
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -50,11 +51,22 @@ class ViewHolder(val c : Context, val view: View): RecyclerView.ViewHolder(view)
         view.item_from.text = room.start
         view.item_to.text = room.destination
 
-        
-
         //view.item_filter.text
         //view.item_min
         view.item_numpeople.text = room.numOfPeople.toString()
+
+        if(room.destination.equals("HKUST North Gate"))
+            view.cardview_color.setBackgroundColor(Color.parseColor("#ff0f0f"))
+        if(room.destination.equals("HKUST South Gate"))
+            view.cardview_color.setBackgroundColor(Color.parseColor("#ff0f0f"))
+        if(room.destination.equals("Diamond Hill MTR"))
+            view.cardview_color.setBackgroundColor(Color.parseColor("#464c56"))
+        if(room.destination.equals("Choi Hung MTR"))
+            view.cardview_color.setBackgroundColor(Color.parseColor("#027cff"))
+        if(room.destination.equals("Hang Hau MTR"))
+            view.cardview_color.setBackgroundColor(Color.parseColor("#77cdff"))
+        if(room.destination.equals("Ngau Tau Kok MTR"))
+            view.cardview_color.setBackgroundColor(Color.parseColor("#75ed2a"))
 
 
         view.setOnClickListener {
