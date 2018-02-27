@@ -24,7 +24,8 @@ import fyp.ride_sharing_aos.HomeActivity
 class SettingFragment : Fragment(), View.OnClickListener{
 
     var User : User? = null
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         return inflater!!.inflate(R.layout.fragment_setting, container, false)
     }
@@ -42,7 +43,7 @@ class SettingFragment : Fragment(), View.OnClickListener{
         super.onStart()
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         btu_setting_edit_profile.setOnClickListener(this)

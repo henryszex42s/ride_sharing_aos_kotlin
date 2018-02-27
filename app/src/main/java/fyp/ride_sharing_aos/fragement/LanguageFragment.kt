@@ -40,7 +40,8 @@ class LanguageFragment : Fragment(){
 
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment   // Inflate the layout for this fragment
         val view = inflater!!.inflate(R.layout.fragment_language, null)
         val radio = view.findViewById<RadioGroup>(R.id.language)
@@ -50,7 +51,7 @@ class LanguageFragment : Fragment(){
 
                 if(checkedId == R.id.chinese) {
 
-                    val resources = activity!!.getResources()
+                    val resources = activity.getResources()
                     val config = resources.getConfiguration()
                     val dm = resources.getDisplayMetrics()
                     config.locale = Locale.TRADITIONAL_CHINESE
@@ -59,7 +60,7 @@ class LanguageFragment : Fragment(){
                     Toast.makeText(context, "You chose Chinese", Toast.LENGTH_SHORT).show()
                 }
                 if(checkedId == R.id.english) {
-                    val resources = activity!!.getResources()
+                    val resources = activity.getResources()
                     val config = resources.getConfiguration()
                     val dm = resources.getDisplayMetrics()
                     config.locale = Locale.ENGLISH
