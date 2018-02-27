@@ -60,13 +60,13 @@ class ViewHolder(val c : Context, val view: View): RecyclerView.ViewHolder(view)
         if(room.destination.equals("HKUST South Gate"))
             view.cardview_color.setBackgroundColor(Color.parseColor("#ff0f0f"))
         if(room.destination.equals("Diamond Hill MTR"))
-            view.cardview_color.setBackgroundColor(Color.parseColor("#464c56"))
+            view.cardview_color.setBackgroundColor(Color.parseColor("#222222"))
         if(room.destination.equals("Choi Hung MTR"))
-            view.cardview_color.setBackgroundColor(Color.parseColor("#027cff"))
+            view.cardview_color.setBackgroundColor(Color.parseColor("#406080"))
         if(room.destination.equals("Hang Hau MTR"))
-            view.cardview_color.setBackgroundColor(Color.parseColor("#77cdff"))
+            view.cardview_color.setBackgroundColor(Color.parseColor("#AFEEEE"))
         if(room.destination.equals("Ngau Tau Kok MTR"))
-            view.cardview_color.setBackgroundColor(Color.parseColor("#75ed2a"))
+            view.cardview_color.setBackgroundColor(Color.parseColor("#42e58b"))
 
 
         view.setOnClickListener {
