@@ -21,6 +21,7 @@ import fyp.ride_sharing_aos.tools.FirebaseManager
 import android.support.v7.widget.CardView
 import android.view.View
 import android.widget.Toast
+import fyp.ride_sharing_aos.activity.ChatroomActivity
 import fyp.ride_sharing_aos.tools.FirebaseManager.destinationFilterValue
 import fyp.ride_sharing_aos.tools.FirebaseManager.genderFilterValue
 import fyp.ride_sharing_aos.tools.FirebaseManager.minPassengersFilterValue
@@ -171,7 +172,12 @@ class HomeActivity : BaseActivity(){
         }
     }
 
-
+    fun callChatRoom()
+    {
+        val intent = Intent(this@HomeActivity, ChatroomActivity::class.java)
+        startActivity(intent)
+        overridePendingTransition(R.anim.slide_in_up,R.anim.slide_out_up)
+    }
 
 
 

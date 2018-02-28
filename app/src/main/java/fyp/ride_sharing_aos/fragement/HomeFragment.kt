@@ -7,7 +7,6 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import fyp.ride_sharing_aos.HomeActivity
 
 import fyp.ride_sharing_aos.R
 import fyp.ride_sharing_aos.adapters.RoomListAdapter
@@ -28,7 +27,9 @@ class HomeFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+        if (view != null) {
+            super.onViewCreated(view, savedInstanceState)
+        }
     }
 
     override fun onResume() {
@@ -38,16 +39,21 @@ class HomeFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         rv_roomlist.layoutManager = LinearLayoutManager(activity)
-        rv_roomlist.adapter = RoomListAdapter(this.context,FirebaseManager.getRoomList())
+        rv_roomlist.adapter = RoomListAdapter(this.context!!,FirebaseManager.getRoomList())
     }
 
     override fun onStart() {
         super.onStart()
-    }
+            }
 
      fun DataChange()
     {
         rv_roomlist.adapter.notifyDataSetChanged()
+    }
+
+    fun callChatRoom()
+    {
+        callChatRoom
     }
 
 }

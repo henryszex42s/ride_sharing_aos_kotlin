@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import fyp.ride_sharing_aos.R
 import fyp.ride_sharing_aos.model.Message
+import fyp.ride_sharing_aos.tools.FirebaseManager
 import fyp.ride_sharing_aos.tools.Tools
 import kotlinx.android.synthetic.main.item_message_received.view.*
 import kotlinx.android.synthetic.main.item_message_sent.view.*
@@ -25,6 +26,7 @@ class MessageListAdapter(private val mContext: Context, private var mMessageList
     companion object {
         const val RECEIVE = 0
         const val SENT = 1
+        const val SYSTEM = 3
     }
 
 
@@ -38,6 +40,29 @@ class MessageListAdapter(private val mContext: Context, private var mMessageList
         return viewHolder
     }
 
+    override fun getItemViewType(position: Int): Int {
+
+        var type = 3
+
+        if(mMessageList[position].type == 0)
+        {
+            type = SYSTEM
+        }
+
+        if(mMessageList[position].type == 1)
+        {
+            if(mMessageList[position].sender.equals(FirebaseManager.getUserID()))
+            {
+                type = SENT
+            }
+            else
+            {
+                type = RECEIVE
+            }
+
+        }
+        return type
+    }
     //this method is binding the data on the list
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         (holder as UpdateViewHolder).bindViews(mMessageList[position])
@@ -47,6 +72,7 @@ class MessageListAdapter(private val mContext: Context, private var mMessageList
     override fun getItemCount(): Int {
         return mMessageList.size
     }
+
 
     fun setUpdates(updates: List<Message>) {
         mMessageList = updates
@@ -65,7 +91,6 @@ class MessageListAdapter(private val mContext: Context, private var mMessageList
         // get the views reference from itemView...
 
         override fun bindViews(msg_info: Message) {
-
             view.received_text_message_body.text = msg_info.message
             view.received_time.text = Tools.convertTime(msg_info.send_time!!)
             view.sender.text = msg_info.sender
@@ -77,7 +102,6 @@ class MessageListAdapter(private val mContext: Context, private var mMessageList
         : RecyclerView.ViewHolder(view), UpdateViewHolder {
 
         override fun bindViews(msg_info: Message) {
-
             view.sent_text_message_body.text = msg_info.message
             view.sent_time.text = Tools.convertTime(msg_info.send_time!!)
 

@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import fyp.ride_sharing_aos.HomeActivity
 import fyp.ride_sharing_aos.R
 import fyp.ride_sharing_aos.model.Room
 import fyp.ride_sharing_aos.tools.FirebaseManager
@@ -19,7 +20,6 @@ import java.text.SimpleDateFormat
  * Created by lfreee on 25/1/2018.
  */
 class RoomListAdapter(val c : Context,val roomlist: MutableList<Room>) : RecyclerView.Adapter<RoomListAdapter.ViewHolder>() {
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
@@ -72,8 +72,11 @@ class ViewHolder(val c : Context, val view: View): RecyclerView.ViewHolder(view)
         view.setOnClickListener {
             Toast.makeText(c, room.start+" To "+room.destination, Toast.LENGTH_SHORT).show()
             FirebaseManager.updateRoom(room.roomid!!,"1")
-
+            (c as HomeActivity).callChatRoom()
         }
+
+
+
     }
 }
 

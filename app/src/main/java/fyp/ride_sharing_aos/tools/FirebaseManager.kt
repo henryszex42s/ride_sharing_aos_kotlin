@@ -4,8 +4,11 @@ import android.content.ContentValues.TAG
 import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
+import com.google.firebase.firestore.QuerySnapshot
+import fyp.ride_sharing_aos.model.Message
 import fyp.ride_sharing_aos.model.Room
 import fyp.ride_sharing_aos.model.User
 
@@ -37,7 +40,8 @@ object FirebaseManager {
 //    private var dbReference = database.reference
 
     var UserObj : User ?= null
-    private val RoomList: MutableList<Room> = mutableListOf()
+    private val RoomList    = mutableListOf<Room>()
+    val MessageList = mutableListOf<Message>()
 
 
     fun isLogin() : Boolean
@@ -69,10 +73,11 @@ object FirebaseManager {
         return RoomList
     }
 
-    fun roomListisEmpty() : Boolean
+    fun getRoomID() : String
     {
-        return RoomList.isEmpty()
+        return UserObj!!.chatsession!!
     }
+
 
     fun createRoom(newRoom : Room, callback: (Any)->Unit)
     {
@@ -117,6 +122,38 @@ object FirebaseManager {
     }
 
 
+    fun chatroomListener(callback: (Any)->Unit)
+    {
+        db.collection("room").document(getRoomID()).collection("chat")
+                .addSnapshotListener(EventListener<QuerySnapshot> { snapshots, e ->
+                    if (e != null) {
+                        Log.w(TAG, "listen:error", e)
+                        return@EventListener
+                    }
+
+                    for (doc in snapshots) {
+                        val note = doc.toObject(Message::class.java)
+                        MessageList.add(note)
+                    }
+                })
+    }
+
+    fun addMessage( newMessage: Message, roomID :String)
+    {
+        db.collection("room")
+                .document(roomID)
+                .collection("chat")
+                .add(newMessage)
+                .addOnSuccessListener({ documentReference ->
+                    Log.d(TAG, "Message DocumentSnapshot written with ID: " + documentReference.id)
+                })
+                .addOnFailureListener(
+                        {
+                            e -> Log.w(TAG, "Error adding document", e)
+                        })
+
+
+    }
 
 
     fun updateUser()
@@ -241,7 +278,6 @@ object FirebaseManager {
         {
             queries = queries.whereEqualTo("numberOfPeople",minPassengersFilterValue)
         }
-
         return queries
     }
 
