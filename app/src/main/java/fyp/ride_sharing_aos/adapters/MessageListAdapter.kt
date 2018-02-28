@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.item_message_sent.view.*
 /**
  * Created by lfreee on 21/2/2018.
  */
-class MessageListAdapter(private val mContext: Context, private var mMessageList: List<Message>) : RecyclerView.Adapter<RecyclerView.ViewHolder>()
+class MessageListAdapter(private val mContext: Context, private var mMessageList: MutableList<Message>) : RecyclerView.Adapter<RecyclerView.ViewHolder>()
 {
 
     companion object {
@@ -42,7 +42,7 @@ class MessageListAdapter(private val mContext: Context, private var mMessageList
 
     override fun getItemViewType(position: Int): Int {
 
-        var type = 3
+        var type = 1
 
         if(mMessageList[position].type == 0)
         {
@@ -74,10 +74,10 @@ class MessageListAdapter(private val mContext: Context, private var mMessageList
     }
 
 
-    fun setUpdates(updates: List<Message>) {
-        mMessageList = updates
-        notifyDataSetChanged()
-    }
+//    fun setUpdates(updates: List<Message>) {
+//        mMessageList = updates
+//        notifyDataSetChanged()
+//    }
 
 
     interface UpdateViewHolder {

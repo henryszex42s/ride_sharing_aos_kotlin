@@ -124,24 +124,28 @@ object FirebaseManager {
 
     fun chatroomListener(callback: (Any)->Unit)
     {
+
         db.collection("room").document(getRoomID()).collection("chat")
                 .addSnapshotListener(EventListener<QuerySnapshot> { snapshots, e ->
                     if (e != null) {
                         Log.w(TAG, "listen:error", e)
                         return@EventListener
                     }
-
+                    MessageList.clear()
                     for (doc in snapshots) {
                         val note = doc.toObject(Message::class.java)
                         MessageList.add(note)
                     }
+
                 })
     }
 
-    fun addMessage( newMessage: Message, roomID :String)
+
+
+    fun addMessage( newMessage: Message)
     {
         db.collection("room")
-                .document(roomID)
+                .document(getRoomID())
                 .collection("chat")
                 .add(newMessage)
                 .addOnSuccessListener({ documentReference ->

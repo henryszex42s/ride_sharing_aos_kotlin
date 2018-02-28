@@ -51,9 +51,5 @@ class HomeFragment : Fragment() {
         rv_roomlist.adapter.notifyDataSetChanged()
     }
 
-    fun callChatRoom()
-    {
-        callChatRoom
-    }
 
 }
