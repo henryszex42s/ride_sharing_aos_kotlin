@@ -2,10 +2,7 @@ package fyp.ride_sharing_aos.adapters
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
-import android.text.format.DateUtils.formatDateTime
 import android.view.View
-import android.widget.ImageView
-import android.widget.TextView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import fyp.ride_sharing_aos.R
@@ -20,7 +17,7 @@ import kotlinx.android.synthetic.main.item_message_sent.view.*
 /**
  * Created by lfreee on 21/2/2018.
  */
-class MessageListAdapter(private val mContext: Context, private var mMessageList: MutableList<Message>) : RecyclerView.Adapter<RecyclerView.ViewHolder>()
+class MessageListAdapter(private val mContext: Context, private val mMessageList: MutableList<Message>) : RecyclerView.Adapter<RecyclerView.ViewHolder>()
 {
 
     companion object {
@@ -31,12 +28,11 @@ class MessageListAdapter(private val mContext: Context, private var mMessageList
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        val viewHolder: RecyclerView.ViewHolder = if(viewType == RECEIVE)
+          ReceiveViewHolder( LayoutInflater.from(mContext).inflate(R.layout.item_message_received, parent, false))
+      else
+          SentViewHolder(LayoutInflater.from(mContext).inflate(R.layout.item_message_sent, parent, false))
 
-        val viewHolder: RecyclerView.ViewHolder = when (viewType) {
-            RECEIVE -> ReceiveViewHolder( LayoutInflater.from(mContext).inflate(R.layout.item_message_received, parent, false))
-        // other view holders...
-            else -> SentViewHolder(LayoutInflater.from(mContext).inflate(R.layout.item_message_sent, parent, false))
-        }
         return viewHolder
     }
 
@@ -74,6 +70,7 @@ class MessageListAdapter(private val mContext: Context, private var mMessageList
     }
 
 
+
 //    fun setUpdates(updates: List<Message>) {
 //        mMessageList = updates
 //        notifyDataSetChanged()
@@ -85,8 +82,7 @@ class MessageListAdapter(private val mContext: Context, private var mMessageList
     }
 
 
-    class ReceiveViewHolder(val view: View)
-        : RecyclerView.ViewHolder(view), UpdateViewHolder {
+    class ReceiveViewHolder(val view: View) : RecyclerView.ViewHolder(view), UpdateViewHolder {
 
         // get the views reference from itemView...
 
@@ -99,7 +95,7 @@ class MessageListAdapter(private val mContext: Context, private var mMessageList
     }
 
     class SentViewHolder(val view: View)
-        : RecyclerView.ViewHolder(view), UpdateViewHolder {
+: RecyclerView.ViewHolder(view), UpdateViewHolder {
 
         override fun bindViews(msg_info: Message) {
             view.sent_text_message_body.text = msg_info.message

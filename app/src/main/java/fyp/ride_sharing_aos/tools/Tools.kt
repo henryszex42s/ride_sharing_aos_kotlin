@@ -1,5 +1,6 @@
 package fyp.ride_sharing_aos.tools
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.location.Location
 import android.support.v7.app.AlertDialog
@@ -8,6 +9,9 @@ import fyp.ride_sharing_aos.R
 import java.sql.Date
 import java.sql.Timestamp
 import java.text.SimpleDateFormat
+import com.google.firebase.firestore.ServerTimestamp
+
+
 
 /**
  * Created by lfreee on 19/1/2018.
@@ -65,6 +69,7 @@ object Tools
         return format.format(date)
     }
 
+    @SuppressLint("SimpleDateFormat")
     fun convertTime(time: Long): String {
         val date = Date(time)
         val format = SimpleDateFormat("HH:mm")

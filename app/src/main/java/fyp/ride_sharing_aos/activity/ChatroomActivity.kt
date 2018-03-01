@@ -24,10 +24,13 @@ class ChatroomActivity: BaseActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chatroom)
 
+        FirebaseManager.chatroomListener({DataChange()})
+
+
         reyclerview_message_list.layoutManager = LinearLayoutManager(this)
         reyclerview_message_list.adapter = MessageListAdapter(this, FirebaseManager.MessageList)
 
-        FirebaseManager.chatroomListener({updateView()})
+
 
 
         button_chatbox_send.setOnClickListener {
@@ -36,8 +39,7 @@ class ChatroomActivity: BaseActivity(){
         }
     }
 
-
-    fun updateView()
+    fun DataChange()
     {
         reyclerview_message_list.adapter.notifyDataSetChanged()
     }
