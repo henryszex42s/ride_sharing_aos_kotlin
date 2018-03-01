@@ -19,7 +19,7 @@ import java.text.SimpleDateFormat
 /**
  * Created by lfreee on 25/1/2018.
  */
-class RoomListAdapter(val c : Context,val roomlist: MutableList<Room>) : RecyclerView.Adapter<RoomListAdapter.ViewHolder>() {
+class RoomListAdapter(private val c : Context,private val roomlist: MutableList<Room>) : RecyclerView.Adapter<RoomListAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
