@@ -57,11 +57,17 @@ object Tools
         val alert = builder.create()
         alert.show()
         }
-}
+
+    }
+    fun convertDate(time: Long): String {
+        val date = Date(time)
+        val format = SimpleDateFormat("dd/MM/yyyy")
+        return format.format(date)
+    }
 
     fun convertTime(time: Long): String {
         val date = Date(time)
-        val format = SimpleDateFormat("yyyy MM dd HH:mm:ss")
+        val format = SimpleDateFormat("HH:mm")
         return format.format(date)
     }
 }

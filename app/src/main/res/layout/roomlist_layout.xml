@@ -189,8 +189,7 @@
                 android:layout_marginStart="16dp"
                 android:text="@string/to"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                app:layout_constraintBottom_toTopOf="@+id/item_prefer_time"
-
+                app:layout_constraintBottom_toTopOf="@+id/rmlist_date"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/layout_from" />
 
@@ -219,26 +218,61 @@
                 android:scaleType="fitXY"
                 android:src="@drawable/rmlist_date"
                 app:layout_constraintBottom_toTopOf="@+id/item_numpeople"
-                app:layout_constraintEnd_toStartOf="@+id/item_prefer_time"
+                app:layout_constraintEnd_toStartOf="@+id/current_date"
                 app:layout_constraintHorizontal_bias="0.45"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/layout_to"
                 app:layout_constraintVertical_bias="0.0" />
 
+
+            --------------------------------------------1
+
             <TextView
-                android:id="@+id/item_prefer_time"
+                android:id="@+id/current_date"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="16dp"
                 android:lineSpacingExtra="8dp"
-                android:text="[Prefer Time]"
+                android:text="[Current Date]"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 app:layout_constraintBottom_toTopOf="@+id/item_numpeople"
-                app:layout_constraintEnd_toEndOf="parent"
+
                 app:layout_constraintStart_toStartOf="@+id/rmlist_date"
+                app:layout_constraintTop_toTopOf="@+id/rmlist_date"
+                app:layout_constraintVertical_bias="0.695" />
+
+
+            <ImageView
+                android:id="@+id/rmlist_time"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/rmlist_time"
+                app:layout_constraintEnd_toStartOf="@+id/item_prefer_time"
+                app:layout_constraintHorizontal_bias="0.916"
+                app:layout_constraintStart_toEndOf="@+id/current_date"
                 app:layout_constraintTop_toBottomOf="@+id/item_to" />
+
+
+            <TextView
+                android:id="@+id/item_prefer_time"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="32dp"
+                android:layout_marginStart="68dp"
+                android:text="[Prefer Time]"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                app:layout_constraintBottom_toTopOf="@+id/item_filter"
+                app:layout_constraintStart_toEndOf="@+id/current_date"
+                app:layout_constraintTop_toTopOf="@+id/current_date"
+                app:layout_constraintVertical_bias="0.086" />
 
             <ImageView
                 android:id="@+id/rmlist_people"
@@ -252,11 +286,11 @@
                 android:scaleType="fitXY"
                 android:src="@drawable/rmlist_people"
                 app:layout_constraintBottom_toTopOf="@+id/item_numpeople"
-                app:layout_constraintEnd_toStartOf="@+id/item_prefer_time"
-                app:layout_constraintHorizontal_bias="0.45"
+                app:layout_constraintEnd_toStartOf="@+id/current_date"
+                app:layout_constraintHorizontal_bias="0.428"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rmlist_date"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintVertical_bias="0.2" />
             <TextView
                 android:id="@+id/item_numpeople"
                 android:layout_width="0dp"
@@ -274,23 +308,20 @@
                 app:layout_constraintTop_toBottomOf="@+id/item_prefer_time" />
 
 
-
             <ImageView
                 android:id="@+id/rmlist_filter"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginEnd="8dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="12dp"
                 android:adjustViewBounds="true"
                 android:scaleType="fitXY"
                 android:src="@drawable/rmlist_filter"
-                app:layout_constraintHorizontal_bias="0.45"
-                app:layout_constraintStart_toEndOf="@+id/item_numpeople"
                 app:layout_constraintEnd_toStartOf="@+id/item_filter"
-                app:layout_constraintTop_toBottomOf="@+id/item_prefer_time"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintHorizontal_bias="0.95"
+                app:layout_constraintStart_toEndOf="@+id/item_numpeople"
+                app:layout_constraintTop_toBottomOf="@+id/item_prefer_time" />
 
             <TextView
                 android:id="@+id/item_filter"
