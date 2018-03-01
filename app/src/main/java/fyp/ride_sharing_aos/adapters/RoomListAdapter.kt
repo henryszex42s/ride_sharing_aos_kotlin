@@ -52,9 +52,17 @@ class ViewHolder(val c : Context, val view: View): RecyclerView.ViewHolder(view)
         view.item_to.text = room.destination
 
         //view.item_filter.text
-        //view.item_min
-        view.item_numpeople.text = room.numOfPeople.toString()
 
+        view.item_numpeople.text = room.numOfPeople.toString() + "/4"
+        //  view.item_numpeople.text = room.numOfPeople.toString() + "/" + roon.max.toString()
+
+        if(room.maleFil == true)
+            view.item_filter.text = "Male Only"
+        if(room.femaleFil == true)
+            view.item_filter.text = "Female Only"
+
+
+        // Destination Color
         if(room.destination.equals("HKUST North Gate"))
             view.cardview_color.setBackgroundColor(Color.parseColor("#ff0f0f"))
         if(room.destination.equals("HKUST South Gate"))
@@ -67,6 +75,7 @@ class ViewHolder(val c : Context, val view: View): RecyclerView.ViewHolder(view)
             view.cardview_color.setBackgroundColor(Color.parseColor("#AFEEEE"))
         if(room.destination.equals("Ngau Tau Kok MTR"))
             view.cardview_color.setBackgroundColor(Color.parseColor("#42e58b"))
+
 
 
         view.setOnClickListener {

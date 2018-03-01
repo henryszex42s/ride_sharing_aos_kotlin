@@ -148,7 +148,7 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="0dp"
-                android:text="Room Name"
+                android:text="[Room Name]"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                 app:layout_constraintBottom_toTopOf="@+id/item_from"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -165,20 +165,20 @@
                 android:text="@string/from"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 app:layout_constraintBottom_toTopOf="@+id/layout_to"
-                app:layout_constraintEnd_toEndOf="parent"
+
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/item_roomname" />
 
             <TextView
                 android:id="@+id/item_from"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:text="Sai Wan Ho MTR Station"
+                android:layout_marginStart="32dp"
+                android:text="[Start location]"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                app:layout_constraintEnd_toEndOf="@+id/layout_from"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/layout_from"
                 app:layout_constraintTop_toTopOf="@+id/layout_from" />
 
             <TextView
@@ -190,21 +190,21 @@
                 android:text="@string/to"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 app:layout_constraintBottom_toTopOf="@+id/item_prefer_time"
-                app:layout_constraintEnd_toEndOf="parent"
+
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/layout_from" />
 
 
             <TextView
                 android:id="@+id/item_to"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:text="Sai Wan Ho MTR Station"
+                android:layout_marginStart="32dp"
+                android:text="[End location]"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                app:layout_constraintEnd_toEndOf="@+id/layout_to"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/layout_to"
                 app:layout_constraintTop_toTopOf="@+id/layout_to" />
 
             <ImageView
@@ -233,7 +233,7 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="16dp"
                 android:lineSpacingExtra="8dp"
-                android:text="Prefer Time"
+                android:text="[Prefer Time]"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 app:layout_constraintBottom_toTopOf="@+id/item_numpeople"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -266,12 +266,14 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="16dp"
                 android:lineSpacingExtra="8dp"
-                android:text="#people"
+                android:text="[Number of people]"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/item_filter"
                 app:layout_constraintStart_toStartOf="@+id/rmlist_people"
                 app:layout_constraintTop_toBottomOf="@+id/item_prefer_time" />
+
+
 
             <ImageView
                 android:id="@+id/rmlist_filter"
@@ -290,11 +292,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/item_prefer_time"
                 app:layout_constraintVertical_bias="0.0" />
 
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-
             <TextView
                 android:id="@+id/item_filter"
                 android:layout_width="0dp"
@@ -302,30 +299,15 @@
                 android:layout_marginBottom="32dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="16dp"
-                android:text="filter"
+                android:text="None"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/item_min"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/item_numpeople"
                 app:layout_constraintTop_toBottomOf="@+id/item_prefer_time"
                 app:layout_constraintTop_toTopOf="@+id/item_numpeople"
                 app:layout_constraintVertical_bias="0.0" />
 
-            <TextView
-                android:id="@+id/item_min"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="32dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:text="min"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/item_filter"
-                app:layout_constraintTop_toBottomOf="@+id/item_prefer_time"
-                app:layout_constraintTop_toTopOf="@+id/item_filter"
-                app:layout_constraintVertical_bias="0.0" />
 
 
         </android.support.constraint.ConstraintLayout>
