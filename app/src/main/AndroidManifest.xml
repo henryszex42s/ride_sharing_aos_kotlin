@@ -29,6 +29,7 @@
         <activity android:name=".activity.GetStartActivity" />
         <activity android:name=".activity.LoginActivity" />
         <activity android:name=".activity.SignupActivity" />
+        <activity android:name=".activity.AddRouteActivity" />
         <activity android:name=".activity.ChatroomActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.

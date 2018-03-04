@@ -174,6 +174,7 @@ class HomeActivity : BaseActivity(){
 
     fun callChatRoom()
     {
+        dismissProgressDialog()
         val intent = Intent(this@HomeActivity, ChatroomActivity::class.java)
         startActivity(intent)
         overridePendingTransition(R.anim.slide_in_up,R.anim.slide_out_up)

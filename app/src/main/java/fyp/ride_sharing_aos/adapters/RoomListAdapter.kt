@@ -81,10 +81,12 @@ class ViewHolder(val c : Context, val view: View): RecyclerView.ViewHolder(view)
 
 
         view.setOnClickListener {
+
             Toast.makeText(c, room.start+" To "+room.destination, Toast.LENGTH_SHORT).show()
-            FirebaseManager.updateRoom(room.roomid!!,"1")
+
+            (c as HomeActivity).showProgressDialog(c.getString(R.string.progress_loading))
+            FirebaseManager.updateRoom(room.roomid!!,FirebaseManager.REQUEST_TYPE_JOIN_ROOM,{c.callChatRoom()})
             //Need to wait the updateRoom
-            (c as HomeActivity).callChatRoom()
         }
 
 

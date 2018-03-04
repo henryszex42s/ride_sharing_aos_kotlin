@@ -4,11 +4,8 @@ import android.content.ContentValues.TAG
 import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.firestore.EventListener
+import com.google.firebase.firestore.*
 import com.google.firebase.firestore.FieldValue.serverTimestamp
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.Query
-import com.google.firebase.firestore.QuerySnapshot
 import fyp.ride_sharing_aos.model.Message
 import fyp.ride_sharing_aos.model.Room
 import fyp.ride_sharing_aos.model.User
@@ -29,6 +26,8 @@ object FirebaseManager {
     val REQUEST_TYPE_DISMISS_ROOM = "3"
 
 
+    lateinit private var MessageListenerVal : ListenerRegistration
+    lateinit private var UserListenerVal : ListenerRegistration
 
 
     //For Filter
@@ -44,6 +43,7 @@ object FirebaseManager {
     private val RoomList    = mutableListOf<Room>()
     val MessageList = mutableListOf<Message>()
 
+    private val lock = java.lang.Object()
 
     fun isLogin() : Boolean
     {
@@ -85,24 +85,34 @@ object FirebaseManager {
 //        val roomList = database.reference.child("room").push()
 //        roomList.setValue(newRoom)
 
-        db.collection("room")
-                .add(newRoom)
-                .addOnSuccessListener({ documentReference ->
-                    Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.id)
-                    if(UserObj != null)
-                    {
-                        UserObj!!.chatsession = documentReference.id
-                    }
-                    callback(Unit)
-                })
-                .addOnFailureListener(
-                 {
-                    e -> Log.w(TAG, "Error adding document", e)
-                     callback(Unit)
-                })
+            UserListenerVal = db.collection("user").document(getUserID()!!)
+                    .addSnapshotListener(EventListener<DocumentSnapshot> { snapshots, e ->
+                        if (e != null) {
+                            Log.w(TAG, "UserUpdateListener :error", e)
+                            return@EventListener
+                        }
+                        UserObj = snapshots.toObject(User::class.java)
+                        callback(Unit)
+                    })
+
+            db.collection("room")
+                    .add(newRoom)
+                    .addOnSuccessListener({ documentReference ->
+                        Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.id)
+                        if(UserObj != null)
+                        {
+                            UserObj!!.chatsession = documentReference.id
+                        }
+                        UserListenerVal.remove()
+                    })
+                    .addOnFailureListener(
+                            {
+                                e -> Log.w(TAG, "Error adding document", e)
+                            })
+
     }
 
-    fun updateRoom(roomid : String ,type : String)
+    fun updateRoom(roomid : String ,type : String,callback: (Any) -> Unit)
     {
 
         val data = HashMap<String, Any>()
@@ -114,32 +124,64 @@ object FirebaseManager {
                 .update(data)
                 .addOnSuccessListener{
                     Log.d(TAG, "addOnSuccessListener: ")
+                    callback(Unit)
                 }
                 .addOnFailureListener{
                     Log.d(TAG, "addOnFailureListener: ")
-
+                    callback(Unit)
                 }
     }
 
 
-    fun chatroomListener(callback: (Any)->Unit)
+    fun MessageUpdateListener(callback: (Any)->Unit,subscribe : Boolean)
     {
+        if(subscribe)
+        {
+            MessageListenerVal = db.collection("room").document(getRoomID()).collection("chat").orderBy("send_time",Query.Direction.ASCENDING)
+                    .addSnapshotListener(EventListener<QuerySnapshot> { snapshots, e ->
+                        if (e != null) {
+                            Log.w(TAG, "listen:error", e)
+                            return@EventListener
+                        }
+                        MessageList.clear()
+                        for (doc in snapshots) {
+                            val note = doc.toObject(Message::class.java)
+                            MessageList.add(note)
+                        }
+                        callback(Unit)
+                    })
+        }
+        else
+        {
+            MessageListenerVal.remove()
+        }
 
-        db.collection("room").document(getRoomID()).collection("chat").orderBy("send_time",Query.Direction.ASCENDING)
-                .addSnapshotListener(EventListener<QuerySnapshot> { snapshots, e ->
-                    if (e != null) {
-                        Log.w(TAG, "listen:error", e)
-                        return@EventListener
-                    }
-                    MessageList.clear()
-                    for (doc in snapshots) {
-                        val note = doc.toObject(Message::class.java)
-                        MessageList.add(note)
-                    }
-                    callback(Unit)
-
-                })
     }
+
+    fun UserUpdateListener(callback: (Any)->Unit,subscribe : Boolean)
+    {
+        if(subscribe)
+        {
+            UserListenerVal = db.collection("user").document(getUserID()!!)
+                    .addSnapshotListener(EventListener<DocumentSnapshot> { snapshots, e ->
+                        if (e != null) {
+                            Log.w(TAG, "UserUpdateListener :error", e)
+                            return@EventListener
+                        }
+                        UserObj = snapshots.toObject(User::class.java)
+                        callback(Unit)
+                    })
+        }
+        else
+        {
+            UserListenerVal.remove()
+        }
+
+    }
+
+
+
+
 
 
 
