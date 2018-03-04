@@ -64,7 +64,7 @@
     <!--String related to addRoute page by Him-->
 
     <string name="rm_name">Room Name(Optional)</string>
-    <string name="pt">Prefer Time (HH:MM)</string>
+    <string name="pt">Prefer Time:</string>
     <string name="from">From:</string>
     <string name="to">To:</string>
 

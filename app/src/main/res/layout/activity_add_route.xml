@@ -36,7 +36,7 @@
                 android:textColor="@color/black" />
 
         </android.support.design.widget.TextInputLayout>
-
+<!--
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -56,18 +56,56 @@
                 android:textColor="@color/black" />
 
         </android.support.design.widget.TextInputLayout>
+-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pt"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+       <TableLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:paddingLeft="15dp"
+           android:paddingRight="15dp"
+           android:stretchColumns="0">
+
+           <TableRow>
+               <TextView
+                   android:id="@+id/prefer_time"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="00:00"
+                   android:layout_gravity="center"
+                   android:textColor="@color/black"
+                   android:textSize="20sp" />
+               <Button
+                    android:id="@+id/time_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Select"
+
+                   />
+           </TableRow>
+       </TableLayout>
 
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/from"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
             android:textColor="@color/black"
             android:textSize="20sp" />
 
         <com.jaredrummler.materialspinner.MaterialSpinner
                 android:id="@+id/start_spin"
                 app:ms_text_color = "@color/black"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
@@ -76,6 +114,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/to"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 />
@@ -83,21 +123,20 @@
         <com.jaredrummler.materialspinner.MaterialSpinner
                 android:id="@+id/des_spin"
                 app:ms_text_color = "@color/black"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-                <TableLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <TableRow>
                 <Button
                 android:id="@+id/filter"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="100dp"
+                android:layout_marginRight="100dp"
                 android:text="@string/filter"
                 />
-                </TableRow>
-                </TableLayout>
+
                     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
                         xmlns:map="http://schemas.android.com/apk/res-auto"
                         android:name="com.google.android.gms.maps.MapFragment"

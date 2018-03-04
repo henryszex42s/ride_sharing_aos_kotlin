@@ -1,5 +1,7 @@
 package fyp.ride_sharing_aos.activity
 
+import android.app.AlertDialog.THEME_HOLO_DARK
+import android.app.TimePickerDialog
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.widget.*
@@ -20,6 +22,8 @@ import fyp.ride_sharing_aos.tools.Tools
 import com.jaredrummler.materialspinner.MaterialSpinner
 import fyp.ride_sharing_aos.BaseActivity
 import fyp.ride_sharing_aos.tools.FirebaseManager.REQUEST_TYPE_CREATE_ROOM
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class AddRouteActivity : BaseActivity(), OnMapReadyCallback {
@@ -42,6 +46,8 @@ class AddRouteActivity : BaseActivity(), OnMapReadyCallback {
     var isCheck = booleanArrayOf(false,false,false,false)
     var yourChoices : MutableList<Int> = arrayListOf()
 
+    // Time
+    val selectedTime = Calendar.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,21 +59,34 @@ class AddRouteActivity : BaseActivity(), OnMapReadyCallback {
                 .findFragmentById(R.id.map) as MapFragment
         mapFragment.getMapAsync(this)
 
+        setTime()
         setUpFilter()
         setUpSpinner()
 
 
         create.setOnClickListener{
-            if(start_Location == des_Location)
+            //check location
+            // if location field empty
+            if(start_Location ==  LatLng(0.0,0.0) || des_Location == LatLng(0.0,0.0))
+                Toast.makeText(this@AddRouteActivity, "Location must not be empty", Toast.LENGTH_SHORT).show()
+            // if locations are same
+            else if(start_Location == des_Location)
                 Toast.makeText(this@AddRouteActivity, "Location must not be the same", Toast.LENGTH_SHORT).show()
+
+
+            //check current time and selected time
+            if(selectedTime.getTimeInMillis() < Calendar.getInstance().getTimeInMillis()){
+                Toast.makeText(this@AddRouteActivity, "Time must be larger than current time", Toast.LENGTH_SHORT).show()
+            }
+
+            // if nothing wrong -> create room
             else{
                 showProgressDialog(getString(R.string.progress_loading))
-                val room = Room(REQUEST_TYPE_CREATE_ROOM,FirebaseManager.getUserID(),"",starting_Place, des_Place, numOfPeople, m_Only, f_Only, Tools.currentTime.time, Tools.currentTime.time,roomname.text.toString(), "","","","")
+                val room = Room(REQUEST_TYPE_CREATE_ROOM,FirebaseManager.getUserID(),"",starting_Place, des_Place, numOfPeople, m_Only, f_Only, Tools.currentTime.time, selectedTime.getTimeInMillis(),roomname.text.toString(), "","","","")
                 FirebaseManager.createRoom(room,{afterCreateRoom()})
             }
         }
   }
-
 
     fun afterCreateRoom()
     {
@@ -94,6 +113,22 @@ class AddRouteActivity : BaseActivity(), OnMapReadyCallback {
         //Add a marker in UST (Default map position is UST)
         val ust = LatLng(22.336397, 114.265506)
         mMap.moveCamera(CameraUpdateFactory.newLatLng(ust))
+    }
+
+    fun setTime()
+    {
+        val timeSetListener = TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
+            selectedTime.set(Calendar.HOUR_OF_DAY, hour)
+            selectedTime.set(Calendar.MINUTE, minute)
+
+            prefer_time.text = SimpleDateFormat("HH:mm").format(selectedTime.time)
+        }
+        time_button.setOnClickListener {
+            TimePickerDialog(this, THEME_HOLO_DARK,timeSetListener,
+                    selectedTime.get(Calendar.HOUR_OF_DAY),
+                    selectedTime.get(Calendar.MINUTE), true)
+                     .show()
+        }
     }
 
     fun setUpFilter()

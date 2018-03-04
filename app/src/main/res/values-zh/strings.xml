@@ -58,7 +58,7 @@
     <!--String related to addRoute page by Him-->
 
     <string name="rm_name">房間名稱(選填)</string>
-    <string name="pt">你想的時間(HH:MM)</string>
+    <string name="pt">你想的時間:</string>
     <string name="from">從:</string>
     <string name="to">到:</string>
 
