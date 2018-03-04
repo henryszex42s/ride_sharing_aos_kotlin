@@ -65,22 +65,31 @@ class AddRouteActivity : BaseActivity(), OnMapReadyCallback {
 
 
         create.setOnClickListener{
+
+            var Validation = true
             //check location
             // if location field empty
             if(start_Location ==  LatLng(0.0,0.0) || des_Location == LatLng(0.0,0.0))
+            {
                 Toast.makeText(this@AddRouteActivity, "Location must not be empty", Toast.LENGTH_SHORT).show()
+                Validation = false
+
+            }
             // if locations are same
             else if(start_Location == des_Location)
+            {
                 Toast.makeText(this@AddRouteActivity, "Location must not be the same", Toast.LENGTH_SHORT).show()
+                Validation = false
+            }
 
-
-            //check current time and selected time
+            //Check current time and selected time
             if(selectedTime.getTimeInMillis() < Calendar.getInstance().getTimeInMillis()){
                 Toast.makeText(this@AddRouteActivity, "Time must be larger than current time", Toast.LENGTH_SHORT).show()
+                Validation = false
             }
 
             // if nothing wrong -> create room
-            else{
+            if(Validation){
                 showProgressDialog(getString(R.string.progress_loading))
                 val room = Room(REQUEST_TYPE_CREATE_ROOM,FirebaseManager.getUserID(),"",starting_Place, des_Place, numOfPeople, m_Only, f_Only, Tools.currentTime.time, selectedTime.getTimeInMillis(),roomname.text.toString(), "","","","")
                 FirebaseManager.createRoom(room,{afterCreateRoom()})
@@ -95,15 +104,18 @@ class AddRouteActivity : BaseActivity(), OnMapReadyCallback {
         {
             Toast.makeText(this,
                     "Room is created" ,
-                    Toast.LENGTH_SHORT).show();
+                    Toast.LENGTH_SHORT).show()
+                callChatRoom()
         }
         else
         {
             Toast.makeText(this,
                     "Room is not created" ,
-                    Toast.LENGTH_SHORT).show();
+                    Toast.LENGTH_SHORT).show()
         }
+        FirebaseManager.detachUserListener()
     }
+
 
 
 

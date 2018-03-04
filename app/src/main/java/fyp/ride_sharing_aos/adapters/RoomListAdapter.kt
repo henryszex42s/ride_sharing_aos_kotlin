@@ -13,8 +13,6 @@ import fyp.ride_sharing_aos.model.Room
 import fyp.ride_sharing_aos.tools.FirebaseManager
 import fyp.ride_sharing_aos.tools.Tools
 import kotlinx.android.synthetic.main.roomlist_layout.view.*
-import java.text.DateFormat
-import java.text.SimpleDateFormat
 
 /**
  * Created by lfreee on 25/1/2018.
@@ -85,8 +83,11 @@ class ViewHolder(val c : Context, val view: View): RecyclerView.ViewHolder(view)
             Toast.makeText(c, room.start+" To "+room.destination, Toast.LENGTH_SHORT).show()
 
             (c as HomeActivity).showProgressDialog(c.getString(R.string.progress_loading))
-            FirebaseManager.updateRoom(room.roomid!!,FirebaseManager.REQUEST_TYPE_JOIN_ROOM,{c.callChatRoom()})
-            //Need to wait the updateRoom
+            FirebaseManager.JoinRoom(room.roomid!!,{c.callChatRoom()})
+
+
+
+
         }
 
 

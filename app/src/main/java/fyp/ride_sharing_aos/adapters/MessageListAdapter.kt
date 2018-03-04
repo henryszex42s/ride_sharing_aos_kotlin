@@ -40,12 +40,12 @@ class MessageListAdapter(private val mContext: Context, private val mMessageList
 
         var type = 1
 
-        if(mMessageList[position].type == 0)
+        if(mMessageList[position].type == "0")
         {
             type = SYSTEM
         }
 
-        if(mMessageList[position].type == 1)
+        if(mMessageList[position].type == "1")
         {
             if(mMessageList[position].sender.equals(FirebaseManager.getUserID()))
             {

@@ -5,10 +5,10 @@ import fyp.ride_sharing_aos.BaseActivity
 import fyp.ride_sharing_aos.R
 import android.support.v7.widget.LinearLayoutManager
 import fyp.ride_sharing_aos.adapters.MessageListAdapter
-import fyp.ride_sharing_aos.model.Message
 import fyp.ride_sharing_aos.tools.FirebaseManager
-import fyp.ride_sharing_aos.tools.Tools
 import kotlinx.android.synthetic.main.activity_chatroom.*
+import kotlinx.android.synthetic.main.app_bar_home.*
+import java.sql.Timestamp
 
 
 /**
@@ -20,16 +20,21 @@ class ChatroomActivity: BaseActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chatroom)
 
+        FirebaseManager.RoomObjUpdateListener({supportActionBar!!.setTitle(FirebaseManager.RoomObj!!.roomid) })
         FirebaseManager.MessageUpdateListener({DataChange()},true)
-
 
         reyclerview_message_list.layoutManager = LinearLayoutManager(this)
         reyclerview_message_list.adapter = MessageListAdapter(this, FirebaseManager.MessageList)
 
 
         button_chatbox_send.setOnClickListener {
-            val newMessage = Message(edittext_chatbox.text.toString(), Tools.currentTime.time,FirebaseManager.getUserID(),1)
-            FirebaseManager.addMessage(newMessage)
+            val data = HashMap<String, Any>()
+            data.put("message", edittext_chatbox.text.toString())
+            data.put("send_time", System.currentTimeMillis())
+            data.put("sender", FirebaseManager.getUserID().toString())
+            data.put("type", FirebaseManager.MESSAGE_TYPE_USER)
+
+            FirebaseManager.addMessage(data)
         }
     }
 
