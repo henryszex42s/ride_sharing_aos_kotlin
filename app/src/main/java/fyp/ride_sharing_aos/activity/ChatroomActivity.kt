@@ -1,14 +1,10 @@
 package fyp.ride_sharing_aos.activity
 
-import android.content.Context
 import android.os.Bundle
 import fyp.ride_sharing_aos.BaseActivity
 import fyp.ride_sharing_aos.R
 import android.support.v7.widget.LinearLayoutManager
 import fyp.ride_sharing_aos.adapters.MessageListAdapter
-import android.support.v7.widget.RecyclerView
-import android.util.AttributeSet
-import android.view.View
 import fyp.ride_sharing_aos.model.Message
 import fyp.ride_sharing_aos.tools.FirebaseManager
 import fyp.ride_sharing_aos.tools.Tools
@@ -24,13 +20,11 @@ class ChatroomActivity: BaseActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chatroom)
 
-        FirebaseManager.chatroomListener({DataChange()})
+        FirebaseManager.MessageUpdateListener({DataChange()},true)
 
 
         reyclerview_message_list.layoutManager = LinearLayoutManager(this)
         reyclerview_message_list.adapter = MessageListAdapter(this, FirebaseManager.MessageList)
-
-
 
 
         button_chatbox_send.setOnClickListener {
