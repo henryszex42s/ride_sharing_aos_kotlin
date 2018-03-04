@@ -8,6 +8,9 @@ import android.os.Bundle
 import android.provider.Settings
 import android.support.design.widget.Snackbar
 import android.support.v4.app.ActivityCompat
+import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentManager
+import android.support.v4.app.FragmentTransaction
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
@@ -16,6 +19,8 @@ import android.view.View
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import fyp.ride_sharing_aos.BuildConfig.APPLICATION_ID
+import fyp.ride_sharing_aos.activity.ChatroomActivity
+import fyp.ride_sharing_aos.tools.FirebaseManager
 import fyp.ride_sharing_aos.tools.Tools
 import kotlinx.android.synthetic.main.progress_dialog.view.*
 
@@ -64,7 +69,36 @@ abstract class BaseActivity : AppCompatActivity() {
         progressDialog!!.dismiss()
     }
 
+    fun callChatRoom()
+    {
+        dismissProgressDialog()
 
+        if(FirebaseManager.isRoomIDValid())
+        {
+            val intent = Intent(this, ChatroomActivity::class.java)
+            startActivity(intent)
+            overridePendingTransition(R.anim.slide_in_up,R.anim.slide_out_up)
+            FirebaseManager.detachUserListener()
+        }
+
+    }
+
+    fun AppCompatActivity.addFragment(fragment: Fragment, frameId: Int){
+        supportFragmentManager.inTransaction { add(frameId, fragment) }
+    }
+
+
+    fun AppCompatActivity.replaceFragment(fragment: Fragment, frameId: Int) {
+        supportFragmentManager.inTransaction{replace(frameId, fragment)}
+    }
+
+
+    inline fun FragmentManager.inTransaction(func: FragmentTransaction.() -> Unit) {
+        val fragmentTransaction = beginTransaction()
+        fragmentTransaction.func()
+        fragmentTransaction.addToBackStack(null)
+        fragmentTransaction.commit()
+    }
     /**
      * Provides a simple way of getting a device's location and is well suited for
      * applications that do not require a fine-grained location and that do not need location

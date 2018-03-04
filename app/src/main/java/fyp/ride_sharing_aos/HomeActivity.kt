@@ -172,13 +172,7 @@ class HomeActivity : BaseActivity(){
         }
     }
 
-    fun callChatRoom()
-    {
-        dismissProgressDialog()
-        val intent = Intent(this@HomeActivity, ChatroomActivity::class.java)
-        startActivity(intent)
-        overridePendingTransition(R.anim.slide_in_up,R.anim.slide_out_up)
-    }
+
 
 
 
@@ -262,22 +256,6 @@ class HomeActivity : BaseActivity(){
     }
 
 
-    fun AppCompatActivity.addFragment(fragment: Fragment, frameId: Int){
-        supportFragmentManager.inTransaction { add(frameId, fragment) }
-    }
-
-
-    fun AppCompatActivity.replaceFragment(fragment: Fragment, frameId: Int) {
-        supportFragmentManager.inTransaction{replace(frameId, fragment)}
-    }
-
-
-    inline fun FragmentManager.inTransaction(func: FragmentTransaction.() -> Unit) {
-        val fragmentTransaction = beginTransaction()
-        fragmentTransaction.func()
-        fragmentTransaction.addToBackStack(null)
-        fragmentTransaction.commit()
-    }
 
     fun selectDrawerItem()
     {
