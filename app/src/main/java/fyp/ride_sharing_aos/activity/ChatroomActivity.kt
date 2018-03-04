@@ -33,8 +33,8 @@ class ChatroomActivity: BaseActivity(){
             data.put("send_time", System.currentTimeMillis())
             data.put("sender", FirebaseManager.getUserID().toString())
             data.put("type", FirebaseManager.MESSAGE_TYPE_USER)
-
             FirebaseManager.addMessage(data)
+            edittext_chatbox.setText("")
         }
     }
 
