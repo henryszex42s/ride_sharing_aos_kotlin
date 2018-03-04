@@ -82,6 +82,8 @@
 
 
     <!-- Setting Fragment-->
+    <string name="content">Content</string>
+    <string name="contact">Contact</string>
     <string name="setting_edit_profile">Edit Profile</string>
     <string name="setting_notification">Notification</string>
     <string name="setting_language">Language</string>

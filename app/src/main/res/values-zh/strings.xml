@@ -78,6 +78,8 @@
 
 
     <!-- Setting Fragment-->
+    <string name="content">內容</string>
+    <string name="contact">聯繫</string>
     <string name="setting_edit_profile">修改帳戶資料</string>
     <string name="setting_notification">通知</string>
     <string name="setting_language">語言</string>
