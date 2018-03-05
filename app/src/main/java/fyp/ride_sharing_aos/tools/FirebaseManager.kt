@@ -20,10 +20,10 @@ object FirebaseManager {
     private var db = FirebaseFirestore.getInstance()
 
 
-    val REQUEST_TYPE_CREATE_ROOM = "0"
-    val REQUEST_TYPE_JOIN_ROOM = "1"
-    val REQUEST_TYPE_LEAVE_ROOM = "2"
-    val REQUEST_TYPE_DISMISS_ROOM = "3"
+    val REQUEST_TYPE_CREATE_ROOM = "1"
+    val REQUEST_TYPE_JOIN_ROOM = "2"
+    val REQUEST_TYPE_LEAVE_ROOM = "3"
+    val REQUEST_TYPE_DISMISS_ROOM = "4"
 
     val MESSAGE_TYPE_SYSTEM = "0"
     val MESSAGE_TYPE_USER = "1"
@@ -99,6 +99,10 @@ object FirebaseManager {
     {
         UserListenerVal.remove()
     }
+    fun detachRoomListener()
+    {
+        RoomListenerVal.remove()
+    }
 
     fun resetUserChatsession()
     {
@@ -156,6 +160,25 @@ object FirebaseManager {
                 .addOnFailureListener{
                     Log.d(TAG, "addOnFailureListener: ")
                 }
+    }
+
+
+    fun leaveChatRoom(callback: (Any)->Unit)
+    {
+        val data = HashMap<String, Any>()
+        data.put("type", REQUEST_TYPE_LEAVE_ROOM)
+        data.put("value", UserObj!!.uid!!)
+
+        db.collection("room")
+                .document(getRoomID())
+                .update(data)
+                .addOnSuccessListener{
+                    Log.d(TAG, "SuccessListener: ")
+                }
+                .addOnFailureListener{
+                    Log.d(TAG, "addOnFailureListener: ")
+                }
+
 
     }
 
