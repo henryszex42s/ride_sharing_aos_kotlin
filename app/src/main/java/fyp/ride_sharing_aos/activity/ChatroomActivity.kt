@@ -4,8 +4,10 @@ import android.os.Bundle
 import fyp.ride_sharing_aos.BaseActivity
 import fyp.ride_sharing_aos.R
 import android.support.v7.widget.LinearLayoutManager
+import android.widget.Toast
 import fyp.ride_sharing_aos.adapters.MessageListAdapter
 import fyp.ride_sharing_aos.tools.FirebaseManager
+import fyp.ride_sharing_aos.tools.Tools
 import kotlinx.android.synthetic.main.activity_chatroom.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 import java.sql.Timestamp
@@ -36,14 +38,16 @@ class ChatroomActivity: BaseActivity(){
             FirebaseManager.addMessage(data)
             edittext_chatbox.setText("")
         }
-/*
-      chat_item_from.text = FirebaseManager.RoomObj!!.start
-      chat_item_to.text = FirebaseManager.RoomObj!!.destination
 
-    //  chat_item_prefer_time.text = Tools.convertTime(FirebaseManager.RoomObj!!.prefertime)
-    //  chat_current_date.text = Tools.convertDate(FirebaseManager.RoomObj!!.prefertime)
-      chat_item_numpeople.text = FirebaseManager.RoomObj!!.numOfPeople.toString() + "/4"
-*/
+
+        // room info
+        FirebaseManager.RoomObjUpdateListener({chat_item_from.setText(FirebaseManager.RoomObj!!.start) })
+        FirebaseManager.RoomObjUpdateListener({chat_item_to.setText(FirebaseManager.RoomObj!!.destination) })
+        FirebaseManager.RoomObjUpdateListener({chat_current_date.setText(Tools.convertDate(FirebaseManager.RoomObj!!.prefertime!!)) })
+        FirebaseManager.RoomObjUpdateListener({chat_item_prefer_time.setText(Tools.convertTime(FirebaseManager.RoomObj!!.prefertime!!)) })
+        FirebaseManager.RoomObjUpdateListener({chat_item_numpeople.setText(FirebaseManager.RoomObj!!.numOfPeople.toString() + "/4") })
+
+
 
     }
 
