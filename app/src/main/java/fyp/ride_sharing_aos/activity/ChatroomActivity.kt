@@ -36,6 +36,15 @@ class ChatroomActivity: BaseActivity(){
             FirebaseManager.addMessage(data)
             edittext_chatbox.setText("")
         }
+/*
+      chat_item_from.text = FirebaseManager.RoomObj!!.start
+      chat_item_to.text = FirebaseManager.RoomObj!!.destination
+
+    //  chat_item_prefer_time.text = Tools.convertTime(FirebaseManager.RoomObj!!.prefertime)
+    //  chat_current_date.text = Tools.convertDate(FirebaseManager.RoomObj!!.prefertime)
+      chat_item_numpeople.text = FirebaseManager.RoomObj!!.numOfPeople.toString() + "/4"
+*/
+
     }
 
     fun DataChange()
