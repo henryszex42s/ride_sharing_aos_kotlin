@@ -78,7 +78,7 @@
     <string name="none">None</string>
     <string name="reset">Reset</string>
 
-    <string name="nop">Number of passenger: 0</string>
+    <string name="nop">Number of passengers:</string>
 
 
     <!-- Setting Fragment-->
@@ -176,6 +176,8 @@
         <item>Ngau Tau Kok MTR Station</item>
     </string-array>
 
-
+    <!--Chatroom created by Him-->
+    <string name="date">Date:</string>
+    <string name="time">Time:</string>
 
 </resources>
