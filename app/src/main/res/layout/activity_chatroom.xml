@@ -24,6 +24,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:stretchColumns="1">
+                <Button
+                    android:id="@+id/button_leave"
+                    android:text="@string/chat_leave"
+                    android:textSize="14dp"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:layout_width="64dp"
+                    android:layout_height="48dp"
+                    android:gravity="center"
+                    android:layout_gravity="bottom" />
+
                 <TableRow>
                     <TextView
                         android:id="@+id/chat_layout_from"

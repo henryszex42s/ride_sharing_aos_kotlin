@@ -4,7 +4,6 @@ import android.content.ContentValues.TAG
 import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.database.ServerValue
 import com.google.firebase.firestore.*
 import fyp.ride_sharing_aos.model.Message
 import fyp.ride_sharing_aos.model.Room
@@ -48,24 +47,17 @@ object FirebaseManager {
     var currentUserSession =""
     var RoomObj :Room ?=null
 
-    var createdTimestamp = ServerValue.TIMESTAMP
-
-
-
-    private val lock = java.lang.Object()
-
     fun isLogin() : Boolean
     {
         fbUser = fbAuth.currentUser
         return fbUser != null
-
     }
 
     fun signOut()
     {
-
         fbAuth.signOut()
         fbUser = fbAuth.currentUser
+        UserObj = null
     }
 
     fun getUser() : User?
@@ -103,6 +95,10 @@ object FirebaseManager {
     {
         RoomListenerVal.remove()
     }
+    fun detachMessageListener()
+    {
+        MessageListenerVal.remove()
+    }
 
     fun resetUserChatsession()
     {
@@ -126,8 +122,10 @@ object FirebaseManager {
 //        val roomList = database.reference.child("room").push()
 //        roomList.setValue(newRoom)
 
-        UserJoinRoomListener(callback)
+        //1. Create a Listener to listener the change in UserObj, if Chatsession is changed, the callback will be trigger.
+            UserJoinOrLeaveRoomListener(callback)
 
+        //2.We Create a room with type = 1 to trigger the firebase cloud function to update the UserObj
             db.collection("room")
                     .add(newRoom)
                     .addOnSuccessListener({ documentReference ->
@@ -145,12 +143,15 @@ object FirebaseManager {
 
     fun JoinRoom(roomid : String, callback: (Any) -> Unit)
     {
-        UserJoinRoomListener(callback)
+
+        //1. Create a Listener to listener the change in UserObj, if Chatsession is changed, the callback will be trigger.
+        UserJoinOrLeaveRoomListener(callback)
 
         val data = HashMap<String, Any>()
         data.put("type", REQUEST_TYPE_JOIN_ROOM)
         data.put("value", UserObj!!.uid!!)
 
+        //2.We update the room obj  with type = 2 and value = <Current User ID> to trigger the firebase cloud function to update the UserObj
         db.collection("room")
                 .document(roomid)
                 .update(data)
@@ -165,6 +166,9 @@ object FirebaseManager {
 
     fun leaveChatRoom(callback: (Any)->Unit)
     {
+
+        UserJoinOrLeaveRoomListener(callback)
+
         val data = HashMap<String, Any>()
         data.put("type", REQUEST_TYPE_LEAVE_ROOM)
         data.put("value", UserObj!!.uid!!)
@@ -178,8 +182,6 @@ object FirebaseManager {
                 .addOnFailureListener{
                     Log.d(TAG, "addOnFailureListener: ")
                 }
-
-
     }
 
 
@@ -205,29 +207,30 @@ object FirebaseManager {
         {
             MessageListenerVal.remove()
         }
-
     }
 
-    fun UserJoinRoomListener(callback: (Any)->Unit)
+    fun UserJoinOrLeaveRoomListener(callback: (Any)->Unit)
     {
         UserListenerVal = db.collection("user").document(getUserID()!!)
                 .addSnapshotListener(EventListener<DocumentSnapshot> { snapshots, e ->
 
                     if (e != null) {
-                        Log.w(TAG, "UserJoinRoomListener :error", e)
+                        Log.w(TAG, "UserJoinOrLeaveRoomListener :error", e)
                         return@EventListener
                     }
 
                     UserObj = snapshots.toObject(User::class.java)
-                    Log.d(TAG, "Before Updated CurrentUserSession"+ currentUserSession)
 
-                    //If user tried to Join the Room, the val must be changed
+                    Log.d(TAG, "Before Updated CurrentUserSession: "+ currentUserSession)
+
+                    //If user tried to Join the Room, the val must be changed by the firebase cloud function
                     if(!(UserObj!!.chatsession.equals(currentUserSession)))
                     {
-                        //The User is tried to join room, process the result in callback function
+                        //The User tried to join room, process the result in callback function
                         callback(Unit)
-
                     }
+
+                    //Update the current user chatsession.
                     currentUserSession = UserObj!!.chatsession!!
                     Log.d(TAG, "Updated CurrentUserSession: "+ currentUserSession)
 
@@ -253,7 +256,7 @@ object FirebaseManager {
 
 
 
-    fun addMessage( newMessage: HashMap<String, Any>)
+    fun sendMessage(newMessage: HashMap<String, Any>)
     {
 
         db.collection("room")

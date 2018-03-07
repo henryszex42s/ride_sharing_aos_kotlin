@@ -3,16 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/chatroom_lock"
+        android:id="@+id/action_settings"
         android:orderInCategory="100"
-        android:title="Test"
-        android:icon="@drawable/rmlist_time"
+        android:title="@string/action_settings"
         app:showAsAction="always" />
 
-    <item
-        android:id="@+id/chatroom_exit"
-        android:orderInCategory="100"
-        android:title="Test"
-        android:icon="@drawable/rmlist_time"
-        app:showAsAction="always" />
 </menu>

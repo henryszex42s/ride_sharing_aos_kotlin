@@ -72,13 +72,13 @@ abstract class BaseActivity : AppCompatActivity() {
     fun callChatRoom()
     {
         dismissProgressDialog()
+        FirebaseManager.detachUserListener()
 
         if(FirebaseManager.isRoomIDValid())
         {
             val intent = Intent(this, ChatroomActivity::class.java)
             startActivity(intent)
             overridePendingTransition(R.anim.slide_in_up,R.anim.slide_out_up)
-            FirebaseManager.detachUserListener()
         }
 
     }
