@@ -59,10 +59,8 @@ class ChatroomActivity: BaseActivity(){
         }
 
         button_leave.setOnClickListener {
-
             showProgressDialog(getString(R.string.progress_loading))
             FirebaseManager.leaveChatRoom { leaveChatRoom() }
-
         }
 
 
@@ -89,7 +87,8 @@ class ChatroomActivity: BaseActivity(){
 //        // automatically handle clicks on the Home/Up button, so long
 //        // as you specify a parent activity in AndroidManifest.xml.
         when (item.itemId) {
-            R.id.action_settings -> return true
+            R.id.chatroom_leave -> return true
+            R.id.chatroom_lock -> return true
             else -> return super.onOptionsItemSelected(item)
        }
    }
