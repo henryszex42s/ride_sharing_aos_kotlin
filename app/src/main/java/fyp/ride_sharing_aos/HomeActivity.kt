@@ -186,6 +186,10 @@ class HomeActivity : BaseActivity(){
 //        nav_view.setNavigationItemSelectedListener(this)
         buttom_navigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
         supportFragmentManager.beginTransaction().replace(R.id.fragment_content, homeFragment).commit()
+
+        button_leave.setOnClickListener({
+            callChatRoom()
+        })
     }
 
 

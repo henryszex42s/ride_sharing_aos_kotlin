@@ -25,6 +25,19 @@
         android:layout_height="20dp"
         android:layout_gravity="center"
         android:text="@string/app_name"/>
+
+            <Button
+                android:id="@+id/button_leave"
+                android:text="@string/btu_chat"
+                android:textSize="14dp"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_gravity="right" />
+
+
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
 

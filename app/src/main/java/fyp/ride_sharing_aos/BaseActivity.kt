@@ -16,6 +16,7 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.Toast
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import fyp.ride_sharing_aos.BuildConfig.APPLICATION_ID
@@ -71,16 +72,18 @@ abstract class BaseActivity : AppCompatActivity() {
 
     fun callChatRoom()
     {
-        dismissProgressDialog()
-        FirebaseManager.detachUserListener()
-
         if(FirebaseManager.isRoomIDValid())
         {
             val intent = Intent(this, ChatroomActivity::class.java)
             startActivity(intent)
             overridePendingTransition(R.anim.slide_in_up,R.anim.slide_out_up)
         }
-
+        else
+        {
+            Toast.makeText(this,
+                    "You haven't join any room" ,
+                    Toast.LENGTH_SHORT).show()
+        }
     }
 
     fun AppCompatActivity.addFragment(fragment: Fragment, frameId: Int){

@@ -66,6 +66,8 @@ class ChatroomActivity: BaseActivity(){
         finish()
     }
 
+
+
     fun DataChange()
     {
         reyclerview_message_list.adapter.notifyDataSetChanged()
