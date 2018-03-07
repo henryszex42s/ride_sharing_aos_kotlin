@@ -78,6 +78,7 @@ class ChatroomActivity: BaseActivity(){
 
     }
 
+
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
 //        // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.chatroom_menu, menu)
@@ -92,6 +93,7 @@ class ChatroomActivity: BaseActivity(){
             else -> return super.onOptionsItemSelected(item)
        }
    }
+
 
     fun DataChange()
     {

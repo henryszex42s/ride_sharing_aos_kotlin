@@ -81,8 +81,27 @@ class ViewHolder(val c : Context, val view: View): RecyclerView.ViewHolder(view)
         view.setOnClickListener {
 
             Toast.makeText(c, room.start+" To "+room.destination, Toast.LENGTH_SHORT).show()
-            (c as HomeActivity).showProgressDialog(c.getString(R.string.progress_loading))
-            FirebaseManager.JoinRoom(room.roomid!!,{c.callChatRoom()})
+
+
+            if(FirebaseManager.isRoomIDValid())
+            {
+                Toast.makeText(c, "You joined a room " , Toast.LENGTH_SHORT).show()
+
+            }
+            else
+            {
+                (c as HomeActivity).showProgressDialog(c.getString(R.string.progress_loading))
+                FirebaseManager.JoinRoom(room.roomid!!,{
+
+                    c.dismissProgressDialog()
+                    FirebaseManager.detachUserListener()
+                    c.callChatRoom()
+
+                })
+
+
+            }
+
         }
 
 
