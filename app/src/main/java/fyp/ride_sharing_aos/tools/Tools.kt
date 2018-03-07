@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.location.Location
 import android.support.v7.app.AlertDialog
+import android.util.Log
 import com.google.android.gms.maps.model.LatLng
 import fyp.ride_sharing_aos.R
 import java.sql.Date
@@ -19,6 +20,7 @@ import com.google.firebase.firestore.ServerTimestamp
 
 object Tools
 {
+    val DEBUG_LOG = true
     var currentLocation = Location("")
     val currentTime = Timestamp(System.currentTimeMillis())
 
@@ -75,4 +77,12 @@ object Tools
         val format = SimpleDateFormat("HH:mm")
         return format.format(date)
     }
+
+    fun printLog(TAG : String, Message : String)
+    {
+        if(DEBUG_LOG)
+        Log.d(TAG," : "+Message)
+    }
+
+
 }
