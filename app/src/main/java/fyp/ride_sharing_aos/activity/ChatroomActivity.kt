@@ -48,8 +48,23 @@ class ChatroomActivity: BaseActivity(){
             edittext_chatbox.setText("")
         }
 
+        button_leave.setOnClickListener {
+
+            showProgressDialog(getString(R.string.progress_loading))
+            FirebaseManager.leaveChatRoom { leaveChatRoom() }
+
+        }
+
     }
 
+    fun leaveChatRoom()
+    {
+        dismissProgressDialog()
+        FirebaseManager.detachMessageListener()
+        FirebaseManager.detachRoomListener()
+        FirebaseManager.detachUserListener()
+        finish()
+    }
 
     fun DataChange()
     {
