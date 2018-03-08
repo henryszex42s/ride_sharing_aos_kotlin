@@ -1,55 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="fyp.ride_sharing_aos.activity.ChatroomActivity">
 
-    <android.support.v7.widget.CardView
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         style="@style/CardView.Light"
-        android:layout_marginBottom="410dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="410dp"
         tools:ignore="ContentDescription">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <TableLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:stretchColumns="1">
+
                 <TableRow>
+
                     <TextView
                         android:id="@+id/chat_layout_from"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/from"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                        />
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
                     <TextView
                         android:id="@+id/chat_item_from"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="[Start location]"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                        />
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
                 </TableRow>
 
                 <TableRow>
+
                     <TextView
                         android:id="@+id/chat_layout_to"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/to"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                        />
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
 
                     <TextView
@@ -57,19 +58,18 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:text="[End location]"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                        />
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
                 </TableRow>
 
                 <TableRow>
+
                     <TextView
                         android:id="@+id/chat_layout_date"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/date"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                        />
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
 
                     <TextView
@@ -77,26 +77,25 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:text="[Current Date]"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                        />
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
                 </TableRow>
 
                 <TableRow>
+
                     <TextView
                         android:id="@+id/chat_layout_time"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/time"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                        />
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
                     <TextView
                         android:id="@+id/chat_item_prefer_time"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="[Prefer Time]"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                        />
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
                 </TableRow>
 
@@ -107,83 +106,74 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/nop"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                        />
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
                     <TextView
                         android:id="@+id/chat_item_numpeople"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="[Number of people]"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                        />
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
                 </TableRow>
             </TableLayout>
         </LinearLayout>
     </android.support.v7.widget.CardView>
 
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="100dp"
-        android:layout_marginBottom="50dp"
-        android:id="@+id/scroll_view">
-
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/reyclerview_message_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="50dp"
+        android:layout_marginTop="100dp"
         android:scrollbars="vertical"
-
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    </ScrollView>
     <!-- A horizontal line between the chatbox and RecyclerView -->
     <View
         android:layout_width="0dp"
         android:layout_height="2dp"
-        android:background="#dfdfdf"
         android:layout_marginBottom="0dp"
+        android:background="#dfdfdf"
         app:layout_constraintBottom_toTopOf="@+id/layout_chatbox"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent" />
 
     <LinearLayout
         android:id="@+id/layout_chatbox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:minHeight="48dp"
         android:background="#ffffff"
+        android:minHeight="48dp"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent">
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
 
         <EditText
             android:id="@+id/edittext_chatbox"
-            android:hint="Enter message"
-            android:background="@android:color/transparent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:maxLines="6"/>
+            android:background="@android:color/transparent"
+            android:hint="Enter message"
+            android:maxLines="6" />
 
         <Button
             android:id="@+id/button_chatbox_send"
-            android:text="SEND"
-            android:textSize="14dp"
-            android:background="?attr/selectableItemBackground"
-            android:clickable="true"
             android:layout_width="64dp"
             android:layout_height="48dp"
+            android:layout_gravity="bottom"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
             android:gravity="center"
-            android:layout_gravity="bottom" />
+            android:text="SEND"
+            android:textSize="14dp" />
 
     </LinearLayout>
 

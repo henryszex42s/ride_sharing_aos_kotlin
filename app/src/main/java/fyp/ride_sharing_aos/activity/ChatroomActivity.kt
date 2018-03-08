@@ -102,8 +102,9 @@ class ChatroomActivity: BaseActivity(){
 
     fun DataChange()
     {
+        reyclerview_message_list.smoothScrollToPosition(reyclerview_message_list.getAdapter().getItemCount()-1)
         reyclerview_message_list.adapter.notifyDataSetChanged()
-        scroll_view.fullScroll(ScrollView.FOCUS_DOWN)
+
     }
 
 }
