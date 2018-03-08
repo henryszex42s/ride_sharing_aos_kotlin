@@ -79,14 +79,11 @@ class ViewHolder(val c : Context, val view: View): RecyclerView.ViewHolder(view)
 
 
         view.setOnClickListener {
-
-            Toast.makeText(c, room.start+" To "+room.destination, Toast.LENGTH_SHORT).show()
-
-
             if(FirebaseManager.isRoomIDValid())
             {
-                Toast.makeText(c, "You joined a room " , Toast.LENGTH_SHORT).show()
-
+                val error_msg: ArrayList<String> = ArrayList()
+                error_msg.add(c.getString(R.string.room_join_error_msg))
+                Tools.showDialog(c,c.getString(R.string.room_join_error_title),error_msg)
             }
             else
             {

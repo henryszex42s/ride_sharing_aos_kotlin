@@ -70,10 +70,6 @@ object FirebaseManager {
         return UserObj!!.uid
     }
 
-    fun getFavourite_Location() : String?
-    {
-        return UserObj!!.home
-    }
     fun getRoomList() : MutableList<Room>
     {
         return RoomList
@@ -430,7 +426,6 @@ object FirebaseManager {
         var queries : Query
         queries = db.collection("room")
 
-        favourite_location = favourite_location();
         if(startingFilterValue != "None")
         {
             queries = queries.whereEqualTo("start",startingFilterValue)
@@ -458,9 +453,6 @@ object FirebaseManager {
         {
             queries = queries.whereEqualTo("numberOfPeople",minPassengersFilterValue)
         }
-
-
-
 
         return ""
     }

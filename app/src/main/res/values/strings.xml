@@ -184,4 +184,10 @@
     <string name="chat_lock">Lock</string>
     <string name="btu_chat">Chatroom</string>
 
+    <string name="room_join_error_title">Join Room Error</string>
+    <string name="room_join_error_msg">You have already joined a room</string>
+
+    <string name="room_rejoin_error_title">Chat Room Error</string>
+    <string name="room_rejoin_error_msg">You haven\'t join any room</string>
+
 </resources>

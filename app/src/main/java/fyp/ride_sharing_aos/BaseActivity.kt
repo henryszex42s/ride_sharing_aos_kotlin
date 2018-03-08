@@ -80,9 +80,9 @@ abstract class BaseActivity : AppCompatActivity() {
         }
         else
         {
-            Toast.makeText(this,
-                    "You haven't join any room" ,
-                    Toast.LENGTH_SHORT).show()
+            val error_msg: ArrayList<String> = ArrayList()
+            error_msg.add(this.getString(R.string.room_rejoin_error_msg))
+            Tools.showDialog(this,getString(R.string.room_rejoin_error_title),error_msg)
         }
     }
 
