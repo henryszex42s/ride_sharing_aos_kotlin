@@ -181,6 +181,7 @@
     <string name="time">Time:</string>
 
     <string name="chat_leave">Leave</string>
+    <string name="chat_lock">Lock</string>
     <string name="btu_chat">Chatroom</string>
 
 </resources>

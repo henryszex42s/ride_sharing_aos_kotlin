@@ -3,14 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/chatroom_leave"
-        android:orderInCategory="100"
-        android:title="@string/action_settings"
-        app:showAsAction="always" />
-    <item
         android:id="@+id/chatroom_lock"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
+        android:title="@string/chat_lock"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/chatroom_leave"
+        android:orderInCategory="100"
+        android:title="@string/chat_leave"
         app:showAsAction="always" />
 
 

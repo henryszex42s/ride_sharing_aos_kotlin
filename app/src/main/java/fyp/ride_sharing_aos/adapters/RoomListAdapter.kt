@@ -91,7 +91,7 @@ class ViewHolder(val c : Context, val view: View): RecyclerView.ViewHolder(view)
             else
             {
                 (c as HomeActivity).showProgressDialog(c.getString(R.string.progress_loading))
-                FirebaseManager.JoinRoom(room.roomid!!,{
+                FirebaseManager.joinRoom(room.roomid!!,{
 
                     c.dismissProgressDialog()
                     FirebaseManager.detachUserListener()

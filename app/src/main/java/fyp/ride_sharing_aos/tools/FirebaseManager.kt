@@ -70,6 +70,10 @@ object FirebaseManager {
         return UserObj!!.uid
     }
 
+    fun getFavourite_Location() : String?
+    {
+        return UserObj!!.home
+    }
     fun getRoomList() : MutableList<Room>
     {
         return RoomList
@@ -141,7 +145,7 @@ object FirebaseManager {
                             })
     }
 
-    fun JoinRoom(roomid : String, callback: (Any) -> Unit)
+    fun joinRoom(roomid : String, callback: (Any) -> Unit)
     {
 
         //1. Create a Listener to listener the change in UserObj, if Chatsession is changed, the callback will be trigger.
@@ -154,6 +158,24 @@ object FirebaseManager {
         //2.We update the room obj  with type = 2 and value = <Current User ID> to trigger the firebase cloud function to update the UserObj
         db.collection("room")
                 .document(roomid)
+                .update(data)
+                .addOnSuccessListener{
+                    Log.d(TAG, "SuccessListener: ")
+                }
+                .addOnFailureListener{
+                    Log.d(TAG, "addOnFailureListener: ")
+                }
+    }
+
+    fun lockRoom()
+    {
+        val data = HashMap<String, Any>()
+        data.put("type", REQUEST_TYPE_DISMISS_ROOM)
+        data.put("value", UserObj!!.uid!!)
+
+        //2.We update the room obj  with type = 2 and value = <Current User ID> to trigger the firebase cloud function to update the UserObj
+        db.collection("room")
+                .document(getRoomID())
                 .update(data)
                 .addOnSuccessListener{
                     Log.d(TAG, "SuccessListener: ")
@@ -401,6 +423,51 @@ object FirebaseManager {
         }
         return queries
     }
+
+
+    fun autoMatching() : String
+    {
+        var queries : Query
+        queries = db.collection("room")
+
+        favourite_location = favourite_location();
+        if(startingFilterValue != "None")
+        {
+            queries = queries.whereEqualTo("start",startingFilterValue)
+        }
+        if(destinationFilterValue != "None")
+        {
+            queries = queries.whereEqualTo("destination",destinationFilterValue)
+        }
+
+        if(genderFilterValue != "None")
+        {
+            if(genderFilterValue == "Male")
+            {
+                queries = queries.whereEqualTo("maleFil",true)
+                queries = queries.whereEqualTo("femaleFil",false)
+            }
+            if(genderFilterValue == "Female")
+            {
+                queries = queries.whereEqualTo("maleFil",false)
+                queries = queries.whereEqualTo("femaleFil",true)
+            }
+            queries = queries.whereEqualTo("destination",destinationFilterValue)
+        }
+        if(minPassengersFilterValue != "None")
+        {
+            queries = queries.whereEqualTo("numberOfPeople",minPassengersFilterValue)
+        }
+
+
+
+
+        return ""
+    }
+
+
+
+
 
 
 

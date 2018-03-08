@@ -91,7 +91,7 @@ class AddRouteActivity : BaseActivity(), OnMapReadyCallback {
             // if nothing wrong -> create room
             if(Validation){
                 showProgressDialog(getString(R.string.progress_loading))
-                val room = Room(REQUEST_TYPE_CREATE_ROOM,FirebaseManager.getUserID(),"",starting_Place, des_Place, numOfPeople, m_Only, f_Only, Tools.currentTime.time, selectedTime.getTimeInMillis(),roomname.text.toString(), "","","","")
+                val room = Room(REQUEST_TYPE_CREATE_ROOM,FirebaseManager.getUserID(),false,"",starting_Place, des_Place, numOfPeople, m_Only, f_Only, Tools.currentTime.time, selectedTime.getTimeInMillis(),roomname.text.toString(), "","","","")
                 FirebaseManager.createRoom(room,{afterCreateRoom()})
             }
         }

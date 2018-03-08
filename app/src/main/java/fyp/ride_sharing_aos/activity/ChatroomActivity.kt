@@ -58,11 +58,6 @@ class ChatroomActivity: BaseActivity(){
             edittext_chatbox.setText("")
         }
 
-        button_leave.setOnClickListener {
-            showProgressDialog(getString(R.string.progress_loading))
-            FirebaseManager.leaveChatRoom { leaveChatRoom() }
-        }
-
 
     }
 
@@ -73,8 +68,8 @@ class ChatroomActivity: BaseActivity(){
         FirebaseManager.detachRoomListener()
         FirebaseManager.detachUserListener()
         finish()
-
     }
+
 
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -87,8 +82,19 @@ class ChatroomActivity: BaseActivity(){
 //        // automatically handle clicks on the Home/Up button, so long
 //        // as you specify a parent activity in AndroidManifest.xml.
         when (item.itemId) {
-            R.id.chatroom_leave -> return true
-            R.id.chatroom_lock -> return true
+            R.id.chatroom_leave ->
+            {
+                showProgressDialog(getString(R.string.progress_loading))
+                FirebaseManager.leaveChatRoom { leaveChatRoom() }
+                return true
+            }
+            R.id.chatroom_lock ->
+            {
+//                showProgressDialog(getString(R.string.progress_loading))
+//                FirebaseManager.lockRoom()
+                return true
+            }
+
             else -> return super.onOptionsItemSelected(item)
        }
    }
