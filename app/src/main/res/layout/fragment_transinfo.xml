@@ -86,7 +86,7 @@
                         android:background="@color/white"
                         android:padding="10dp"
                         android:layout_marginBottom="5dp"
-                        android:text="將軍澳鐵路站↔西貢總站\nTseung Kwan O(MTR)↔Sai Keung Bus Terminal\n星期一至日Mon-Sun\n05:45-23:00\n$6.90" />
+                        android:text="將軍澳鐵路站↔西貢總站\nTseung Kwan O(MTR)↔Sai Kung Bus Terminal\n星期一至日Mon-Sun\n05:45-23:00\n$6.90" />
                 </TableRow>
 
 
@@ -164,7 +164,7 @@
                         android:background="@color/white"
                         android:padding="10dp"
                         android:layout_marginBottom="5dp"
-                        android:text="寶琳↔西貢碼頭\nPo Lam↔Sai Keung pier\n星期一至日Mon-Sun\n12:00-05:00\n$10.50" />
+                        android:text="寶琳↔西貢碼頭\nPo Lam↔Sai Kung pier\n星期一至日Mon-Sun\n12:00-05:00\n$10.50" />
                 </TableRow>
 
                 <TableRow>
