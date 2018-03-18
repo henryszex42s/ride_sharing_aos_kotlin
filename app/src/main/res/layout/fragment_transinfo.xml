@@ -27,54 +27,66 @@
             <TableLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="#c1c1c1"
                 android:stretchColumns="1">
 
                 <TableRow>
 
                     <TextView
-                        android:background="#c1c1c1"
+                        android:layout_height="match_parent"
                         android:padding="10dp"
                         android:text="91" />
 
                     <TextView
+                        android:background="@color/white"
                         android:padding="10dp"
-                        android:text="bb" />
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:text="清水灣↔鑽石山鐵路站\nClear Water Bay↔Diamond Hill(MTR)\n星期一至日Mon-Sun\n06:10 - 23:30\n$7.40" />
                 </TableRow>
 
                 <TableRow>
 
                     <TextView
-                        android:background="#c1c1c1"
+                        android:layout_height="match_parent"
                         android:padding="10dp"
                         android:text="91M" />
 
                     <TextView
+                        android:background="@color/white"
                         android:padding="10dp"
-                        android:text="bb" />
+                        android:layout_marginBottom="5dp"
+                        android:text="寶琳↔鑽石山鐵路站\nPo Lam ↔ Diamond Hill(MTR)\n星期一至日Mon-Sun\n05:40-23:50\n$6.10" />
+
                 </TableRow>
 
                 <TableRow>
 
                     <TextView
-                        android:background="#c1c1c1"
+                        android:layout_height="match_parent"
                         android:padding="10dp"
                         android:text="91P" />
 
                     <TextView
+                        android:background="@color/white"
                         android:padding="10dp"
-                        android:text="bb" />
+                        android:layout_marginBottom="5dp"
+                        android:text="鑽石山鐵路站↔香港科技大學(北閘)\nDiamond Hill(MTR)↔HKUST(South Gate)\n星期一至五 Mon-Fri\n08:00-09:00\n$6.10\n\n香港科技大學(南閘)↔彩虹鐵路站\nHKUST(South Gate)↔Choi Hung(MTR)\n星期一至五Mon-Fri\n17:25-18:30\n$6.10" />
                 </TableRow>
 
                 <TableRow>
 
                     <TextView
-                        android:background="#c1c1c1"
+
                         android:padding="10dp"
+                        android:layout_height="match_parent"
                         android:text="792M" />
 
                     <TextView
+                        android:background="@color/white"
                         android:padding="10dp"
-                        android:text="bb" />
+                        android:layout_marginBottom="5dp"
+                        android:text="將軍澳鐵路站↔西貢總站\nTseung Kwan O(MTR)↔Sai Keung Bus Terminal\n星期一至日Mon-Sun\n05:45-23:00\n$6.90" />
                 </TableRow>
 
 
@@ -95,67 +107,78 @@
             <TableLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="#c1c1c1"
                 android:stretchColumns="1">
 
                 <TableRow>
 
                     <TextView
-                        android:background="#c1c1c1"
+                        android:layout_height="match_parent"
                         android:padding="10dp"
                         android:text="11" />
 
                     <TextView
+                        android:background="@color/white"
                         android:padding="10dp"
-                        android:text="bb" />
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:text="坑口村↔彩虹鐵路站\nHang Hau Village↔Choi Hung(MTR)\n星期一至日Mon-Sun\n05:20-23:50\n$7.10" />
                 </TableRow>
 
                 <TableRow>
 
                     <TextView
-                        android:background="#c1c1c1"
+                        android:layout_height="match_parent"
                         android:padding="10dp"
                         android:text="11M" />
 
                     <TextView
-
+                        android:background="@color/white"
                         android:padding="10dp"
-                        android:text="bb" />
+                        android:layout_marginBottom="5dp"
+                        android:text="坑口鐵路站↔香港科技大學(北閘)\nHang Hau(MTR)↔HKUST (North Gate)\n星期一至日 Mon-Sun\n06:40-24:00\n$5.20" />
                 </TableRow>
 
                 <TableRow>
 
                     <TextView
-                        android:background="#c1c1c1"
+                        android:layout_height="match_parent"
                         android:padding="10dp"
                         android:text="11S" />
 
                     <TextView
+                        android:background="@color/white"
                         android:padding="10dp"
-                        android:text="bb" />
+                        android:layout_marginBottom="5dp"
+                        android:text="寶琳↔彩虹鐵路站(通宵線)\nPo Lam↔Choi Hung(MTR) (Overnight services)\n星期一至日Mon-Sun\n00:00-05:30\n$8.50" />
                 </TableRow>
 
                 <TableRow>
 
                     <TextView
-                        android:background="#c1c1c1"
+                        android:layout_height="match_parent"
                         android:padding="10dp"
                         android:text="12" />
 
                     <TextView
+                        android:background="@color/white"
                         android:padding="10dp"
-                        android:text="bb" />
+                        android:layout_marginBottom="5dp"
+                        android:text="寶琳↔西貢碼頭\nPo Lam↔Sai Keung pier\n星期一至日Mon-Sun\n12:00-05:00\n$10.50" />
                 </TableRow>
 
                 <TableRow>
 
                     <TextView
-                        android:background="#c1c1c1"
+                        android:layout_height="match_parent"
                         android:padding="10dp"
-                        android:text="104" />
+                        android:text="104 " />
 
                     <TextView
+                        android:background="@color/white"
                         android:padding="10dp"
-                        android:text="bb" />
+                        android:layout_marginBottom="5dp"
+                        android:text="香港科技大學(南閘)↔牛頭角鐵路站\nHKUST(South Gate)↔Ngau Tau Kok(MTR)\n星期一至日Mon-Sun\n06:25-21:40\n$8.3" />
                 </TableRow>
 
             </TableLayout>
@@ -175,53 +198,62 @@
             <TableLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="#c1c1c1"
                 android:shrinkColumns="0">
 
                 <TableRow>
 
                     <TextView
-                        android:background="#c1c1c1"
                         android:padding="10dp"
                         android:text="ABA Taxi Radio Call Services Centre" />
 
                     <TextView
+                        android:background="@color/white"
                         android:padding="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
                         android:text="2729 6600" />
                 </TableRow>
 
                 <TableRow>
 
                     <TextView
-                        android:background="#c1c1c1"
+
                         android:padding="10dp"
                         android:text="Hong Kong and Kowloon Radio Car Owners Association" />
 
                     <TextView
+                        android:background="@color/white"
+                        android:layout_height="match_parent"
                         android:padding="10dp"
+                        android:layout_marginBottom="5dp"
                         android:text="2760 0455" />
                 </TableRow>
 
                 <TableRow>
 
                     <TextView
-                        android:background="#c1c1c1"
+
                         android:padding="10dp"
                         android:text="Quadripartite Taxi Service Association" />
 
                     <TextView
+                        android:background="@color/white"
                         android:padding="10dp"
+                        android:layout_marginBottom="5dp"
                         android:text="2332 2571" />
                 </TableRow>
 
                 <TableRow>
 
                     <TextView
-                        android:background="#c1c1c1"
                         android:padding="10dp"
                         android:text="Sai Kung Taxi Operators Association" />
 
                     <TextView
+                        android:background="@color/white"
                         android:padding="10dp"
+                        android:layout_marginBottom="5dp"
                         android:text="2729 1199" />
                 </TableRow>
             </TableLayout>
