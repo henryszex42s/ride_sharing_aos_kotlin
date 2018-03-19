@@ -22,7 +22,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="10px"
-                android:text="Bus:" />
+                android:text="@string/bus" />
 
             <TableLayout
                 android:layout_width="wrap_content"
@@ -102,7 +102,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="10px"
-                android:text="MiniBus:" />
+                android:text="@string/minibus" />
 
             <TableLayout
                 android:layout_width="wrap_content"
@@ -172,7 +172,7 @@
                     <TextView
                         android:layout_height="match_parent"
                         android:padding="10dp"
-                        android:text="104 " />
+                        android:text="104　" />
 
                     <TextView
                         android:background="@color/white"
@@ -193,7 +193,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="10px"
-                android:text="Taxi:" />
+                android:text="@string/taxi" />
 
             <TableLayout
                 android:layout_width="wrap_content"
@@ -205,28 +205,28 @@
 
                     <TextView
                         android:padding="10dp"
-                        android:text="ABA Taxi Radio Call Services Centre" />
+                        android:text="衛星的士電召服務中心\nABA Taxi Radio Call Services Centre" />
 
                     <TextView
                         android:background="@color/white"
                         android:padding="10dp"
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="5dp"
+                        android:gravity="center"
                         android:text="2729 6600" />
                 </TableRow>
 
                 <TableRow>
 
                     <TextView
-
                         android:padding="10dp"
-                        android:text="Hong Kong and Kowloon Radio Car Owners Association" />
+                        android:text="港九電召的士車主聯會有限公司\nHong Kong and Kowloon Radio Car Owners Association" />
 
                     <TextView
                         android:background="@color/white"
-                        android:layout_height="match_parent"
                         android:padding="10dp"
                         android:layout_marginBottom="5dp"
+                        android:gravity="center"
                         android:text="2760 0455" />
                 </TableRow>
 
@@ -235,12 +235,13 @@
                     <TextView
 
                         android:padding="10dp"
-                        android:text="Quadripartite Taxi Service Association" />
+                        android:text="四海的士車主司機聯會\nQuadripartite Taxi Service Association" />
 
                     <TextView
                         android:background="@color/white"
                         android:padding="10dp"
                         android:layout_marginBottom="5dp"
+                        android:gravity="center"
                         android:text="2332 2571" />
                 </TableRow>
 
@@ -248,15 +249,23 @@
 
                     <TextView
                         android:padding="10dp"
-                        android:text="Sai Kung Taxi Operators Association" />
+                        android:text="西貢的士工商聯誼會\nSai Kung Taxi Operators Association" />
 
                     <TextView
                         android:background="@color/white"
                         android:padding="10dp"
-                        android:layout_marginBottom="5dp"
+                        android:gravity="center"
                         android:text="2729 1199" />
                 </TableRow>
             </TableLayout>
+            <TextView
+                android:id="@+id/more"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="@string/more"
+                android:textSize="10dp"
+                android:paddingLeft="10dp"
+                />
 
 
         </LinearLayout>
