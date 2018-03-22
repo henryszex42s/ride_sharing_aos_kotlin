@@ -1,4 +1,4 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,15 +7,37 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-        <Switch
-            android:id="@+id/noti_switch"
+
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:text="@string/notification"
-            android:textSize="20sp"
-            />
+            android:layout_margin="10dp"
+            android:background="#c1c1c1">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10px"
+                    android:text="@string/enable_noti" />
 
+                <TableLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:stretchColumns="*">
 
-</FrameLayout>
+                    <TableRow>
+
+                        <Switch
+                            android:id="@+id/noti_switch"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="20dp"
+                            android:text="@string/notification"
+                            android:textSize="20sp"
+                            />
+
+                    </TableRow>
+                </TableLayout>
+        </FrameLayout>
+</LinearLayout>

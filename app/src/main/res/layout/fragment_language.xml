@@ -6,32 +6,59 @@
     tools:context="fyp.ride_sharing_aos.fragement.LanguageFragment">
 
     <!-- TODO: Update blank fragment layout -->
-
-    <RadioGroup
-        android:id="@+id/language"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:orientation="vertical" >
+        android:layout_margin="10dp"
+        android:background="#c1c1c1">
 
-        <RadioButton
-            android:id="@+id/chinese"
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:layoutDirection="rtl"
-            android:text="中文"
-            android:textSize="20sp"
-            />
+            android:padding="10px"
+            android:text="@string/lang" />
 
-        <RadioButton
-            android:id="@+id/english"
-            android:layout_width="match_parent"
+        <TableLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:layoutDirection="rtl"
-            android:text="English"
-            android:textSize="20sp"  />
-    </RadioGroup>
+            android:layout_marginTop="20dp"
+            android:stretchColumns="*">
+
+            <TableRow>
+
+                <RadioGroup
+                    android:id="@+id/language"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RadioButton
+                        android:id="@+id/chinese"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="20dp"
+                        android:textAlignment="textStart"
+                        android:layout_gravity="start"
+                        android:layoutDirection="rtl"
+                        android:text="中文"
+                        android:textSize="20sp"
+                        />
+
+                    <RadioButton
+                        android:id="@+id/english"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="20dp"
+                        android:textAlignment="textStart"
+                        android:layout_gravity="start"
+                        android:layoutDirection="rtl"
+                        android:text="English"
+                        android:textSize="20sp"  />
+                </RadioGroup>
+
+            </TableRow>
+        </TableLayout>
+    </FrameLayout>
+
 
 </FrameLayout>

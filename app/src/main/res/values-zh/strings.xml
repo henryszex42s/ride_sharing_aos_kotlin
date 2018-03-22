@@ -146,4 +146,6 @@
     <string name="bus">巴士:</string>
     <string name="minibus">小巴:</string>
     <string name="taxi">的士:</string>
+    <string name="lang">語言</string>
+    <string name="enable_noti">允許通知</string>
 </resources>
