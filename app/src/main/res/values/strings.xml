@@ -141,6 +141,8 @@
 
 
     <!--Nav_Filter-->
+    <string name="nav_automatching">Auto Matching</string>
+
     <string name="nav_starting_point">Start Point</string>
     <string name="nav_destination">Destination</string>
 

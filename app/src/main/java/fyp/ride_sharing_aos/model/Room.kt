@@ -12,7 +12,7 @@ class Room {
 
     var type : String? = null
     var value : String? = null
-    var isLocked : Boolean? = null
+    var locked : Boolean? = null
 
     var roomid : String? = null
     var start : String? = null
@@ -33,11 +33,11 @@ class Room {
         // Default constructor required for calls to DataSnapshot.getValue(User.class)
     }
 
-    constructor(type: String?, value: String?,isLocked : Boolean? ,roomid: String?,start: String?, destination: String?, numOfPeople: Int?, maleFil: Boolean?, femaleFil: Boolean?, createtime: Long, prefertime: Long,roomname : String? , uid1: String, uid2: String, uid3:String, uid4: String) {
+    constructor(type: String?, value: String?,isRoomLocked : Boolean? ,roomid: String?,start: String?, destination: String?, numOfPeople: Int?, maleFil: Boolean?, femaleFil: Boolean?, createtime: Long, prefertime: Long,roomname : String? , uid1: String, uid2: String, uid3:String, uid4: String) {
 
         this.type = type
         this.value = value
-        this.isLocked = isLocked
+        this.locked = isRoomLocked
 
         this.roomid = roomid
         this.start = start

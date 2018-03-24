@@ -345,14 +345,20 @@ object FirebaseManager {
             if (task.isSuccessful)
             {
                 RoomList.clear()
+
                 for (doc in task.result) {
                     val note = doc.toObject<Room>(Room::class.java)
                     RoomList.add(note)
                 }
+
                 if (RoomList.isEmpty()) {
                     Log.e(TAG, "onDataChange: RoomList data is null!")
                 }
-                Log.e(TAG, "onDataChange: RoomList data is not null!")
+                else
+                {
+                    Log.e(TAG, "onDataChange: RoomList data is not null!")
+                }
+
                 callback(Unit)
             }
             else
@@ -417,14 +423,19 @@ object FirebaseManager {
         {
             queries = queries.whereEqualTo("numberOfPeople",minPassengersFilterValue)
         }
+
+        queries = queries.whereEqualTo("locked",false)
+        queries = queries.orderBy("createtime")
+
         return queries
     }
 
 
-    fun autoMatching() : String
+    fun autoMatching(callback: (Any) -> Unit)
     {
         var queries : Query
         queries = db.collection("room")
+        var autoMatchingRoomList = mutableListOf<Room>()
 
         if(startingFilterValue != "None")
         {
@@ -434,27 +445,40 @@ object FirebaseManager {
         {
             queries = queries.whereEqualTo("destination",destinationFilterValue)
         }
+        queries = queries.whereEqualTo("locked",false)
+        queries = queries.whereLessThan("numberOfPeople",4)
+        queries = queries.orderBy("numberOfPeople")
+        queries = queries.orderBy("createtime")
 
-        if(genderFilterValue != "None")
-        {
-            if(genderFilterValue == "Male")
-            {
-                queries = queries.whereEqualTo("maleFil",true)
-                queries = queries.whereEqualTo("femaleFil",false)
-            }
-            if(genderFilterValue == "Female")
-            {
-                queries = queries.whereEqualTo("maleFil",false)
-                queries = queries.whereEqualTo("femaleFil",true)
-            }
-            queries = queries.whereEqualTo("destination",destinationFilterValue)
-        }
-        if(minPassengersFilterValue != "None")
-        {
-            queries = queries.whereEqualTo("numberOfPeople",minPassengersFilterValue)
-        }
 
-        return ""
+        queries.get().addOnCompleteListener({ task ->
+            if (task.isSuccessful)
+            {
+                autoMatchingRoomList.clear()
+
+                for (doc in task.result) {
+                    val note = doc.toObject<Room>(Room::class.java)
+                    autoMatchingRoomList.add(note)
+                }
+
+                if (autoMatchingRoomList.isEmpty()) {
+                    Log.e(TAG, "onDataChange: RoomList data is null!")
+                }
+                else
+                {
+                    Log.e(TAG, "onDataChange: RoomList data is not null!")
+                }
+
+
+                callback(Unit)
+            }
+            else
+            {
+                Log.d(TAG, "onDataChange : Error getting documents: ", task.exception)
+                callback(Unit)
+            }
+        })
+
     }
 
 

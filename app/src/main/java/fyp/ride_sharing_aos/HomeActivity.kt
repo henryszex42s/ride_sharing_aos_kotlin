@@ -26,6 +26,7 @@ import fyp.ride_sharing_aos.tools.FirebaseManager.destinationFilterValue
 import fyp.ride_sharing_aos.tools.FirebaseManager.genderFilterValue
 import fyp.ride_sharing_aos.tools.FirebaseManager.minPassengersFilterValue
 import fyp.ride_sharing_aos.tools.FirebaseManager.startingFilterValue
+import fyp.ride_sharing_aos.tools.Tools
 import kotlinx.android.synthetic.main.nav_filter.*
 
 
@@ -53,6 +54,7 @@ class HomeActivity : BaseActivity(){
         loadData()
         selectDrawerItem()
         showLoginPage()
+        setDefaultValue()
 //        http://blog.csdn.net/mobilexu/article/details/41147417
 //        supportActionBar?.setDisplayShowTitleEnabled(false)
 //        supportActionBar?.setDisplayHomeAsUpEnabled(false)
@@ -141,7 +143,21 @@ class HomeActivity : BaseActivity(){
 
 
 
-
+    fun setDefaultValue()
+    {
+        if(Tools.nearestLocation != "")
+        {
+            when(Tools.nearestLocation)
+            {
+                getString(R.string.location_HKUST_North) -> startingFilterValue = locationClickBehavior(card_s_ustng,getString(R.string.location_HKUST_North),true)
+                getString(R.string.location_HKUST_South) -> startingFilterValue = locationClickBehavior(card_s_ustsg,getString(R.string.location_HKUST_South),true)
+                getString(R.string.location_Diamond_Hill) -> startingFilterValue = locationClickBehavior(card_s_dh,getString(R.string.location_Diamond_Hill),true)
+                getString(R.string.location_Choi_Hung) -> startingFilterValue = locationClickBehavior(card_s_ch,getString(R.string.location_Choi_Hung),true)
+                getString(R.string.location_Hang_Hau) -> startingFilterValue = locationClickBehavior(card_s_hh,getString(R.string.location_Hang_Hau),true)
+                getString(R.string.location_Ngau_Tau_Kok) -> startingFilterValue = locationClickBehavior(card_s_ntk,getString(R.string.location_Ngau_Tau_Kok),true)
+            }
+        }
+    }
      fun loadData()
     {
         showProgressDialog(getString(R.string.progress_loading))
@@ -263,6 +279,7 @@ class HomeActivity : BaseActivity(){
 
     fun selectDrawerItem()
     {
+        Tools.findTheNearestLocation(this)
         startingLocationView.add(card_s_ustng)
         startingLocationView.add(card_s_ustsg)
         startingLocationView.add(card_s_dh)
@@ -292,6 +309,7 @@ class HomeActivity : BaseActivity(){
         card_d_hh.setOnClickListener{ nav_destination_filterOnClickListener(card_d_hh) }
 
 
+        //Set the Default Value as the NearestLocation
 
         filter_reset.setOnClickListener(View.OnClickListener {
             Toast.makeText(this,
@@ -302,11 +320,16 @@ class HomeActivity : BaseActivity(){
         })
 
         filter_submit.setOnClickListener(View.OnClickListener {
-            Toast.makeText(this,
-                    "submit Test" ,
-                    Toast.LENGTH_SHORT).show();
             getFilterValue()
             loadData()
+        })
+
+        card_automatch.setOnClickListener(View.OnClickListener {
+            if (startingFilterValue != "None" &&  destinationFilterValue != "None")
+            {
+
+            }
+
         })
 
     }

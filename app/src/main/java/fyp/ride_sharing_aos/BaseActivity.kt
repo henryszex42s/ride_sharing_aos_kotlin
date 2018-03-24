@@ -19,6 +19,7 @@ import android.view.View
 import android.widget.Toast
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import com.google.android.gms.maps.model.LatLng
 import fyp.ride_sharing_aos.BuildConfig.APPLICATION_ID
 import fyp.ride_sharing_aos.activity.ChatroomActivity
 import fyp.ride_sharing_aos.tools.FirebaseManager
@@ -116,12 +117,13 @@ abstract class BaseActivity : AppCompatActivity() {
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful && task.result != null) {
 
-                        Tools.currentLocation.latitude = task.result.latitude
-                        Tools.currentLocation.longitude = task.result.longitude
+//                        Tools.currentLocation.latitude = task.result.latitude
+//                        Tools.currentLocation.longitude = task.result.longitude
 
-                        Log.e(TAG, "latitude : "+  Tools.currentLocation.latitude )
-                        Log.e(TAG, "longitude : " + Tools.currentLocation.longitude)
-
+//                        Log.e(TAG, "latitude : "+  task.result.latitude )
+//                        Log.e(TAG, "longitude : " + task.result.longitude)
+                        Tools.currentLocation = LatLng(task.result.latitude,task.result.longitude)
+                        Log.e(TAG, "currentLocation : " + Tools.currentLocation)
 
                     } else {
                         Log.w(TAG, "getLastLocation:exception", task.exception)
