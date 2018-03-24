@@ -105,9 +105,47 @@
     <string name="title_activity_signup">SignupActivity</string>
     <string name="title_activity_get_start">GetStartActivity</string>
     <string name="title_activity_maps">Map</string>
-    <string name="closeApp">Are you want to close this application?</string>
+    <string name="closeApp">你確定要離開此應用程式嗎?</string>
 
     <!--Chatroom created by Him-->
     <string name="date">日期:</string>
     <string name="time">時間:</string>
+
+
+    <!--Created by translations editor. The order is not the same with en version of strings.xml-->
+    <string name="no_location_detected">找不到位置 請確保已開啟定位功能</string>
+    <string name="permission_denied_explanation">權限被拒</string>
+    <string name="permission_rationale">需要定位權限</string>
+    <string name="location_HKUST_North">香港科技大學(北閘)</string>
+    <string name="location_HKUST_South">香港科技大學(南閘)</string>
+    <string name="location_Diamond_Hill">鑽石山鐵路站</string>
+    <string name="location_Choi_Hung">彩虹鐵路站</string>
+    <string name="location_Hang_Hau">坑口鐵路站</string>
+    <string name="location_Ngau_Tau_Kok">牛頭角鐵路站</string>
+    <string name="nav_starting_point">起點</string>
+    <string name="nav_destination">目的地</string>
+    <string name="nav_gender_filter">性別篩選</string>
+    <string name="nav_gender_none">無</string>
+    <string name="nav_gender_male">男性</string>
+    <string name="nav_gender_female">女性</string>
+    <string name="nav_min_passengers">最少乘客人數</string>
+    <string name="nav_reset">重置</string>
+    <string name="nav_submit">提交</string>
+    <string name="chat_leave">離開房間</string>
+    <string name="chat_lock">鎖定房間</string>
+    <string name="btu_chat">聊天室</string>
+    <string name="room_join_error_title">加入房間錯誤</string>
+    <string name="room_join_error_msg">你已加入房間</string>
+    <string name="room_rejoin_error_title">聊天室錯誤</string>
+    <string name="room_rejoin_error_msg">你尚未加入任何房間</string>
+    <string name="settings">設定</string>
+    <string name="progress_loading">載入中...</string>
+    <string name="enter_message">輸入訊息</string>
+    <string name="send">傳送</string>
+    <string name="more"><a href="http://congregation.ust.hk/docs/Taxi_Call_Stations.pdf">更多的士台...</a></string>
+    <string name="bus">巴士:</string>
+    <string name="minibus">小巴:</string>
+    <string name="taxi">的士:</string>
+    <string name="lang">語言</string>
+    <string name="enable_noti">允許通知</string>
 </resources>

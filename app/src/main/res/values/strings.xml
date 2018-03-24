@@ -100,6 +100,10 @@
     <!-- Notification - Setting Fragment-->
     <string name="notification">Notification</string>
 
+    <!--Notification Fragment-->
+    <string name="enable_noti">Enable Notification</string>
+    <!--Language Fragment-->
+    <string name="lang">Language</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -189,7 +193,15 @@
     <string name="room_join_error_title">Join Room Error</string>
     <string name="room_join_error_msg">You have already joined a room</string>
 
+    <string name="enter_message">Enter message</string>
+    <string name="send">Send</string>
+
     <string name="room_rejoin_error_title">Chat Room Error</string>
     <string name="room_rejoin_error_msg">You haven\'t join any room</string>
 
+    <!--String related to Transport Info-->
+    <string name="more"><a href="http://congregation.ust.hk/docs/Taxi_Call_Stations.pdf">More Taxi Call Stations...</a></string>
+    <string name="bus">Bus:</string>
+    <string name="minibus">Minibus:</string>
+    <string name="taxi">Taxi:</string>
 </resources>
