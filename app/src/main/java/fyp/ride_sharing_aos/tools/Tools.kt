@@ -96,7 +96,9 @@ object Tools
         val ntk = getDistanceFromLatLonInKm(currentLocation,coordinate_ntk)
 
         val tempArray = arrayListOf(ustng,ustsg,dh,ch,hh,ntk)
-        Log.d(TAG," findTheNearestLocation : "+tempArray)
+
+        Log.d(TAG," TheNearestLocationArry : "+tempArray)
+        Log.d(TAG," TheNearestLocation : "+tempArray.min())
 
         when(tempArray.min())
         {

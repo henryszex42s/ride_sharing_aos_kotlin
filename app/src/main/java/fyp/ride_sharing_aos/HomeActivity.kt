@@ -32,6 +32,7 @@ import kotlinx.android.synthetic.main.nav_filter.*
 
 class HomeActivity : BaseActivity(){
 
+    private val TAG = "HomeActivity"
     var fbAuth = FirebaseAuth.getInstance()
 
     val homeFragment = HomeFragment()
@@ -81,66 +82,6 @@ class HomeActivity : BaseActivity(){
             getLastLocation()
         }
     }
-
-//    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        menuInflater.inflate(R.menu.home, menu)
-//        return true
-//    }
-//
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//        when (item.itemId) {
-//            R.id.action_settings -> return true
-//            else -> return super.onOptionsItemSelected(item)
-//        }
-//    }
-
-//    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-//        // Handle navigation view item clicks here.
-//        when (item.itemId) {
-//            R.id.nav_setting -> {
-//
-//            }
-//            R.id.nav_help -> {
-//
-//            }
-//            R.id.nav_about -> {
-//
-//            }
-//            R.id.nav_feedback -> {
-//
-//            }
-//            R.id.nav_logout -> {
-//                val builder_logout = AlertDialog.Builder(this@HomeActivity)
-//                builder_logout.setMessage("Are You sure to logout?")
-//                builder_logout.setCancelable(true)
-//                builder_logout.setTitle("Logout")
-//
-//                val logout = DialogInterface.OnClickListener { dialog, which ->
-//                    fbAuth.signOut()
-//                     val intent = Intent(this@HomeActivity, GetStartActivity::class.java)
-//                     startActivity(intent)
-//                     finish()
-//                }
-//                builder_logout.setPositiveButton(
-//                        "Logout",logout
-//                )
-//                builder_logout.setNegativeButton(
-//                        "Cancel"
-//                ) { dialog, id -> dialog.cancel() }
-//
-//                val alert11 = builder_logout.create()
-//                alert11.show()
-//
-//            }
-//        }
-//        drawer_layout.closeDrawer(GravityCompat.START)
-//        return true
-//    }
-
 
 
     fun setDefaultValue()
@@ -312,11 +253,7 @@ class HomeActivity : BaseActivity(){
         //Set the Default Value as the NearestLocation
 
         filter_reset.setOnClickListener(View.OnClickListener {
-            Toast.makeText(this,
-                    "reset Test" ,
-                    Toast.LENGTH_SHORT).show();
             resetFilterValue()
-
         })
 
         filter_submit.setOnClickListener(View.OnClickListener {
@@ -324,10 +261,37 @@ class HomeActivity : BaseActivity(){
             loadData()
         })
 
+
+
+        //Please Sync With RoomListAdapter -> ItemOnClickListener
         card_automatch.setOnClickListener(View.OnClickListener {
             if (startingFilterValue != "None" &&  destinationFilterValue != "None")
             {
 
+                showProgressDialog(getString(R.string.progress_matching))
+                FirebaseManager.autoMatching({
+                    dismissProgressDialog()
+                    if(FirebaseManager.AutoMatchRoomIDTemp != null && FirebaseManager.AutoMatchRoomIDTemp != "")
+                    {
+                        Tools.printLog(TAG,FirebaseManager.AutoMatchRoomIDTemp!!)
+                        joinRoom(FirebaseManager.AutoMatchRoomIDTemp!!)
+                    }
+                    else
+                    {
+                        val error_msg: ArrayList<String> = ArrayList()
+                        error_msg.add(this.getString(R.string.automatch__no_Room))
+                        Tools.showDialog(this,getString(R.string.automatch__error),error_msg)
+
+                    }
+                })
+
+
+            }
+            else
+            {
+                val error_msg: ArrayList<String> = ArrayList()
+                error_msg.add(this.getString(R.string.automatch_select_error))
+                Tools.showDialog(this,getString(R.string.automatch__error),error_msg)
             }
 
         })
@@ -474,6 +438,30 @@ class HomeActivity : BaseActivity(){
         destinationFilterValue = "None"
         genderFilterValue = "None"
         minPassengersFilterValue = "None"
+    }
+
+
+
+
+    fun joinRoom(RoomID : String)
+    {
+        if(FirebaseManager.isRoomIDValid())
+        {
+            val error_msg: ArrayList<String> = ArrayList()
+            error_msg.add(this.getString(R.string.room_join_error_msg))
+            Tools.showDialog(this,getString(R.string.room_join_error_title),error_msg)
+        }
+        else
+        {
+            showProgressDialog(this.getString(R.string.progress_join))
+            FirebaseManager.joinRoom(RoomID,{
+
+                dismissProgressDialog()
+                FirebaseManager.detachUserListener()
+                callChatRoom()
+
+            })
+        }
     }
 
 }

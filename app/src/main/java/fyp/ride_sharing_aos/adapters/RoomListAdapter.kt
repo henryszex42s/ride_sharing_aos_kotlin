@@ -6,11 +6,9 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import fyp.ride_sharing_aos.HomeActivity
 import fyp.ride_sharing_aos.R
 import fyp.ride_sharing_aos.model.Room
-import fyp.ride_sharing_aos.tools.FirebaseManager
 import fyp.ride_sharing_aos.tools.Tools
 import kotlinx.android.synthetic.main.roomlist_layout.view.*
 
@@ -78,27 +76,27 @@ class ViewHolder(val c : Context, val view: View): RecyclerView.ViewHolder(view)
 
 
 
+        //Please Sync With HomeActivity -> AutoMatching
         view.setOnClickListener {
-            if(FirebaseManager.isRoomIDValid())
-            {
-                val error_msg: ArrayList<String> = ArrayList()
-                error_msg.add(c.getString(R.string.room_join_error_msg))
-                Tools.showDialog(c,c.getString(R.string.room_join_error_title),error_msg)
-            }
-            else
-            {
-                (c as HomeActivity).showProgressDialog(c.getString(R.string.progress_loading))
-                FirebaseManager.joinRoom(room.roomid!!,{
+//            if(FirebaseManager.isRoomIDValid())
+//            {
+//                val error_msg: ArrayList<String> = ArrayList()
+//                error_msg.add(c.getString(R.string.room_join_error_msg))
+//                Tools.showDialog(c,c.getString(R.string.room_join_error_title),error_msg)
+//            }
+//            else
+//            {
+//                (c as HomeActivity).showProgressDialog(c.getString(R.string.progress_loading))
+//                FirebaseManager.joinRoom(room.roomid!!,{
+//
+//                    c.dismissProgressDialog()
+//                    FirebaseManager.detachUserListener()
+//                    c.callChatRoom()
+//
+//                })
+//            }
 
-                    c.dismissProgressDialog()
-                    FirebaseManager.detachUserListener()
-                    c.callChatRoom()
-
-                })
-
-
-            }
-
+            (c as HomeActivity).joinRoom(room.roomid!!)
         }
 
 

@@ -14,6 +14,7 @@ import fyp.ride_sharing_aos.model.User
  */
 object FirebaseManager {
 
+    private val TAG ="FirebaseManager"
     private var fbAuth = FirebaseAuth.getInstance()
     private var fbUser : FirebaseUser ?= null
     private var db = FirebaseFirestore.getInstance()
@@ -46,6 +47,8 @@ object FirebaseManager {
     val MessageList = mutableListOf<Message>()
     var currentUserSession =""
     var RoomObj :Room ?=null
+
+    var AutoMatchRoomIDTemp : String? = null
 
     fun isLogin() : Boolean
     {
@@ -338,7 +341,6 @@ object FirebaseManager {
 
     fun updateRoomList(callback: (Any)->Unit)
     {
-
         val searchQueries = makeQueries()
 
         searchQueries.get().addOnCompleteListener({ task ->
@@ -352,11 +354,12 @@ object FirebaseManager {
                 }
 
                 if (RoomList.isEmpty()) {
-                    Log.e(TAG, "onDataChange: RoomList data is null!")
+                    Log.e(TAG, "onRoomListDataChange: RoomList Data is null!")
                 }
                 else
                 {
-                    Log.e(TAG, "onDataChange: RoomList data is not null!")
+                    Log.e(TAG, "onRoomListDataChange: RoomList Data Received")
+
                 }
 
                 callback(Unit)
@@ -400,11 +403,13 @@ object FirebaseManager {
         {
             queries = queries.whereEqualTo("start",startingFilterValue)
         }
+
         if(destinationFilterValue != "None")
         {
             queries = queries.whereEqualTo("destination",destinationFilterValue)
 
         }
+
         if(genderFilterValue != "None")
         {
             if(genderFilterValue == "Male")
@@ -417,16 +422,14 @@ object FirebaseManager {
                 queries = queries.whereEqualTo("maleFil",false)
                 queries = queries.whereEqualTo("femaleFil",true)
             }
-            queries = queries.whereEqualTo("destination",destinationFilterValue)
         }
+
         if(minPassengersFilterValue != "None")
         {
             queries = queries.whereEqualTo("numberOfPeople",minPassengersFilterValue)
         }
 
         queries = queries.whereEqualTo("locked",false)
-        queries = queries.orderBy("createtime")
-
         return queries
     }
 
@@ -445,10 +448,10 @@ object FirebaseManager {
         {
             queries = queries.whereEqualTo("destination",destinationFilterValue)
         }
+
         queries = queries.whereEqualTo("locked",false)
-        queries = queries.whereLessThan("numberOfPeople",4)
-        queries = queries.orderBy("numberOfPeople")
-        queries = queries.orderBy("createtime")
+
+
 
 
         queries.get().addOnCompleteListener({ task ->
@@ -463,18 +466,19 @@ object FirebaseManager {
 
                 if (autoMatchingRoomList.isEmpty()) {
                     Log.e(TAG, "onDataChange: RoomList data is null!")
+                    AutoMatchRoomIDTemp = ""
                 }
                 else
                 {
                     Log.e(TAG, "onDataChange: RoomList data is not null!")
+                    AutoMatchRoomIDTemp = autoMatchingRoomList[0].roomid!!
                 }
-
-
                 callback(Unit)
             }
             else
             {
                 Log.d(TAG, "onDataChange : Error getting documents: ", task.exception)
+                AutoMatchRoomIDTemp = ""
                 callback(Unit)
             }
         })
