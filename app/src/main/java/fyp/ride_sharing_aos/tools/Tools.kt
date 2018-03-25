@@ -1,6 +1,7 @@
 package fyp.ride_sharing_aos.tools
 
 import android.annotation.SuppressLint
+import android.content.ComponentCallbacks
 import android.content.ContentValues.TAG
 import android.content.Context
 import android.location.Location
@@ -65,8 +66,39 @@ object Tools
         val alert = builder.create()
         alert.show()
         }
-
     }
+
+    fun showDialog_cb(context: Context, title:String, error_msg:ArrayList<String>, callback: (Any)->Unit)
+    {
+        if (error_msg != null) {
+            val builder = AlertDialog.Builder(context)
+
+            var errorString: String = ""
+
+            for (i in error_msg.listIterator()) {
+                errorString += "\n\n"
+                errorString += i
+            }
+
+            builder.setIcon(R.drawable.app_icon)
+            builder.setMessage(errorString)
+            builder.setCancelable(false)
+            builder.setTitle(title)
+
+            builder.setPositiveButton(
+                    "OK"
+            ) {
+                dialog, id ->
+                dialog.cancel()
+                callback(Unit)
+            }
+
+
+            val alert = builder.create()
+            alert.show()
+        }
+    }
+
     fun convertDate(time: Long): String {
         val date = Date(time)
         val format = SimpleDateFormat("dd/MM/yyyy")

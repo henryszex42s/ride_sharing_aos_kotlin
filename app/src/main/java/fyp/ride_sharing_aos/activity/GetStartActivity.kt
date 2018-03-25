@@ -4,6 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import fyp.ride_sharing_aos.BaseActivity
 import fyp.ride_sharing_aos.R
+import fyp.ride_sharing_aos.tools.FirebaseManager
+import fyp.ride_sharing_aos.tools.Tools
 import kotlinx.android.synthetic.main.activity_get_start.*
 
 class GetStartActivity : BaseActivity() {
@@ -15,6 +17,13 @@ class GetStartActivity : BaseActivity() {
         supportActionBar?.hide()
 
 
+        if(FirebaseManager.isLogin() && !FirebaseManager.isEmailVerified())
+        {
+
+            val error_msg: ArrayList<String> = ArrayList()
+            error_msg.add(this.getString(R.string.login_validation_error))
+            Tools.showDialog(this,getString(R.string.login__error),error_msg)
+        }
 
         btn_login.setOnClickListener({
             val intent = Intent(this@GetStartActivity, LoginActivity::class.java)

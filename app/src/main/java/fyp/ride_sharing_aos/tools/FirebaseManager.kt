@@ -1,6 +1,5 @@
 package fyp.ride_sharing_aos.tools
 
-import android.content.ContentValues.TAG
 import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -54,6 +53,14 @@ object FirebaseManager {
     {
         fbUser = fbAuth.currentUser
         return fbUser != null
+    }
+
+    fun isEmailVerified() : Boolean
+    {
+        if(fbAuth.currentUser != null)
+            return fbAuth.currentUser!!.isEmailVerified
+        else
+            return false
     }
 
     fun signOut()

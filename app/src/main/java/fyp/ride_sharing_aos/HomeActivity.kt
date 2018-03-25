@@ -115,10 +115,17 @@ class HomeActivity : BaseActivity(){
 
     private fun showLoginPage()
     {
-        if(fbAuth.currentUser != null)
+        if(FirebaseManager.isLogin() )
         {
-            //User is logged in
-            FirebaseManager.updateUser()
+                //User is logged in
+                FirebaseManager.updateUser()
+                        if(!FirebaseManager.isEmailVerified())
+                        {
+                            val intent = Intent(this@HomeActivity, GetStartActivity::class.java)
+                            startActivity(intent)
+                            overridePendingTransition(R.anim.slide_in_up,R.anim.slide_out_up)
+
+                        }
         }
         else
         {

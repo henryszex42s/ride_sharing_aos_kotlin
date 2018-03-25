@@ -28,6 +28,16 @@
     <string name="login_user_error">Please enter your username </string>
     <string name="login_password_error">Please enter your password</string>
 
+    <string name="login__error">Login Error</string>
+    <string name="login_validation_error">Please verify your email address before using OUST</string>
+
+    <string name="login_title">Login</string>
+    <string name="login_validation_sent">Verification email sent to</string>
+    <string name="login_validation_fail">Failed to send verification email.</string>
+
+
+
+
     <!--Strings related to SignUp-->
     <string name="signup_username">Username :</string>
     <string name="signup_itsc">ITSC :</string>

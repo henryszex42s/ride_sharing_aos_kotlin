@@ -32,6 +32,7 @@ class LoginActivity : BaseActivity() {
                     .addOnCompleteListener { task: Task<AuthResult> ->
                         if(task.isSuccessful)
                         {
+
                             val intentToMain = Intent(this@LoginActivity, HomeActivity::class.java)
                             intentToMain.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
                             intentToMain.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)

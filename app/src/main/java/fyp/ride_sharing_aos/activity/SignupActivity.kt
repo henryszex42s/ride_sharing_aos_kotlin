@@ -14,6 +14,9 @@ import fyp.ride_sharing_aos.model.User
 import fyp.ride_sharing_aos.tools.Tools
 import com.google.firebase.firestore.FirebaseFirestore
 import fyp.ride_sharing_aos.BaseActivity
+import com.google.firebase.auth.FirebaseUser
+
+
 
 
 class SignupActivity : BaseActivity() {
@@ -71,20 +74,49 @@ class SignupActivity : BaseActivity() {
                             {
                                 val userId = mAuth.currentUser!!.uid
                                 val user = User(username, userId, email, identity,gender)
+                                val fbuser = mAuth.currentUser
 
                                 db.collection("user")
                                         .document(userId)
                                         .set(user)
                                         .addOnSuccessListener({
                                             Toast.makeText(this, "Your account has been created successfully.", Toast.LENGTH_SHORT).show()
-                                            val intent = Intent(this@SignupActivity, HomeActivity::class.java)
-                                            startActivity(intent)
-                                            this.finish()
                                         })
-
                                         .addOnFailureListener({
                                                     Toast.makeText(this, "Your account has not been created, please contact us for help.", Toast.LENGTH_SHORT).show()
                                         })
+
+                                if(fbuser!= null)
+                                {
+                                    fbuser!!.sendEmailVerification()
+                                            .addOnCompleteListener ({
+                                                if (task.isSuccessful()) {
+
+                                                    val error_msg: ArrayList<String> = ArrayList()
+                                                    error_msg.add(this.getString(R.string.login_validation_sent) + user.email)
+                                                    Tools.showDialog_cb(this,getString(R.string.login_title),error_msg,
+                                                            {
+                                                                val intent = Intent(this@SignupActivity, HomeActivity::class.java)
+                                                                startActivity(intent)
+                                                                this.finish()
+                                                            })
+                                                } else {
+                                                    
+                                                    Tools.printLog(TAG, "sendEmailVerification" + task.getException())
+
+                                                    val error_msg: ArrayList<String> = ArrayList()
+                                                    error_msg.add(this.getString(R.string.login_title))
+                                                    Tools.showDialog_cb(this,getString(R.string.login_validation_fail),error_msg,
+                                                            {
+                                                                val intent = Intent(this@SignupActivity, HomeActivity::class.java)
+                                                                startActivity(intent)
+                                                                this.finish()
+                                                            })
+
+                                                }
+                                            })
+                                }
+
 
 //                                Realtime Database Code
 //                                registerRef.setValue(user).addOnSuccessListener()
