@@ -32,7 +32,7 @@
     <string name="login_validation_error">Please verify your email address before using OUST</string>
 
     <string name="login_title">Login</string>
-    <string name="login_validation_sent">Verification email sent to</string>
+    <string name="login_validation_sent">Verification email sent to </string>
     <string name="login_validation_fail">Failed to send verification email.</string>
 
 
