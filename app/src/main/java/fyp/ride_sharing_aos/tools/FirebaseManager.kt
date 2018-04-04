@@ -1,12 +1,19 @@
 package fyp.ride_sharing_aos.tools
 
+import android.content.Context
 import android.util.Log
+import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.*
 import fyp.ride_sharing_aos.model.Message
 import fyp.ride_sharing_aos.model.Room
 import fyp.ride_sharing_aos.model.User
+import com.google.firebase.auth.EmailAuthProvider
+import com.google.firebase.auth.AuthCredential
+import fyp.ride_sharing_aos.BaseActivity
+import fyp.ride_sharing_aos.R
+
 
 /**
  * Created by lfreee on 21/1/2018.
@@ -77,7 +84,28 @@ object FirebaseManager {
 
     fun getUserID() : String?
     {
-        return UserObj!!.uid
+        if(UserObj != null)
+        {
+            return UserObj!!.uid
+
+        }
+        return ""
+    }
+
+    fun getEmail() : String?
+    {
+        if(UserObj != null)
+        {
+            return UserObj!!.email
+
+        }
+        return ""
+    }
+
+
+    fun isRoomIDValid() : Boolean
+    {
+        return (getRoomID() != "" && getRoomID() != "-1")
     }
 
     fun getRoomList() : MutableList<Room>
@@ -89,12 +117,6 @@ object FirebaseManager {
     {
         return UserObj!!.chatsession!!
     }
-
-    fun isRoomIDValid() : Boolean
-    {
-        return (getRoomID() != "" && getRoomID() != "-1")
-    }
-
 
 
     fun detachUserListener()
@@ -132,25 +154,18 @@ object FirebaseManager {
     }
 
 
-    fun changePassword(newPassword : String)
+    fun changePassword(newPassword : String, oldPassword: String, c : Context)
     {
+        val credential = EmailAuthProvider.getCredential(getEmail()!!, oldPassword)
+        fbAuth.currentUser!!.reauthenticate(credential).addOnSuccessListener {
+            fbAuth.currentUser!!.updatePassword(newPassword).addOnSuccessListener {
+                Toast.makeText(c, c.getString(R.string.updatePass_Success) , Toast.LENGTH_SHORT).show();
+            }
+            .addOnFailureListener {
+                Toast.makeText(c, c.getString(R.string.updatePass_Fail) , Toast.LENGTH_SHORT).show();
+            }
+        }
 
-        //1. Create a Listener to listener the change in UserObj, if Chatsession is changed, the callback will be trigger.
-
-        val data = HashMap<String, Any>()
-        data.put("username", newUserName)
-        //2.We update the room obj  with type = 2 and value = <Current User ID> to trigger the firebase cloud function to update the UserObj
-        db.collection("user")
-                .document(getUserID()!!)
-                .update(data)
-                .addOnSuccessListener{
-                    Log.d(TAG, "SuccessListener: ")
-
-                }
-                .addOnFailureListener{
-                    Log.d(TAG, "addOnFailureListener: ")
-
-                }
     }
 
 

@@ -219,4 +219,8 @@
     <string name="automatch__error">Auto Match Error</string>
     <string name="automatch__no_Room">There are no room match your criteria</string>
 
+
+    <string name="updatePass_Success">Password update successful.</string>
+    <string name="updatePass_Fail">Password update failed.</string>
+
 </resources>

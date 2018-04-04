@@ -48,16 +48,14 @@ class EditProfileFragment : Fragment() {
         val update2 = view.findViewById<Button>(R.id.update2)
 
 
-
-
         update1.setOnClickListener(View.OnClickListener {
             FirebaseManager.editProfile(new_username.toString())
         })
 
         update2.setOnClickListener(View.OnClickListener {
-            Toast.makeText(activity,
-                    "Update2 Test" ,
-                    Toast.LENGTH_SHORT).show();
+
+            // IF Check the password is same
+            FirebaseManager.changePassword("","",activity)
         })
 
         //return inflater!!.inflate(R.layout.fragment_edit_profile, container, false)
