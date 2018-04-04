@@ -16,6 +16,7 @@ import fyp.ride_sharing_aos.activity.LoginActivity
 import android.content.Intent
 import android.R.xml
 import android.widget.Button
+import fyp.ride_sharing_aos.tools.FirebaseManager
 
 
 /**
@@ -45,11 +46,14 @@ class EditProfileFragment : Fragment() {
         val view = inflater!!.inflate(R.layout.fragment_edit_profile, null)
         val update1 = view.findViewById<Button>(R.id.update1)
         val update2 = view.findViewById<Button>(R.id.update2)
+
+
+
+
         update1.setOnClickListener(View.OnClickListener {
-            Toast.makeText(activity,
-                    "Update1 Test" ,
-                    Toast.LENGTH_SHORT).show();
+            FirebaseManager.editProfile(new_username.toString())
         })
+
         update2.setOnClickListener(View.OnClickListener {
             Toast.makeText(activity,
                     "Update2 Test" ,

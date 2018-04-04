@@ -110,6 +110,59 @@ object FirebaseManager {
         MessageListenerVal.remove()
     }
 
+    fun editProfile(newUserName : String)
+    {
+
+        //1. Create a Listener to listener the change in UserObj, if Chatsession is changed, the callback will be trigger.
+
+        val data = HashMap<String, Any>()
+        data.put("username", newUserName)
+        //2.We update the room obj  with type = 2 and value = <Current User ID> to trigger the firebase cloud function to update the UserObj
+        db.collection("user")
+                .document(getUserID()!!)
+                .update(data)
+                .addOnSuccessListener{
+                    Log.d(TAG, "SuccessListener: ")
+
+                }
+                .addOnFailureListener{
+                    Log.d(TAG, "addOnFailureListener: ")
+
+                }
+    }
+
+
+    fun changePassword(newPassword : String)
+    {
+
+        //1. Create a Listener to listener the change in UserObj, if Chatsession is changed, the callback will be trigger.
+
+        val data = HashMap<String, Any>()
+        data.put("username", newUserName)
+        //2.We update the room obj  with type = 2 and value = <Current User ID> to trigger the firebase cloud function to update the UserObj
+        db.collection("user")
+                .document(getUserID()!!)
+                .update(data)
+                .addOnSuccessListener{
+                    Log.d(TAG, "SuccessListener: ")
+
+                }
+                .addOnFailureListener{
+                    Log.d(TAG, "addOnFailureListener: ")
+
+                }
+    }
+
+
+
+
+
+
+
+
+
+
+
     fun resetUserChatsession()
     {
         val data = HashMap<String, Any>()
@@ -305,7 +358,7 @@ object FirebaseManager {
     }
 
 
-    fun updateUser()
+    fun updateUserObj()
     {
 
         if(!isLogin())

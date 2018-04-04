@@ -2,13 +2,9 @@ package fyp.ride_sharing_aos
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentTransaction
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AlertDialog
-import android.support.v7.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import fyp.ride_sharing_aos.activity.GetStartActivity
 import kotlinx.android.synthetic.main.activity_home.*
@@ -20,8 +16,6 @@ import fyp.ride_sharing_aos.fragement.*
 import fyp.ride_sharing_aos.tools.FirebaseManager
 import android.support.v7.widget.CardView
 import android.view.View
-import android.widget.Toast
-import fyp.ride_sharing_aos.activity.ChatroomActivity
 import fyp.ride_sharing_aos.tools.FirebaseManager.destinationFilterValue
 import fyp.ride_sharing_aos.tools.FirebaseManager.genderFilterValue
 import fyp.ride_sharing_aos.tools.FirebaseManager.minPassengersFilterValue
@@ -118,7 +112,7 @@ class HomeActivity : BaseActivity(){
         if(FirebaseManager.isLogin() )
         {
                 //User is logged in
-                FirebaseManager.updateUser()
+                FirebaseManager.updateUserObj()
                         if(!FirebaseManager.isEmailVerified())
                         {
                             val intent = Intent(this@HomeActivity, GetStartActivity::class.java)
