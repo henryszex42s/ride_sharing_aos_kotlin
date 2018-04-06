@@ -15,8 +15,11 @@ import kotlinx.android.synthetic.main.fragment_edit_profile.*
 import fyp.ride_sharing_aos.activity.LoginActivity
 import android.content.Intent
 import android.R.xml
+import android.graphics.Color
 import android.widget.Button
 import fyp.ride_sharing_aos.tools.FirebaseManager
+import fyp.ride_sharing_aos.tools.Tools
+import kotlinx.android.synthetic.main.activity_signup.*
 
 
 /**
@@ -46,16 +49,40 @@ class EditProfileFragment : Fragment() {
         val view = inflater!!.inflate(R.layout.fragment_edit_profile, null)
         val update1 = view.findViewById<Button>(R.id.update1)
         val update2 = view.findViewById<Button>(R.id.update2)
-
+        var valid = true
+        val error_msg: ArrayList<String> = ArrayList()
 
         update1.setOnClickListener(View.OnClickListener {
-            FirebaseManager.editProfile(new_username.toString())
+            FirebaseManager.editProfile(new_username.text.toString())
         })
 
         update2.setOnClickListener(View.OnClickListener {
+            val error_msg: ArrayList<String> = ArrayList()
+            var valid = true
+            if(new_password.text.toString() == repeat_password.text.toString()) {
 
-            // IF Check the password is same
-            FirebaseManager.changePassword("","",activity)
+                //Password Validation
+                if (new_password.text.toString().length < 6 || new_password.text.toString().isEmpty()) {
+                    error_msg.add(getString(R.string.signup_password_error))
+                    valid = false
+                }
+
+                if ( !new_password.text.toString().matches("[0-9]+".toRegex()) && (new_password.text.toString().matches("[a-z]+".toRegex()) || new_password.text.toString().matches("[A-Z]+".toRegex()))) {
+                    error_msg.add(getString(R.string.signup_password_error2))
+
+                    valid = false
+                }
+                if (valid) {
+                    FirebaseManager.changePassword(new_password.text.toString(), old_password.text.toString(), activity)
+                    error_msg.add(getString(R.string.signup_password_error2))
+                }
+                Tools.showDialog(context, "Alert", error_msg)
+            }
+            else {
+                error_msg.add(getString(R.string.edit_pro_password_error))
+                Tools.showDialog(context, "Alert", error_msg)
+            }
+
         })
 
         //return inflater!!.inflate(R.layout.fragment_edit_profile, container, false)

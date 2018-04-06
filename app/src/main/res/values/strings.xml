@@ -104,8 +104,11 @@
     <string name="pro_p">Profile Picture</string>
     <string name="update">Update</string>
     <string name="ch_password">Change Password:</string>
+    <string name="old_password">Old Password</string>
     <string name="new_password">New Password</string>
     <string name="repeat_password">Repeat Password</string>
+    <string name="edit_pro_password_error">New Password must same as Repeat Password.</string>
+    <string name="edit_pro_password_success">Success</string>
 
     <!-- Notification - Setting Fragment-->
     <string name="notification">Notification</string>

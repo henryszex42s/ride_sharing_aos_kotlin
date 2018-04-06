@@ -50,32 +50,7 @@
                                 android:inputType="text"/>
                         </TableRow>
 
-                        <TableRow>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="10dp"
-                                android:text="@string/login_hint_email"
-                                />
 
-                            <EditText
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="10dp"
-                                android:background="@drawable/rounded_edittext"
-                                android:inputType="text"/>
-                        </TableRow>
-
-                        <TableRow>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="10dp"
-                                android:text="@string/pro_p"
-                                />
-
-
-                        </TableRow>
                     </TableLayout>
                     <Button
                         android:id="@+id/update1"
@@ -109,6 +84,23 @@
                     android:layout_height="wrap_content"
                     android:stretchColumns="1">
 
+                    <TableRow>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:text="@string/old_password"
+                            />
+
+                        <EditText
+                            android:id="@+id/old_password"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:background="@drawable/rounded_edittext"
+                            android:inputType="textPassword"
+                            />
+                    </TableRow>
                 <TableRow>
                     <TextView
                         android:layout_width="wrap_content"
@@ -118,6 +110,7 @@
                         />
 
                     <EditText
+                        android:id="@+id/new_password"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
@@ -134,6 +127,7 @@
                         />
 
                     <EditText
+                        android:id="@+id/repeat_password"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
