@@ -50,6 +50,7 @@ class HomeActivity : BaseActivity(){
         selectDrawerItem()
         showLoginPage()
         setDefaultValue()
+
 //        http://blog.csdn.net/mobilexu/article/details/41147417
 //        supportActionBar?.setDisplayShowTitleEnabled(false)
 //        supportActionBar?.setDisplayHomeAsUpEnabled(false)

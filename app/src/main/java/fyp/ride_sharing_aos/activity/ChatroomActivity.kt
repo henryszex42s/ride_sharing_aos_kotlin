@@ -116,14 +116,14 @@ class ChatroomActivity: BaseActivity(){
 
     fun UpdateTaxiFee()
     {
-        var taxi_fee = ((distance/1000)-2) *5.0
+        var taxi_fee = ((distance/1000)-2.0)
         if(taxi_fee <0)
         {
             chat_item_fare_est.setText("HKD$ 24")
         }
         else
         {
-            taxi_fee = 24+taxi_fee*1.7+5*1.7
+            taxi_fee = 24+taxi_fee*(5.0*1.7)+1*1.7
             chat_item_fare_est.setText("HKD$ "+ taxi_fee)
         }
     }
