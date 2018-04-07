@@ -212,6 +212,12 @@
 
     <string name="room_rejoin_error_title">Chat Room Error</string>
     <string name="room_rejoin_error_msg">You haven\'t join any room</string>
+
+    <string name="fare_est">Taxi Fare Estimation:</string>
+
+
+
+
     <!--String related to Transport Info-->
     <string name="more"><a href="http://congregation.ust.hk/docs/Taxi_Call_Stations.pdf">More Taxi Call Stations...</a></string>
     <string name="bus">Bus:</string>
