@@ -13,6 +13,13 @@ import java.sql.Date
 import java.sql.Timestamp
 import java.text.SimpleDateFormat
 import com.google.firebase.firestore.ServerTimestamp
+import com.squareup.okhttp.OkHttpClient
+import com.squareup.okhttp.Request
+import org.json.JSONException
+import org.json.JSONObject
+import java.net.URL
+import android.os.AsyncTask.execute
+
 
 
 
@@ -26,6 +33,7 @@ object Tools
     var currentLocation = LatLng(0.0,0.0)
     val currentTime = Timestamp(System.currentTimeMillis())
     var nearestLocation = ""
+
 
     enum class Location_Name {
         HKUST_North_Gate, HKUST_South_Gate,Diamond_Hill_MTR_Station,Choi_Hung_MTR_Station, Hang_Hau_MTR_Station, Ngau_Tau_Kok_MTR_Station
@@ -140,8 +148,25 @@ object Tools
             ch -> nearestLocation = c.getString(R.string.location_Choi_Hung)
             hh -> nearestLocation = c.getString(R.string.location_Hang_Hau)
             ntk -> nearestLocation = c.getString(R.string.location_Ngau_Tau_Kok)
+            else -> { nearestLocation ="" }
         }
         return nearestLocation
+    }
+
+    fun getlatLngUsingName(Location : String, c : Context) : LatLng
+    {
+        return when(Location)
+        {
+            c.getString(R.string.location_HKUST_North) -> coordinate_ustng
+            c.getString(R.string.location_HKUST_South) -> coordinate_ustsg
+            c.getString(R.string.location_Diamond_Hill) -> coordinate_dh
+            c.getString(R.string.location_Choi_Hung) -> coordinate_ch
+            c.getString(R.string.location_Hang_Hau) -> coordinate_hh
+            c.getString(R.string.location_Ngau_Tau_Kok) -> coordinate_ntk
+            else -> {
+                LatLng(0.0,0.0)
+            }
+        }
     }
 
 
@@ -157,6 +182,23 @@ object Tools
 
         return locationA.distanceTo(locationB).toDouble()
     }
+
+    fun getDistanceMatrixUrl(latLngA : LatLng,latLngB: LatLng): String {
+        val urlString = StringBuffer()
+        urlString.append("https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=")
+        urlString.append(latLngA.latitude)
+        urlString.append(",")
+        urlString.append(latLngA.longitude)// from
+        urlString.append("&destinations=")
+        urlString.append(latLngB.latitude)// from
+        urlString.append(",")
+        urlString.append(latLngA.longitude)
+        urlString.append("&key=AIzaSyDafjcrM6n70U3wLqNu04vP0dQon1dPekE")
+        return urlString.toString()
+    }
+
+
+
 
 
 

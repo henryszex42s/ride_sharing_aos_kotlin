@@ -49,6 +49,10 @@ class AddRouteActivity : BaseActivity(), OnMapReadyCallback {
     // Time
     val selectedTime = Calendar.getInstance()
 
+//    RoadLine in map
+//    https://medium.com/@irenenaya/drawing-path-between-two-points-in-google-maps-with-kotlin-in-android-app-af2f08992877
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_route)
