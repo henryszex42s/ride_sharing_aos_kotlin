@@ -53,12 +53,20 @@ class EditProfileFragment : Fragment() {
         val error_msg: ArrayList<String> = ArrayList()
 
         update1.setOnClickListener(View.OnClickListener {
-            FirebaseManager.editProfile(new_username.text.toString())
+            //username validation
+            if ( (new_username.text.toString().length < 5 || new_username.text.toString().length > 8) || new_username.text.toString().isEmpty() ) {
+                error_msg.add(getString(R.string.signup_username_error))
+                Tools.showDialog(context, "Alert", error_msg)
+            }
+            else
+                FirebaseManager.editProfile(new_username.text.toString())
         })
 
         update2.setOnClickListener(View.OnClickListener {
             val error_msg: ArrayList<String> = ArrayList()
             var valid = true
+
+            //password validation
             if(new_password.text.toString() == repeat_password.text.toString()) {
 
                 //Password Validation
@@ -85,7 +93,6 @@ class EditProfileFragment : Fragment() {
 
         })
 
-        //return inflater!!.inflate(R.layout.fragment_edit_profile, container, false)
         return view
     }
 
