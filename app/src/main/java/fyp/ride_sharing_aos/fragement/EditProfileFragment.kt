@@ -49,10 +49,9 @@ class EditProfileFragment : Fragment() {
         val view = inflater!!.inflate(R.layout.fragment_edit_profile, null)
         val update1 = view.findViewById<Button>(R.id.update1)
         val update2 = view.findViewById<Button>(R.id.update2)
-        var valid = true
-        val error_msg: ArrayList<String> = ArrayList()
 
         update1.setOnClickListener(View.OnClickListener {
+            val error_msg: ArrayList<String> = ArrayList()
             //username validation
             if ( (new_username.text.toString().length < 5 || new_username.text.toString().length > 8) || new_username.text.toString().isEmpty() ) {
                 error_msg.add(getString(R.string.signup_username_error))
@@ -77,22 +76,23 @@ class EditProfileFragment : Fragment() {
 
                 if ( !new_password.text.toString().matches("[0-9]+".toRegex()) && (new_password.text.toString().matches("[a-z]+".toRegex()) || new_password.text.toString().matches("[A-Z]+".toRegex()))) {
                     error_msg.add(getString(R.string.signup_password_error2))
-
                     valid = false
                 }
                 if (valid) {
                     FirebaseManager.changePassword(new_password.text.toString(), old_password.text.toString(), activity)
-                    error_msg.add(getString(R.string.signup_password_error2))
+                    error_msg.add(getString(R.string.updatePass_Success))
+                    Tools.showDialog(context, "Alert", error_msg)
                 }
-                Tools.showDialog(context, "Alert", error_msg)
+                else {
+                    Tools.showDialog(context, getString(R.string.updatePass_Fail), error_msg)
+                }
             }
             else {
                 error_msg.add(getString(R.string.edit_pro_password_error))
-                Tools.showDialog(context, "Alert", error_msg)
+                Tools.showDialog(context, getString(R.string.updatePass_Fail), error_msg)
             }
 
         })
-
         return view
     }
 

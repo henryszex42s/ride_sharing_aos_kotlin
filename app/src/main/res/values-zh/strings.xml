@@ -149,4 +149,17 @@
     <string name="lang">語言</string>
     <string name="enable_noti">允許通知</string>
     <string name="old_password">舊的密碼</string>
+    <string name="edit_pro_password_error">新密碼必須和重複密碼一致</string>
+    <string name="progress_matching">配對中...</string>
+    <string name="progress_join">加入房間中...</string>
+    <string name="automatch__error">自動配對錯誤</string>
+    <string name="automatch_select_error">你必須選擇起點及終點</string>
+    <string name="automatch__no_Room">沒有匹配結果</string>
+    <string name="updatePass_Success">更改密碼成功</string>
+    <string name="updatePass_Fail">更改密碼失敗</string>
+    <string name="login__error">登入錯誤</string>
+    <string name="login_validation_error">使用本應用前請驗證你的電郵地址</string>
+    <string name="login_title">登入</string>
+    <string name="login_validation_sent">驗證郵件已傳送到</string>
+    <string name="login_validation_fail">驗證電郵失敗</string>
 </resources>

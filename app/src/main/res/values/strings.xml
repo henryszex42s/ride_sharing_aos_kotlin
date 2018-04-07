@@ -108,7 +108,8 @@
     <string name="new_password">New Password</string>
     <string name="repeat_password">Repeat Password</string>
     <string name="edit_pro_password_error">New Password must same as Repeat Password.</string>
-    <string name="edit_pro_password_success">Success</string>
+    <string name="updatePass_Success">Password update successful.</string>
+    <string name="updatePass_Fail">Password update failed.</string>
 
     <!-- Notification - Setting Fragment-->
     <string name="notification">Notification</string>
@@ -223,7 +224,6 @@
     <string name="automatch__no_Room">There are no room match your criteria</string>
 
 
-    <string name="updatePass_Success">Password update successful.</string>
-    <string name="updatePass_Fail">Password update failed.</string>
+
 
 </resources>
