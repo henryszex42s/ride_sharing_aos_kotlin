@@ -88,7 +88,7 @@
     <string name="none">None</string>
     <string name="reset">Reset</string>
 
-    <string name="nop">Number of passengers:</string>
+    <string name="nop">Passengers:</string>
 
 
     <!-- Setting Fragment-->
@@ -103,10 +103,10 @@
     <!--Edit profile Fragment-->
     <string name="pro_p">Profile Picture</string>
     <string name="update">Update</string>
-    <string name="ch_password">Change Password:</string>
-    <string name="old_password">Old Password</string>
-    <string name="new_password">New Password</string>
-    <string name="repeat_password">Repeat Password</string>
+    <string name="ch_password">Update Password:</string>
+    <string name="old_password">Old Password:</string>
+    <string name="new_password">New Password:</string>
+    <string name="repeat_password">Repeat Password:</string>
     <string name="edit_pro_password_error">New Password must same as Repeat Password.</string>
     <string name="updatePass_Success">Password update successful.</string>
     <string name="updatePass_Fail">Password update failed.</string>
@@ -213,7 +213,7 @@
     <string name="room_rejoin_error_title">Chat Room Error</string>
     <string name="room_rejoin_error_msg">You haven\'t join any room</string>
 
-    <string name="fare_est">Taxi Fare Estimation:</string>
+    <string name="fare_est">HKD$</string>
 
 
 

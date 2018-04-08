@@ -162,5 +162,5 @@
     <string name="login_title">登入</string>
     <string name="login_validation_sent">驗證郵件已傳送到</string>
     <string name="login_validation_fail">驗證電郵失敗</string>
-    <string name="fare_est">車費估算</string>
+
 </resources>

@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#e0e0e0"
     tools:context="fyp.ride_sharing_aos.fragement.EditProfileFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -9,24 +10,46 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:stretchColumns="1">
 
+                <TableRow>
+
+                    <ImageView
+                        android:id="@+id/img_edit_profile"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingTop="@dimen/nav_header_vertical_spacing"
+                        android:src="@drawable/icons8_edit_account_100" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="20dp"
+                        android:textColor="@color/black"
+                        android:textSize="20dp"
+                        android:text="@string/setting_edit_profile" />
+                </TableRow>
+                </TableLayout>
+
+            </LinearLayout>
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:background="#c1c1c1">
+                android:background="@android:color/white">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:orientation="vertical"
                     >
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="10px"
-                        android:text="@string/setting_edit_profile" />
 
                     <TableLayout
                         android:layout_width="wrap_content"
@@ -39,14 +62,14 @@
                                 android:layout_height="wrap_content"
                                 android:layout_margin="10dp"
                                 android:text="@string/signup_username"
+                                android:textColor="@color/black"
                                 />
 
                             <EditText
                                 android:id="@+id/new_username"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_margin="10dp"
-                                android:background="@drawable/rounded_edittext"
+                                android:layout_margin="5dp"
                                 android:inputType="text"/>
                         </TableRow>
 
@@ -63,22 +86,51 @@
 
 
             </FrameLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:stretchColumns="1">
+
+                    <TableRow>
+
+                        <ImageView
+                            android:id="@+id/img_update_pw"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:paddingTop="@dimen/nav_header_vertical_spacing"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="30dp"
+                            android:src="@drawable/update_password" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:layout_margin="20dp"
+                            android:textSize="20dp"
+                            android:text="@string/ch_password" />
+                    </TableRow>
+                </TableLayout>
+
+            </LinearLayout>
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:background="#c1c1c1">
+               >
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    android:background="@color/white"
                     android:orientation="vertical"
                     >
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/ch_password" />
+
                 <TableLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -90,14 +142,14 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="10dp"
                             android:text="@string/old_password"
+                            android:textColor="@color/black"
                             />
 
                         <EditText
                             android:id="@+id/old_password"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
-                            android:background="@drawable/rounded_edittext"
+                            android:layout_margin="5dp"
                             android:inputType="textPassword"
                             />
                     </TableRow>
@@ -107,14 +159,14 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
                         android:text="@string/new_password"
+                        android:textColor="@color/black"
                         />
 
                     <EditText
                         android:id="@+id/new_password"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:background="@drawable/rounded_edittext"
+                        android:layout_margin="5dp"
                         android:inputType="textPassword"
                         />
                 </TableRow>
@@ -124,14 +176,14 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
                         android:text="@string/repeat_password"
+                        android:textColor="@color/black"
                         />
 
                     <EditText
                         android:id="@+id/repeat_password"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:background="@drawable/rounded_edittext"
+                        android:layout_margin="5dp"
                         android:inputType="textPassword"
                         />
                 </TableRow>

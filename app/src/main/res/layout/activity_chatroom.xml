@@ -23,81 +23,65 @@
             <TableLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:stretchColumns="1">
+                android:stretchColumns="*">
 
                 <TableRow>
-
-                    <TextView
-                        android:id="@+id/chat_layout_from"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/from"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-
                     <TextView
                         android:id="@+id/chat_item_from"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
                         android:text="[Start location]"
+                        android:textStyle="bold"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
-                </TableRow>
-
-                <TableRow>
-
-                    <TextView
-                        android:id="@+id/chat_layout_to"
+                    <ImageView
+                        android:id="@+id/img_edit_profile"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/to"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-
+                        android:layout_height="match_parent"
+                        android:paddingTop="@dimen/nav_header_vertical_spacing"
+                        android:src="@drawable/icons8_chevron_right_32" />
 
                     <TextView
                         android:id="@+id/chat_item_to"
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textStyle="bold"
                         android:text="[End location]"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
                 </TableRow>
+            </TableLayout>
 
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:stretchColumns="*">
                 <TableRow>
-
-                    <TextView
-                        android:id="@+id/chat_layout_date"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/date"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-
 
                     <TextView
                         android:id="@+id/chat_current_date"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:text="[Current Date]"
+                        android:layout_gravity="center"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-
-                </TableRow>
-
-                <TableRow>
-
-                    <TextView
-                        android:id="@+id/chat_layout_time"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/time"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-
                     <TextView
                         android:id="@+id/chat_item_prefer_time"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="[Prefer Time]"
+                        android:layout_gravity="center"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-
                 </TableRow>
+            </TableLayout>
+
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:stretchColumns="*">
 
                 <TableRow>
 
@@ -106,6 +90,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/nop"
+                        android:layout_gravity="right"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
                     <TextView
@@ -113,16 +98,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="[Number of people]"
+                        android:layout_gravity="left"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-                </TableRow>
-
-                <TableRow>
-
                     <TextView
                         android:id="@+id/chat_layout_fare_est"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/fare_est"
+                        android:layout_gravity="right"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
                     <TextView
@@ -130,9 +113,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="[Fare Estimation]"
+                        android:layout_gravity="left"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-
                 </TableRow>
+
             </TableLayout>
         </LinearLayout>
     </android.support.v7.widget.CardView>
@@ -143,7 +127,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="50dp"
-        android:layout_marginTop="115dp"
+        android:layout_marginTop="70dp"
         android:scrollbars="vertical"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

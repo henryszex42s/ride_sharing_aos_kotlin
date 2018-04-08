@@ -38,7 +38,7 @@ class ChatroomActivity: BaseActivity(){
                     chat_item_to.setText(FirebaseManager.RoomObj!!.destination)
                     chat_current_date.setText(Tools.convertDate(FirebaseManager.RoomObj!!.prefertime!!))
                     chat_item_prefer_time.setText(Tools.convertTime(FirebaseManager.RoomObj!!.prefertime!!))
-                    chat_item_numpeople.setText(FirebaseManager.RoomObj!!.numOfPeople.toString() + "/4")
+                    chat_item_numpeople.setText(FirebaseManager.RoomObj!!.numOfPeople.toString())
                 })
 
         //Notify the View to update, when the message list is updated
