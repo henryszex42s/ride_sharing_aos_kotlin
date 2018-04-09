@@ -89,8 +89,7 @@ class MessageListAdapter(private val mContext: Context, private val mMessageList
         override fun bindViews(msg_info: Message) {
             view.received_text_message_body.text = msg_info.message
             view.received_time.text = Tools.convertTime(msg_info.send_time!!)
-            view.sender.text = msg_info.sender
-
+            FirebaseManager.uidGetUserID(msg_info.sender!!,{ u_name -> view.sender.text = u_name})
         }
     }
 

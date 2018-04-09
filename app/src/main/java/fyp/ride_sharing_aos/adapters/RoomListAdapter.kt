@@ -47,11 +47,27 @@ class ViewHolder(val c : Context, val view: View): RecyclerView.ViewHolder(view)
         view.item_from.text = room.start
         view.item_to.text = room.destination
 
-
+        var people_counter = 0
+        if(room!!.uid1 !="")
+        {
+            people_counter+=1
+        }
+        if(room!!.uid2 !="")
+        {
+            people_counter+=1
+        }
+        if(room!!.uid3 !="")
+        {
+            people_counter+=1
+        }
+        if(room!!.uid4 !="")
+        {
+            people_counter+=1
+        }
 
         view.current_date.text = Tools.convertDate(room.prefertime!!)
 
-        view.item_numpeople.text = room.numOfPeople.toString() + "/4"
+        view.item_numpeople.text = people_counter.toString() + "/4"
         //  view.item_numpeople.text = room.numOfPeople.toString() + "/" + roon.max.toString()
 
         if(room.maleFil == true)

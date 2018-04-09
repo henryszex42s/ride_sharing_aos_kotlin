@@ -16,6 +16,7 @@ import java.sql.Timestamp
 import android.widget.ScrollView
 import android.text.method.TextKeyListener.clear
 import android.view.MenuInflater
+import android.widget.Button
 import com.squareup.okhttp.*
 import org.json.JSONArray
 import org.json.JSONObject
@@ -28,7 +29,6 @@ import java.io.IOException
 class ChatroomActivity: BaseActivity(){
 
     var client = OkHttpClient()
-    var distance = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chatroom)
@@ -38,23 +38,40 @@ class ChatroomActivity: BaseActivity(){
         //Update the room info, when there are any change in the RoomObj
         FirebaseManager.RoomObjUpdateListener(
                 {
-                    supportActionBar!!.setTitle(FirebaseManager.RoomObj!!.roomid)
+                    supportActionBar!!.setTitle(FirebaseManager.RoomObj!!.roomname)
                     chat_item_from.setText(FirebaseManager.RoomObj!!.start)
                     chat_item_to.setText(FirebaseManager.RoomObj!!.destination)
                     chat_current_date.setText(Tools.convertDate(FirebaseManager.RoomObj!!.prefertime!!))
                     chat_item_prefer_time.setText(Tools.convertTime(FirebaseManager.RoomObj!!.prefertime!!))
-                    chat_item_numpeople.setText(FirebaseManager.RoomObj!!.numOfPeople.toString())
+
+                    var people_counter = 0
+                    if(FirebaseManager.RoomObj!!.uid1 !="")
+                    {
+                        people_counter+=1
+                    }
+                    if(FirebaseManager.RoomObj!!.uid2 !="")
+                    {
+                        people_counter+=1
+                    }
+                    if(FirebaseManager.RoomObj!!.uid3 !="")
+                    {
+                        people_counter+=1
+                    }
+                    if(FirebaseManager.RoomObj!!.uid4 !="")
+                    {
+                        people_counter+=1
+                    }
+
+                    chat_item_numpeople.setText(people_counter.toString())
 
                     var startLatLng = Tools.getlatLngUsingName(FirebaseManager.RoomObj!!.start!!,this)
                     var desLatLng = Tools.getlatLngUsingName(FirebaseManager.RoomObj!!.destination!!,this)
 
                     val url = Tools.getDistanceMatrixUrl(startLatLng,desLatLng)
-                    getDistance(url,{
-
+                    getDistance(url,{ distance ->
                         runOnUiThread {
-                            UpdateTaxiFee()
+                            UpdateTaxiFee(distance)
                         }
-
                     })
                 })
 
@@ -78,7 +95,7 @@ class ChatroomActivity: BaseActivity(){
 
     }
 
-    fun getDistance(Url_Link : String, callback: (Any)->Unit)
+    fun getDistance(Url_Link : String, callback: (Int)->Unit)
     {
 
         val request = Request.Builder()
@@ -89,15 +106,14 @@ class ChatroomActivity: BaseActivity(){
              override fun onResponse(response: Response?) {
                  val responseData = response?.body()?.string()
                  val json = JSONObject(responseData)
-
                  val getDistance = json
                     .getJSONArray("rows")
                     .getJSONObject(0)
                     .getJSONArray("elements")
                     .getJSONObject(0)
                     .getJSONObject("distance")
-                     distance = getDistance.get("value") as Int
-                     callback(Unit)
+                     var distance = getDistance.get("value") as Int
+                     callback(distance)
              }
             override fun onFailure(request: Request?, e: IOException?) {
                 TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
@@ -114,17 +130,17 @@ class ChatroomActivity: BaseActivity(){
         finish()
     }
 
-    fun UpdateTaxiFee()
+    fun UpdateTaxiFee(distance: Int)
     {
-        var taxi_fee = ((distance/1000)-2.0)
-        if(taxi_fee <0)
+        val temp = ( (distance/1000.0) - 2.0 ) *5
+        if(distance <= 2000)
         {
             chat_item_fare_est.setText("HKD$ 24")
         }
         else
         {
-            taxi_fee = 24+taxi_fee*(5.0*1.7)+1*1.7
-            chat_item_fare_est.setText("HKD$ "+ taxi_fee)
+            val taxi_fee = 24.0 + temp*1.7 + 1*1.7
+            chat_item_fare_est.setText("HKD$ "+ Math.round(taxi_fee))
         }
     }
 
@@ -146,8 +162,22 @@ class ChatroomActivity: BaseActivity(){
             }
             R.id.chatroom_lock ->
             {
-//                showProgressDialog(getString(R.string.progress_loading))
-//                FirebaseManager.lockRoom()
+                showProgressDialog(getString(R.string.progress_loading))
+                FirebaseManager.lockRoom({ roommaster ->
+                    dismissProgressDialog()
+                    if(roommaster)
+                    {
+                            val error_msg: ArrayList<String> = ArrayList()
+                            error_msg.add(getString(R.string.chatroom_lockroom))
+                            Tools.showDialog(this,getString(R.string.chatroom_title),error_msg)
+                    }
+                    else
+                    {
+                            val error_msg: ArrayList<String> = ArrayList()
+                            error_msg.add(getString(R.string.chatroom_lockroom_error))
+                            Tools.showDialog(this,getString(R.string.chatroom_title),error_msg)
+                    }
+                })
                 return true
             }
 
@@ -165,5 +195,7 @@ class ChatroomActivity: BaseActivity(){
         reyclerview_message_list.adapter.notifyDataSetChanged()
 
     }
+
+
 
 }

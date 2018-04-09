@@ -215,6 +215,10 @@
 
     <string name="fare_est">HKD$</string>
 
+    <string name="chatroom_title">Chatroom</string>
+    <string name="chatroom_lockroom">You locked the room</string>
+    <string name="chatroom_lockroom_error">Sorry, you are not the owner of this chat room. You have no privilege to lock this room. </string>
+
 
 
 

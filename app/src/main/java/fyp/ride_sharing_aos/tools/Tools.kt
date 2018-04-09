@@ -188,11 +188,11 @@ object Tools
         urlString.append("https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=")
         urlString.append(latLngA.latitude)
         urlString.append(",")
-        urlString.append(latLngA.longitude)// from
-        urlString.append("&destinations=")
-        urlString.append(latLngB.latitude)// from
-        urlString.append(",")
         urlString.append(latLngA.longitude)
+        urlString.append("&destinations=")
+        urlString.append(latLngB.latitude)
+        urlString.append(",")
+        urlString.append(latLngB.longitude)
         urlString.append("&key=AIzaSyDafjcrM6n70U3wLqNu04vP0dQon1dPekE")
         return urlString.toString()
     }

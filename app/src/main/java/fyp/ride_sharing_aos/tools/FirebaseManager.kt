@@ -13,6 +13,7 @@ import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.AuthCredential
 import fyp.ride_sharing_aos.BaseActivity
 import fyp.ride_sharing_aos.R
+import javax.security.auth.callback.Callback
 
 
 /**
@@ -132,6 +133,20 @@ object FirebaseManager {
         MessageListenerVal.remove()
     }
 
+    fun uidGetUserID(uid:String, callback: (String) -> Unit)
+    {
+        db.collection("user").document(uid).get().addOnSuccessListener { documentReference ->
+            val u_name = documentReference.get("username").toString()
+            callback(u_name)
+        }.addOnFailureListener {
+            val u_name =""
+            callback(u_name)
+        }
+
+    }
+
+
+
     fun editProfile(newUserName : String)
     {
 
@@ -167,6 +182,7 @@ object FirebaseManager {
         }
 
     }
+
 
 
 
@@ -241,21 +257,29 @@ object FirebaseManager {
                 }
     }
 
-    fun lockRoom()
+    fun lockRoom(callback: (Boolean) -> Unit)
     {
-        val data = HashMap<String, Any>()
-        data.put("type", REQUEST_TYPE_DISMISS_ROOM)
-        data.put("value", UserObj!!.uid!!)
 
-        //2.We update the room obj  with type = 2 and value = <Current User ID> to trigger the firebase cloud function to update the UserObj
+        if(FirebaseManager.RoomObj!!.uid1 != FirebaseManager.getUserID())
+        {
+            callback(false)
+        }
+
+
+        val data = HashMap<String, Any>()
+        data.put("locked", true)
+
         db.collection("room")
                 .document(getRoomID())
                 .update(data)
                 .addOnSuccessListener{
                     Log.d(TAG, "SuccessListener: ")
+                    callback(true)
                 }
                 .addOnFailureListener{
                     Log.d(TAG, "addOnFailureListener: ")
+                    callback(true)
+
                 }
     }
 

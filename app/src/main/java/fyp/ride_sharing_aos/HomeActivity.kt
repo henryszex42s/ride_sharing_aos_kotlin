@@ -49,7 +49,6 @@ class HomeActivity : BaseActivity(){
         loadData()
         selectDrawerItem()
         showLoginPage()
-        setDefaultValue()
 
 //        http://blog.csdn.net/mobilexu/article/details/41147417
 //        supportActionBar?.setDisplayShowTitleEnabled(false)
@@ -79,21 +78,23 @@ class HomeActivity : BaseActivity(){
     }
 
 
-    fun setDefaultValue()
-    {
-        if(Tools.nearestLocation != "")
-        {
-            when(Tools.nearestLocation)
-            {
-                getString(R.string.location_HKUST_North) -> startingFilterValue = locationClickBehavior(card_s_ustng,getString(R.string.location_HKUST_North),true)
-                getString(R.string.location_HKUST_South) -> startingFilterValue = locationClickBehavior(card_s_ustsg,getString(R.string.location_HKUST_South),true)
-                getString(R.string.location_Diamond_Hill) -> startingFilterValue = locationClickBehavior(card_s_dh,getString(R.string.location_Diamond_Hill),true)
-                getString(R.string.location_Choi_Hung) -> startingFilterValue = locationClickBehavior(card_s_ch,getString(R.string.location_Choi_Hung),true)
-                getString(R.string.location_Hang_Hau) -> startingFilterValue = locationClickBehavior(card_s_hh,getString(R.string.location_Hang_Hau),true)
-                getString(R.string.location_Ngau_Tau_Kok) -> startingFilterValue = locationClickBehavior(card_s_ntk,getString(R.string.location_Ngau_Tau_Kok),true)
-            }
-        }
-    }
+//    fun setDefaultValue()
+//    {
+//        if(Tools.nearestLocation != "")
+//        {
+//            when(Tools.nearestLocation)
+//            {
+//                getString(R.string.location_HKUST_North) -> startingFilterValue = locationClickBehavior(card_s_ustng,getString(R.string.location_HKUST_North),true)
+//                getString(R.string.location_HKUST_South) -> startingFilterValue = locationClickBehavior(card_s_ustsg,getString(R.string.location_HKUST_South),true)
+//                getString(R.string.location_Diamond_Hill) -> startingFilterValue = locationClickBehavior(card_s_dh,getString(R.string.location_Diamond_Hill),true)
+//                getString(R.string.location_Choi_Hung) -> startingFilterValue = locationClickBehavior(card_s_ch,getString(R.string.location_Choi_Hung),true)
+//                getString(R.string.location_Hang_Hau) -> startingFilterValue = locationClickBehavior(card_s_hh,getString(R.string.location_Hang_Hau),true)
+//                getString(R.string.location_Ngau_Tau_Kok) -> startingFilterValue = locationClickBehavior(card_s_ntk,getString(R.string.location_Ngau_Tau_Kok),true)
+//            }
+//        }
+//    }
+
+
      fun loadData()
     {
         showProgressDialog(getString(R.string.progress_loading))
