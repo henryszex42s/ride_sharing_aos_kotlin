@@ -71,7 +71,7 @@
                         android:background="@color/white"
                         android:padding="10dp"
                         android:layout_marginBottom="5dp"
-                        android:text="鑽石山鐵路站↔香港科技大學(北閘)\nDiamond Hill(MTR)↔HKUST(South Gate)\n星期一至五 Mon-Fri\n08:00-09:00\n$6.10\n\n香港科技大學(南閘)↔彩虹鐵路站\nHKUST(South Gate)↔Choi Hung(MTR)\n星期一至五Mon-Fri\n17:25-18:30\n$6.10" />
+                        android:text="鑽石山鐵路站↔香港科技大學(北閘)\nDiamond Hill(MTR)↔HKUST(North Gate)\n星期一至五 Mon-Fri\n08:00-09:00\n$6.10\n\n香港科技大學(南閘)↔彩虹鐵路站\nHKUST(South Gate)↔Choi Hung(MTR)\n星期一至五Mon-Fri\n17:25-18:30\n$6.10" />
                 </TableRow>
 
                 <TableRow>
