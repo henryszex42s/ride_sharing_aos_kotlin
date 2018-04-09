@@ -32,7 +32,7 @@
     <string name="login_validation_error">Please verify your email address before using OUST</string>
 
     <string name="login_title">Login</string>
-    <string name="login_validation_sent">Verification email sent to </string>
+    <string name="login_validation_sent">Verification email sent to　</string>
     <string name="login_validation_fail">Failed to send verification email.</string>
 
 
@@ -108,7 +108,7 @@
     <string name="new_password">New Password:</string>
     <string name="repeat_password">Repeat Password:</string>
     <string name="edit_pro_password_error">New Password must same as Repeat Password.</string>
-    <string name="updatePass_Success">Password update successful.</string>
+    <string name="updatePass_Success">You have successfully updated your password.</string>
     <string name="updatePass_Fail">Password update failed.</string>
 
     <!-- Notification - Setting Fragment-->
@@ -205,13 +205,13 @@
     <string name="btu_chat">Chatroom</string>
 
     <string name="room_join_error_title">Join Room Error</string>
-    <string name="room_join_error_msg">You have already joined a room</string>
+    <string name="room_join_error_msg">You have already entered a Room. Press the ChatRoom button to enter the chat room</string>
 
     <string name="enter_message">Enter message</string>
     <string name="send">Send</string>
 
     <string name="room_rejoin_error_title">Chat Room Error</string>
-    <string name="room_rejoin_error_msg">You haven\'t join any room</string>
+    <string name="room_rejoin_error_msg">You have not entered any room</string>
 
     <string name="fare_est">HKD$</string>
 

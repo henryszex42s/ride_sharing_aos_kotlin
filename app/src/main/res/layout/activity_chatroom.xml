@@ -100,20 +100,14 @@
                         android:text="[Number of people]"
                         android:layout_gravity="left"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-                    <TextView
-                        android:id="@+id/chat_layout_fare_est"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/fare_est"
-                        android:layout_gravity="right"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
 
                     <TextView
                         android:id="@+id/chat_item_fare_est"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="[Fare Estimation]"
-                        android:layout_gravity="left"
+                        android:layout_gravity="center"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
                 </TableRow>
 
