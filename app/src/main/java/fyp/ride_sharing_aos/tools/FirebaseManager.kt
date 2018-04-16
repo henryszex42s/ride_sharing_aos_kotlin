@@ -10,15 +10,12 @@ import fyp.ride_sharing_aos.model.Message
 import fyp.ride_sharing_aos.model.Room
 import fyp.ride_sharing_aos.model.User
 import com.google.firebase.auth.EmailAuthProvider
-import com.google.firebase.auth.AuthCredential
-import fyp.ride_sharing_aos.BaseActivity
 import fyp.ride_sharing_aos.R
-import javax.security.auth.callback.Callback
-
 
 /**
  * Created by lfreee on 21/1/2018.
  */
+
 object FirebaseManager {
 
     private val TAG ="FirebaseManager"
@@ -39,6 +36,7 @@ object FirebaseManager {
     lateinit private var MessageListenerVal : ListenerRegistration
     lateinit private var UserListenerVal : ListenerRegistration
     lateinit private var RoomListenerVal : ListenerRegistration
+    lateinit private var RoomListListenerVal : ListenerRegistration
 
     //For Filter
     var  startingFilterValue = "None"
@@ -131,6 +129,11 @@ object FirebaseManager {
     fun detachMessageListener()
     {
         MessageListenerVal.remove()
+    }
+    fun detachRoomListListener()
+    {
+        RoomListListenerVal.remove()
+
     }
 
     fun uidGetUserID(uid:String, callback: (String) -> Unit)
@@ -438,16 +441,19 @@ object FirebaseManager {
 
 
 
-    fun updateRoomList(callback: (Any)->Unit)
+    fun updateRoomListListener(callback: (Any)->Unit)
     {
         val searchQueries = makeQueries()
 
-        searchQueries.get().addOnCompleteListener({ task ->
-            if (task.isSuccessful)
+//        detachRoomListListener()
+
+        RoomListListenerVal = searchQueries.addSnapshotListener(EventListener<QuerySnapshot>{ snapshots, e ->
+
+            if (e == null)
             {
                 RoomList.clear()
 
-                for (doc in task.result) {
+                for (doc in snapshots) {
                     val note = doc.toObject<Room>(Room::class.java)
                     RoomList.add(note)
                 }
@@ -465,7 +471,7 @@ object FirebaseManager {
             }
             else
             {
-                Log.d(TAG, "onDataChange : Error getting documents: ", task.exception)
+                Log.d(TAG, "onDataChange : Error getting documents: ", e)
                 callback(Unit)
             }
         })
@@ -529,6 +535,7 @@ object FirebaseManager {
         }
 
         queries = queries.whereEqualTo("locked",false)
+        queries = queries.orderBy("createtime")
         return queries
     }
 
@@ -549,7 +556,7 @@ object FirebaseManager {
         }
 
         queries = queries.whereEqualTo("locked",false)
-
+        queries = queries.orderBy("createtime")
 
 
 
