@@ -98,7 +98,7 @@ class HomeActivity : BaseActivity(){
      fun loadData()
     {
         showProgressDialog(getString(R.string.progress_loading))
-        FirebaseManager.updateRoomList({roomListChange()})
+        FirebaseManager.updateRoomListListener({roomListChange()})
     }
 
 
