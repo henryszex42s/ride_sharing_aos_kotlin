@@ -57,8 +57,11 @@ class EditProfileFragment : Fragment() {
                 error_msg.add(getString(R.string.signup_username_error))
                 Tools.showDialog(context, "Alert", error_msg)
             }
-            else
+            else {
                 FirebaseManager.editProfile(new_username.text.toString())
+                error_msg.add(getString(R.string.updateusername_Success))
+                Tools.showDialog(context, "Alert", error_msg)
+            }
         })
 
         update2.setOnClickListener(View.OnClickListener {

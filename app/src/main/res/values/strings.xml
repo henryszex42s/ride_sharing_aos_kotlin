@@ -103,6 +103,7 @@
     <!--Edit profile Fragment-->
     <string name="pro_p">Profile Picture</string>
     <string name="update">Update</string>
+    <string name="updateusername_Success">You have successfully updated your username.</string>
     <string name="ch_password">Update Password:</string>
     <string name="old_password">Old Password:</string>
     <string name="new_password">New Password:</string>
@@ -242,7 +243,7 @@
 
     <string name="reset_title">Reset Password</string>
     <string name="forgotpass_sent">We have successfully sent the reset password email to your email address</string>
-    <string name="forgotpass_not_sent">We can\'t set the reset password email to your email address</string>
+    <string name="forgotpass_not_sent">We can\'t send the reset password email to your email address</string>
 
 
 
