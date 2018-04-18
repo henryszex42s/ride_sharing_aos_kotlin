@@ -182,19 +182,19 @@ class AddRouteActivity : BaseActivity(), OnMapReadyCallback {
                         m_Only = false
                         f_Only = false
 
-                        Toast.makeText(this@AddRouteActivity, "None: "+ m_Only + f_Only, Toast.LENGTH_SHORT).show()
+//                        Toast.makeText(this@AddRouteActivity, "None: "+ m_Only + f_Only, Toast.LENGTH_SHORT).show()
                     }
                     if(checkedId == R.id.m_only) {
                         m_Only = true
                         f_Only = false
 
-                        Toast.makeText(this@AddRouteActivity, "Male Only: "+ m_Only + f_Only, Toast.LENGTH_SHORT).show()
+//                        Toast.makeText(this@AddRouteActivity, "Male Only: "+ m_Only + f_Only, Toast.LENGTH_SHORT).show()
                     }
                     if(checkedId == R.id.f_only) {
                         m_Only = false
                         f_Only = true
 
-                        Toast.makeText(this@AddRouteActivity, "female only: "+ m_Only + f_Only, Toast.LENGTH_SHORT).show()
+//                        Toast.makeText(this@AddRouteActivity, "female only: "+ m_Only + f_Only, Toast.LENGTH_SHORT).show()
                     }
 
                 }
@@ -372,8 +372,8 @@ class AddRouteActivity : BaseActivity(), OnMapReadyCallback {
                     mMap.addMarker(MarkerOptions().position(Tools.coordinate_ntk).title("Marker in NTK MTR station"))
                 }
             }
-            if((start_Location != default_location) && des_Location != default_location)
-                writeLineInMap(start_Location,des_Location)
+//            if((start_Location != default_location) && des_Location != default_location)
+//                writeLineInMap(start_Location,des_Location)
         }
 
 
@@ -384,7 +384,6 @@ class AddRouteActivity : BaseActivity(), OnMapReadyCallback {
                 .add(start,dest)
                 .width(5f)
                 .color(Color.RED))
-
     }
 }
 

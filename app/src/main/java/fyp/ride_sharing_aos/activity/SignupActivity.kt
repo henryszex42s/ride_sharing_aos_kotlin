@@ -14,9 +14,6 @@ import fyp.ride_sharing_aos.model.User
 import fyp.ride_sharing_aos.tools.Tools
 import com.google.firebase.firestore.FirebaseFirestore
 import fyp.ride_sharing_aos.BaseActivity
-import com.google.firebase.auth.FirebaseUser
-
-
 
 
 class SignupActivity : BaseActivity() {
@@ -94,7 +91,7 @@ class SignupActivity : BaseActivity() {
 
                                                     val error_msg: ArrayList<String> = ArrayList()
                                                     error_msg.add(this.getString(R.string.login_validation_sent) + user.email)
-                                                    Tools.showDialog_cb(this,getString(R.string.login_title),error_msg,
+                                                    Tools.showDialog_cb(this,getString(R.string.login_errortitle),error_msg,
                                                             {
                                                                 val intent = Intent(this@SignupActivity, HomeActivity::class.java)
                                                                 startActivity(intent)
@@ -105,7 +102,7 @@ class SignupActivity : BaseActivity() {
                                                     Tools.printLog(TAG, "sendEmailVerification" + task.getException())
 
                                                     val error_msg: ArrayList<String> = ArrayList()
-                                                    error_msg.add(this.getString(R.string.login_title))
+                                                    error_msg.add(this.getString(R.string.login_errortitle))
                                                     Tools.showDialog_cb(this,getString(R.string.login_validation_fail),error_msg,
                                                             {
                                                                 val intent = Intent(this@SignupActivity, HomeActivity::class.java)
@@ -180,7 +177,7 @@ class SignupActivity : BaseActivity() {
         }
         else if(identity.equals("Staff"))
         {
-            email = email+"@connect.ust.hk"
+            email = email+"@ust.hk"
         }
 
     }
