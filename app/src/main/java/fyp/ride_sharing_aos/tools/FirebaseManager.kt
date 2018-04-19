@@ -535,7 +535,7 @@ object FirebaseManager {
         }
 
         queries = queries.whereEqualTo("locked",false)
-        queries = queries.orderBy("createtime")
+        queries = queries.orderBy("createtime",Query.Direction.ASCENDING)
         return queries
     }
 
