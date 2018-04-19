@@ -208,9 +208,8 @@ object FirebaseManager {
             fbAuth.currentUser!!.updatePassword(newPassword).addOnSuccessListener {
                 Toast.makeText(c, c.getString(R.string.updatePass_Success) , Toast.LENGTH_SHORT).show();
             }
-            .addOnFailureListener {
-                Toast.makeText(c, c.getString(R.string.updatePass_Fail) , Toast.LENGTH_SHORT).show();
-            }
+        }.addOnFailureListener {
+            Toast.makeText(c, c.getString(R.string.updatePass_Fail) , Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -295,6 +294,7 @@ object FirebaseManager {
         if(FirebaseManager.RoomObj!!.uid1 != FirebaseManager.getUserID())
         {
             callback(false)
+            return
         }
 
 
@@ -313,6 +313,7 @@ object FirebaseManager {
                     callback(true)
 
                 }
+        return
     }
 
 

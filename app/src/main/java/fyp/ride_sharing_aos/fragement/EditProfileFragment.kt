@@ -83,8 +83,6 @@ class EditProfileFragment : Fragment() {
                 }
                 if (valid) {
                     FirebaseManager.changePassword(new_password.text.toString(), old_password.text.toString(), activity)
-                    error_msg.add(getString(R.string.updatePass_Success))
-                    Tools.showDialog(context, "Alert", error_msg)
                 }
                 else {
                     Tools.showDialog(context, getString(R.string.updatePass_Fail), error_msg)

@@ -32,11 +32,13 @@ class SettingFragment : Fragment(), View.OnClickListener{
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
-        FirebaseManager.updateUserObj()
-
-        User = FirebaseManager.getUser()
         super.onCreate(savedInstanceState)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        FirebaseManager.updateUserObj()
+        User = FirebaseManager.getUser()
     }
 
     override fun onStart() {
@@ -51,6 +53,7 @@ class SettingFragment : Fragment(), View.OnClickListener{
         btu_setting_language.setOnClickListener(this)
         btu_setting_about_us.setOnClickListener(this)
         btu_setting_logout.setOnClickListener(this)
+
 
         if(User != null)
         {
