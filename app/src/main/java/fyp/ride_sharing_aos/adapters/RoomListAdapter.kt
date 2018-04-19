@@ -67,7 +67,7 @@ class ViewHolder(val c : Context, val view: View): RecyclerView.ViewHolder(view)
 
         view.current_date.text = Tools.convertDate(room.prefertime!!)
 
-        view.item_numpeople.text = people_counter.toString() + "/4"
+        view.item_numpeople.text = people_counter.toString() + "/4" + "("+ room.numOfPeople +")"
         //  view.item_numpeople.text = room.numOfPeople.toString() + "/" + roon.max.toString()
 
         if(room.maleFil == true)
@@ -94,23 +94,6 @@ class ViewHolder(val c : Context, val view: View): RecyclerView.ViewHolder(view)
 
         //Please Sync With HomeActivity -> AutoMatching
         view.setOnClickListener {
-//            if(FirebaseManager.isRoomIDValid())
-//            {
-//                val error_msg: ArrayList<String> = ArrayList()
-//                error_msg.add(c.getString(R.string.room_join_error_msg))
-//                Tools.showDialog(c,c.getString(R.string.room_join_error_title),error_msg)
-//            }
-//            else
-//            {
-//                (c as HomeActivity).showProgressDialog(c.getString(R.string.progress_loading))
-//                FirebaseManager.joinRoom(room.roomid!!,{
-//
-//                    c.dismissProgressDialog()
-//                    FirebaseManager.detachUserListener()
-//                    c.callChatRoom()
-//
-//                })
-//            }
 
             (c as HomeActivity).joinRoom(room.roomid!!)
         }

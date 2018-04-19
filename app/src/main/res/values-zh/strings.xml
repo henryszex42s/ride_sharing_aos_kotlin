@@ -159,8 +159,22 @@
     <string name="updatePass_Fail">更改密碼失敗</string>
     <string name="login__error">登入錯誤</string>
     <string name="login_validation_error">使用本應用前請驗證你的電郵地址</string>
-    <string name="login_title">登入</string>
+    <string name="login_errortitle">登入</string>
     <string name="login_validation_sent">驗證郵件已傳送到</string>
     <string name="login_validation_fail">驗證電郵失敗</string>
+    <string name="fare_est">HKD$</string>
+    <string name="nav_automatching">自動匹配</string>
+    <string name="chatroom_title">聊天室</string>
+    <string name="chatroom_lockroom">你已鎖上房間</string>
+    <string name="chatroom_lockroom_error">抱歉，你沒有權限鎖上房間</string>
+    <string name="chatroom_female_error">此房間只允許女性加入</string>
+    <string name="chatroom_male_error">此房間只允許男性加入</string>
+    <string name="chatroom_lock">上鎖</string>
+    <string name="chatroom_unlock">解鎖</string>
+    <string name="submit_button">提交</string>
+    <string name="reset_title">重置密碼</string>
+    <string name="forgotpass_sent">我們已把重置密碼電郵傳送給你</string>
+    <string name="forgotpass_not_sent">我們無法傳送重置密碼電郵給你</string>
+    <string name="updateusername_Success">你已成功更新帳戶名稱</string>
 
 </resources>

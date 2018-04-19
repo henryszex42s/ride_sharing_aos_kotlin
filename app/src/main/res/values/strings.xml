@@ -31,8 +31,8 @@
     <string name="login__error">Login Error</string>
     <string name="login_validation_error">Please verify your email address before using OUST</string>
 
-    <string name="login_title">Login</string>
-    <string name="login_validation_sent">Verification email sent to　</string>
+    <string name="login_errortitle">Login </string>
+    <string name="login_validation_sent">Verification email sent to </string>
     <string name="login_validation_fail">Failed to send verification email.</string>
 
 
@@ -103,6 +103,7 @@
     <!--Edit profile Fragment-->
     <string name="pro_p">Profile Picture</string>
     <string name="update">Update</string>
+    <string name="updateusername_Success">You have successfully updated your username.</string>
     <string name="ch_password">Update Password:</string>
     <string name="old_password">Old Password:</string>
     <string name="new_password">New Password:</string>
@@ -219,6 +220,11 @@
     <string name="chatroom_lockroom">You locked the room</string>
     <string name="chatroom_lockroom_error">Sorry, you are not the owner of this chat room. You have no privilege to lock this room. </string>
 
+    <string name="chatroom_female_error">This room only allow female to join</string>
+    <string name="chatroom_male_error">This room only allow male to join</string>
+
+    <string name="chatroom_lock">Lock</string>
+    <string name="chatroom_unlock">Unlock</string>
 
 
 
@@ -233,6 +239,11 @@
     <string name="automatch__error">Auto Match Error</string>
     <string name="automatch__no_Room">There are no room match your criteria</string>
 
+    <string name="submit_button">Submit</string>
+
+    <string name="reset_title">Reset Password</string>
+    <string name="forgotpass_sent">We have successfully sent the reset password email to your email address</string>
+    <string name="forgotpass_not_sent">We can\'t send the reset password email to your email address</string>
 
 
 

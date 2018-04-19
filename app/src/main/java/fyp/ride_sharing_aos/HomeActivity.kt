@@ -413,11 +413,11 @@ class HomeActivity : BaseActivity(){
             position ->
             when(position)
             {
-                0 -> minPassengersFilterValue = "None"
-                1 -> minPassengersFilterValue = "1"
-                2 -> minPassengersFilterValue = "2"
-                3 -> minPassengersFilterValue = "3"
-                4 -> minPassengersFilterValue = "4"
+                0 -> minPassengersFilterValue = 0
+                1 -> minPassengersFilterValue = 1
+                2 -> minPassengersFilterValue = 2
+                3 -> minPassengersFilterValue = 3
+                4 -> minPassengersFilterValue = 4
             }
         }
 
@@ -440,7 +440,7 @@ class HomeActivity : BaseActivity(){
         startingFilterValue = "None"
         destinationFilterValue = "None"
         genderFilterValue = "None"
-        minPassengersFilterValue = "None"
+        minPassengersFilterValue = 0
     }
 
 
@@ -457,13 +457,45 @@ class HomeActivity : BaseActivity(){
         else
         {
             showProgressDialog(this.getString(R.string.progress_join))
-            FirebaseManager.joinRoom(RoomID,{
 
-                dismissProgressDialog()
-                FirebaseManager.detachUserListener()
-                callChatRoom()
+            val error_msg: ArrayList<String> = ArrayList()
+
+            FirebaseManager.ridGetGender(RoomID, { gender ->
+
+                var bool = true
+                if(gender == "femaleFil")
+                {
+                    if(FirebaseManager.getGender() == "Male")
+                    {
+                        dismissProgressDialog()
+                        error_msg.add(this.getString(R.string.chatroom_female_error))
+                        Tools.showDialog(this,getString(R.string.chatroom_title),error_msg)
+                        bool = false
+                    }
+                }
+                else if(gender == "maleFil")
+                {
+                    if(FirebaseManager.getGender() == "Female")
+                    {
+                        dismissProgressDialog()
+                        error_msg.add(this.getString(R.string.chatroom_male_error))
+                        Tools.showDialog(this,getString(R.string.chatroom_title),error_msg)
+                        bool = false
+                    }
+                }
+
+                if(bool)
+                {
+                    FirebaseManager.joinRoom(RoomID,{
+                        dismissProgressDialog()
+                        FirebaseManager.detachUserListener()
+                        callChatRoom()
+                    })
+                }
 
             })
+
+
         }
     }
 

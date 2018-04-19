@@ -47,6 +47,11 @@ class LoginActivity : BaseActivity() {
                         }
                     }
         }
+
+        login_forgot.setOnClickListener{
+            val intentToMain = Intent(this@LoginActivity, ForgetPassActivity::class.java)
+            startActivity(intentToMain)
+        }
     }
 
     fun inputValidation(username : String, password : String) : Boolean

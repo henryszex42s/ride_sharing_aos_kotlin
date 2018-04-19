@@ -46,7 +46,8 @@
                     android:layout_height="48dp"
                     android:hint="@string/login_hint_email"
                     android:inputType="text"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    tools:ignore="TextFields" />
 
             </android.support.design.widget.TextInputLayout>
 

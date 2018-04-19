@@ -42,7 +42,7 @@ object FirebaseManager {
     var  startingFilterValue = "None"
     var  destinationFilterValue = "None"
     var genderFilterValue = "None"
-    var minPassengersFilterValue = "None"
+    var minPassengersFilterValue = 0
 
 //    private var database = FirebaseDatabase.getInstance()
 //    private var dbReference = database.reference
@@ -117,6 +117,11 @@ object FirebaseManager {
         return UserObj!!.chatsession!!
     }
 
+    fun getGender() : String
+    {
+        return UserObj!!.gender!!
+    }
+
 
     fun detachUserListener()
     {
@@ -146,6 +151,30 @@ object FirebaseManager {
             callback(u_name)
         }
 
+    }
+
+    fun ridGetGender(rid:String , callback:(String) -> Unit)
+    {
+        db.collection("room").document(rid).get().addOnSuccessListener { documentReference ->
+            val femaleFil = documentReference.get("femaleFil").toString().toBoolean()
+            val maleFil = documentReference.get("maleFil").toString().toBoolean()
+
+            if(femaleFil)
+            {
+                callback("femaleFil")
+            }
+            else if(maleFil)
+            {
+                callback("maleFil")
+            }
+            else
+            {
+                callback("none")
+            }
+
+        }.addOnFailureListener {
+            callback("none")
+        }
     }
 
 
@@ -529,9 +558,9 @@ object FirebaseManager {
             }
         }
 
-        if(minPassengersFilterValue != "None")
+        if(minPassengersFilterValue != 0)
         {
-            queries = queries.whereEqualTo("numberOfPeople",minPassengersFilterValue)
+            queries = queries.whereGreaterThanOrEqualTo("numberOfPeople",minPassengersFilterValue)
         }
 
         queries = queries.whereEqualTo("locked",false)

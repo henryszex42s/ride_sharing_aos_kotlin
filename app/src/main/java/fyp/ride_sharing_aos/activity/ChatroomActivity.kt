@@ -44,6 +44,16 @@ class ChatroomActivity: BaseActivity(){
                     chat_current_date.setText(Tools.convertDate(FirebaseManager.RoomObj!!.prefertime!!))
                     chat_item_prefer_time.setText(Tools.convertTime(FirebaseManager.RoomObj!!.prefertime!!))
 
+
+                    if(FirebaseManager.RoomObj!!.locked!!)
+                    {
+                        isLocked.setText(getString(R.string.chatroom_lock))
+                    }
+                    else
+                    {
+                        isLocked.setText(getString(R.string.chatroom_unlock))
+                    }
+
                     var people_counter = 0
                     if(FirebaseManager.RoomObj!!.uid1 !="")
                     {
@@ -157,6 +167,16 @@ class ChatroomActivity: BaseActivity(){
             R.id.chatroom_leave ->
             {
                 showProgressDialog(getString(R.string.progress_loading))
+
+                FirebaseManager.lockRoom({ roommaster ->
+                    if(roommaster)
+                    {
+                        val error_msg: ArrayList<String> = ArrayList()
+                        error_msg.add(getString(R.string.chatroom_lockroom))
+                        Tools.showDialog(this,getString(R.string.chatroom_title),error_msg)
+                    }
+                })
+
                 FirebaseManager.leaveChatRoom { leaveChatRoom() }
                 return true
             }
