@@ -1,7 +1,17 @@
-# Ride Sharing Mobile Application (Kotlin)
+# Taxi Ride-Sharing Mobile Application (Kotlin)
 
 
 ## Getting Started
+
+### About our app
+This app aims to provide a well-designed user-interface and appropriate functionalities, so that the members in HKUST community like students, faculty and staff can easily find people to share taxis when they travel between MTR Stations and HKUST and thus save on transportation costs.
+
+### Features
+* Filter Options
+* Auto Matching
+* Travel Fees Estimation
+* Real-time Chat Room
+* Authentication
 
 ### Prerequisites
 
